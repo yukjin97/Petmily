@@ -7,5 +7,6 @@ public class PaymentController {
 	
 	public void bill() {
 		String id = null;
+		String password = null;
 	}
 }
