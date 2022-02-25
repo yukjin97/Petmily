@@ -6,6 +6,6 @@ import org.springframework.stereotype.Controller;
 public class PaymentController {
 	
 	public void bill() {
-		
+		String id = null;
 	}
 }
