@@ -3,7 +3,7 @@ package com.petmily.dto;
 public class Order {
 	int prod_num;
 	int order_count;
-	String order_num;
+	int order_num;
 	String user_id;
 	String order_status;
 	String order_date;
@@ -11,7 +11,7 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(int prod_num, int order_count, String order_num, String user_id, String order_status,
+	public Order(int prod_num, int order_count, int order_num, String user_id, String order_status,
 			String order_date) {	
 		this.prod_num = prod_num;
 		this.order_count = order_count;
@@ -37,11 +37,11 @@ public class Order {
 		this.order_count = order_count;
 	}
 
-	public String getOrder_num() {
+	public int getOrder_num() {
 		return order_num;
 	}
 
-	public void setOrder_num(String order_num) {
+	public void setOrder_num(int order_num) {
 		this.order_num = order_num;
 	}
 

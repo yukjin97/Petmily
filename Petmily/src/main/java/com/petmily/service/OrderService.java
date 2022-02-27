@@ -1,5 +1,7 @@
 package com.petmily.service;
 
-public interface OrderService {
+import com.petmily.dto.Order;
 
+public interface OrderService {
+	void order(Order order) throws Exception;
 }
