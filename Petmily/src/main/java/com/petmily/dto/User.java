@@ -14,9 +14,9 @@ public class User {
 	String user_phone;
 	String user_type;
 
-	public User() {
-	}
-
+	public User() {}
+	public User(String id, String password) {}
+	
 	public User(String user_id, String user_pwd, String user_name, String user_nickname, String user_email,
 			String user_address1, String user_address2, String user_zipcode, String user_totaddress, String user_birth,
 			String user_phone, String user_type) {
@@ -33,6 +33,8 @@ public class User {
 		this.user_phone = user_phone;
 		this.user_type = user_type;
 	}
+
+
 
 	public String getUser_id() {
 		return user_id;
