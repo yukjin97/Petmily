@@ -7,18 +7,29 @@ public class Order {
 	String user_id;
 	String order_status;
 	String order_date;
-
+	String order_address;
+	
 	public Order() {
 	}
 
 	public Order(int prod_num, int order_count, int order_num, String user_id, String order_status,
-			String order_date) {	
+			String order_date, String order_address) {	
 		this.prod_num = prod_num;
 		this.order_count = order_count;
 		this.order_num = order_num;
 		this.user_id = user_id;
 		this.order_status = order_status;
 		this.order_date = order_date;
+		this.order_address = order_address;
+	}
+
+	
+	public String getOrder_address() {
+		return order_address;
+	}
+
+	public void setOrder_address(String order_address) {
+		this.order_address = order_address;
 	}
 
 	public int getProd_num() {

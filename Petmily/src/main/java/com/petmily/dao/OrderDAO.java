@@ -9,5 +9,6 @@ import com.petmily.dto.Order;
 @Repository
 public interface OrderDAO {
 	void insertOrder(Order order) throws Exception;
-	Integer selectMaxOrderNum() throws Exception;	
+	Integer selectMaxOrderNum() throws Exception;
+	void mem_payment(String mem_grade) throws Exception;
 }

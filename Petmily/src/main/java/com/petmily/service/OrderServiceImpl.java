@@ -20,4 +20,10 @@ public class OrderServiceImpl implements OrderService {
 		order.setOrder_num(orderNum);
 		orderDAO.insertOrder(order);
 	}
+
+	@Override
+	public void mem_payment(String mem_grade) throws Exception {
+		System.out.println("completeServ");
+		orderDAO.mem_payment(mem_grade);
+	}
 }
