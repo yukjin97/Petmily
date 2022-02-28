@@ -48,10 +48,10 @@ public class MembershipController {
    public String mem_silverPass(){
       try {
          session.setAttribute("mem_grade","silver");
-         session.setAttribute("mem_productNum", "1");
-         session.setAttribute("fix1", "1");
-         session.setAttribute("fix2", "2");
-         session.setAttribute("fix3", "3");
+         session.setAttribute("mem_productNum", 1);
+         session.setAttribute("fix1", 1);
+         session.setAttribute("fix2", 2);
+         session.setAttribute("fix3", 3);
          session.setAttribute("mem_price", "9,800");
          session.setAttribute("mem_img", "");
          return "mem_pay";
@@ -64,10 +64,10 @@ public class MembershipController {
    public String mem_goldPass(){
       try {
          session.setAttribute("mem_grade","gold");
-         session.setAttribute("mem_productNum", "2");
-         session.setAttribute("fix1", "6");
-         session.setAttribute("fix2", "7");
-         session.setAttribute("fix3", "8");
+         session.setAttribute("mem_productNum", 2);
+         session.setAttribute("fix1", 6);
+         session.setAttribute("fix2", 7);
+         session.setAttribute("fix3", 8);
          session.setAttribute("mem_price", "19,800");
          session.setAttribute("mem_img", "");
          return "mem_pay";
@@ -94,11 +94,11 @@ public class MembershipController {
          //마이페이지 구독권 쪽으로
          System.out.println("completeOrder");
          String grade = (String)session.getAttribute("mem_grade");
-         String fix1 = (String)session.getAttribute("fix1");
-         String fix2 = (String)session.getAttribute("fix2");
-         String fix3 = (String)session.getAttribute("fix3");
+         int fix1 = (Integer)session.getAttribute("fix1");
+         int fix2 = (Integer)session.getAttribute("fix2");
+         int fix3 = (Integer)session.getAttribute("fix3");
          System.out.println(grade);
-         orderService.mem_payment(grade);
+         orderService.mem_payment(grade,fix1,fix2,fix3);
          session.removeAttribute("mem_grade");
          session.removeAttribute("mem_productNum");
          session.removeAttribute("fix1");

@@ -17,12 +17,12 @@
 	</select>
 
 
-	<update id="mem_payment" parameterType="String">
+	<update id="mem_payment" >
 		<![CDATA[
 		update product set prod_solo = case when prod_solo > 0 then prod_solo-1 else prod_solo end,
 		prod_solo = case when prod_solo < 0  then prod_solo = 0 else prod_solo end,
 	 	remain_amount = case when prod_solo <= 0 then remain_amount+1 else remain_amount end,
-   		prod_#{mem_grade}=prod_#{mem_grade}+1
+   		prod_${mem_grade}=prod_${mem_grade}+1
    		where prod_num=#{fix1} or prod_num=#{fix2} or prod_num=#{fix3}
 		]]>
 	</update>

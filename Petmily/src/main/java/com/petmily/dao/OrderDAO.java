@@ -1,6 +1,7 @@
 package com.petmily.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.petmily.dto.Order;
@@ -10,5 +11,6 @@ import com.petmily.dto.Order;
 public interface OrderDAO {
 	void insertOrder(Order order) throws Exception;
 	Integer selectMaxOrderNum() throws Exception;
-	void mem_payment(String mem_grade) throws Exception;
+	void mem_payment(@Param("mem_grade")String mem_grade, @Param("fix1")int fix1, @Param("fix2")int fix2,
+			@Param("fix3")int fix3) throws Exception;
 }

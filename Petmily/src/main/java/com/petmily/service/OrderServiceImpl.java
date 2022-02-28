@@ -22,8 +22,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public void mem_payment(String mem_grade) throws Exception {
+	public void mem_payment(String mem_grade, int fix1, int fix2, int fix3) throws Exception {
 		System.out.println("completeServ");
-		orderDAO.mem_payment(mem_grade);
+		orderDAO.mem_payment(mem_grade,fix1,fix2,fix3);
 	}
 }
