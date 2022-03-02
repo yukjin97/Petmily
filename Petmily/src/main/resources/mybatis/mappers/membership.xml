@@ -5,7 +5,7 @@
 	<insert id="insertMemberShip" parameterType="membership">
 	<![CDATA[
 		insert into membership (user_id,mem_grade,mem_start_date) 
-		values(#{user_id},#{mem_grade},now())
+		values(#{user_id},#{mem_grade},date_format(now(),'%y-%m-%d'))
 	]]>		
 	</insert>		
 
