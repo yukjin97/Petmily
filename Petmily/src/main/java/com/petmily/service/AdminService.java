@@ -1,7 +1,12 @@
 package com.petmily.service;
 
+import java.util.List;
+
+import com.petmily.dto.admintest;
+
 public interface AdminService {
 
-	public void membership() throws Exception;
+	public List<admintest> membership() throws Exception;
 
 }
+	

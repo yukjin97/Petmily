@@ -19,14 +19,19 @@
 				<td>구독정보</td>
 				<td>구독시작일</td>
 			</tr>
-			<tr>
-				<td>${user_name }</td>
-				<td>${user_email }</td>
-				<td>${user_address }</td>
-				<td>${user_phone }</td>
-				<td>${mem_grade }</td>
-				<td>${mem_start_date }</td>
-			</tr>
+			<tbody>
+				<c:forEach items="${admin }" var="admin">
+					<tr>
+						<td>${admin.user_name }</td>
+						<td>${admin.user_email }</td>
+						<td>${admin.user_totaddress }</td>
+						<td>${admin.user_phone }</td>
+						<td>${admin.mem_grade }</td>
+						<td>${admin.mem_start_date }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+
 		</table>
 	</form>
 </body>
