@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petmily.dao.AdminDAO;
-import com.petmily.dto.admintest;
+import com.petmily.dto.Admin;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -15,7 +15,7 @@ public class AdminServiceImpl implements AdminService {
 	AdminDAO admindao;
 
 	@Override
-	public List<admintest> membership() throws Exception {
+	public List<Admin> membership() throws Exception {
 		return admindao.membership();
 	}
 
