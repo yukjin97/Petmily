@@ -1,5 +1,7 @@
 package com.petmily.dto;
 
+import java.sql.Date;
+
 public class Product {
    int prod_num;
    String prod_img;
@@ -10,9 +12,9 @@ public class Product {
    int prod_solo;
    int prod_silver;
    int prod_gold;
-   String prod_create_date;
-   String prod_update_date;
-   String prod_modified_date;
+   Date prod_create_date;
+   Date prod_update_date;
+   Date prod_modified_date;
    int prod_view_cnt;
    String prod_content;
    int remain_amount;
@@ -20,8 +22,8 @@ public class Product {
    public Product() {}
 
    public Product(int prod_num, String prod_img, String prod_title, String prod_category, String prod_name,
-         int prod_price, int prod_solo, int prod_silver, int prod_gold, String prod_create_date,
-         String prod_update_date, String prod_modified_date, int prod_view_cnt, String prod_content ,int remain_amount) {
+         int prod_price, int prod_solo, int prod_silver, int prod_gold, Date prod_create_date,
+         Date prod_update_date, Date prod_modified_date, int prod_view_cnt, String prod_content ,int remain_amount) {
       this.prod_num = prod_num;
       this.prod_img = prod_img;
       this.prod_title = prod_title;
@@ -119,27 +121,27 @@ public class Product {
       this.prod_gold = prod_gold;
    }
 
-   public String getProd_create_date() {
+   public Date getProd_create_date() {
       return prod_create_date;
    }
 
-   public void setProd_create_date(String prod_create_date) {
+   public void setProd_create_date(Date prod_create_date) {
       this.prod_create_date = prod_create_date;
    }
 
-   public String getProd_update_date() {
+   public Date getProd_update_date() {
       return prod_update_date;
    }
 
-   public void setProd_update_date(String prod_update_date) {
+   public void setProd_update_date(Date prod_update_date) {
       this.prod_update_date = prod_update_date;
    }
 
-   public String getProd_modified_date() {
+   public Date getProd_modified_date() {
       return prod_modified_date;
    }
 
-   public void setProd_modified_date(String prod_modified_date) {
+   public void setProd_modified_date(Date prod_modified_date) {
       this.prod_modified_date = prod_modified_date;
    }
 

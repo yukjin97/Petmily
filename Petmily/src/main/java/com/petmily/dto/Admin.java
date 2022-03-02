@@ -2,7 +2,7 @@ package com.petmily.dto;
 
 import java.sql.Date;
 
-public class admintest {
+public class Admin {
 	String user_name;
 	String user_email;
 	String user_totaddress;
@@ -10,11 +10,11 @@ public class admintest {
 	String mem_grade;
 	Date mem_start_date;
 	
-	public admintest() {
+	public Admin() {
 		
 	}
 	
-	public admintest(String user_name, String user_email, String user_totaddress, String user_phone, String mem_grade,
+	public Admin(String user_name, String user_email, String user_totaddress, String user_phone, String mem_grade,
 			Date mem_start_date) {
 		this.user_name = user_name;
 		this.user_email = user_email;

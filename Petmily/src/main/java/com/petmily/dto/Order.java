@@ -1,19 +1,21 @@
 package com.petmily.dto;
 
+import java.sql.Date;
+
 public class Order {
 	int prod_num;
 	int order_count;
 	int order_num;
 	String user_id;
 	String order_status;
-	String order_date;
+	Date order_date;
 	String order_address;
 	
 	public Order() {
 	}
 
 	public Order(int prod_num, int order_count, int order_num, String user_id, String order_status,
-			String order_date, String order_address) {	
+			Date order_date, String order_address) {	
 		this.prod_num = prod_num;
 		this.order_count = order_count;
 		this.order_num = order_num;
@@ -72,11 +74,11 @@ public class Order {
 		this.order_status = order_status;
 	}
 
-	public String getOrder_date() {
+	public Date getOrder_date() {
 		return order_date;
 	}
 
-	public void setOrder_date(String order_date) {
+	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
 	}
 
