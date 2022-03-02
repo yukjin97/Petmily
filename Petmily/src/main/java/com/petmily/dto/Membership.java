@@ -1,14 +1,16 @@
 package com.petmily.dto;
 
+import java.sql.Date;
+
 public class Membership {
 	String user_id;
 	String mem_grade;
-	String mem_start_date;
+	Date mem_start_date;
 
 	public Membership() {
 	}
 
-	public Membership(String user_id, String mem_grade, String mem_start_date) {
+	public Membership(String user_id, String mem_grade, Date mem_start_date) {
 		this.user_id = user_id;
 		this.mem_grade = mem_grade;
 		this.mem_start_date = mem_start_date;
@@ -30,11 +32,11 @@ public class Membership {
 		this.mem_grade = mem_grade;
 	}
 
-	public String getMem_start_date() {
+	public Date getMem_start_date() {
 		return mem_start_date;
 	}
 
-	public void setMem_start_date(String mem_start_date) {
+	public void setMem_start_date(Date mem_start_date) {
 		this.mem_start_date = mem_start_date;
 	}
 

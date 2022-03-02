@@ -1,20 +1,21 @@
 package com.petmily.dto;
 
+import java.sql.Date;
+
 public class admintest {
 	String user_name;
 	String user_email;
 	String user_totaddress;
 	String user_phone;
 	String mem_grade;
-	String mem_start_date;
+	Date mem_start_date;
 	
 	public admintest() {
 		
 	}
 	
 	public admintest(String user_name, String user_email, String user_totaddress, String user_phone, String mem_grade,
-			String mem_start_date) {
-		super();
+			Date mem_start_date) {
 		this.user_name = user_name;
 		this.user_email = user_email;
 		this.user_totaddress = user_totaddress;
@@ -52,10 +53,10 @@ public class admintest {
 	public void setMem_grade(String mem_grade) {
 		this.mem_grade = mem_grade;
 	}
-	public String getMem_start_date() {
+	public Date getMem_start_date() {
 		return mem_start_date;
 	}
-	public void setMem_start_date(String mem_start_date) {
+	public void setMem_start_date(Date mem_start_date) {
 		this.mem_start_date = mem_start_date;
 	}
 	
