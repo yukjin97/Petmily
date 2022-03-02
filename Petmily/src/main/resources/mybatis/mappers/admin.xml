@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.petmily.dao.AdminDAO">
+
+	<select id="membership" resultType="String">
+      <![CDATA[
+         select user.user_id,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date 
+         from user left join membership on user.user_id = membership.user_id
+      ]]>
+	</select>
+
+
+</mapper>

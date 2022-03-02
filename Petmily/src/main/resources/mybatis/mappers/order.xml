@@ -6,7 +6,7 @@
 	<insert id="insertOrder" parameterType="order">
 	<![CDATA[
 		insert into petmily.order (order_num,user_id,prod_num,order_status,order_count,order_date) 
-		values(#{order_num},#{user_id},#{prod_num},#{order_status},#{order_count},now())
+		values(#{order_num},#{user_id},#{prod_num},#{order_status},#{order_count},date_format(now(),'%y-%m-%d'))
 	]]>
 	</insert>
 
