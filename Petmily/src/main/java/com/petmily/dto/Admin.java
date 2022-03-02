@@ -9,6 +9,8 @@ public class Admin {
 	String user_phone;
 	String mem_grade;
 	Date mem_start_date;
+	Date order_date;
+
 	
 	public Admin() {
 		
