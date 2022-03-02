@@ -11,6 +11,7 @@ import com.petmily.dto.Admin;
 @Repository
 public interface AdminDAO {
 
-	public List<Admin> membership() throws Exception;
+	public List<Admin> selectMembershipList(int startrow) throws Exception;
+	int selectMembershipCount() throws Exception;
 
 }
