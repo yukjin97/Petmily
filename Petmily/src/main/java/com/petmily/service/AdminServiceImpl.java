@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petmily.dao.AdminDAO;
 import com.petmily.dto.Admin;
@@ -16,8 +17,8 @@ public class AdminServiceImpl implements AdminService {
 	AdminDAO admindao;
 
 	@Override
-	public List<Admin> membershipList(int page, PageInfo pageInfo) throws Exception {
-		int listCount=admindao.selectMembershipCount();
+	public List<Admin> membershipList(int page, PageInfo pageInfo,@RequestParam(value = "mem_text") String mem_text) throws Exception {
+		int listCount=admindao.selectMembershipCount(mem_text);
 		//table에 있는 모든 row 개수
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
@@ -44,9 +45,7 @@ public class AdminServiceImpl implements AdminService {
 		
 		int startrow=(page-1)*10+1;
 		
-		return admindao.selectMembershipList(startrow);
+		return admindao.selectMembershipList(startrow,mem_text);
 	}
-
-
 
 }

@@ -19,10 +19,12 @@ public class AdminController {
 	AdminService adminservice;
 	
 	@GetMapping(value ="admin_membership")
-	public String admin_membership (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model) {
+	public String admin_membership (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "mem_text",defaultValue="") String mem_text) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Admin> admin = adminservice.membershipList(page,pageInfo);
+			List<Admin> admin = adminservice.membershipList(page,pageInfo,mem_text);
+			model.addAttribute("mem_text", mem_text);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin", admin);
 		} catch (Exception e) {

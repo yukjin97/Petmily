@@ -11,6 +11,10 @@
 <body>	
 <c:choose>
 	<c:when test="${admin!=null && pageInfo.listCount>0 }">
+		<form action="admin_membership" method="get">
+			<input type="text" id="mem_text" name="mem_text"/>
+			<input type="submit" value="찾기"/>
+		</form>
 		<section id="listForm">
 		<table border='1'>
 		<tr>
@@ -41,14 +45,14 @@
 					[이전]&nbsp;
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+					<a href="admin_membership?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 				<c:choose>
 					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 					<c:otherwise>
-						<a href="admin_membership?page=${i}">[${i }]</a>
+						<a href="admin_membership?page=${i}&mem_text=${mem_text}">[${i }]</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -57,7 +61,7 @@
 					[다음]
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page+1}">[다음]</a>
+					<a href="admin_membership?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
 				</c:otherwise>
 			</c:choose>
 		</section>

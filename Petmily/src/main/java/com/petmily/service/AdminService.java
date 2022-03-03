@@ -7,7 +7,7 @@ import com.petmily.dto.PageInfo;
 
 public interface AdminService {
 
-	public List<Admin> membershipList(int page, PageInfo pageInfo) throws Exception;
+	public List<Admin> membershipList(int page, PageInfo pageInfo,String mem_text) throws Exception;
 
 }
 	
