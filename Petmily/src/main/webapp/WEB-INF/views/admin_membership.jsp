@@ -81,7 +81,11 @@
 		</section>
 	</c:when>	
 	<c:otherwise>
-		<section id="emptyArea">등록된 글이 없습니다.</section>
+	<form action="admin_membership" method="get">
+			<input type="text" id="mem_text" name="mem_text"/>
+			<input type="submit" value="찾기"/>
+		</form>
+		<section id="emptyArea">구독 회원이 없습니다.</section>
 	</c:otherwise>
 	</c:choose>
 	

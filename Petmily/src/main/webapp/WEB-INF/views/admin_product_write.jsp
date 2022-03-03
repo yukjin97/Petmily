@@ -20,11 +20,11 @@
    </script>
 </head>
 <body>
-<form action="product_write" method="post" enctype="multipart/form-data" name="product_write">
+<form action="admin_product_write" method="post" enctype="multipart/form-data" name="admin_product_write">
    <img id="preview" style="width:500px"/>
    <br />
    <br />
-   <input type="file" name="prod_img" onchange="readURL(this);"/>
+   <input type="file" name="file" onchange="readURL(this);"/>
    <br />
    <input type="text" name="prod_title" placeholder="상품 제목 입력"/>
    <br />
@@ -33,6 +33,13 @@
    <input type="text" name="prod_price" placeholder="상품 가격 입력"/>
    <br />
    <input type="text"  name="prod_solo" placeholder="상품 재고 입력"/>
+   <br />
+   <select id="category" name="prod_category" onchange="selectBoxChange(this.value);">
+   <option value="사료">사료</option>
+   <option value="옷">옷</option>
+   <option value="장난감">장난감</option>
+   <option value="간식">간식</option>
+   </select>
    <br />
    <textarea name="prod_content" placeholder="상품 정보 입력"  style="width:500px;height:500px"></textarea>
    <br />

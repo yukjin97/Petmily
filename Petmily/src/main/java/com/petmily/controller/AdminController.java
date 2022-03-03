@@ -73,7 +73,7 @@ public class AdminController {
 				product.setProd_img(product.getFile().getOriginalFilename());
 				product.getFile().transferTo(destFile);
 				adminservice.productwrite(product);
-				return "admin_product";
+				return "redirect:/admin_product";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

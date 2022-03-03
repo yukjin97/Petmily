@@ -11,7 +11,7 @@
 <body>	
 <c:choose>
 	<c:when test="${admin_product!=null && pageInfo.listCount>0 }">
-		<form action="admin_product_write" method="get">
+		<form action="admin_product" method="get">
 			<input type="text" id="search_prod" name="search_prod"/>
 			<input type="submit" value="찾기"/>
 		</form>
@@ -61,6 +61,10 @@
 		</section>
 	</c:when>	
 	<c:otherwise>
+	<form action="admin_product" method="get">
+			<input type="text" id="search_prod" name="search_prod"/>
+			<input type="submit" value="찾기"/>
+		</form>
 		<section id="emptyArea">등록된 글이 없습니다.</section>
 	</c:otherwise>
 	</c:choose>
