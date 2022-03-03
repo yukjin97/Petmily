@@ -7,47 +7,27 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
- 
-
- <link rel="stylesheet" href="/resources/demos/style.css">
- 
-
- <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
- 
-
- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
- 
- 
 </head>
 <body>	
 <c:choose>
-	<c:when test="${admin!=null && pageInfo.listCount>0 }">
-		<form action="admin_membership" method="get">
-			<input type="text" id="mem_text" name="mem_text"/>
+	<c:when test="${admin_product!=null && pageInfo.listCount>0 }">
+		<form action="admin_product_write" method="get">
+			<input type="text" id="search_prod" name="search_prod"/>
 			<input type="submit" value="찾기"/>
 		</form>
 		<section id="listForm">
 		<table border='1'>
 		<tr>
-			<td>이름</td>
-			<td>이메일</td>
-			<td>주소</td>
-			<td>전화번호</td>
-			<td>구독정보</td>
-			<td>구독시작일</td>
+			<td>제목</td>
+			<td>상품이름</td>
+			<td>가격</td>
 		</tr>
 		<tbody>
-			<c:forEach items="${admin }" var="admin">
+			<c:forEach items="${admin_product }" var="admin_product">
 				<tr>
-					<td>${admin.user_name }</td>
-					<td>${admin.user_email }</td>
-					<td>${admin.user_totaddress }</td>
-					<td>${admin.user_phone }</td>
-					<td>${admin.mem_grade }</td>
-					<td>${admin.mem_start_date }</td>
+					<td>${admin_product.prod_title }</td>
+					<td>${admin_product.prod_name }</td>
+					<td>${admin_product.prod_price }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -59,14 +39,14 @@
 					[이전]&nbsp;
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+					<a href="admin_membership?page=${pageInfo.page-1}&search_prod=${search_prod}">[이전]</a>&nbsp;
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 				<c:choose>
 					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 					<c:otherwise>
-						<a href="admin_membership?page=${i}&mem_text=${mem_text}">[${i }]</a>
+						<a href="admin_membership?page=${i}&search_prod=${search_prod}">[${i }]</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -75,7 +55,7 @@
 					[다음]
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+					<a href="admin_membership?page=${pageInfo.page+1}&search_prod=${search_prod}">[다음]</a>
 				</c:otherwise>
 			</c:choose>
 		</section>
