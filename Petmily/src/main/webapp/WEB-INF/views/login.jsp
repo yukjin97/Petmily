@@ -48,7 +48,7 @@
 			</div>
 
 			<div class="d-grid">
-				<input type="submit" class="btn btn-primary btn-block" value='로그인'>
+				<input type="submit" id="login_btn" class="btn btn-primary btn-block" value='로그인'>
 			</div>
 		</form>
 	</div>
