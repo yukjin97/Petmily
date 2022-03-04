@@ -7,8 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.petmily.dto.User;
 import com.petmily.service.MyPageService;
@@ -17,7 +16,6 @@ import com.petmily.service.MyPageService;
 public class MypageController {
 	@Autowired
 	MyPageService myPageService;
-
 	@Autowired
 	HttpSession session;
 
@@ -30,27 +28,33 @@ public class MypageController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return "mypageinfo";
 	}
 
-	/* 회원정보 수정 */
-	@RequestMapping(value = "/modifymyinfo", method = RequestMethod.POST)
-	public String modifymyinfo(@ModelAttribute User user) {
+	@GetMapping(value = "usermodify")
+	public String usermodify(Model model) {
 		String user_id = (String) session.getAttribute("user_id");
+		
 		try {
-			user.setUser_id(user_id); // 유저객체 아이디
-			myPageService.updateUser(user);
-			return "mypageinfo";
-
+			User user = myPageService.myPageInfo(user_id);
+			model.addAttribute("user", user);
 		} catch (Exception e) {
-	         e.printStackTrace();
-	         return "modifymyinfo";
-	      }
-	   }
-	
-	@GetMapping(value="/orderdetail")
-	public String orderdetail() {		
-		return "orderdetail";
+			e.printStackTrace();
+		}
+		return "usermodify";
 	}
+
+	@PostMapping(value = "usermodify")
+	public String usermodify(@ModelAttribute User user) {
+		String user_id = (String) session.getAttribute("user_id");
+		try {	
+			user.setUser_id(user_id); // 유저객체 아이디
+			myPageService.userModify(user);
+			return "mypageinfo";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "usermodify";
+		}
+	}
+
 }
