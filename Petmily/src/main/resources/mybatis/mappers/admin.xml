@@ -49,8 +49,8 @@
 	
 	<insert id="insertProduct" parameterType="Product">
 	<![CDATA[
-		insert into petmily.product (prod_num ,prod_category, prod_img,prod_title,prod_name,prod_price,prod_solo,prod_content, prod_create_date) 
-		values(#{prod_num},#{prod_category} ,#{prod_img},#{prod_title},#{prod_name},#{prod_price},#{prod_solo},#{prod_content},now())
+		insert into petmily.product (prod_num ,prod_category, prod_img,prod_title,prod_name,prod_price,prod_amount,prod_content, prod_create_date) 
+		values(#{prod_num},#{prod_category} ,#{prod_img},#{prod_title},#{prod_name},#{prod_price},#{prod_amount},#{prod_content},now())
 	]]>
 	</insert>
 	
@@ -63,7 +63,7 @@
 	<update id="modifyproduct" parameterType="Product">
 	 <![CDATA[
 		update product set prod_title=#{prod_title}, prod_category=#{prod_category},  prod_name=#{prod_name},
-		prod_price=#{prod_price},prod_update_date=now(), prod_solo=#{prod_solo}, prod_content=#{prod_content} where prod_num=#{prod_num}
+		prod_price=#{prod_price},prod_update_date=now(), prod_amount=#{prod_amount}, prod_content=#{prod_content} where prod_num=#{prod_num}
  		]]>
 	</update>
 	
