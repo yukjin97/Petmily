@@ -73,5 +73,26 @@
  		]]>
 	
 	</delete>
+	
+	
+		<select id="selectInventoryCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from(select prod_name, prod_amount, prod_solo, prod_silver, prod_gold, remain_amount from product)inv
+ 			 where prod_name like'%${search_inven}%' or prod_amount like'%${search_inven}%' 
+ 		or prod_solo like'%${search_inven}%' or prod_silver like'%${search_inven}%' or prod_gold like'%${search_inven}%' or remain_amount like'%${search_inven}%'
+ 		]]>
+	</select>
+
+
+	<select id="selectInventoryList" resultType="Product">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select prod_name, prod_amount, prod_solo, prod_silver, prod_gold, remain_amount from product
+ 		 where prod_name like'%${search_inven}%' or prod_amount like'%${search_inven}%' 
+ 		or prod_solo like'%${search_inven}%' or prod_silver like'%${search_inven}%' or prod_gold like'%${search_inven}%' or remain_amount like'%${search_inven}%'
+ 		 order by prod_amount desc, prod_solo asc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
 
 </mapper>

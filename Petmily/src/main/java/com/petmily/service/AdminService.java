@@ -20,5 +20,7 @@ public interface AdminService {
 
 	public void productDelete(int prod_num)throws Exception;
 
+	public List<Product> inventoryList(int page, PageInfo pageInfo, String search_inven) throws Exception;
+
 }
 	

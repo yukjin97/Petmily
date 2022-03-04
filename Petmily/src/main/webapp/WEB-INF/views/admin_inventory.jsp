@@ -75,7 +75,7 @@
 				type="button" role="tab" aria-controls="v-pills-subscribe-product"
 				aria-selected="false">구독 상품 등록</button>
 			<button class="nav-link" id="v-add-product-tab" data-bs-toggle="pill"
-				data-bs-target="#v-add-product" type="button" role="tab"
+				data-bs-target="#v-add-product" type="button" role="tab" onclick="location.href='admin_product'"
 				aria-controls="v-pills-add-product" aria-selected="false">상품
 				등록</button>
 			<button class="nav-link" id="v-remain-product-tab"
@@ -102,81 +102,79 @@
 			<div class="tab-pane fade" id="v-add-product" role="tabpanel"
 				aria-labelledby="v-add-product-tab">
 				<section class="ftco-section">
-				<input type="button" value="상품 등록" onclick="location.href='admin_product_write'">
-					<c:choose>
-						<c:when test="${admin_product!=null && pageInfo.listCount>0 }">
-							<form action="admin_product" method="get">
-								<input type="text" id="search_prod" name="search_prod" /> <input
-									type="submit" value="찾기" />
-							</form>
-							<section id="listForm">
-								<table border='1'>
-									<tr>
-										<td>제목</td>
-										<td>상품이름</td>
-										<td>가격</td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tbody>
-										<c:forEach items="${admin_product }" var="admin_product">
-											<tr>
-												<td>${admin_product.prod_title }</td>
-												<td>${admin_product.prod_name }</td>
-												<td>${admin_product.prod_price }</td>
-												<td><input type="button" value="수정"
-													onclick="location.href='admin_product_modify?prod_num=${admin_product.prod_num}'"></td>
-												<td><input type="button" value="삭제"
-													onclick="location.href='admin_product_delete?prod_num=${admin_product.prod_num}'"></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</section>
-							<section id="pageList">
-								<c:choose>
-									<c:when test="${pageInfo.page<=1}">
-					[이전]&nbsp;
-				</c:when>
-									<c:otherwise>
-										<a
-											href="admin_membership?page=${pageInfo.page-1}&search_prod=${search_prod}">[이전]</a>&nbsp;
-				</c:otherwise>
-								</c:choose>
-								<c:forEach var="i" begin="${pageInfo.startPage }"
-									end="${pageInfo.endPage }">
-									<c:choose>
-										<c:when test="${pageInfo.page==i }">[${i }]</c:when>
-										<c:otherwise>
-											<a
-												href="admin_membership?page=${i}&search_prod=${search_prod}">[${i }]</a>
-										</c:otherwise>
-									</c:choose>
-								</c:forEach>
-								<c:choose>
-									<c:when test="${pageInfo.page>=pageInfo.maxPage }">
-					[다음]
-				</c:when>
-									<c:otherwise>
-										<a
-											href="admin_membership?page=${pageInfo.page+1}&search_prod=${search_prod}">[다음]</a>
-									</c:otherwise>
-								</c:choose>
-							</section>
-						</c:when>
-						<c:otherwise>
-							<form action="admin_product" method="get">
-								<input type="text" id="search_prod" name="search_prod" /> <input
-									type="submit" value="찾기" />
-							</form>
-							<section id="emptyArea">등록된 글이 없습니다.</section>
-						</c:otherwise>
-					</c:choose>
+				프로덕트 어드민~~~~~~~~
 				</section>
 			</div>
 			<div class="tab-pane fade" id="v-remain-product" role="tabpanel"
 				aria-labelledby="v-remain-product-tab">
-				<section class="ftco-section">여기에 상품 재고 페이지 기능을 구현하시면 됩니다.
+				<section class="ftco-section">
+
+<c:choose>
+	<c:when test="${admin!=null && pageInfo.listCount>0 }">
+		<form action="admin_inventory" method="get">
+			<input type="text" id="search_inven" name="search_inven"/>
+			<input type="submit" value="찾기"/>
+		</form>
+		<section id="listForm">
+		<table border='1'>
+		<tr>
+			<td>상품명</td>
+			<td>재고</td>
+			<td>단품주문</td>
+			<td>실버주문</td>
+			<td>골드주문</td>
+			<td>부족수량</td>
+		</tr>
+		<tbody>
+			<c:forEach items="${admin_inventory }" var="admin_inventory">
+				<tr>
+					<td>${admin_inventory.prod_name }</td>
+					<td>${admin_inventory.prod_amount }</td>
+					<td>${admin_inventory.prod_solo }</td>
+					<td>${admin_inventory.prod_silver }</td>
+					<td>${admin_inventory.prod_gold }</td>
+					<td>${admin_inventory.remain_amount }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+		</section>
+		<section id="pageList">
+			<c:choose>
+				<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+				<c:otherwise>
+					<a href="admin_inventory?page=${pageInfo.page-1}&search_inven=${search_inven}">[이전]</a>&nbsp;
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
+				<c:choose>
+					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+					<c:otherwise>
+						<a href="admin_inventory?page=${i}&search_inven=${search_inven}">[${i }]</a>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+				<c:otherwise>
+					<a href="admin_inventory?page=${pageInfo.page+1}&search_inven=${search_inven}">[다음]</a>
+				</c:otherwise>
+			</c:choose>
+		</section>
+	</c:when>	
+	<c:otherwise>
+	<form action="admin_inventory" method="get">
+			<input type="text" id="search_inven" name="search_inven"/>
+			<input type="submit" value="찾기"/>
+		</form>
+		<section id="emptyArea">구독 회원이 없습니다.</section>
+	</c:otherwise>
+	</c:choose>
+
 				</section>
 			</div>
 			<div class="tab-pane fade" id="v-order" role="tabpanel"
