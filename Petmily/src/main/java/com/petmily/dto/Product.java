@@ -18,6 +18,7 @@ public class Product {
 	Date prod_update_date;
 	Date prod_modified_date;
 	int prod_view_cnt;
+	int prod_amount;
 	String prod_content;
 	int remain_amount;
 	MultipartFile file;
@@ -27,7 +28,7 @@ public class Product {
 
 	public Product(int prod_num, String prod_img, String prod_title, String prod_category, String prod_name,
 			int prod_price, int prod_solo, int prod_silver, int prod_gold, Date prod_create_date, Date prod_update_date,
-			Date prod_modified_date, int prod_view_cnt, String prod_content, int remain_amount) {
+			Date prod_modified_date, int prod_view_cnt, String prod_content, int remain_amount, int prod_amount) {
 		this.prod_num = prod_num;
 		this.prod_img = prod_img;
 		this.prod_title = prod_title;
@@ -43,6 +44,16 @@ public class Product {
 		this.prod_view_cnt = prod_view_cnt;
 		this.prod_content = prod_content;
 		this.remain_amount = remain_amount;
+		this.prod_amount = prod_amount;
+	}
+
+	
+	public int getProd_amount() {
+		return prod_amount;
+	}
+
+	public void setProd_amount(int prod_amount) {
+		this.prod_amount = prod_amount;
 	}
 
 	public int getProd_num() {
