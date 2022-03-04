@@ -118,7 +118,6 @@ public class UserServiceImpl implements UserService {
 		}
 		return access_Token;
 	}
-	
 	@Override
 	public HashMap<String, Object> getUserInfo(String access_Token) {
 

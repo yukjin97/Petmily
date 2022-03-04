@@ -3,13 +3,13 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.UserDAO">
 
-	<select id="queryUser" resultType="User" parameterType="String">
+	<select id="queryUser" resultType="user" parameterType="String">
       <![CDATA[
          select * from user where user_id = #{user_id}
       ]]>
 	</select>
 
-	<insert id="insertUser" parameterType="User">
+	<insert id="insertUser" parameterType="user">
 	  <![CDATA[
 		insert into user values(#{user_id},#{user_pwd},#{user_name},#{user_nickname},#{user_email},#{user_address1},#{user_address2},#{user_zipcode},#{user_phone},user_totaddress=#{user_address1+user_address2})
       ]]>
@@ -20,4 +20,13 @@
 			select * from user where user_email=#{user_email}
 		]]>
 	</select>
+	
+	<!-- 나의 정보 수정 -->
+	<update id="updateUser" parameterType="user">
+		<![CDATA[
+		update user set user_pwd=#{user_pwd2},user_phone=#{user_phone},user_nickname=#{user_nickname}
+		where user_id=#{user_id}
+		]]>
+	</update>
+	
 </mapper>

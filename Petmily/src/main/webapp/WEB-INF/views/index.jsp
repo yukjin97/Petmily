@@ -9,10 +9,12 @@
 <title>Save Earth Admin</title>
 </head>
 <body>
-	login test
+	login test ${userMap.user_id } ${userMap.user_type } ${userMap }
 	<div class="d-grid">
 		<input type="button" onclick="location.href='mypageinfo'"
 			value='마이페이지'>
+			
+			<p>${userMap.user_id }님 환영합니다</p>
 	</div>
 
 </body>
