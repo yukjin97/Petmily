@@ -34,7 +34,7 @@
 	<select id="selectProductList" resultType="Product">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-		from(select prod_title, prod_name, prod_price from product where prod_name like'%${search_prod}%' or prod_title like'%${search_prod}%' 
+		from(select prod_num ,prod_title, prod_name, prod_price from product where prod_name like'%${search_prod}%' or prod_title like'%${search_prod}%' 
  		or prod_price like'%${search_prod}%') tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
@@ -53,6 +53,13 @@
 		values(#{prod_num},#{prod_category} ,#{prod_img},#{prod_title},#{prod_name},#{prod_price},#{prod_solo},#{prod_content},now())
 	]]>
 	</insert>
+	
+	<select id="productDetail" resultType="Product" parameterType="integer">
+      <![CDATA[
+		select * from product where prod_num=#{prod_num}
+ 		]]>
+	</select>
+	
 
 
 </mapper>

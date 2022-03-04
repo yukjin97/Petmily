@@ -26,14 +26,19 @@
    <br />
    <input type="file" name="file" onchange="readURL(this);"/>
    <br />
+   제목<br>
    <input type="text" name="prod_title" placeholder="상품 제목 입력"/>
    <br />
+   이름<br>
    <input type="text" name="prod_name" placeholder="상품 이름 입력"/>
    <br />
+   가격<br>
    <input type="text" name="prod_price" placeholder="상품 가격 입력"/>
    <br />
+   재고<br>
    <input type="text"  name="prod_solo" placeholder="상품 재고 입력"/>
    <br />
+   카테고리<br>
    <select id="category" name="prod_category" onchange="selectBoxChange(this.value);">
    <option value="사료">사료</option>
    <option value="옷">옷</option>
@@ -41,6 +46,7 @@
    <option value="간식">간식</option>
    </select>
    <br />
+   내용<br>
    <textarea name="prod_content" placeholder="상품 정보 입력"  style="width:500px;height:500px"></textarea>
    <br />
    <input type="submit" value="등록"/>

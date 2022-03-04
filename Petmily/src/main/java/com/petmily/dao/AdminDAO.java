@@ -21,5 +21,8 @@ public interface AdminDAO {
 	
 	public Integer selectMaxProdNum() throws Exception;
 	public void insertProduct(Product product) throws Exception;
+	
+	
+	public Product productDetail(int prod_num)throws Exception;
 
 }

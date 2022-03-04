@@ -21,6 +21,8 @@
 			<td>제목</td>
 			<td>상품이름</td>
 			<td>가격</td>
+			<td></td>
+			<td></td>
 		</tr>
 		<tbody>
 			<c:forEach items="${admin_product }" var="admin_product">
@@ -28,6 +30,8 @@
 					<td>${admin_product.prod_title }</td>
 					<td>${admin_product.prod_name }</td>
 					<td>${admin_product.prod_price }</td>
+					<td><input type="button" value="수정" onclick="location.href='admin_product_modify?prod_num=${admin_product.prod_num}'"></td>
+					<td><input type="button" value="삭제"></td>
 				</tr>
 			</c:forEach>
 		</tbody>

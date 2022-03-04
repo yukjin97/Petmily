@@ -81,4 +81,15 @@ public class AdminController {
 		return "admin_product_write";
 	}
 	
+	@GetMapping(value = "admin_product_modify")
+	public String admin_product_modify(Model model,@RequestParam(value="prod_num", required=false)int prod_num) {
+		System.out.println(prod_num);
+		try {
+			Product modi=adminservice.productDetail(prod_num);
+			model.addAttribute("modi",modi);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "admin_product_modify";
+	}
 }

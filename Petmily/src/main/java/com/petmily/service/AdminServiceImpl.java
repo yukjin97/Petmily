@@ -91,4 +91,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public Product productDetail(int prod_num) throws Exception {
+		Product modi = admindao.productDetail(prod_num);
+		return modi;
+	}
+
 }
