@@ -10,4 +10,5 @@
 		<mapper resource="mybatis/mappers/review.xml"/>
 		<mapper resource="mybatis/mappers/user.xml"/>
 	</mappers>
+	
 </configuration>

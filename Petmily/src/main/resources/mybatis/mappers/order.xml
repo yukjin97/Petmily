@@ -15,5 +15,7 @@
 			select max(order_num) from order
 		]]>
 	</select>	
-
+<select id="orderList" parameterType="String" >
+        select * from orders where user_id = #{user_id}
+    </select>
 </mapper>

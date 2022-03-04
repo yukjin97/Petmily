@@ -3,7 +3,7 @@ package com.petmily.service;
 import com.petmily.dto.User;
 
 public interface UserService {
-	User join(User user) throws Exception;
-	User login(String id, String password) throws Exception;
-	boolean joinOverlap(String id) throws Exception;	
+   void join(User user) throws Exception;
+   boolean login(String user_id, String user_pwd) throws Exception;
+   boolean joinOverlap(String id) throws Exception;
 }
