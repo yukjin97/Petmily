@@ -68,27 +68,12 @@
 					class="form-control" id="zipcode" name="user_zipcode">
 			</div>
 			<div class="input-group mb-2">
-				<span class="input-group-text title">전체주소</span> <input type="text"
-					class="form-control" id="totaddress" name="user_totaddress">
-			</div>
-			<div class="input-group mb-2">
 				<span class="input-group-text title">이메일</span> <input type="text"
 					class="form-control" id="email" name="user_email">
 			</div>
 			<div class="input-group mb-2">
-				<span class="input-group-text title">생년월일</span> <input type="text"
-					class="form-control" id="birth" name="user_birth">
-			</div>
-			<div class="input-group mb-2">
 				<span class="input-group-text title">전화번호</span> <input type="text"
 					class="form-control" id="phone" name="user_phone">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">등급</span> <select
-					class="form-select" id='grade' disabled name="user_grade">
-					<option value="일반" selected>일반</option>
-					<option value="관리자">관리자</option>
-				</select>
 			</div>
 			<div class="d-grid">
 				<input type="submit" id="submit" class="btn btn-primary btn-block"

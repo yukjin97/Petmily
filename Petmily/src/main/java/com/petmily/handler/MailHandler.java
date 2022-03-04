@@ -23,7 +23,7 @@ public class MailHandler {
 	public MailHandler(JavaMailSender jsender)  throws MessagingException {
 		this.sender = jsender;
 		message =  jsender.createMimeMessage();
-		messageHelper = new MimeMessageHelper(message,true,"UTF-9");
+		messageHelper = new MimeMessageHelper(message,true,"UTF-8");
 	}
 	
 	// 보내는 이메일
