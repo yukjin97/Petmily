@@ -56,17 +56,7 @@ public class UserController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
-	/*
-	 * @PostMapping("/login") public String login(@RequestParam(value = "user_id")
-	 * String user_id,
-	 * 
-	 * @RequestParam(value = "user_pwd") String user_pwd, Model model) { try {
-	 * userService.login(user_id, user_pwd); session.setAttribute("user_id",
-	 * user_id); session.setAttribute("login", "true"); return "index"; } catch
-	 * (Exception e) { e.printStackTrace(); model.addAttribute("login", "false");
-	 * return "login"; } }
-	 */
-	
+
 		
 		 @PostMapping("login") public ModelAndView login(@RequestParam String
 		 user_id, @RequestParam String user_pwd) { ModelAndView mav = new

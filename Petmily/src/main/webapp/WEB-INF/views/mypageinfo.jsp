@@ -125,11 +125,11 @@ pageEncoding="UTF-8"%>
                         </colgroup>
                         <tbody>
                            <tr>
-                              <td class="bg">이름</td>
+                              <td class="bg">현재비밀번호</td>
                               <td>${user.user_name }</td>
                            </tr>
                            <tr>
-                              <td class="bg">아이디</td>
+                              <td class="bg">비밀번호</td>
                               <td>${user.user_id }</td>
                            </tr>
                            <tr>
