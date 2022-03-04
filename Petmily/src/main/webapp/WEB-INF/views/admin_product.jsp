@@ -31,7 +31,7 @@
 					<td>${admin_product.prod_name }</td>
 					<td>${admin_product.prod_price }</td>
 					<td><input type="button" value="수정" onclick="location.href='admin_product_modify?prod_num=${admin_product.prod_num}'"></td>
-					<td><input type="button" value="삭제"></td>
+					<td><input type="button" value="삭제" onclick="location.href='admin_product_delete?prod_num=${admin_product.prod_num}'"></td>
 				</tr>
 			</c:forEach>
 		</tbody>

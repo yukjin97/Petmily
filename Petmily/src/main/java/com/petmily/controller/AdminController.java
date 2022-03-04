@@ -20,7 +20,6 @@ import com.petmily.dto.Product;
 import com.petmily.service.AdminService;
 
 @Controller
-@RequestMapping(value="admin")
 public class AdminController {
 	
 	@Autowired
@@ -29,7 +28,7 @@ public class AdminController {
 	@Autowired
 	ServletContext servletContext;
 	
-	@GetMapping(value ="admin_membership")
+	@GetMapping(value ="/admin_membership")
 	public String admin_membership (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
 			@RequestParam(value = "mem_text",defaultValue="") String mem_text) {
 		PageInfo pageInfo = new PageInfo();
@@ -41,10 +40,10 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "admin_membership";
+		return "/admin_membership";
 	}
 	
-	@GetMapping(value ="admin_product")
+	@GetMapping(value ="/admin_product")
 	public String admin_product (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
 			@RequestParam(value = "search_prod",defaultValue="") String search_prod) {
 		PageInfo pageInfo = new PageInfo();
@@ -56,15 +55,15 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "admin_product";
+		return "/admin_product";
 	}
 	
-	@GetMapping(value = "admin_product_write")
+	@GetMapping(value = "/admin_product_write")
 	public String admin_product_write() {
-		return "admin_product_write";
+		return "/admin_product_write";
 	}
 
-	@PostMapping(value="admin_product_write")
+	@PostMapping(value="/admin_product_write")
 	public String product_write(@ModelAttribute Product product) {
 		try {
 			if(product.getFile().isEmpty()) {
@@ -80,22 +79,21 @@ public class AdminController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "admin_product_write";
+		return "/admin_product_write";
 	}
 	
-	@GetMapping(value = "admin_product_modify")
+	@GetMapping(value = "/admin_product_modify")
 	public String admin_product_modify(Model model,@RequestParam(value="prod_num", required=false)int prod_num) {
-		System.out.println(prod_num);
 		try {
 			Product modi=adminservice.productDetail(prod_num);
 			model.addAttribute("modi",modi);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "admin_product_modify";
+		return "/admin_product_modify";
 	}
 	
-	@PostMapping(value="admin_product_modify")
+	@PostMapping(value="/admin_product_modify")
 	public String admin_product_modify(@ModelAttribute Product product) {
 		try {
 			adminservice.modifyproduct(product);
@@ -103,6 +101,16 @@ public class AdminController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "admin_product";
+		return "/admin_product";
+	}
+	
+	@GetMapping(value="admin_product_delete")
+	public String admin_product_delete(@RequestParam(value="prod_num", required=false)int prod_num) {
+		try {
+			adminservice.productDelete(prod_num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_product";
 	}
 }

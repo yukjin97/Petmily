@@ -103,4 +103,10 @@ public class AdminServiceImpl implements AdminService {
 		
 	}
 
+	@Override
+	public void productDelete(int prod_num) throws Exception {
+		admindao.deleteproduct(prod_num);
+		
+	}
+
 }

@@ -66,5 +66,12 @@
 		prod_price=#{prod_price}, prod_solo=#{prod_solo}, prod_content=#{prod_content} where prod_num=#{prod_num}
  		]]>
 	</update>
+	
+	<delete id="deleteproduct" parameterType="Integer">
+	  <![CDATA[
+		delete from product where prod_num=#{prod_num}
+ 		]]>
+	
+	</delete>
 
 </mapper>

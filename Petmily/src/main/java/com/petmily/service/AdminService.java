@@ -18,5 +18,7 @@ public interface AdminService {
 
 	public void modifyproduct(Product product) throws Exception;
 
+	public void productDelete(int prod_num)throws Exception;
+
 }
 	
