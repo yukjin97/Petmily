@@ -49,7 +49,7 @@ public class AdminController {
 		PageInfo pageInfo = new PageInfo();
 		try {
 			List<Product> admin_product = adminservice.productList(page,pageInfo,search_prod);
-			model.addAttribute("admin_product", search_prod);
+			model.addAttribute("search_prod", search_prod);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin_product", admin_product);
 		} catch (Exception e) {
@@ -112,5 +112,20 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return "redirect:/admin_product";
+	}
+	
+	@GetMapping(value ="/admin_inventory")
+	public String admin_inventory (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_inven",defaultValue="") String search_inven) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> admin_inventory = adminservice.inventoryList(page,pageInfo,search_inven);
+			model.addAttribute("search_inven", search_inven);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_inventory", admin_inventory);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_inventory";
 	}
 }
