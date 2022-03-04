@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petmily.dto.Admin;
@@ -19,6 +20,7 @@ import com.petmily.dto.Product;
 import com.petmily.service.AdminService;
 
 @Controller
+@RequestMapping(value="admin")
 public class AdminController {
 	
 	@Autowired
@@ -91,5 +93,16 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return "admin_product_modify";
+	}
+	
+	@PostMapping(value="admin_product_modify")
+	public String admin_product_modify(@ModelAttribute Product product) {
+		try {
+			adminservice.modifyproduct(product);
+			return "redirect:/admin_product";
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "admin_product";
 	}
 }

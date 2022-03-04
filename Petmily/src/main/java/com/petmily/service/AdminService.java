@@ -16,5 +16,7 @@ public interface AdminService {
 
 	public Product productDetail(int prod_num) throws Exception;
 
+	public void modifyproduct(Product product) throws Exception;
+
 }
 	

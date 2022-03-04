@@ -20,13 +20,13 @@
    </script>
 </head>
 <body>
-	<form action="admin_product_write" method="post"
+	<form action="admin_product_modify" method="post"
 		enctype="multipart/form-data" name="admin_product_write">
 
 		<input type="hidden" name="prod_num" value="${modi.prod_num }">
 
-		<img id="preview" style="width: 500px" /> <br /> <br />
-		<input type="file" name="file" onchange="readURL(this);" /> <br />
+<%-- 		<img id="preview" style="width: 500px" /> <br /> <br />
+		<input type="file" name="file"  value="${modi.prod_img }" onchange="readURL(this);" /> <br /> --%>
 		제목<br> 
 		<input	type="text" name="prod_title" value="${modi.prod_title }" /> <br />
 		이름<br>
@@ -37,6 +37,7 @@
 		<input	type="text" name="prod_solo" value="${modi.prod_solo }" /> <br />
 		카테고리<br> 
 		<select	id="category" name="prod_category"  onchange="selectBoxChange(this.value);">
+			<option value="${modi.prod_category }">선택중:${modi.prod_category }</option>
 			<option value="사료">사료</option>
 			<option value="옷">옷</option>
 			<option value="장난감">장난감</option>
