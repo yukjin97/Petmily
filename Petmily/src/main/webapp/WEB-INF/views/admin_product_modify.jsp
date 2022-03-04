@@ -1,32 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="path" value="${pageContext.request.contextPath}"/>
+	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-      function readURL(input) {
-         if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-               document.getElementById('preview').src = e.target.result;
-            };
-            reader.readAsDataURL(input.files[0]);
-         } else {
-            document.getElementById('preview').src = "";
-         }
-      }
-   </script>
+
 </head>
 <body>
 	<form action="admin_product_modify" method="post"
-		enctype="multipart/form-data" name="admin_product_write">
+		 name="admin_product_write">
 
 		<input type="hidden" name="prod_num" value="${modi.prod_num }">
 
-<%-- 		<img id="preview" style="width: 500px" /> <br /> <br />
-		<input type="file" name="file"  value="${modi.prod_img }" onchange="readURL(this);" /> <br /> --%>
+		<img src="${path}/upload/${modi.prod_img}" style="width: 500px" /> <br /> <br />
+
 		제목<br> 
 		<input	type="text" name="prod_title" value="${modi.prod_title }" /> <br />
 		이름<br>

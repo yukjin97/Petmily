@@ -63,7 +63,7 @@
 	<update id="modifyproduct" parameterType="Product">
 	 <![CDATA[
 		update product set prod_title=#{prod_title}, prod_category=#{prod_category},  prod_name=#{prod_name},
-		prod_price=#{prod_price}, prod_solo=#{prod_solo}, prod_content=#{prod_content} where prod_num=#{prod_num}
+		prod_price=#{prod_price},prod_update_date=now(), prod_solo=#{prod_solo}, prod_content=#{prod_content} where prod_num=#{prod_num}
  		]]>
 	</update>
 	
