@@ -25,7 +25,7 @@
 		가격<br> 
 		<input	type="text" name="prod_price" value="${modi.prod_price}" /> <br /> 
 		재고<br>
-		<input	type="text" name="prod_solo" value="${modi.prod_solo }" /> <br />
+		<input	type="text" name="prod_amount" value="${modi.prod_amount }" /> <br />
 		카테고리<br> 
 		<select	id="category" name="prod_category"  onchange="selectBoxChange(this.value);">
 			<option value="${modi.prod_category }">선택중:${modi.prod_category }</option>
