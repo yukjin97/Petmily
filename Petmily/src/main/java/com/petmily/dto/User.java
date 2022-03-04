@@ -15,7 +15,7 @@ public class User {
 	String user_type;
 
 	public User() {}
-	public User(String id, String password) {}
+
 	
 	public User(String user_id, String user_pwd, String user_name, String user_nickname, String user_email,
 			String user_address1, String user_address2, String user_zipcode, String user_totaddress, String user_birth,

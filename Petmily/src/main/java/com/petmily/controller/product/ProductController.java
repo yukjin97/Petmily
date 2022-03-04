@@ -7,11 +7,17 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dao.ProductDAO;
 import com.petmily.dto.Product;
@@ -26,27 +32,44 @@ public class ProductController {
 	
 	@Autowired
 	ProductDAO productDAO;
-
-// 	전체상품조회 
+	
 	@GetMapping("/")
-	public String productmain(@RequestParam(value = "key",defaultValue = "") Product product, Model model) {
-		List<Product> listProduct = productService.listProduct(product);
-		for(Product vo: listProduct) {
-			System.out.println(vo);
+	public ModelAndView productAllPage() {
+		ModelAndView mav = new ModelAndView("productall");
+		try {
+			List<Product> product=productService.allProduct();
+			mav.addObject("product",product);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		model.addAttribute("productList",listProduct);
-		log.info(listProduct);
-		return "product_all";
+		return mav;
 	}
-//	카테고리별 상품 조회
-	@GetMapping("/category")
-	public String productKindAction(Product product,Model model , HttpServletRequest req) {
-		List<Product> categoryProduct = productService.getPorductListByKind(product);
-		log.info(product.getProd_category());
-		for(Product product2: categoryProduct) {
-			log.info(product2);
-		}
-		req.setAttribute("productKindList", categoryProduct);	
-		return "product_all";
+	
+//	@GetMapping("/detail/{prod_num}")
+//	public ResponseEntity<?> productDeatilPage(@PathVariable("prod_num") Long prod_num) throws Exception {
+//		Product product = null;
+//		try {
+//			product =  productService.selectProduct(prod_num);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return new ResponseEntity<Product>(product,HttpStatus.OK);
+//	}
+//	
+
+	
+	
+	@RequestMapping("/detail/{prod_num}")
+	public ModelAndView detailPage(@PathVariable int prod_num) {
+		ModelAndView mav = new ModelAndView("productall");
+		try {
+			Product product = productService.selectProduct(prod_num);
+			mav.addObject("product",product);
+			mav.setViewName("detailproduct");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return mav;// 원인 모를 버그인거같아 JSon 파싱해서 쓰겟습니다. 	
 	}
+	
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +8,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>아임 서포트 결제 모듈 테스트 해보기</p>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>상품번호</th>
+					<th>상품제목</th>
+					<th>상품이름</th>
+					<th>상품가격</th>
+					<th>상품내용</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>${product.prod_num}</td>
+					<td>${product.prod_title}</td>
+					<td>${product.prod_name}</td>
+					<td>${product.prod_price}</td>
+					<td>${product.prod_content}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
 	<button id="check_module" type="button">결제하기</button>
 		<!-- jQuery -->
 	<script type="text/javascript"
@@ -51,9 +74,9 @@
 				 참고하세요.
 				 나중에 포스팅 해볼게요.
 				 */
-				name : '주문명:결제테스트',
+				name : `${product.prod_name}`,
 				//결제창에서 보여질 이름
-				amount : 1000,
+				amount : `${product.prod_price}`,
 				//가격
 				buyer_email : 'iamport@siot.do',
 				buyer_name : '구매자이름',
@@ -82,7 +105,6 @@
 			});
 		});
 	</script>
+	</div>
 </body>
 </html>
-
-

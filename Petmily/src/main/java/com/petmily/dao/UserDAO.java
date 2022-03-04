@@ -8,8 +8,8 @@ import com.petmily.dto.User;
 @Mapper
 @Repository
 public interface UserDAO {
-	public User queryUser(String id) throws Exception;
-	public User queryUser(User user) throws Exception;
+	public User queryUser(String user_id) throws Exception;
+	public User queryUserByEmail(String user_email) throws Exception;
 	public void insertUser(User user)throws Exception;
 	public void updateUser(User user)throws Exception;
 }
