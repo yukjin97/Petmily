@@ -1,5 +1,9 @@
 package com.petmily.dto;
 
+import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class Product {
 	int prod_num;
 	String prod_img;
@@ -7,21 +11,23 @@ public class Product {
 	String prod_category;
 	String prod_name;
 	int prod_price;
-	String prod_solo;
-	String prod_silver;
-	String prod_gold;
-	String prod_create_date;
-	String prod_update_date;
-	String prod_modified_date;
+	int prod_solo;
+	int prod_silver;
+	int prod_gold;
+	Date prod_create_date;
+	Date prod_update_date;
+	Date prod_modified_date;
 	int prod_view_cnt;
 	String prod_content;
+	int remain_amount;
+	MultipartFile file;
 
 	public Product() {
 	}
 
 	public Product(int prod_num, String prod_img, String prod_title, String prod_category, String prod_name,
-			int prod_price, String prod_solo, String prod_silver, String prod_gold, String prod_create_date,
-			String prod_update_date, String prod_modified_date, int prod_view_cnt, String prod_content) {
+			int prod_price, int prod_solo, int prod_silver, int prod_gold, Date prod_create_date, Date prod_update_date,
+			Date prod_modified_date, int prod_view_cnt, String prod_content, int remain_amount) {
 		this.prod_num = prod_num;
 		this.prod_img = prod_img;
 		this.prod_title = prod_title;
@@ -36,6 +42,7 @@ public class Product {
 		this.prod_modified_date = prod_modified_date;
 		this.prod_view_cnt = prod_view_cnt;
 		this.prod_content = prod_content;
+		this.remain_amount = remain_amount;
 	}
 
 	public int getProd_num() {
@@ -86,51 +93,51 @@ public class Product {
 		this.prod_price = prod_price;
 	}
 
-	public String getProd_solo() {
+	public int getProd_solo() {
 		return prod_solo;
 	}
 
-	public void setProd_solo(String prod_solo) {
+	public void setProd_solo(int prod_solo) {
 		this.prod_solo = prod_solo;
 	}
 
-	public String getProd_silver() {
+	public int getProd_silver() {
 		return prod_silver;
 	}
 
-	public void setProd_silver(String prod_silver) {
+	public void setProd_silver(int prod_silver) {
 		this.prod_silver = prod_silver;
 	}
 
-	public String getProd_gold() {
+	public int getProd_gold() {
 		return prod_gold;
 	}
 
-	public void setProd_gold(String prod_gold) {
+	public void setProd_gold(int prod_gold) {
 		this.prod_gold = prod_gold;
 	}
 
-	public String getProd_create_date() {
+	public Date getProd_create_date() {
 		return prod_create_date;
 	}
 
-	public void setProd_create_date(String prod_create_date) {
+	public void setProd_create_date(Date prod_create_date) {
 		this.prod_create_date = prod_create_date;
 	}
 
-	public String getProd_update_date() {
+	public Date getProd_update_date() {
 		return prod_update_date;
 	}
 
-	public void setProd_update_date(String prod_update_date) {
+	public void setProd_update_date(Date prod_update_date) {
 		this.prod_update_date = prod_update_date;
 	}
 
-	public String getProd_modified_date() {
+	public Date getProd_modified_date() {
 		return prod_modified_date;
 	}
 
-	public void setProd_modified_date(String prod_modified_date) {
+	public void setProd_modified_date(Date prod_modified_date) {
 		this.prod_modified_date = prod_modified_date;
 	}
 
@@ -148,6 +155,22 @@ public class Product {
 
 	public void setProd_content(String prod_content) {
 		this.prod_content = prod_content;
+	}
+
+	public int getRemain_amount() {
+		return remain_amount;
+	}
+
+	public void setRemain_amount(int remain_amount) {
+		this.remain_amount = remain_amount;
+	}
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 
 }

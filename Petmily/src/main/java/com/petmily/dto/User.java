@@ -15,8 +15,11 @@ public class User {
 	String user_type;
 	String user_pwd2; //정보수정 할 때, 새로 입력받는 비밀번호
 
+	
 	public User() {}
-	public User(String id, String password) {}
+
+	
+	
 	
 	public User(String user_id, String user_pwd, String user_name, String user_nickname, String user_email,
 			String user_address1, String user_address2, String user_zipcode, String user_totaddress, String user_birth,
@@ -33,7 +36,6 @@ public class User {
 		this.user_birth = user_birth;
 		this.user_phone = user_phone;
 		this.user_type = user_type;
-		this.user_pwd2 = user_pwd2;
 	}
 
 

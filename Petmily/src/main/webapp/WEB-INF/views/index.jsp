@@ -11,8 +11,9 @@
 <body>
 	login test
 	<div class="d-grid">
-		<input type="button" onclick="location.href='mypageinfo'" value='마이페이지'>
+		<input type="button" onclick="location.href='mypageinfo'"
+			value='마이페이지'>
 	</div>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 </body>
 </html>

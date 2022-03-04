@@ -3,20 +3,18 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.UserDAO">
 
-	<!-- 나의 정보 조회 -->
-	<select id="queryUserID" resultType="user"
-		parameterType="String">
+	<!-- 아이디로 회원 찾기 -->	
+	<select id="queryUser" resultType="User" parameterType="String">
       <![CDATA[
          select * from user where user_id = #{user_id}
       ]]>
 	</select>
 	<!-- 회원 가입 -->
-	<insert id="insertUser" parameterType="user">
-		<![CDATA[
-			insert into user values(#{user_id},#{user_pwd},#{user_name},#{user_name},#{user_email},
-			#{user_address1},#{user_address2},#{user_zipcode},#{user_totaddress},#{user_birth},#{user_phone}
-			,#{user_type})
-		]]>
+	<insert id="insertUser" parameterType="User">
+	  <![CDATA[
+		insert into user values(#{user_id},#{user_pwd},#{user_name},#{user_nickname},#{user_email},
+		#{user_address1},#{user_address2},#{user_zipcode},#{user_phone},user_totaddress=#{user_address1+user_address2})
+      ]]>
 	</insert>
 
 	<!-- 나의 정보 수정 -->
@@ -26,7 +24,11 @@
         	where user_id = #{user_id}
       	]]>
 	</update>
-	</mapper>
-	
 
-
+	<!-- 이메일로 회원 찾기 -->	
+	<select id="queryUserByEmail" resultType="user" parameterType="String">
+		<![CDATA[
+			select * from user where user_email=#{user_email}
+		]]>
+	</select>
+</mapper>
