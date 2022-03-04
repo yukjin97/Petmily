@@ -16,4 +16,6 @@ public interface UserService {
 	void makeUser(User user) throws Exception;
 
 	User accessUser(String user_id, String user_pwd) throws Exception;
+	
+	/* boolean login(String user_id, String user_pwd) throws Exception; */
 }
