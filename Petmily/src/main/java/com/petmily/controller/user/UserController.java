@@ -1,6 +1,5 @@
 package com.petmily.controller.user;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,8 +34,12 @@ public class UserController {
 	UserService userService;
 	@Autowired
 	MailService mailService;
-
 	
+	@GetMapping("signin")
+	public String orderdetail() {
+		return "login";
+	}
+
 	
 	@PostMapping("signup")
 	public ModelAndView join(@ModelAttribute User user) {
@@ -51,33 +56,37 @@ public class UserController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
+	/*
+	 * @PostMapping("/login") public String login(@RequestParam(value = "user_id")
+	 * String user_id,
+	 * 
+	 * @RequestParam(value = "user_pwd") String user_pwd, Model model) { try {
+	 * userService.login(user_id, user_pwd); session.setAttribute("user_id",
+	 * user_id); session.setAttribute("login", "true"); return "index"; } catch
+	 * (Exception e) { e.printStackTrace(); model.addAttribute("login", "false");
+	 * return "login"; } }
+	 */
 	
-	@ResponseBody
-	@PostMapping("login")
-	public ResponseEntity<?> login(@RequestBody User user) {
-		User tmp = new User();
-		Map<String, String> map = new HashMap<String,String>();
-		try {
-			tmp = userService.accessUser(user.getUser_id(),user.getUser_pwd());
-		} catch (Exception e) {
-			return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
-		}
-		if(tmp.getUser_type().equals("normal")) {
-			session.setAttribute("user_id", tmp.getUser_id());
-			session.setAttribute("user_type", tmp.getUser_type());
-			map.put("user_type", tmp.getUser_type());
-			map.put("user_id", tmp.getUser_id());
-			return new ResponseEntity<Map<String, String>>(map,HttpStatus.OK);
-		} else {
-			session.setAttribute("user_id", tmp.getUser_id());
-			session.setAttribute("user_type",tmp.getUser_type());
-			map.put("user_type", tmp.getUser_type());
-			map.put("user_id", tmp.getUser_id());
-			return new ResponseEntity<Map<String, String>>(map, HttpStatus.OK);
-		}
-	}
-	
-	
+		
+		 @PostMapping("login") public ModelAndView login(@RequestParam String
+		 user_id, @RequestParam String user_pwd) { ModelAndView mav = new
+		 ModelAndView("index"); Map<String, String> map = new
+		 HashMap<String,String>(); try { User tmp = userService.accessUser(user_id,
+		 user_pwd); session.setAttribute("user_id", tmp.getUser_id());
+		 session.setAttribute("user_type",tmp.getUser_type()); map.put("user_type",
+		 tmp.getUser_type()); map.put("user_id", tmp.getUser_id());
+		 mav.addObject("userMap", map);
+		 
+		 if(tmp.getUser_type().equals("admin")) { mav.setViewName("admin_product"); 
+		 }
+		 }
+		 catch (Exception e) { mav.setViewName("payment"); e.printStackTrace(); 
+		 }
+		 return mav; 
+		 }
+		 
+
+
 	@PostMapping("logout")
 	public String logout() {
 		session.removeAttribute("user_id");
@@ -85,19 +94,18 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
-	
 
-	@RequestMapping(value="/kakaologin", method=RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
-		System.out.println("#########" + code);
-		String access_Token = userService.getAccessToken(code);
-		HashMap<String, Object> userInfo = userService.getUserInfo(access_Token);
-		System.out.println("###access_Token#### : " + access_Token);
-		System.out.println("###nickname#### : " + userInfo.get("nickname"));
-		System.out.println("###email#### : " + userInfo.get("email"));
-		return "/kakaologin";
-    	}
+	/*
+	 * @RequestMapping(value="/kakaologin", method=RequestMethod.GET) public String
+	 * kakaoLogin(@RequestParam(value = "code", required = false) String code)
+	 * throws Exception { System.out.println("#########" + code); String
+	 * access_Token = userService.getAccessToken(code); HashMap<String, Object>
+	 * userInfo = userService.getUserInfo(access_Token);
+	 * System.out.println("###access_Token#### : " + access_Token);
+	 * System.out.println("###nickname#### : " + userInfo.get("nickname"));
+	 * System.out.println("###email#### : " + userInfo.get("email")); return
+	 * "/kakaologin"; }
+	 */
 	
 	
 	

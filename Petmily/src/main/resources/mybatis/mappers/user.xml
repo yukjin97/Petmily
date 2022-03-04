@@ -18,12 +18,12 @@
 	</insert>
 
 	<!-- 나의 정보 수정 -->
-	<update id="updateUser" parameterType="String">
-		<![CDATA[
-        	update user set user_pwd=${user_pwd}, user_nickname=${user_nickname}, user_phone=${user_phone} 
-        	where user_id = #{user_id}
-      	]]>
-	</update>
+	<update id="updateUser" parameterType="user">
+      <![CDATA[
+      update user set user_pwd=#{user_pwd2},user_phone=#{user_phone},user_nickname=#{user_nickname}
+      where user_id=#{user_id}
+      ]]>
+   </update>
 
 	<!-- 이메일로 회원 찾기 -->	
 	<select id="queryUserByEmail" resultType="user" parameterType="String">

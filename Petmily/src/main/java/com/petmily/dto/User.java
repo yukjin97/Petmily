@@ -26,6 +26,7 @@ public class User {
 			String user_phone, String user_type, String user_pwd2) {
 		this.user_id = user_id;
 		this.user_pwd = user_pwd;
+		this.user_pwd2 = user_pwd2;
 		this.user_name = user_name;
 		this.user_nickname = user_nickname;
 		this.user_email = user_email;
@@ -136,7 +137,7 @@ public class User {
 		this.user_type = user_type;
 	}
 	public String getUser_pwd2() {
-		return user_pwd;
+		return user_pwd2;
 	}
 
 	public void setUser_pwd2(String user_pwd2) {
