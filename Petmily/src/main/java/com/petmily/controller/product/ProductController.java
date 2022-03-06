@@ -39,6 +39,7 @@ public class ProductController {
 		try {
 			List<Product> product=productService.allProduct();
 			mav.addObject("product",product);
+			log.info(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -55,7 +56,7 @@ public class ProductController {
 //		}
 //		return new ResponseEntity<Product>(product,HttpStatus.OK);
 //	}
-//	
+
 
 	
 	
@@ -66,10 +67,11 @@ public class ProductController {
 			Product product = productService.selectProduct(prod_num);
 			mav.addObject("product",product);
 			mav.setViewName("detailproduct");
+			log.info(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		return mav;// 원인 모를 버그인거같아 JSon 파싱해서 쓰겟습니다. 	
+		return mav;
 	}
 	
 }
