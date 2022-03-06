@@ -6,18 +6,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dto.Mail;
@@ -43,7 +38,6 @@ public class UserController {
 		Mail mail = new Mail();
 		try {
 			userService.makeUser(user);
-			
 			user = userService.accessUser(user.getUser_id(), user.getUser_pwd());
 			if(user.getUser_type().equals("normal")) {
 				mailService.joinMailSend(mail,user);
@@ -55,9 +49,6 @@ public class UserController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
-	
-
-	
     
 	@PostMapping("login")
 	public ModelAndView login(@RequestParam String user_id, @RequestParam String user_pwd) {
@@ -81,11 +72,6 @@ public class UserController {
 		return mav;
 	}
 
-	
-
-
-	
-	
 	
 	@PostMapping("logout")
 	public String logout() {

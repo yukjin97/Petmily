@@ -33,20 +33,24 @@ public class ProductController {
 	@Autowired
 	ProductDAO productDAO;
 	
+	
 	@GetMapping("/")
 	public ModelAndView productAllPage() {
 		ModelAndView mav = new ModelAndView("productall");
 		try {
 			List<Product> product=productService.allProduct();
 			mav.addObject("product",product);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
+
 	
+ 	
 //	@GetMapping("/detail/{prod_num}")
-//	public ResponseEntity<?> productDeatilPage(@PathVariable("prod_num") Long prod_num) throws Exception {
+//	public ResponseEntity<?> productDeatilPage(@PathVariable("prod_num") int prod_num) throws Exception {
 //		Product product = null;
 //		try {
 //			product =  productService.selectProduct(prod_num);
@@ -55,10 +59,9 @@ public class ProductController {
 //		}
 //		return new ResponseEntity<Product>(product,HttpStatus.OK);
 //	}
-//	
 
-	
-	
+
+
 	@RequestMapping("/detail/{prod_num}")
 	public ModelAndView detailPage(@PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView("productall");
@@ -69,7 +72,7 @@ public class ProductController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-		return mav;// 원인 모를 버그인거같아 JSon 파싱해서 쓰겟습니다. 	
+		return mav;
 	}
-	
+
 }

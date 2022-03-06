@@ -24,7 +24,6 @@ public class MailServiceImpl implements MailService {
 	public void joinMailSend(Mail mail, User user) {
 		mail.setTitle(user.getUser_id()+"님 펫밀리 회원이 되신것을 환영합니다.");
 		mail.setAddress(user.getUser_email());
-
 		try {
 			MailHandler mailHandler = new MailHandler(javaMailSender);
 			mailHandler.setTo(mail.getAddress());

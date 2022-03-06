@@ -34,7 +34,6 @@ public class MypageController {
 	@GetMapping(value = "usermodify")
 	public String usermodify(Model model) {
 		String user_id = (String) session.getAttribute("user_id");
-		
 		try {
 			User user = myPageService.myPageInfo(user_id);
 			model.addAttribute("user", user);
