@@ -41,6 +41,7 @@ public class ProductController {
 			List<Product> product=productService.allProduct();
 			mav.addObject("product",product);
 			
+			log.info(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -62,6 +63,7 @@ public class ProductController {
 
 
 
+
 	@RequestMapping("/detail/{prod_num}")
 	public ModelAndView detailPage(@PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView("productall");
@@ -69,6 +71,7 @@ public class ProductController {
 			Product product = productService.selectProduct(prod_num);
 			mav.addObject("product",product);
 			mav.setViewName("detailproduct");
+			log.info(product);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
