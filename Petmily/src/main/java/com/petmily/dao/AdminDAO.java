@@ -29,4 +29,9 @@ public interface AdminDAO {
 	
 	public int selectInventoryCount(@Param(value = "search_inven")String search_inven)throws Exception;
 	public List<Product> selectInventoryList(@Param(value="startrow")int startrow, @Param(value="search_inven")String search_inven) throws Exception;
+	
+	public void addAmount(Product product)throws Exception;
+	
+	public int selectOrderCount(@Param(value = "search_text")String search_text) throws Exception;
+	public List<Admin> selectOrderList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
 }
