@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petmily.dto.Admin;
@@ -56,6 +55,21 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return "/admin_product";
+	}
+	
+	@GetMapping(value ="/admin_inventory")
+	public String admin_inventory (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_inven",defaultValue="")String search_inven ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> admin_inventory = adminservice.inventoryList(page,pageInfo,search_inven);
+			model.addAttribute("search_inven", search_inven);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_inventory", admin_inventory);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_inventory";
 	}
 	
 	@GetMapping(value = "/admin_product_write")
@@ -114,18 +128,36 @@ public class AdminController {
 		return "redirect:/admin_product";
 	}
 	
-	@GetMapping(value ="/admin_inventory")
-	public String admin_inventory (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
-			@RequestParam(value = "search_inven",defaultValue="") String search_inven) {
+	
+	@GetMapping(value ="/admin_order")
+	public String admin_order (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Product> admin_inventory = adminservice.inventoryList(page,pageInfo,search_inven);
-			model.addAttribute("search_inven", search_inven);
+			List<Admin> admin_order = adminservice.orderList(page,pageInfo,search_text);
+			model.addAttribute("search_text", search_text);
 			model.addAttribute("pageInfo", pageInfo);
-			model.addAttribute("admin_inventory", admin_inventory);
+			model.addAttribute("admin_order", admin_order);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/admin_inventory";
+		return "/admin_order";
 	}
+	
+	
+	
+	
+	
+	//미완
+	@PostMapping(value="add_amount")
+	public String add_amount(@ModelAttribute Product product) {
+		try {
+			adminservice.addAmount(product);
+			return "redirect:/admin_inventory";
+		} catch (Exception e) {
+				e.printStackTrace();
+		}
+		return "redirect:/admin_inventory";
+	}
+
 }
