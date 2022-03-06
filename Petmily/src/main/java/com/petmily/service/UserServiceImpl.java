@@ -25,6 +25,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void makeUser(User user) throws Exception{
+		user.setUser_totaddress(user.getUser_address1() +" "+ user.getUser_address2());
 		userDAO.insertUser(user);
 	}
 
