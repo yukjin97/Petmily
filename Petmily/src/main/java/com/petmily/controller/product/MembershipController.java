@@ -49,10 +49,16 @@ public class MembershipController {
          session.setAttribute("fix3", 3);
          session.setAttribute("mem_price", "9,800");
          session.setAttribute("mem_img", "");
-         return "mem_pay";
+         return "mem_silver";
       }catch(Exception e) {
          return "membership";
       }
+   }
+   
+   @GetMapping(value="mem_silver")
+   public String mem_silver() {
+	   return "mem_pay";
+			   
    }
    
    @PostMapping(value = "/mem_gold")
@@ -65,10 +71,16 @@ public class MembershipController {
          session.setAttribute("fix3", 6);
          session.setAttribute("mem_price", "13,800");
          session.setAttribute("mem_img", "");
-         return "mem_pay";
+         return "mem_gold";
       }catch(Exception e) {
          return "membership";
       }
+   }
+   
+   @GetMapping(value="mem_gold")
+   public String mem_gold() {
+	   return "mem_pay";
+			   
    }
    
    @PostMapping(value="/mem_pay")
