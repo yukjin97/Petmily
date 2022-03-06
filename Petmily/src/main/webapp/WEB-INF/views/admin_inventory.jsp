@@ -257,7 +257,7 @@
 			id = $($(this).data("target")).selector;
 			
 			$(".button").click(function (){
-				console.log(id);
+				console.log('id',id);
 		  	$("#"+id).toggle();
 		  });
 		});
