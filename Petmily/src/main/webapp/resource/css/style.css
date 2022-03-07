@@ -41,9 +41,6 @@
   box-sizing: border-box; }
 
 html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -54,8 +51,6 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  padding: 0;
-  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1rem;
   font-weight: 400;
@@ -3469,7 +3464,7 @@ input[type="button"].btn-block {
     -ms-flex-pack: justify;
     justify-content: space-between; }
 
-.brand {
+.navbar-brand {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -3479,16 +3474,6 @@ input[type="button"].btn-block {
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
-
-.navbar-mypage {
-  list-style: none;
-  margin-right: auto;
-}
-
-.mypage-link {
-  float: left;
-  margin-right: 0.3rem;
-}
 
 .navbar-nav {
   display: -webkit-box;
@@ -9812,6 +9797,4 @@ textarea.form-control {
     stroke-dashoffset: -35px; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; }
-}
-
+    stroke-dashoffset: -136px; } }
