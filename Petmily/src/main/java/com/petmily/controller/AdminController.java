@@ -144,7 +144,6 @@ public class AdminController {
 		return "/admin_order";
 	}
 	
-	
 
 	@PostMapping(value="add_amount")
 	public String add_amount(@ModelAttribute Product product) {
@@ -157,4 +156,14 @@ public class AdminController {
 		return "redirect:/admin_inventory";
 	}
 
+	@PostMapping(value = "updateOrderStatus")
+	public String updateOrderStatus(@RequestParam(value = "ordercheck") int ordercheck) {
+		try {
+			adminservice.updateOrderStatus(ordercheck);
+			return "redirect:/admin_order";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_order";
+	}
 }

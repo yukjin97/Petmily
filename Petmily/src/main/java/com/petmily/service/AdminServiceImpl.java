@@ -179,4 +179,9 @@ public class AdminServiceImpl implements AdminService {
 		return admindao.selectOrderList(startrow,search_text);
 	}
 
+	@Override
+	public Integer updateOrderStatus(int order_num) throws Exception {
+		return admindao.updateOrderStatus(order_num);
+	}
+
 }

@@ -121,6 +121,7 @@
 			<input type="submit" value="찾기"/>
 		</form>
 		<section id="listForm">
+		<form action="updateOrderStatus" method="post">
 		<table border='1'>
 		<tr>
 			<td>주문날짜</td>
@@ -143,10 +144,13 @@
 					<td>${admin_order.user_phone }</td>
 					<td>${admin_order.user_totaddress }</td>
 					<td>${admin_order.order_status }</td>
+					<td><input type="checkbox" value="${admin_order.order_num }" name="ordercheck"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+		<input type="submit" value="처리">
+		</form>
 		</section>
 		<section id="pageList">
 			<c:choose>
