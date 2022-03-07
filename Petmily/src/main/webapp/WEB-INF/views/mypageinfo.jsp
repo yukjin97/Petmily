@@ -71,8 +71,8 @@
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
 					<p class="breadcrumbs mb-2">
-						<span class="mr-2"><a href="index.html">Petmily
-								<i class="ion-ios-arrow-forward"></i>
+						<span class="mr-2"><a href="index.html">Petmily <i
+								class="ion-ios-arrow-forward"></i>
 						</a></span> <span>Mypage <i class="ion-ios-arrow-forward"></i></span>
 					</p>
 					<h1 class="mb-0 bread">마이페이지</h1>
@@ -82,32 +82,32 @@
 	</section>
 
 	<!-- 마이페이지 탭 메뉴 -->
+	<input type="button" class="btn" value="구독정보"
+		onclick="location.href='mymembership'">
+	<input type="button" class="btn" value="배송지 관리"
+		onclick="location.href='useraddress'">
 	<section>
 		<ul class="nav nav-tabs justify-content-center" id="myTab"
 			role="tablist">
 			<li class="nav-item" role="presentation">
 				<button class="nav-link active" id="myinfo-tab" data-bs-toggle="tab"
 					data-bs-target="#myinfo" type="button" role="tab"
-					aria-controls="myinfo" aria-selected="true">
-					나의 정보</button>
+					aria-controls="myinfo" aria-selected="true">나의 정보</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="subscribe-tab" data-bs-toggle="tab"
 					data-bs-target="#subscribe" type="button" role="tab"
-					aria-controls="subscribe" aria-selected="false">
-					구독 관리</button>
+					aria-controls="subscribe" aria-selected="false">구독 관리</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="order-tab" data-bs-toggle="tab"
 					data-bs-target="#order" type="button" role="tab"
-					aria-controls="order" aria-selected="false">
-					주문 내역</button>
+					aria-controls="order" aria-selected="false">주문 내역</button>
 			</li>
 			<li class="nav-item" role="presentation">
 				<button class="nav-link" id="delivery-tab" data-bs-toggle="tab"
 					data-bs-target="#delivery" type="button" role="tab"
-					aria-controls="delivery" aria-selected="false">
-					배송지 관리</button>
+					aria-controls="delivery" aria-selected="false">배송지 관리</button>
 			</li>
 		</ul>
 
@@ -152,7 +152,7 @@
 							<!-- <input type="button" onclick="location.href='usermodify'"
                         value='수정하기'> -->
 						</div>
-						<div class="ftco-section bg-white">
+						<div>
 							<input type="button" class="edit"
 								onclick="location.href='usermodify'" value="수정하기" />
 						</div>
@@ -173,10 +173,10 @@
 							<tbody>
 								<tr>
 									<td>현재 구독 내역</td>
-									<td>'DB를 넣어주세요'</td>
+									<td>${rmem.mem_grade}</td>
 								</tr>
 								<tr>
-									<td>다음 구독 결제일은 'DB를 넣어주세요'입니다.</td>
+									<td>다음 구독 결제일은 ${rmem.mem_next_date}입니다.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -276,8 +276,7 @@
 	<script src="${path}/resource/js/owl.carousel.min.js"></script>
 	<script src="${path}/resource/js/jquery.magnific-popup.min.js"></script>
 	<script src="${path}/resource/js/scrollax.min.js">
-      <script
-         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false">
     </script>
 	<script src="${path}/resource/js/google-map.js"></script>
 	<script src="${path}/resource/js/main.js"></script>

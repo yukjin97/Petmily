@@ -7,6 +7,22 @@
 		insert into membership (user_id,mem_grade,mem_start_date) 
 		values(#{user_id},#{mem_grade},now())
 	]]>		
-	</insert>		
+	</insert>
+	
+	<!-- <insert id="insertMemberShip" parameterType="membership">
+	<![CDATA[
+		insert into membership (user_id,mem_grade,mem_start_date, mem_restart_date, mem_next_date) 
+		values(#{user_id},#{mem_grade},now(),now(),date_add(now(),INTERVAL 1 MONTH))
+	]]>		
+	</insert> -->
+	
+	<!-- 아이디로 회원 찾기 -->	
+	<select id="queryUserMemberShip" resultType="membership" parameterType="String">
+      <![CDATA[
+         select mem_grade,mem_next_date from user right join 
+         membership on user.user_id = membership.user_id
+         where user.user_id = #{user_id}
+      ]]>
+	</select>		
 
 </mapper>
