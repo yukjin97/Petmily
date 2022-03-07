@@ -11,13 +11,13 @@ public class IndexController {
 		return "index";
 	}
 	
-	@GetMapping("singup")
-	public String signup() {
-		return "signup";
+	@GetMapping("join")
+	public String joinPage() {
+		return "join";
 	}
 	
-	@GetMapping("singin")
-	public String signin() {
-		return "signup";
+	@GetMapping("login")
+	public String loginPage() {
+		return "login";
 	}
 }

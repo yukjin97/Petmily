@@ -125,11 +125,11 @@ pageEncoding="UTF-8"%>
                         </colgroup>
                         <tbody>
                            <tr>
-                              <td class="bg">현재비밀번호</td>
+                              <td class="bg">이름</td>
                               <td>${user.user_name }</td>
                            </tr>
                            <tr>
-                              <td class="bg">비밀번호</td>
+                              <td class="bg">아이디</td>
                               <td>${user.user_id }</td>
                            </tr>
                            <tr>
@@ -194,27 +194,48 @@ pageEncoding="UTF-8"%>
                      </colgroup>
                      <thead>
                         <tr>
-                           <th class="title bg-light">현재 주문 내역</th>
-                           <th class="title bg-light">상품 배송일</th>
-                           <th class="title bg-light"></th>
+                           <th class="title bg-light">주문일자</th>
+                         <th class="title bg-light">주문번호</th>
+                           <th class="title bg-light">상품명</th>
+                            <th class="title bg-light">주문수량</th>
+                             <th class="title bg-light">상품가격</th>
+                              <th class="title bg-light">주문상태</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <td>아이디</td>
-                           <td>'DB를 넣어주세요'</td>
+                     <tr>
+                          <!--  <td>주문일자</td> -->
+                           <td>DB 삽입 ${order.order_date }</td>
+                           <td></td>
+                        </tr>
+                     <tr>
+                          <!--  <td>주문번호</td> -->
+                           <td>DB 삽입 ${order.order_num }</td>
                            <td></td>
                         </tr>
                         <tr>
-                           <td>비밀번호</td>
-                           <td>'DB를 넣어주세요'</td>
+                           <!-- <td>상품명</td> -->
+                           <td>DB 삽입 ${p.prod_name }</td>
                            <td></td>
                         </tr>
                         <tr>
-                           <td>닉네임</td>
-                           <td>'DB를 넣어주세요'</td>
+                          <!--  <td>주문수량</td> -->
+                           <td>DB 삽입 ${order.order_count }</td>
                            <td></td>
                         </tr>
+                        <tr>
+                         <!--   <td>상품가격</td> -->
+                           <td>DB 삽입 ${product.prod_price }</td>
+                           <td></td>
+                        </tr>
+                         <tr>
+                          <!--  <td>주문상태</td> -->
+                           <td>DB 삽입 ${user_id }</td>
+                           <td></td>
+                        </tr> 
+                         <div class="ftco-section bg-white">
+                     <input type="button" class="edit" onclick="location.href='orderdetail_test'" value="조회하기" />
+                  </div> 
                      </tbody>
                   </table>
                </div>

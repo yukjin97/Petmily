@@ -3,13 +3,18 @@ package com.petmily.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.petmily.dao.OrderDAO;
 import com.petmily.dao.UserDAO;
+import com.petmily.dto.Order;
 import com.petmily.dto.User;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	UserDAO userDAO;
+	
+	@Autowired
+	OrderDAO orderDAO;
 
 	@Override
 	public User myPageInfo(String user_id) throws Exception {
@@ -26,4 +31,11 @@ public class MyPageServiceImpl implements MyPageService {
 			throw new Exception("수정권한 없음");
 		}
 	}
+
+	@Override
+	public Order orderDetail(String user_id) throws Exception {
+		Order order = orderDAO.orderDetail(user_id);
+		return order;
+	}
+	
 }

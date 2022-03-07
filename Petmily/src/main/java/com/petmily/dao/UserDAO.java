@@ -12,4 +12,5 @@ public interface UserDAO {
 	public User queryUserByEmail(String user_email) throws Exception;
 	public void insertUser(User user)throws Exception;
 	public void updateUser(User user)throws Exception;
+	
 }
