@@ -55,15 +55,15 @@
 
 			<button class="nav-link active" id="v-subscribe-tab"
 				onclick="location.href='admin_membership'" data-bs-toggle="pill"
-				type="button" role="tab" style="text-decoration: underline; text-underline-position: under;">구독</button>
+				type="button" role="tab" ">구독</button>
 
 			<button class="nav-link" id="v-subscribe-product-tab"
 				data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
-				type="button" role="tab" style="text-decoration: underline; text-underline-position: under;">구독 상품 등록</button>
+				type="button" role="tab">구독 상품 등록</button>
 
 			<button class="nav-link" id="v-add-product-tab" data-bs-toggle="pill"
 				data-bs-target="#v-add-product" type="button" role="tab"
-				onclick="location.href='admin_product'" style="text-decoration: underline; text-underline-position: under;">상품등록</button>
+				onclick="location.href='admin_product'">상품등록</button>
 
 			<button class="nav-link" id="v-remain-product-tab"
 				data-bs-toggle="pill" data-bs-target="#v-remain-product"
