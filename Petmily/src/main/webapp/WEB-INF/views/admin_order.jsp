@@ -113,9 +113,10 @@
 							type="submit" value="찾기" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
 					</form>
+					
 
 					<div class="table-responsive">
-
+<form action="updateOrderStatus" method="post">
 						<table class="table custom-table">
 							<thead>
 								<tr>
@@ -146,7 +147,7 @@
 										<td>${admin_order.order_status }</td>
 										<th scope="row"><label class="control control--checkbox">
 												<input type="checkbox" value="${admin_order.order_num }"
-												name="ordercheck" />
+												name="ordercheck[]" />
 												<div class="control__indicator"></div>
 										</label></th>
 									</tr>
@@ -240,7 +241,7 @@
 	<script>
 		function selectAll(selectAll)  {
   const checkboxes 
-       = document.getElementsByName('ordercheck');
+       = document.getElementsByName('ordercheck[]');
   
   checkboxes.forEach((checkbox) => {
     checkbox.checked = selectAll.checked;
