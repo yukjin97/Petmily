@@ -34,4 +34,6 @@ public interface AdminDAO {
 	
 	public int selectOrderCount(@Param(value = "search_text")String search_text) throws Exception;
 	public List<Admin> selectOrderList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
+	
+	public Integer updateOrderStatus(int order_num) throws Exception;
 }
