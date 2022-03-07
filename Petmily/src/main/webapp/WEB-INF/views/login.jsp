@@ -2,67 +2,52 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>로그인</title>
-<!-- Latest compiled and minified CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-.container {
-	width: 400px;
-}
+<!-- header include -->
+<jsp:include page="header.jsp" />
 
-.input-group-text {
-	display: inline-block;
-	width: 130px;
-}
 
-.title {
-	text-align: center;
-	font-weight: bold;
-}
-</style>
-</head>
-<body>
-	<div class="container mt-3">
-		<h5 class='title'>로그인</h5>
-		<form id='form' action="login" method="post">
-			<div class="input-group mb-2">
-				<span class="input-group-text title">아이디</span> <input type="text"
-					class="form-control" id="user_id" name="user_id"><br>
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">비밀번호</span> <input
-					type="password" class="form-control" id="user_pwd" name="user_pwd">
-			</div>
-			<div id="message" style="display: none;">
-				<h5 style="color: red; text-align: center;">아이디 혹은 비밀번호를
-					확인해주세요.</h5>
-			</div>
 
-			<div class="d-grid">
-				<input type="submit" id="login_btn" class="btn btn-primary btn-block" value='로그인'>
-			</div>
-		</form>
-	</div>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script>
-    $(function(){
-        let login = "<c:out value='${login}'/>";
-        console.log(login);
-        if(login=="false"){
-           $('#message').show();
-        }else{
-           $('#message').hide();
-        }
-     });
-    </script>
-</body>
-</html>
+<section class="ftco-section" ">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">회원가입</h2>
+              <form action="" method="post">
+                <div class="form-outline mb-4">
+                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example1cg">아이디</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example4cg">비밀번호</label>
+                </div>
+                 
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">로그인</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">아이디가 없으신가요? <a href="join" class="fw-bold text-body"><u>회원가입 하기</u></a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- footer include -->
+<jsp:include page="footer.jsp" />
+
+
+
+
+

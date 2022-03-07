@@ -6,29 +6,18 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="${path }/resource/css/animate.css">
-
 <link rel="stylesheet" href="${path }/resource/css/owl.carousel.min.css">
-<link rel="stylesheet"
-	href="${path }/resource/css/owl.theme.default.min.css">
+<link rel="stylesheet" href="${path }/resource/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="${path }/resource/css/magnific-popup.css">
-
-
-<link rel="stylesheet"
-	href="${path }/resource/css/bootstrap-datepicker.css">
-<link rel="stylesheet"
-	href="${path }/resource/css/jquery.timepicker.css">
-
+<link rel="stylesheet" href="${path }/resource/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="${path }/resource/css/jquery.timepicker.css">
 <link rel="stylesheet" href="${path }/resource/css/flaticon.css">
 <link rel="stylesheet" href="${path }/resource/css/style.css">
 <title>Petmily</title>
-</head>
 <html>
 <body>
 <div class="wrap">
@@ -63,7 +52,7 @@
 	class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 	id="ftco-navbar">
 	<div class="container">
-		<a class="navbar-brand" href="index.html"><span
+		<a class="navbar-brand" href="/"><span
 			class="flaticon-pawprint-1 mr-2"></span>Petmily</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#ftco-nav" aria-controls="ftco-nav"
@@ -72,15 +61,14 @@
 		</button>
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a href="index.html"
-					class="nav-link">Home</a></li>
-				<li class="nav-item"><a href="admin.html" class="nav-link">Admin</a></li>
-				<li class="nav-item"><a href="subscribe.html" class="nav-link">구독</a></li>
-				<li class="nav-item"><a href="store.html" class="nav-link">스토어</a></li>
-				<li class="nav-item"><a href="mypage.html" class="nav-link">Mypage</a></li>
-				<li class="nav-item"><a href="join.html" class="nav-link">회원가입</a></li>
-				<li class="nav-item"><a href="login.html" class="nav-link">로그인</a></li>
-				<li class="nav-item"><a href="cart.html" class="nav-link">장바구니</a></li>
+				<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+				<li class="nav-item"><a href="admin" class="nav-link">Admin</a></li>
+				<li class="nav-item"><a href="subscribe" class="nav-link">구독</a></li>
+				<li class="nav-item"><a href="store" class="nav-link">스토어</a></li>
+				<li class="nav-item"><a href="mypage" class="nav-link">Mypage</a></li>
+				<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
+				<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
+				<li class="nav-item"><a href="cart" class="nav-link">장바구니</a></li>
 			</ul>
 		</div>
 	</div>
