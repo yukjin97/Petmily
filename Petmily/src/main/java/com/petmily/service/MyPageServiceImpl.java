@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petmily.dao.MembershipDAO;
+import com.petmily.dao.OrderDAO;
 import com.petmily.dao.UserDAO;
 import com.petmily.dto.Membership;
+import com.petmily.dto.Order;
 import com.petmily.dto.User;
 
 @Service
@@ -14,6 +16,9 @@ public class MyPageServiceImpl implements MyPageService {
 	UserDAO userDAO;
 	@Autowired
 	MembershipDAO membershipDAO;
+	
+	@Autowired
+	OrderDAO orderDAO;
 
 	@Override
 	public User myPageInfo(String user_id) throws Exception {
@@ -41,4 +46,11 @@ public class MyPageServiceImpl implements MyPageService {
 		Membership mem = membershipDAO.queryUserMemberShip(user_id);
 		return mem;
 	}
+
+	@Override
+	public Order orderDetail(String user_id) throws Exception {
+		Order order = orderDAO.orderDetail(user_id);
+		return order;
+	}
+	
 }

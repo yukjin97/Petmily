@@ -13,4 +13,9 @@ public interface OrderDAO {
 	Integer selectMaxOrderNum() throws Exception;
 	void mem_payment(@Param("mem_grade")String mem_grade, @Param("fix1")int fix1, @Param("fix2")int fix2,
 			@Param("fix3")int fix3) throws Exception;
+	
+	//주문 내역 조회
+	//public Order orderDetail(String user_id) throws Exception;
+	public Order orderDetail(String user_id) throws Exception;
+	
 }

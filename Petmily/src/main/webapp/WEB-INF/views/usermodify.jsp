@@ -12,10 +12,10 @@
 		현재비밀번호 <input type="password" id=password name="user_pwd" placeholder="비밀번호를 입력하세요" required><br>
 			비밀번호 <input type="password" id=password2 name="user_pwd2" value=""><br>
 			비밀번호확인 <input type="password" id=password_check value=""><br>
-			전화번호 <input type="text" id=phone value="${user.user_phone }" name="user_phone"><br> 			
 			닉네임 <input type="text" id=nickname value="${user.user_nickname }" name="user_nickname" ><br>
+			전화번호 <input type="text" id=phone value="${user.user_phone }" name="user_phone"><br> 			
 	
-		<input type="submit" class="btn" id=modify value="회원정보수정하기">
+		<input type="submit" class="btn" id=modify value="저장하기">
 		<input type="button" class="btn" value="메인으로" onclick="location.href='mypageinfo'">
 	</form>
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>

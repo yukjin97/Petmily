@@ -17,7 +17,7 @@
 	</select>
 
 
-	<update id="mem_payment" >
+	<update id="mem_payment">
 		<![CDATA[
 		update product set prod_amount = case when prod_amount > 0 then prod_amount-1 else prod_amount end,
 		prod_amount = case when prod_amount < 0  then prod_amount = 0 else prod_amount end,
@@ -27,5 +27,14 @@
 		]]>
 	</update>
 
- 
+	<!--주문 내역 조회 -->
+	<select id="orderDetail" resultType="order" parameterType="String">
+		select p.prod_name, p.prod_price, u.user_id,
+		o.order_date, o.order_num, o.order_count
+		from petmily.order o, product p, user u
+		where o.user_id = #{user_id}
+		and o.prod_num = #{prod_num}
+
+	</select>
+
 </mapper>

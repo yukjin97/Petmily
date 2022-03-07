@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dto.Membership;
+import com.petmily.dto.Order;
 import com.petmily.dto.User;
 import com.petmily.service.MembershipService;
 import com.petmily.service.MyPageService;
@@ -24,7 +27,13 @@ public class MypageController {
 	@Autowired
 	MembershipService membershipService;
 
-	//마이페이지 불러오기
+	
+	@GetMapping("orderdetail_test")
+	public String orderdetail_test() {
+		return "orderdetail_test";
+	}
+
+	
 	@GetMapping(value = "/mypageinfo")
 	public ModelAndView mypageinfo() {
 		ModelAndView mav = new ModelAndView("mypageinfo");
@@ -101,6 +110,17 @@ public class MypageController {
 			mav.setViewName("err");
 		}
 		return mav;
+	}
+	@RequestMapping(value="orderdetail_test", method = RequestMethod.POST)
+	public String orderdetail_test(Model model) {
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			Order order = myPageService.orderDetail(user_id);
+			model.addAttribute("order", order);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "orderdetail_test";
 	}
 
 	//마이페이지 배송지 정보 수정하기

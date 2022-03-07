@@ -67,19 +67,13 @@ public class UserController {
 			if (tmp.getUser_type().equals("admin")) {
 				mav.setViewName("admin_product");
 			}
-			session.setAttribute("user_type", tmp.getUser_type());
-			map.put("user_type", tmp.getUser_type());
-			map.put("user_id", tmp.getUser_id());
-			mav.addObject("userMap", map);
-			if (tmp.getUser_type().equals("admin")) {
-				mav.setViewName("");
-			}
 		} catch (Exception e) {
 			mav.setViewName("payment");
 			e.printStackTrace();
 		}
 		return mav;
 	}
+
 
 	@PostMapping("logout")
 	public String logout() {

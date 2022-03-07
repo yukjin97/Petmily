@@ -184,45 +184,66 @@
 				</section>
 			</div>
 
-			<!-- 주문 내역 내용 -->
-			<div class="tab-pane fade" id="order" role="tabpanel"
-				aria-labelledby="order-tab">
-				<section class="ftco-section bg-white">
-					<div class="table-responsive">
-						<table class="t_margin_auto width100 ds-table">
-							<colgroup>
-								<col style="width: 30%" />
-								<col style="width: 40%" />
-								<col style="width: 30%" />
-							</colgroup>
-							<thead>
-								<tr>
-									<th class="title bg-light">현재 주문 내역</th>
-									<th class="title bg-light">상품 배송일</th>
-									<th class="title bg-light"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>아이디</td>
-									<td>'DB를 넣어주세요'</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>비밀번호</td>
-									<td>'DB를 넣어주세요'</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>닉네임</td>
-									<td>'DB를 넣어주세요'</td>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</section>
-			</div>
+         <!-- 주문 내역 내용 -->
+         <div class="tab-pane fade" id="order" role="tabpanel"
+            aria-labelledby="order-tab">
+            <section class="ftco-section bg-white">
+               <div class="table-responsive">
+                  <table class="t_margin_auto width100 ds-table">
+                     <colgroup>
+                        <col style="width: 30%" />
+                        <col style="width: 40%" />
+                        <col style="width: 30%" />
+                     </colgroup>
+                     <thead>
+                        <tr>
+                           <th class="title bg-light">주문일자</th>
+                         <th class="title bg-light">주문번호</th>
+                           <th class="title bg-light">상품명</th>
+                            <th class="title bg-light">주문수량</th>
+                             <th class="title bg-light">상품가격</th>
+                              <th class="title bg-light">주문상태</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     <tr>
+                          <!--  <td>주문일자</td> -->
+                           <td>DB 삽입 ${order.order_date }</td>
+                           <td></td>
+                        </tr>
+                     <tr>
+                          <!--  <td>주문번호</td> -->
+                           <td>DB 삽입 ${order.order_num }</td>
+                           <td></td>
+                        </tr>
+                        <tr>
+                           <!-- <td>상품명</td> -->
+                           <td>DB 삽입 ${p.prod_name }</td>
+                           <td></td>
+                        </tr>
+                        <tr>
+                          <!--  <td>주문수량</td> -->
+                           <td>DB 삽입 ${order.order_count }</td>
+                           <td></td>
+                        </tr>
+                        <tr>
+                         <!--   <td>상품가격</td> -->
+                           <td>DB 삽입 ${product.prod_price }</td>
+                           <td></td>
+                        </tr>
+                         <tr>
+                          <!--  <td>주문상태</td> -->
+                           <td>DB 삽입 ${user_id }</td>
+                           <td></td>
+                        </tr> 
+                         <div class="ftco-section bg-white">
+                     <input type="button" class="edit" onclick="location.href='orderdetail_test'" value="조회하기" />
+                  </div> 
+                     </tbody>
+                  </table>
+               </div>
+            </section>
+         </div>
 
 			<!-- 배송지 관리 내역 내용 -->
 			<div class="tab-pane fade" id="delivery" role="tabpanel"
