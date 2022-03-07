@@ -2,6 +2,7 @@ package com.petmily.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -157,9 +158,10 @@ public class AdminController {
 	}
 
 	@PostMapping(value = "updateOrderStatus")
-	public String updateOrderStatus(@RequestParam(value = "ordercheck") int ordercheck) {
+	public String updateOrderStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "ordercheck[]")int[] ordercheck) {
 		try {
-			adminservice.updateOrderStatus(ordercheck);
+			map.put("array", ordercheck);
+			adminservice.updateOrderStatus(map);
 			return "redirect:/admin_order";
 		}catch(Exception e) {
 			e.printStackTrace();

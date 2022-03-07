@@ -1,6 +1,7 @@
 package com.petmily.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -180,8 +181,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Integer updateOrderStatus(int order_num) throws Exception {
-		return admindao.updateOrderStatus(order_num);
+	public void updateOrderStatus(Map<String, Object> map) throws Exception {
+		admindao.updateOrderStatus(map);
 	}
 
 }
