@@ -145,6 +145,7 @@ public class AdminController {
 		return "/admin_order";
 	}
 	
+
 	@PostMapping(value="add_amount")
 	public String add_amount(@ModelAttribute Product product) {
 		try {
