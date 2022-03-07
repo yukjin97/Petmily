@@ -33,7 +33,7 @@ public class MypageController {
 		return "orderdetail_test";
 	}
 
-	
+	//로그인 -> 마이페이지 조회
 	@GetMapping(value = "/mypageinfo")
 	public ModelAndView mypageinfo() {
 		ModelAndView mav = new ModelAndView("mypageinfo");
@@ -111,17 +111,6 @@ public class MypageController {
 		}
 		return mav;
 	}
-	@RequestMapping(value="orderdetail_test", method = RequestMethod.POST)
-	public String orderdetail_test(Model model) {
-		String user_id = (String) session.getAttribute("user_id");
-		try {
-			Order order = myPageService.orderDetail(user_id);
-			model.addAttribute("order", order);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "orderdetail_test";
-	}
 
 	//마이페이지 배송지 정보 수정하기
 	@PostMapping(value = "useraddressmodify")
@@ -138,5 +127,18 @@ public class MypageController {
 			mav.setViewName("err");
 		}
 		return mav;
+	}
+	
+	//마이페이지_주문내역조회
+	@RequestMapping(value="orderdetail_test", method = RequestMethod.POST)
+	public String orderdetail_test(Model model) {
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			Order order = myPageService.orderDetail(user_id);
+			model.addAttribute("order", order);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "orderdetail_test";
 	}
 }
