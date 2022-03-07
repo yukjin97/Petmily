@@ -36,7 +36,7 @@
    <input type="text" name="prod_price" placeholder="상품 가격 입력"/>
    <br />
    재고<br>
-   <input type="text"  name="prod_solo" placeholder="상품 재고 입력"/>
+   <input type="text"  name="prod_allamount" placeholder="상품 재고 입력"/>
    <br />
    카테고리<br>
    <select id="category" name="prod_category" onchange="selectBoxChange(this.value);">
