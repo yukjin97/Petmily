@@ -1,6 +1,7 @@
 package com.petmily.dto;
 
 public class Review {
+	int review_num;
 	String review_title;
 	int prod_num;
 	String review_content;
@@ -11,14 +12,29 @@ public class Review {
 	public Review() {
 	}
 
-	public Review(String review_title, int prod_num, String review_content, String review_rate,
+	
+	
+	
+	public Review(int review_num, String review_title, int prod_num, String review_content, String review_rate,
 			String review_create_date, String review_modified_date) {
+		this.review_num = review_num;
 		this.review_title = review_title;
 		this.prod_num = prod_num;
 		this.review_content = review_content;
 		this.review_rate = review_rate;
 		this.review_create_date = review_create_date;
 		this.review_modified_date = review_modified_date;
+	}
+
+
+
+
+	public int getReview_num() {
+		return review_num;
+	}
+
+	public void setReview_num(int review_num) {
+		this.review_num = review_num;
 	}
 
 	public String getReview_title() {
@@ -68,5 +84,7 @@ public class Review {
 	public void setReview_modified_date(String review_modified_date) {
 		this.review_modified_date = review_modified_date;
 	}
+
+
 
 }

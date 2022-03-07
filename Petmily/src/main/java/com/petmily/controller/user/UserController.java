@@ -36,14 +36,16 @@ public class UserController {
 	}
 
 	
-	@PostMapping("signup")
+	@PostMapping("join")
 	public ModelAndView join(@ModelAttribute User user) {
 		ModelAndView mav = new ModelAndView();
 		Mail mail = new Mail();
 		try {
 			userService.makeUser(user);
-			if(user.getUser_type().equals("noraml")) {
+			user = userService.accessUser(user.getUser_id(), user.getUser_pwd());
+			if(user.getUser_type().equals("normal")) {
 				mailService.joinMailSend(mail,user);
+				System.out.println("메일전송성공");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -51,37 +53,30 @@ public class UserController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
-	/*
-	 * @PostMapping("/login") public String login(@RequestParam(value = "user_id")
-	 * String user_id,
-	 * 
-	 * @RequestParam(value = "user_pwd") String user_pwd, Model model) { try {
-	 * userService.login(user_id, user_pwd); session.setAttribute("user_id",
-	 * user_id); session.setAttribute("login", "true"); return "index"; } catch
-	 * (Exception e) { e.printStackTrace(); model.addAttribute("login", "false");
-	 * return "login"; } }
-	 */
+    
+	@PostMapping("login")
+	public ModelAndView login(@RequestParam String user_id, @RequestParam String user_pwd) {
+		ModelAndView mav = new ModelAndView("index");
+		Map<String, String> map = new HashMap<String,String>();
+		try {
+			User tmp = userService.accessUser(user_id, user_pwd);
+			session.setAttribute("user_id", tmp.getUser_id());
+			session.setAttribute("user_type",tmp.getUser_type());
+			map.put("user_type", tmp.getUser_type());
+			map.put("user_id", tmp.getUser_id());
+			mav.addObject("userMap", map);
+			
+			if(tmp.getUser_type().equals("admin")) {
+				mav.setViewName("");
+			} 
+		} catch (Exception e) {
+			mav.setViewName("payment");
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
 	
-		
-		 @PostMapping("login") public ModelAndView login(@RequestParam String
-		 user_id, @RequestParam String user_pwd) { ModelAndView mav = new
-		 ModelAndView("index"); Map<String, String> map = new
-		 HashMap<String,String>(); try { User tmp = userService.accessUser(user_id,
-		 user_pwd); session.setAttribute("user_id", tmp.getUser_id());
-		 session.setAttribute("user_type",tmp.getUser_type()); map.put("user_type",
-		 tmp.getUser_type()); map.put("user_id", tmp.getUser_id());
-		 mav.addObject("userMap", map);
-		 
-		 if(tmp.getUser_type().equals("admin")) { mav.setViewName("admin_product"); 
-		 }
-		 }
-		 catch (Exception e) { mav.setViewName("payment"); e.printStackTrace(); 
-		 }
-		 return mav; 
-		 }
-		 
-
-
 	@PostMapping("logout")
 	public String logout() {
 		session.removeAttribute("user_id");
