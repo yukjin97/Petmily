@@ -4,14 +4,24 @@ public class Cart {
 	int cart_amount;
 	String user_id;
 	int prod_num;
+	int cart_num;
 
 	public Cart() {
 	}
 
-	public Cart(int cart_amount, String user_id, int prod_num) {
+	public Cart(int cart_amount, String user_id, int prod_num, int cart_num) {
 		this.cart_amount = cart_amount;
 		this.user_id = user_id;
 		this.prod_num = prod_num;
+		this.cart_num = cart_num;	
+	}
+
+	public int getCart_num() {
+		return cart_num;
+	}
+
+	public void setCart_num(int cart_num) {
+		this.cart_num = cart_num;
 	}
 
 	public int getCart_amount() {
