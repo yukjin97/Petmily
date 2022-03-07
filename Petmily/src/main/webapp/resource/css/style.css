@@ -3464,7 +3464,7 @@ input[type="button"].btn-block {
     -ms-flex-pack: justify;
     justify-content: space-between; }
 
-.navbar-brand {
+.brand {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -3474,6 +3474,16 @@ input[type="button"].btn-block {
   white-space: nowrap; }
   .navbar-brand:hover, .navbar-brand:focus {
     text-decoration: none; }
+
+.navbar-mypage {
+  list-style: none;
+  margin-right: auto;
+}
+
+.mypage-link {
+  float: left;
+  margin-right: 0.3rem;
+}
 
 .navbar-nav {
   display: -webkit-box;
@@ -9797,4 +9807,6 @@ textarea.form-control {
     stroke-dashoffset: -35px; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136px; }
+}
+

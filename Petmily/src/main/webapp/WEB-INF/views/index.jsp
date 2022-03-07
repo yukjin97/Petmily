@@ -34,7 +34,7 @@
 
 
 	<div class="hero-wrap js-fullheight"
-		style="background-image: url('${path}/resource/images/bg_1.jpg');"
+		style="background-image: url('${path }/resource/images/bg_1.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
