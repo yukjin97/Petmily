@@ -8,7 +8,7 @@
 <!-- 헤더 인클루드부에 /html  html 시작  있음 -->
 	<jsp:include page="header.jsp" />
 	<div class="hero-wrap js-fullheight"
-		style="background-image: url('${path}/resource/images/bg_1.jpg');"
+		style="background-image: url('${path }/resource/images/bg_1.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
