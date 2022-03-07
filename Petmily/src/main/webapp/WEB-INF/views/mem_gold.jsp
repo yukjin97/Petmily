@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-MEM _ silver
+MEM _ gold
 <input type="button" onclick="location.href='mem_pay'">
 </body>
 </html>

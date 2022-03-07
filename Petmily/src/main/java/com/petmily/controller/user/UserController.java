@@ -35,14 +35,19 @@ public class UserController {
 		return "login";
 	}
 
-	@PostMapping("signup")
+
+
+	
+	@PostMapping("join")
 	public ModelAndView join(@ModelAttribute User user) {
 		ModelAndView mav = new ModelAndView();
 		Mail mail = new Mail();
 		try {
 			userService.makeUser(user);
-			if (user.getUser_type().equals("noraml")) {
-				mailService.joinMailSend(mail, user);
+			user = userService.accessUser(user.getUser_id(), user.getUser_pwd());
+			if(user.getUser_type().equals("normal")) {
+				mailService.joinMailSend(mail,user);
+				System.out.println("메일전송성공");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,7 +55,10 @@ public class UserController {
 		mav.setViewName("redirect:/");
 		return mav;
 	}
+    
+
 	
+
 	@PostMapping("login")
 	public ModelAndView login(@RequestParam String user_id, @RequestParam String user_pwd) {
 		ModelAndView mav = new ModelAndView("index");

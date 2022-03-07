@@ -16,13 +16,13 @@
 	<select id="selectMembershipList" resultType="Admin">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-		from(select user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date from
- 		user join membership on user.user_id = membership.user_id where user_name like'%${mem_text}%' or user_email like'%${mem_text}%' 
+		from(select user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date 
+		from user join membership on user.user_id = membership.user_id where user_name like'%${mem_text}%' or user_email like'%${mem_text}%' 
  		or user_totaddress like'%${mem_text}%' or user_phone like'%${mem_text}%' or mem_grade like'%${mem_text}%' or mem_start_date like'%${mem_text}%' order by user.user_id desc, membership.mem_start_date asc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
 	</select>
-	
+
 	<select id="selectProductCount" resultType="int">
  		<![CDATA[
  			select count(*) from(select prod_title, prod_name, prod_price from product)pro where prod_name like'%${search_prod}%' or prod_title like'%${search_prod}%' 
@@ -34,25 +34,115 @@
 	<select id="selectProductList" resultType="Product">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-		from(select prod_title, prod_name, prod_price from product where prod_name like'%${search_prod}%' or prod_title like'%${search_prod}%' 
+		from(select prod_num ,prod_title, prod_name, prod_price from product where prod_name like'%${search_prod}%' or prod_title like'%${search_prod}%' 
  		or prod_price like'%${search_prod}%') tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
 	</select>
-	
-	
+
+
 	<select id="selectMaxProdNum" resultType="Integer">
       <![CDATA[
 		select max(prod_num) from product
  		]]>
 	</select>
-	
-	<insert id="insertProduct" parameterType="product">
+
+	<insert id="insertProduct" parameterType="Product">
 	<![CDATA[
-		insert into petmily.product (prod_num ,prod_category, prod_img,prod_title,prod_name,prod_price,prod_solo,prod_content, prod_create_date) 
-		values(#{prod_num},#{prod_category} ,#{prod_img},#{prod_title},#{prod_name},#{prod_price},#{prod_solo},#{prod_content},now())
+		insert into petmily.product (prod_num ,prod_category, prod_img,prod_title,prod_name,prod_price,prod_allamount,prod_amount,prod_content, prod_create_date) 
+		values(#{prod_num},#{prod_category} ,#{prod_img},#{prod_title},#{prod_name},#{prod_price},#{prod_allamount},#{prod_allamount},#{prod_content},now())
 	]]>
 	</insert>
 
+	<select id="productDetail" resultType="Product"
+		parameterType="integer">
+      <![CDATA[
+		select * from product where prod_num=#{prod_num}
+ 		]]>
+	</select>
+
+	<update id="modifyproduct" parameterType="Product">
+	 <![CDATA[
+		update product set prod_title=#{prod_title}, prod_category=#{prod_category},  prod_name=#{prod_name},
+		prod_price=#{prod_price},prod_update_date=now(), prod_content=#{prod_content} where prod_num=#{prod_num}
+ 		]]>
+	</update>
+
+	<delete id="deleteproduct" parameterType="Integer">
+	  <![CDATA[
+		delete from product where prod_num=#{prod_num}
+ 		]]>
+
+	</delete>
+
+
+	<select id="selectInventoryCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from(select prod_name, prod_allamount,prod_amount, prod_solo, prod_silver, prod_gold, remain_amount from product)inv
+ 			 where prod_name like'%${search_inven}%' or prod_allamount like'%${search_inven}%' or prod_amount like'%${search_inven}%' 
+ 		or prod_solo like'%${search_inven}%' or prod_silver like'%${search_inven}%' or prod_gold like'%${search_inven}%' or remain_amount like'%${search_inven}%'
+ 		]]>
+	</select>
+
+
+	<select id="selectInventoryList" resultType="Product">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select prod_num, prod_name, prod_allamount,prod_amount, prod_solo, prod_silver, prod_gold, remain_amount from product
+ 		 where prod_name like'%${search_inven}%' or prod_allamount like'%${search_inven}%' or prod_amount like'%${search_inven}%' 
+ 		or prod_solo like'%${search_inven}%' or prod_silver like'%${search_inven}%' or prod_gold like'%${search_inven}%' or remain_amount like'%${search_inven}%'
+ 		 order by prod_amount desc, prod_solo asc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
+
+	<update id="addAmount" parameterType="Product">
+	 <![CDATA[
+		update product set prod_allamount=prod_allamount+${addamount}, prod_amount=prod_amount+${addamount},remain_amount = case when remain_amount > 0 then remain_amount-${addamount} else remain_amount end,
+		remain_amount = case when remain_amount < 0 then remain_amount=0 else remain_amount end,
+		prod_amount = case when prod_amount < 0  then prod_amount = 0 else prod_amount end,
+		prod_allamount = case when prod_allamount < 0  then prod_allamount = 0 else prod_allamount end,
+		remain_amount = case when prod_amount = 0 then remain_amount-${addamount} else remain_amount end
+		where prod_num=#{prod_num}
+ 		]]>
+	</update>
+
+
+	<select id="selectOrderCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*)
+ 			from (select `order`.order_date,product.prod_name,`order`.order_count,product.prod_price,user.user_name,user.user_phone,user.user_totaddress,`order`.order_status
+ 			from `order` join product on `order`.prod_num = product.prod_num join user on `order`.user_id = user.user_id) mem 
+ 			where
+			order_date like'%${search_text}%'  
+ 			or prod_name like'%${search_text}%' 
+ 			or order_count like'%${search_text}%' 
+ 			or prod_price like'%${search_text}%'
+ 			or user_name like'%${search_text}%' 
+ 			or user_phone like'%${search_text}%'
+ 			or user_totaddress like'%${search_text}%'
+ 			or order_status like'%${search_text}%'
+ 		]]>	
+	</select>
+
+
+	<select id="selectOrderList" resultType="Admin">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+			from (select `order`.order_date,product.prod_name,`order`.order_count,product.prod_price,user.user_name,user.user_phone,user.user_totaddress,`order`.order_status
+ 			from `order` join product on `order`.prod_num = product.prod_num join user on `order`.user_id = user.user_id
+ 			where
+ 			order_date like'%${search_text}%'  
+ 			or prod_name like'%${search_text}%' 
+ 			or order_count like'%${search_text}%' 
+ 			or prod_price like'%${search_text}%'
+ 			or user_name like'%${search_text}%' 
+ 			or user_phone like'%${search_text}%'
+ 			or user_totaddress like'%${search_text}%'
+ 			or order_status like'%${search_text}%'
+ 		order by `order`.order_date desc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
 
 </mapper>

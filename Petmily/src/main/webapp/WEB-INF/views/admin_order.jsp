@@ -67,57 +67,82 @@
 	<div class="d-flex align-items-start">
 		<div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
 			aria-orientation="vertical">
-			<button class="nav-link active" id="v-subscribe-tab"
-				data-bs-toggle="pill" data-bs-target="#v-subscribe" type="button"
+			<button class="nav-link active" id="v-subscribe-tab" onclick="location.href='admin_membership'"
+				data-bs-toggle="pill" onclick="location.href='admin_membership'" type="button"
 				role="tab" aria-controls="v-pills-subscribe" aria-selected="true">구독</button>
-			<button class="nav-link" id="v-subscribe-product-tab"
+			<button class="nav-link" id="v-subscribe-product-tab" 
 				data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
 				type="button" role="tab" aria-controls="v-pills-subscribe-product"
 				aria-selected="false">구독 상품 등록</button>
-			<button class="nav-link" id="v-add-product-tab" data-bs-toggle="pill"
-				onclick="location.href='admin_product'" type="button" role="tab"
+			<button class="nav-link" id="v-add-product-tab" data-bs-toggle="pill" onclick="location.href='admin_product'"
+				data-bs-target="#v-add-product" type="button" role="tab"
 				aria-controls="v-pills-add-product" aria-selected="false">상품
 				등록</button>
-			<button class="nav-link" id="v-remain-product-tab"
+			<button class="nav-link" id="v-remain-product-tab" onclick="location.href='admin_inventory'"
 				data-bs-toggle="pill" data-bs-target="#v-remain-product"
 				type="button" role="tab" aria-controls="v-pills-remain-product"
 				aria-selected="false">상품 재고</button>
-			<button class="nav-link" id="v-order-tab" data-bs-toggle="pill"
+			<button class="nav-link" id="v-order-tab" data-bs-toggle="pill" 
 				data-bs-target="#v-order" type="button" role="tab"
 				aria-controls="v-pills-order" aria-selected="false">상품 주문</button>
-			<button class="nav-link" id="v-delivery-tab" data-bs-toggle="pill"
+			<button class="nav-link" id="v-delivery-tab" data-bs-toggle="pill" onclick="location.href='admin_ship'"
 				data-bs-target="#v-delivery" type="button" role="tab"
 				aria-controls="v-pills-delivery" aria-selected="false">배송</button>
 		</div>
 		<div class="tab-content" id="v-tabContent">
 			<div class="tab-pane fade show active" id="v-subscribe"
-				role="tabpanel" aria-labelledby="v-subscribe-tab">
+				role="tabpanel" aria-labelledby="v-subscribe-tab" >
+				<section class="ftco-section">이미지 삽입 예정</section>
+			</div>
+			<div class="tab-pane fade" id="v-subscribe-product" role="tabpanel"
+				aria-labelledby="v-subscribe-product-tab">
+				<section class="ftco-section">여기에 상품 등록 페이지 기능을 구현하시면 됩니다.
+				</section>
+			</div>
+			<div class="tab-pane fade" id="v-add-product" role="tabpanel"
+				aria-labelledby="v-add-product-tab">
 				<section class="ftco-section">
+				단품 상품 관리
+				</section>
+			</div>
+			<div class="tab-pane fade" id="v-remain-product" role="tabpanel"
+				aria-labelledby="v-remain-product-tab">
+				<section class="ftco-section">여기에 상품 재고 페이지 기능을 구현하시면 됩니다.
+				</section>
+			</div>
+			<div class="tab-pane fade" id="v-order" role="tabpanel"
+				aria-labelledby="v-order-tab">
+				<section class="ftco-section">
+
 <c:choose>
-	<c:when test="${admin!=null && pageInfo.listCount>0 }">
-		<form action="admin_membership" method="get">
-			<input type="text" id="mem_text" name="mem_text"/>
+	<c:when test="${admin_order!=null && pageInfo.listCount>0 }">
+		<form action="admin_order" method="get">
+			<input type="text" id="search_text" name="search_text"/>
 			<input type="submit" value="찾기"/>
 		</form>
 		<section id="listForm">
 		<table border='1'>
 		<tr>
+			<td>주문날짜</td>
+			<td>상품명</td>
+			<td>구매수량</td>
+			<td>가격</td>
 			<td>이름</td>
-			<td>이메일</td>
-			<td>주소</td>
 			<td>전화번호</td>
-			<td>구독정보</td>
-			<td>구독시작일</td>
+			<td>주소</td>
+			<td>상태</td>
 		</tr>
 		<tbody>
-			<c:forEach items="${admin }" var="admin">
+			<c:forEach items="${admin_order }" var="admin_order">
 				<tr>
-					<td>${admin.user_name }</td>
-					<td>${admin.user_email }</td>
-					<td>${admin.user_totaddress }</td>
-					<td>${admin.user_phone }</td>
-					<td>${admin.mem_grade }</td>
-					<td>${admin.mem_start_date }</td>
+					<td>${admin_order.order_date }</td>
+					<td>${admin_order.prod_name }</td>
+					<td>${admin_order.order_count }</td>
+					<td>${admin_order.prod_price }</td>
+					<td>${admin_order.user_name }</td>
+					<td>${admin_order.user_phone }</td>
+					<td>${admin_order.user_totaddress }</td>
+					<td>${admin_order.order_status }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -129,14 +154,14 @@
 					[이전]&nbsp;
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+					<a href="admin_order?page=${pageInfo.page-1}&search_text=${search_text}">[이전]</a>&nbsp;
 				</c:otherwise>
 			</c:choose>
 			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
 				<c:choose>
 					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 					<c:otherwise>
-						<a href="admin_membership?page=${i}&mem_text=${mem_text}">[${i }]</a>
+						<a href="admin_order?page=${i}&search_text=${search_text}">[${i }]</a>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
@@ -145,40 +170,19 @@
 					[다음]
 				</c:when>
 				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+					<a href="admin_order?page=${pageInfo.page+1}&search_text=${search_text}">[다음]</a>
 				</c:otherwise>
 			</c:choose>
 		</section>
 	</c:when>	
 	<c:otherwise>
-	<form action="admin_membership" method="get">
-			<input type="text" id="mem_text" name="mem_text"/>
+	<form action="admin_order" method="get">
+			<input type="text" id="search_text" name="search_text"/>
 			<input type="submit" value="찾기"/>
 		</form>
 		<section id="emptyArea">구독 회원이 없습니다.</section>
 	</c:otherwise>
 	</c:choose>
-</section>
-			</div>
-			<div class="tab-pane fade" id="v-subscribe-product" role="tabpanel"
-				aria-labelledby="v-subscribe-product-tab">
-				<section class="ftco-section">여기에 상품 등록 페이지 기능을 구현하시면 됩니다.
-				</section>
-			</div>
-			<div class="tab-pane fade" id="v-add-product" role="tabpanel"
-				aria-labelledby="v-add-product-tab">
-				<section class="ftco-section">
-				상품등록 기능 구현
-				</section>
-			</div>
-			<div class="tab-pane fade" id="v-remain-product" role="tabpanel"
-				aria-labelledby="v-remain-product-tab">
-				<section class="ftco-section">여기에 상품 재고 페이지 기능을 구현하시면 됩니다.
-				</section>
-			</div>
-			<div class="tab-pane fade" id="v-order" role="tabpanel"
-				aria-labelledby="v-order-tab">
-				<section class="ftco-section">여기에 상품 주문 페이지 기능을 구현하시면 됩니다.
 				</section>
 			</div>
 			<div class="tab-pane fade" id="v-delivery" role="tabpanel"

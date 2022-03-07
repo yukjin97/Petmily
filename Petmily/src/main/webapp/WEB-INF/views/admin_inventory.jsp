@@ -21,11 +21,14 @@
 <link rel="stylesheet" href="${path }/resource/css/animate.css" />
 
 <link rel="stylesheet" href="${path }/resource/css/owl.carousel.min.css" />
-<link rel="stylesheet" href="${path }/resource/css/owl.theme.default.min.css" />
+<link rel="stylesheet"
+	href="${path }/resource/css/owl.theme.default.min.css" />
 <link rel="stylesheet" href="${path }/resource/css/magnific-popup.css" />
 
-<link rel="stylesheet" href="${path }/resource/css/bootstrap-datepicker.css" />
-<link rel="stylesheet" href="${path }/resource/css/jquery.timepicker.css" />
+<link rel="stylesheet"
+	href="${path }/resource/css/bootstrap-datepicker.css" />
+<link rel="stylesheet"
+	href="${path }/resource/css/jquery.timepicker.css" />
 
 <link rel="stylesheet" href="${path }/resource/css/flaticon.css" />
 <link rel="stylesheet" href="${path }/resource/css/style.css" />
@@ -40,8 +43,7 @@
 			<a class="navbar-brand" href="index.html">Petmily</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-			</button>
+				aria-expanded="false" aria-label="Toggle navigation"></button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="admin.html" class="nav-link"><b>Admin</b></a>
@@ -68,14 +70,16 @@
 		<div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
 			aria-orientation="vertical">
 			<button class="nav-link active" id="v-subscribe-tab"
-				data-bs-toggle="pill" data-bs-target="#v-subscribe" type="button"
-				role="tab" aria-controls="v-pills-subscribe" aria-selected="true">구독</button>
+				onclick="location.href='admin_membership'" data-bs-toggle="pill"
+				onclick="location.href='admin_product'" type="button" role="tab"
+				aria-controls="v-pills-subscribe" aria-selected="true">구독</button>
 			<button class="nav-link" id="v-subscribe-product-tab"
 				data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
 				type="button" role="tab" aria-controls="v-pills-subscribe-product"
 				aria-selected="false">구독 상품 등록</button>
 			<button class="nav-link" id="v-add-product-tab" data-bs-toggle="pill"
-				onclick="location.href='admin_product'" type="button" role="tab"
+				data-bs-target="#v-add-product" type="button" role="tab"
+				onclick="location.href='admin_product'"
 				aria-controls="v-pills-add-product" aria-selected="false">상품
 				등록</button>
 			<button class="nav-link" id="v-remain-product-tab"
@@ -92,73 +96,7 @@
 		<div class="tab-content" id="v-tabContent">
 			<div class="tab-pane fade show active" id="v-subscribe"
 				role="tabpanel" aria-labelledby="v-subscribe-tab">
-				<section class="ftco-section">
-<c:choose>
-	<c:when test="${admin!=null && pageInfo.listCount>0 }">
-		<form action="admin_membership" method="get">
-			<input type="text" id="mem_text" name="mem_text"/>
-			<input type="submit" value="찾기"/>
-		</form>
-		<section id="listForm">
-		<table border='1'>
-		<tr>
-			<td>이름</td>
-			<td>이메일</td>
-			<td>주소</td>
-			<td>전화번호</td>
-			<td>구독정보</td>
-			<td>구독시작일</td>
-		</tr>
-		<tbody>
-			<c:forEach items="${admin }" var="admin">
-				<tr>
-					<td>${admin.user_name }</td>
-					<td>${admin.user_email }</td>
-					<td>${admin.user_totaddress }</td>
-					<td>${admin.user_phone }</td>
-					<td>${admin.mem_grade }</td>
-					<td>${admin.mem_start_date }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-		</section>
-		<section id="pageList">
-			<c:choose>
-				<c:when test="${pageInfo.page<=1}">
-					[이전]&nbsp;
-				</c:when>
-				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
-				</c:otherwise>
-			</c:choose>
-			<c:forEach var="i" begin="${pageInfo.startPage }" end="${pageInfo.endPage }">
-				<c:choose>
-					<c:when test="${pageInfo.page==i }">[${i }]</c:when>
-					<c:otherwise>
-						<a href="admin_membership?page=${i}&mem_text=${mem_text}">[${i }]</a>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>
-			<c:choose>
-				<c:when test="${pageInfo.page>=pageInfo.maxPage }">
-					[다음]
-				</c:when>
-				<c:otherwise>
-					<a href="admin_membership?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
-				</c:otherwise>
-			</c:choose>
-		</section>
-	</c:when>	
-	<c:otherwise>
-	<form action="admin_membership" method="get">
-			<input type="text" id="mem_text" name="mem_text"/>
-			<input type="submit" value="찾기"/>
-		</form>
-		<section id="emptyArea">구독 회원이 없습니다.</section>
-	</c:otherwise>
-	</c:choose>
-</section>
+				<section class="ftco-section">이미지 삽입 예정</section>
 			</div>
 			<div class="tab-pane fade" id="v-subscribe-product" role="tabpanel"
 				aria-labelledby="v-subscribe-product-tab">
@@ -167,13 +105,102 @@
 			</div>
 			<div class="tab-pane fade" id="v-add-product" role="tabpanel"
 				aria-labelledby="v-add-product-tab">
-				<section class="ftco-section">
-				상품등록 기능 구현
-				</section>
+				<section class="ftco-section">프로덕트 어드민~~~~~~~~</section>
 			</div>
 			<div class="tab-pane fade" id="v-remain-product" role="tabpanel"
 				aria-labelledby="v-remain-product-tab">
-				<section class="ftco-section">여기에 상품 재고 페이지 기능을 구현하시면 됩니다.
+				<section class="ftco-section">
+
+					<c:choose>
+						<c:when test="${admin_inventory!=null && pageInfo.listCount>0 }">
+							<form action="admin_inventory" method="get">
+								<input type="text" id="search_inven" name="search_inven" /> <input
+									type="submit" value="찾기" />
+							</form>
+							<section id="listForm">
+
+								<table border='1'>
+
+									<tr>
+
+										<td>상품명</td>
+										<td>총물량</td>
+										<td>남은재고</td>
+										<td>단품주문</td>
+										<td>실버주문</td>
+										<td>골드주문</td>
+										<td>부족수량</td>
+
+									</tr>
+
+									<tbody>
+										<c:forEach items="${admin_inventory }" var="admin_inventory">
+
+											<tr>
+												<td>${admin_inventory.prod_name }</td>
+												<td>${admin_inventory.prod_allamount }</td>
+												<td>${admin_inventory.prod_amount }</td>
+												<td>${admin_inventory.prod_solo }</td>
+												<td>${admin_inventory.prod_silver }</td>
+												<td>${admin_inventory.prod_gold }</td>
+												<td>${admin_inventory.remain_amount }</td>
+												<form action="add_amount" method="post" name="add_amount">
+													<td><input type="button" value="재고추가"
+														id=${admin_inventory.prod_name }></td>
+													<td id=${admin_inventory.prod_num } style="display: none"><input
+														type="hidden" id="prod_num" name="prod_num"
+														value="${admin_inventory.prod_num }"> <input
+														type="text" id="addamount" name="addamount"> <input
+														type="submit" value="추가"></td>
+												</form>
+											</tr>							
+										</c:forEach>
+									</tbody>
+
+								</table>
+
+
+							</section>
+							<section id="pageList">
+								<c:choose>
+									<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+									<c:otherwise>
+										<a
+											href="admin_inventory?page=${pageInfo.page-1}&search_inven=${search_inven}">[이전]</a>&nbsp;
+				</c:otherwise>
+								</c:choose>
+								<c:forEach var="i" begin="${pageInfo.startPage }"
+									end="${pageInfo.endPage }">
+									<c:choose>
+										<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+										<c:otherwise>
+											<a
+												href="admin_inventory?page=${i}&search_inven=${search_inven}">[${i }]</a>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+									<c:otherwise>
+										<a
+											href="admin_inventory?page=${pageInfo.page+1}&search_inven=${search_inven}">[다음]</a>
+									</c:otherwise>
+								</c:choose>
+							</section>
+						</c:when>
+						<c:otherwise>
+							<form action="admin_inventory" method="get">
+								<input type="text" id="search_inven" name="search_inven" /> <input
+									type="submit" value="찾기" />
+							</form>
+							<section id="emptyArea">구독 회원이 없습니다.</section>
+						</c:otherwise>
+					</c:choose>
+
 				</section>
 			</div>
 			<div class="tab-pane fade" id="v-order" role="tabpanel"
@@ -192,8 +219,8 @@
 	<footer class="footer">
 		<div class="container">
 			<script>
-            document.write(new Date().getFullYear());
-        </script>
+				document.write(new Date().getFullYear());
+			</script>
 			The 6th Multicampus FullStack Project. All rights reserved | <a
 				href="index.html" target="_blank">petmily.com</a> <br>Team.이해되시조
 			| 김진하,송욱진,엄병수,원선영,윤세종,이산하,차현
@@ -231,5 +258,16 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		$(function (){
+			<c:forEach items="${admin_inventory }" var="admin_inventory">
+			$("#${admin_inventory.prod_name }").click(function (){
+		  	$("#${admin_inventory.prod_num }").toggle();
+		  });
+			</c:forEach>
+		});
+	</script>
 </body>
 </html>
