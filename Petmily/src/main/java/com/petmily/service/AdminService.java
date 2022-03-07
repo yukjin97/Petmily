@@ -1,6 +1,7 @@
 package com.petmily.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.petmily.dto.Admin;
 import com.petmily.dto.PageInfo;
@@ -26,7 +27,7 @@ public interface AdminService {
 
 	public List<Admin> orderList(int page, PageInfo pageInfo, String search_text)throws Exception;
 	
-	public Integer updateOrderStatus(int order_num) throws Exception;
+	public void updateOrderStatus(Map<String, Object> map) throws Exception;
 
 }
 	

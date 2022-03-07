@@ -144,7 +144,7 @@
 					<td>${admin_order.user_phone }</td>
 					<td>${admin_order.user_totaddress }</td>
 					<td>${admin_order.order_status }</td>
-					<td><input type="checkbox" value="${admin_order.order_num }" name="ordercheck"/></td>
+					<td><input type="checkbox" value="${admin_order.order_num }" name="ordercheck[]"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>

@@ -145,10 +145,11 @@
  		]]>
 	</select>
 
-	<update id="updateOrderStatus" parameterType="integer">
-      <![CDATA[
-			update petmily.order set order_status="처리" where order_num=#{order_num}
- 		]]>		
+	<update id="updateOrderStatus" parameterType="map">
+			update petmily.order set order_status="처리" where 
+		<foreach collection="array" item="item" separator="or">
+			order_num=${item}
+		</foreach>	
 	</update>
 	
 </mapper>
