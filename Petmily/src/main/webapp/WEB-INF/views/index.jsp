@@ -3,42 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<link
-	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-	rel="stylesheet">
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="${path }/resource/css/animate.css">
-
-<link rel="stylesheet" href="${path }/resource/css/owl.carousel.min.css">
-<link rel="stylesheet" href="${path }/resource/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="${path }/resource/css/magnific-popup.css">
 
 
-<link rel="stylesheet" href="${path }/resource/css/bootstrap-datepicker.css">
-<link rel="stylesheet" href="${path }/resource/css/jquery.timepicker.css">
-
-<link rel="stylesheet" href="${path }/resource/css/flaticon.css">
-<link rel="stylesheet" href="${path }/resource/css/style.css">
-<title>Petmily</title>
-</head>
-<body>
+<!-- 헤더 인클루드부에 /html  html 시작  있음 -->
 	<jsp:include page="header.jsp" />
-
-
-
 	<div class="hero-wrap js-fullheight"
 		style="background-image: url('${path}/resource/images/bg_1.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
-			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+			<div
+				class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
+				data-scrollax-parent="true">
 				<div class="col-md-11 ftco-animate text-center">
 					<h1 class="mb-4">
 						반려동물 용품 걱정그만! <br>Petmily
@@ -427,7 +403,7 @@
 							style="background-image: url(${path}/resource/images/pricing-1.jpg);"></div>
 						<div class="text-center p-4">
 							<span class="excerpt d-block">Silver</span> <span class="price"><sup>￦</sup>
-								<span class="number">9900</span> <sub>/mos</sub></span>
+								<span class="number">9800</span> <sub>/mos</sub></span>
 
 							<ul class="pricing-text mb-5">
 								<li><span class="fa fa-check mr-2"></span>Made By Foever
@@ -447,7 +423,7 @@
 							style="background-image: url(${path}/resource/images/pricing-3.jpg);"></div>
 						<div class="text-center p-4">
 							<span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
-								<span class="number">19900</span> <sub>/mos</sub></span>
+								<span class="number">19800</span> <sub>/mos</sub></span>
 
 							<ul class="pricing-text mb-5">
 								<li><span class="fa fa-check mr-2"></span>Made By Jong 강아지
@@ -465,11 +441,6 @@
 			</div>
 		</div>
 	</section>
-
-
-
-
-
 	<jsp:include page="footer.jsp" />
 
 
