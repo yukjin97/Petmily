@@ -177,7 +177,7 @@ public class AdminController {
 			List<Admin> admin_ship = adminservice.shipList(page,pageInfo,search_text);
 			model.addAttribute("search_text", search_text);
 			model.addAttribute("pageInfo", pageInfo);
-			model.addAttribute("admin_order", admin_ship);
+			model.addAttribute("admin_ship", admin_ship);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

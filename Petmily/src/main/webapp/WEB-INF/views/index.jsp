@@ -428,6 +428,7 @@
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-4 ftco-animate">
+					<form action="mem_silver" method="post">
 						<div class="block-7">
 							<div class="img"
 								style="background-image: url(${path}/resource/images/pricing-1.jpg);"></div>
@@ -443,11 +444,13 @@
 									<li><span class="fa fa-check mr-2"></span>Made By Jin 강아지
 										간식</li>
 								</ul>
-								<a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+								<input type="submit" class="btn btn-primary d-block px-2 py-3" value="구독하기">
+								</form>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 ftco-animate">
+					<form action="mem_gold" method="post">
 						<div class="block-7">
 							<div class="img"
 								style="background-image: url(${path}/resource/images/pricing-3.jpg);"></div>
@@ -464,7 +467,8 @@
 										옷</li>
 								</ul>
 	
-								<a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+								<input type="submit" class="btn btn-primary d-block px-2 py-3" value="구독하기">
+								</form>
 							</div>
 						</div>
 					</div>

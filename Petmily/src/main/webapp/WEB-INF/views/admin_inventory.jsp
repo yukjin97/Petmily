@@ -114,7 +114,6 @@
 						<table class="table custom-table">
 							<thead>
 								<tr>
-									<th scope="col">상품이름</th>
 									<th scope="col">상품명</th>
 									<th scope="col">총물량</th>
 									<th scope="col">남은재고</th>

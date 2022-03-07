@@ -184,7 +184,9 @@
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" 
 							/>
 				</form>
-				<section id="emptyArea">구독 회원이 없습니다.</section>
+				<section id="emptyArea">
+				<input  class="btn btn-outline-dark" type="button" value="상품 등록" onclick="location.href='admin_product_write'">
+				구독 회원이 없습니다.</section>
 			</c:otherwise>
 		</c:choose>
 
