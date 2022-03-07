@@ -15,5 +15,9 @@ public interface ReviewDAO {
 	int selectReviewCount(@Param(value = "search_review") String search_review) throws Exception;
 
 	List<Review> selectReviewList(@Param("startrow") int startrow,@Param(value = "search_review") String search_review) throws Exception;
+	
+	
+	public void insertReview(Review review) throws  Exception;
 
+	public Integer selectMaxReviewNum() throws Exception;
 }

@@ -18,7 +18,14 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void reviewrite(Review review) throws Exception {
-		
+		Integer review_num = reviewDAO.selectMaxReviewNum();
+		if(review_num==null) {
+			review_num =1;
+		} else {
+			review_num +=1;
+		}
+		review.setReview_num(review_num);
+		reviewDAO.insertReview(review);
 	}
 
 	@Override

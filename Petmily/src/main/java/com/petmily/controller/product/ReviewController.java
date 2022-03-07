@@ -25,7 +25,7 @@ import com.petmily.service.ReviewService;
 import com.petmily.service.UserService;
 
 @Controller
-@RequestMapping(value = "/product")
+//@RequestMapping(value = "")
 public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
@@ -49,11 +49,11 @@ public class ReviewController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "review_product";
+		return "detailproduct";
 	}
 	
 	
-	@PostMapping("{prod_num}/add")
+	@PostMapping("/")
 	public String addReiview(@ModelAttribute Review review) {
 		try {
 			reviewService.reviewrite(review);
