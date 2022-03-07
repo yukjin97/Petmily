@@ -37,4 +37,7 @@ public interface AdminDAO {
 	public List<Admin> selectOrderList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
 	
 	public void updateOrderStatus(Map<String, Object> map) throws Exception;
+	
+	public int selectShipCount(@Param(value = "search_text")String search_text) throws Exception;
+	public List<Admin> selectShipList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
 }

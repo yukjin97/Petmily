@@ -28,6 +28,8 @@ public interface AdminService {
 	public List<Admin> orderList(int page, PageInfo pageInfo, String search_text)throws Exception;
 	
 	public void updateOrderStatus(Map<String, Object> map) throws Exception;
+	
+	public List<Admin> shipList(int page, PageInfo pageInfo, String search_text)throws Exception;
 
 }
 	

@@ -140,7 +140,7 @@
 				</c:when>
 									<c:otherwise>
 										<a
-											href="admin_membership?page=${pageInfo.page-1}&search_prod=${search_prod}">[이전]</a>&nbsp;
+											href="admin_product?page=${pageInfo.page-1}&search_prod=${search_prod}">[이전]</a>&nbsp;
 				</c:otherwise>
 								</c:choose>
 								<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -149,7 +149,7 @@
 										<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 										<c:otherwise>
 											<a
-												href="admin_membership?page=${i}&search_prod=${search_prod}">[${i }]</a>
+												href="admin_product?page=${i}&search_prod=${search_prod}">[${i }]</a>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
@@ -159,7 +159,7 @@
 				</c:when>
 									<c:otherwise>
 										<a
-											href="admin_membership?page=${pageInfo.page+1}&search_prod=${search_prod}">[다음]</a>
+											href="admin_product?page=${pageInfo.page+1}&search_prod=${search_prod}">[다음]</a>
 									</c:otherwise>
 								</c:choose>
 							</section>
