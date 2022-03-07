@@ -98,7 +98,8 @@
 
 	<update id="addAmount" parameterType="Product">
 	 <![CDATA[
-		update product set prod_allamount=prod_allamount+${addamount}, prod_amount=prod_amount+${addamount}, remain_amount=remain_amount-${addamount} where prod_num=#{prod_num}
+		update product set prod_allamount=prod_allamount+${addamount}, prod_amount=prod_amount+${addamount},remain_amount = case when remain_amount > 0 then remain_amount-${addamount} else remain_amount end,
+		remain_amount = case when remain_amount < 0 then remain_amount=0 else remain_amount end where prod_num=#{prod_num}
  		]]>
 	</update>
 
