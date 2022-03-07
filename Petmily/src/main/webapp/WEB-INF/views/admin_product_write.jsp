@@ -60,7 +60,7 @@
 	<jsp:include page="header.jsp" />
 
 <section id="write_form" style="height:900px; text-align:center;">
-<div id="allform"  style="margin-top: 100px;">
+<div  id="allform"  style="margin-top: 100px;">
 <form action="admin_product_write" method="post" enctype="multipart/form-data" name="admin_product_write">
 <div id="file" style="float:left;width:30%;height:500px;margin-left: 450px;margin-top: 0px;">
    <img id="preview" style="width:400px; height:400px;"/>
