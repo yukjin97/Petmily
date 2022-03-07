@@ -3,13 +3,17 @@ package com.petmily.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.petmily.dao.MembershipDAO;
 import com.petmily.dao.UserDAO;
+import com.petmily.dto.Membership;
 import com.petmily.dto.User;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
 	@Autowired
 	UserDAO userDAO;
+	@Autowired
+	MembershipDAO membershipDAO;
 
 	@Override
 	public User myPageInfo(String user_id) throws Exception {
@@ -25,5 +29,16 @@ public class MyPageServiceImpl implements MyPageService {
 		} else {
 			throw new Exception("수정권한 없음");
 		}
+	}
+	
+	@Override
+	public void userAddressModify(User user) throws Exception {	
+		userDAO.updateUserAddress(user);
+	}
+
+	@Override
+	public Membership myMemberShipInfo(String user_id) throws Exception {
+		Membership mem = membershipDAO.queryUserMemberShip(user_id);
+		return mem;
 	}
 }

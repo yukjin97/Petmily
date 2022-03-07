@@ -23,6 +23,8 @@ public class UserServiceImpl implements UserService {
    @Autowired
    UserDAO userDAO;
 
+
+
 	@Override
 	public void makeUser(User user) throws Exception{
 		user.setUser_totaddress(user.getUser_address1() +" "+ user.getUser_address2());

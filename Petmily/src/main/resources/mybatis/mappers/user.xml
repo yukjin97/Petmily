@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.UserDAO">
-
 	<!-- 아이디로 회원 찾기 -->	
 	<select id="queryUser" resultType="User" parameterType="String">
       <![CDATA[
@@ -15,7 +14,6 @@
 		insert into user (user_id, user_pwd, user_name, user_nickname, user_email, user_address1, user_address2, user_zipcode, user_totaddress, user_phone) values(#{user_id},#{user_pwd},#{user_name},#{user_nickname},#{user_email},#{user_address1},#{user_address2},#{user_zipcode},#{user_totaddress}, #{user_phone})
       ]]>
 	</insert>
-
 	<!-- 나의 정보 수정 -->
 	<update id="updateUser" parameterType="user">
       <![CDATA[
@@ -23,20 +21,17 @@
       where user_id=#{user_id}
       ]]>
    </update>
-
+   <!-- 나의 주소 수정 -->
+   	<update id="updateUserAddress" parameterType="user">
+      <![CDATA[
+      update user set user_address1=#{user_address1},user_address2=#{user_address2},user_zipcode=#{user_zipcode}
+      where user_id=#{user_id}
+      ]]>
+   </update>
 	<!-- 이메일로 회원 찾기 -->	
 	<select id="queryUserByEmail" resultType="user" parameterType="String">
 		<![CDATA[
 			select * from user where user_email=#{user_email}
 		]]>
 	</select>
-	
-	<!-- 나의 정보 수정 -->
-	<update id="updateUser" parameterType="user">
-		<![CDATA[
-		update user set user_pwd=#{user_pwd2},user_phone=#{user_phone},user_nickname=#{user_nickname}
-		where user_id=#{user_id}
-		]]>
-	</update>
-	
 </mapper>

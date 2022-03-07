@@ -6,14 +6,21 @@ public class Membership {
 	String user_id;
 	String mem_grade;
 	Date mem_start_date;
+	Date mem_restart_date;
+	Date mem_next_date;
+
+
 
 	public Membership() {
 	}
 
-	public Membership(String user_id, String mem_grade, Date mem_start_date) {
+	public Membership(String user_id, String mem_grade, Date mem_start_date,Date mem_restart_date
+	,Date mem_next_date) {
 		this.user_id = user_id;
 		this.mem_grade = mem_grade;
 		this.mem_start_date = mem_start_date;
+		this.mem_restart_date = mem_restart_date;
+		this.mem_next_date = mem_next_date;
 	}
 
 	public String getUser_id() {
@@ -39,5 +46,20 @@ public class Membership {
 	public void setMem_start_date(Date mem_start_date) {
 		this.mem_start_date = mem_start_date;
 	}
+	
+	public Date getMem_restart_date() {
+		return mem_restart_date;
+	}
 
+	public void setMem_restart_date(Date mem_restart_date) {
+		this.mem_restart_date = mem_restart_date;
+	}
+
+	public Date getMem_next_date() {
+		return mem_next_date;
+	}
+
+	public void setMem_next_date(Date mem_next_date) {
+		this.mem_next_date = mem_next_date;
+	}
 }
