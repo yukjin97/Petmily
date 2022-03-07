@@ -20,19 +20,19 @@ import com.petmily.service.AdminService;
 
 @Controller
 public class AdminController {
-	
+
 	@Autowired
 	AdminService adminservice;
-	
+
 	@Autowired
 	ServletContext servletContext;
-	
-	@GetMapping(value ="/admin_membership")
-	public String admin_membership (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
-			@RequestParam(value = "mem_text",defaultValue="") String mem_text) {
+
+	@GetMapping(value = "/admin_membership")
+	public String admin_membership(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			Model model, @RequestParam(value = "mem_text", defaultValue = "") String mem_text) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Admin> admin = adminservice.membershipList(page,pageInfo,mem_text);
+			List<Admin> admin = adminservice.membershipList(page, pageInfo, mem_text);
 			model.addAttribute("mem_text", mem_text);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin", admin);
@@ -41,13 +41,13 @@ public class AdminController {
 		}
 		return "/admin_membership";
 	}
-	
-	@GetMapping(value ="/admin_product")
-	public String admin_product (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
-			@RequestParam(value = "search_prod",defaultValue="") String search_prod) {
+
+	@GetMapping(value = "/admin_product")
+	public String admin_product(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			Model model, @RequestParam(value = "search_prod", defaultValue = "") String search_prod) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Product> admin_product = adminservice.productList(page,pageInfo,search_prod);
+			List<Product> admin_product = adminservice.productList(page, pageInfo, search_prod);
 			model.addAttribute("search_prod", search_prod);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin_product", admin_product);
@@ -56,13 +56,13 @@ public class AdminController {
 		}
 		return "/admin_product";
 	}
-	
-	@GetMapping(value ="/admin_inventory")
-	public String admin_inventory (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
-			@RequestParam(value = "search_inven",defaultValue="")String search_inven ) {
+
+	@GetMapping(value = "/admin_inventory")
+	public String admin_inventory(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			Model model, @RequestParam(value = "search_inven", defaultValue = "") String search_inven) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Product> admin_inventory = adminservice.inventoryList(page,pageInfo,search_inven);
+			List<Product> admin_inventory = adminservice.inventoryList(page, pageInfo, search_inven);
 			model.addAttribute("search_inven", search_inven);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin_inventory", admin_inventory);
@@ -71,20 +71,20 @@ public class AdminController {
 		}
 		return "/admin_inventory";
 	}
-	
+
 	@GetMapping(value = "/admin_product_write")
 	public String admin_product_write() {
 		return "/admin_product_write";
 	}
 
-	@PostMapping(value="/admin_product_write")
+	@PostMapping(value = "/admin_product_write")
 	public String product_write(@ModelAttribute Product product) {
 		try {
-			if(product.getFile().isEmpty()) {
+			if (product.getFile().isEmpty()) {
 				System.out.println("이미지를 등록해 주세요");
-			}else {
+			} else {
 				String path = servletContext.getRealPath("/upload/");
-				File destFile = new File(path+product.getFile().getOriginalFilename());
+				File destFile = new File(path + product.getFile().getOriginalFilename());
 				product.setProd_img(product.getFile().getOriginalFilename());
 				product.getFile().transferTo(destFile);
 				adminservice.productwrite(product);
@@ -95,19 +95,19 @@ public class AdminController {
 		}
 		return "/admin_product_write";
 	}
-	
+
 	@GetMapping(value = "/admin_product_modify")
-	public String admin_product_modify(Model model,@RequestParam(value="prod_num", required=false)int prod_num) {
+	public String admin_product_modify(Model model, @RequestParam(value = "prod_num", required = false) int prod_num) {
 		try {
-			Product modi=adminservice.productDetail(prod_num);
-			model.addAttribute("modi",modi);
+			Product modi = adminservice.productDetail(prod_num);
+			model.addAttribute("modi", modi);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "/admin_product_modify";
 	}
-	
-	@PostMapping(value="/admin_product_modify")
+
+	@PostMapping(value = "/admin_product_modify")
 	public String admin_product_modify(@ModelAttribute Product product) {
 		try {
 			adminservice.modifyproduct(product);
@@ -117,9 +117,9 @@ public class AdminController {
 		}
 		return "/admin_product";
 	}
-	
-	@GetMapping(value="admin_product_delete")
-	public String admin_product_delete(@RequestParam(value="prod_num", required=false)int prod_num) {
+
+	@GetMapping(value = "admin_product_delete")
+	public String admin_product_delete(@RequestParam(value = "prod_num", required = false) int prod_num) {
 		try {
 			adminservice.productDelete(prod_num);
 		} catch (Exception e) {
@@ -127,14 +127,13 @@ public class AdminController {
 		}
 		return "redirect:/admin_product";
 	}
-	
-	
-	@GetMapping(value ="/admin_order")
-	public String admin_order (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
-			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
+
+	@GetMapping(value = "/admin_order")
+	public String admin_order(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model,
+			@RequestParam(value = "search_text", defaultValue = "") String search_text) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Admin> admin_order = adminservice.orderList(page,pageInfo,search_text);
+			List<Admin> admin_order = adminservice.orderList(page, pageInfo, search_text);
 			model.addAttribute("search_text", search_text);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("admin_order", admin_order);
@@ -143,19 +142,14 @@ public class AdminController {
 		}
 		return "/admin_order";
 	}
-	
-	
-	
-	
-	
-	//미완
-	@PostMapping(value="add_amount")
+
+	@PostMapping(value = "add_amount")
 	public String add_amount(@ModelAttribute Product product) {
 		try {
 			adminservice.addAmount(product);
 			return "redirect:/admin_inventory";
 		} catch (Exception e) {
-				e.printStackTrace();
+			e.printStackTrace();
 		}
 		return "redirect:/admin_inventory";
 	}
