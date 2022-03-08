@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- header include -->
@@ -17,50 +17,57 @@
               <form action="join" method="post">
               
                 <div class="form-outline mb-2">
-                  <input type="text" id="form3Example2cg" name="user_pwd" class="form-control form-control-lg" />
-                  <label class="form-label" for="form3Example3cg">아이디</label>
+                  <input type="text" id="form3Example2cg" class="form-control form-control-lg" name="user_id" />
+                  <label class="form-label" for="form3Example34cg">아이디</label>
                 </div>
                 
                 <div class="form-outline mb-2">
-                  <input type="email" id="form3Example2cg" class="form-control form-control-lg" />
+                  <input type="text" id="form3Example2cg" class="form-control form-control-lg" name="user_name" />
                   <label class="form-label" for="form3Example3cg">이름</label>
+                </div>
+                
+                <div class="form-outline mb-2">
+                  <input type="email" id="form3Example2cg" class="form-control form-control-lg" name="user_email" />
+                  <label class="form-label" for="form3Example3cg">이메일</label>
                 </div>
 
                 <div class="form-outline mb-2">
-                  <input type="password" id="form3Example2cg" class="form-control form-control-lg"/>
+                  <input type="password" id="form3Example2cg" class="form-control form-control-lg" name="user_pwd"/>
                   <label class="form-label" for="form3Example3cg">비밀번호</label>
                 </div>               
                               
                 <div class="form-outline mb-2">
-                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg" />
+                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg"  />
                   <label class="form-label" for="form3Example3cdg">비밀번호 확인</label>
                 </div>
                 
                 <div class="form-outline mb-2">
-                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg" />
+                  <input type="text" id="form3Example2cdg" class="form-control form-control-lg"  name="user_nickname"/>
                   <label class="form-label" for="form3Example3cdg">닉네임</label>
                 </div>
                 
                   <!--다음 주소 api  -->
-             <div class ="form-outline  mb-2">
-                  <input id="member_post" name="member_post" type="text" class="form-control form-control-lg"  placeholder="우편번호 검색" readonly onclick="findAddr()"><br>
-                  <label class="form-label" for="form3Example3cdg">우편번호 검색</label>
-                  <input type="text" class="form-control form-control-lg"  placeholder="주소를 입력해주세요." name="address" id="address"><br>
-                  <label class="form-label" for="form3Example3cdg">주소</label>
-                  <input id="detail" name="detail" type="text" class="form-control form-control-lg"  placeholder="상세주소를 입력해주세요">               
-                  <label class="form-label" for="form3Example3cdg">상세주소</label>
-               </div>
+ 				<div class ="form-outline  mb-2">
+         			<input id="member_post" name="user_zipcode" type="text" class="form-control form-control-lg"  placeholder="우편번호 검색 Click" readonly onclick="findAddr()"><br>
+            		<label class="form-label" for="form3Example3cdg">우편번호 검색</label>
+            		<input type="text" name="user_address1" class="form-control form-control-lg"  placeholder="" id="address"><br>
+         			<label class="form-label" for="form3Example3cdg">주소</label>
+         			<input id="detail" name="user_address2" type="text" class="form-control form-control-lg"  placeholder="상세주소를 입력해주세요">               
+         			<label class="form-label" for="form3Example3cdg">상세주소</label>
+         		</div>
 
-            <br/>
-            <div class="form-outline mb-2">
-                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg"  placeholder="000-0000-0000"/>
+				<br/>
+				
+				
+				<div class="form-outline mb-2">
+                  <input type="text" name="user_phone" id="form3Example2cdg" class="form-control form-control-lg"  placeholder="000-0000-0000"/>
                   <label class="form-label" for="form3Example3cdg">핸드폰 번호</label>
                 </div>
 
                 
 
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">회원가입</button>
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">회원가입</button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">이미 아이디가 있으신가요? <a href="login" class="fw-bold text-body"><u>로그인 하기</u></a></p>

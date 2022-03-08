@@ -1,5 +1,7 @@
 package com.petmily.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -15,7 +17,6 @@ public interface OrderDAO {
 			@Param("fix3")int fix3) throws Exception;
 	
 	//주문 내역 조회
-	//public Order orderDetail(String user_id) throws Exception;
-	public Order orderDetail(String user_id) throws Exception;
+	public List<Order> orderDetail(String user_id) throws Exception;
 	
 }

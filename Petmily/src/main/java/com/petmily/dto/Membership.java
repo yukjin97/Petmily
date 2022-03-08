@@ -10,7 +10,6 @@ public class Membership {
 	Date mem_next_date;
 
 
-
 	public Membership() {
 	}
 
