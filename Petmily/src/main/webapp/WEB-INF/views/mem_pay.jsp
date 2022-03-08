@@ -17,7 +17,7 @@ ${mem_name }
 
 <div>
 <input type="button" value="결제" id="check_module">
-<input type="submit" value="문제">
+<input type="submit" value="등록" style="display: none;" id="submit">
 </div>
 </form>
 
@@ -98,10 +98,12 @@ ${mem_name }
 																+ rsp.paid_amount;
 														msg += '카드 승인번호 : '
 																+ rsp.apply_num;
+														$("#submit").click();
 													} else {
 														var msg = '결제에 실패하였습니다.';
 														msg += '에러내용 : '
 																+ rsp.error_msg;
+														$("#submit").click(); //테스트용
 													}
 													alert(msg);
 												});
