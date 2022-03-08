@@ -103,6 +103,7 @@ public class MembershipController {
          int fix2 = (Integer)session.getAttribute("fix2");
          int fix3 = (Integer)session.getAttribute("fix3");
          orderService.mem_payment(grade,fix1,fix2,fix3);
+         orderService.mem_payment2(fix1,fix2,fix3);
          session.removeAttribute("mem_grade");
          session.removeAttribute("mem_productNum");
          session.removeAttribute("fix1");

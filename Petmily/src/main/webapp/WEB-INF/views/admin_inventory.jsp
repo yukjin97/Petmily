@@ -152,13 +152,15 @@
 				<section id="emptyArea">구독 회원이 없습니다.</section>
 			</c:otherwise>
 		</c:choose>
-
-
 	</section>
-
-
-
-
-
 	<jsp:include page="footer.jsp" />
+	<script>
+		$(function() {
+			<c:forEach items="${admin_inventory }" var="admin_inventory">
+			$("#${admin_inventory.prod_name }").click(function() {
+				$("#${admin_inventory.prod_num }").toggle();
+			});
+			</c:forEach>
+		});
+	</script>
 	
