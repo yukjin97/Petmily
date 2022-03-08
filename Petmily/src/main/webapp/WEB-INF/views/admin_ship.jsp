@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
+<!DOCTYPE html>
 	<jsp:include page="header.jsp" />
 
 	<!-- Admin 페이지 탭 메뉴 -->
