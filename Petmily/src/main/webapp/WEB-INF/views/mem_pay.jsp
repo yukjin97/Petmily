@@ -4,23 +4,36 @@
 <!DOCTYPE html>
 	<jsp:include page="header.jsp" />
 	
-<form action="mem_pay" method="post">	
-
-
-<div>
-<h1>${mem_price }</h1>
-${fix1 }
-${fix2 }
-${fix3 }
-${mem_name }
-</div>
-
-<div>
-<input type="button" value="결제" id="check_module">
-<input type="submit" value="등록" style="display: none;" id="submit">
-</div>
-</form>
-
+ <section class="py-5" style="width:1000px;  margin:auto;">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <div class="col-md-6">
+                    <img class="card-img-top mb-5 mb-md-0" src="${path}/resource/images/${mem_img }">
+                    </div>
+                    <div class="col-md-6" style="padding-bottom: 60px;">
+                    <br>
+                    <br>
+                        <h1 class="display-5 fw-bolder">${mem_name }</h1>
+                        <p class="lead">
+                        <br>
+						<span style="color:black;">개사료짱</span> <br>
+						<span style="color:black;">개옷짱</span> <br>
+						<span style="color:black;">개장난감</span> <br>
+						</p>
+						<div class="col-md-6" style="padding-left: 0px;">
+                        <h1 class="display-5 fw-bolder">${mem_price } 원</h1>
+                        </div>
+                        <div class="d-flex">
+                        <form action="mem_pay" method="post">
+							<input type="submit" value="등록" style="display: none;" id="submit">
+						</form>  
+                        </div>
+                    </div>              
+                </div>
+            </div>
+        </section>
+        <input type="button" value="결제" id="check_module">
+        
 	<jsp:include page="footer.jsp" />
 	<!-- jQuery -->
 <script type="text/javascript"

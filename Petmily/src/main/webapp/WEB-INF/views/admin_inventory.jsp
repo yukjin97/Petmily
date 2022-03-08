@@ -110,58 +110,63 @@
                         </c:forEach>
                      </tbody>
 
-						</table>
-					</div>
-				</section>
-				<section id="pageList">
-					<c:choose>
-						<c:when test="${pageInfo.page<=1}">
-					[이전]&nbsp;
-				</c:when>
-						<c:otherwise>
-							<a
-								href="admin_inventory?page=${pageInfo.page-1}&search_inven=${search_inven}">[이전]</a>&nbsp;
-				</c:otherwise>
-					</c:choose>
-					<c:forEach var="i" begin="${pageInfo.startPage }"
-						end="${pageInfo.endPage }">
-						<c:choose>
-							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
-							<c:otherwise>
-								<a href="admin_inventory?page=${i}&search_inven=${search_inven}">[${i }]</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:choose>
-						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
-					[다음]
-				</c:when>
-						<c:otherwise>
-							<a
-								href="admin_inventory?page=${pageInfo.page+1}&search_inven=${search_inven}">[다음]</a>
-						</c:otherwise>
-					</c:choose>
-				</section>
-			</c:when>
-			<c:otherwise>
-				<form action="admin_inventory" method="get">
-					<input type="text" id="search_inven" name="search_inven" /> <input
-						type="submit" value="찾기" 
-						class="btn btn-outline-success"
-							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
-				</form>
-				<section id="emptyArea">구독 회원이 없습니다.</section>
-			</c:otherwise>
-		</c:choose>
-	</section>
-	<jsp:include page="footer.jsp" />
-	<script>
-		$(function() {
-			<c:forEach items="${admin_inventory }" var="admin_inventory">
-			$("#${admin_inventory.prod_name }").click(function() {
-				$("#${admin_inventory.prod_num }").toggle();
-			});
-			</c:forEach>
-		});
-	</script>
-	
+                  </table>
+               </div>
+            </section>
+            <section id="pageList">
+               <c:choose>
+                  <c:when test="${pageInfo.page<=1}">
+               [이전]&nbsp;
+            </c:when>
+                  <c:otherwise>
+                     <a
+                        href="admin_inventory?page=${pageInfo.page-1}&search_inven=${search_inven}">[이전]</a>&nbsp;
+            </c:otherwise>
+               </c:choose>
+               <c:forEach var="i" begin="${pageInfo.startPage }"
+                  end="${pageInfo.endPage }">
+                  <c:choose>
+                     <c:when test="${pageInfo.page==i }">[${i }]</c:when>
+                     <c:otherwise>
+                        <a href="admin_inventory?page=${i}&search_inven=${search_inven}">[${i }]</a>
+                     </c:otherwise>
+                  </c:choose>
+               </c:forEach>
+               <c:choose>
+                  <c:when test="${pageInfo.page>=pageInfo.maxPage }">
+               [다음]
+            </c:when>
+                  <c:otherwise>
+                     <a
+                        href="admin_inventory?page=${pageInfo.page+1}&search_inven=${search_inven}">[다음]</a>
+                  </c:otherwise>
+               </c:choose>
+            </section>
+         </c:when>
+         <c:otherwise>
+            <form action="admin_inventory" method="get">
+               <input type="text" id="search_inven" name="search_inven" /> <input
+                  type="submit" value="찾기" 
+                  class="btn btn-outline-success"
+                     style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
+            </form>
+            <section id="emptyArea">구독 회원이 없습니다.</section>
+         </c:otherwise>
+      </c:choose>
+   </section>
+   <jsp:include page="footer.jsp" />
+   <script>
+      $(function() {
+         <c:forEach items="${admin_inventory }" var="admin_inventory">
+         $("#${admin_inventory.prod_name }").click(function() {
+            $("#${admin_inventory.prod_num }").toggle();
+         });
+         </c:forEach>
+      });
+   </script>
+<script>
+   $(document).ready(function() {
+     $('li.active').removeClass('active');
+     $('a[href="' + "admin_membership" + '"]').closest('li').addClass('active');
+   });
+</script>
