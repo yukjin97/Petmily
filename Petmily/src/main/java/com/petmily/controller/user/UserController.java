@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,18 +36,14 @@ public class UserController {
 		Mail mail = new Mail();
 		try {
 			userService.makeUser(user);
-
-			if (user.getUser_type().equals("noraml")) {
+			user = userService.accessUser(user.getUser_id(), user.getUser_pwd());
+			if (user.getUser_type().equals("normal")) {
 				mailService.joinMailSend(mail, user);
-
-				user = userService.accessUser(user.getUser_id(), user.getUser_pwd());
-				if (user.getUser_type().equals("normal")) {
-					mailService.joinMailSend(mail, user);
-					System.out.println("메일전송성공");
-				}
+				System.out.println("메일전송성공");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("메일전송실패");
 		}
 		mav.setViewName("redirect:/");
 		return mav;
@@ -54,7 +51,7 @@ public class UserController {
 
 	@PostMapping("login")
 	public ModelAndView login(@RequestParam String user_id, @RequestParam String user_pwd) {
-		ModelAndView mav = new ModelAndView("index");
+		ModelAndView mav = new ModelAndView();
 		Map<String, String> map = new HashMap<String, String>();
 		try {
 			User tmp = userService.accessUser(user_id, user_pwd);
@@ -63,17 +60,18 @@ public class UserController {
 			map.put("user_type", tmp.getUser_type());
 			map.put("user_id", tmp.getUser_id());
 			mav.addObject("userMap", map);
-
+			mav.setViewName("index");
+			System.out.println("로그인 성공");
 			if (tmp.getUser_type().equals("admin")) {
 				mav.setViewName("admin_product");
 			}
 		} catch (Exception e) {
 			mav.setViewName("payment");
 			e.printStackTrace();
+			System.out.println("실패 뚜둥");
 		}
 		return mav;
 	}
-
 
 	@PostMapping("logout")
 	public String logout() {

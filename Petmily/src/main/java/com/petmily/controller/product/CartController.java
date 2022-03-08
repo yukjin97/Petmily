@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.petmily.controller.product;
 
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/cart")
 
 public class CartController {
+=======
+
+//package com.petmily.controller.product;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpSession;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Controller;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.ResponseBody;
+//
+//import com.petmily.dto.Cart;
+//import com.petmily.dto.Product;
+//import com.petmily.dto.User;
+//import com.petmily.service.CartService;
+//import com.petmily.service.ProductService;
+//
+//@Controller
+//@RequestMapping(value = "/cart")
+//
+//public class CartController {
+>>>>>>> branch 'main' of https://github.com/yukjin97/Petmily.git
 //	@Autowired
 //	CartService cartService;
 //
@@ -39,5 +66,36 @@ public class CartController {
 //			return "add_success";          //    test.jsp 에이쟉스로 전달
 //		}
 //	}
+<<<<<<< HEAD
+=======
+//	}       
+//
+
+package com.petmily.controller.product;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.petmily.dto.Cart;
+import com.petmily.dto.Product;
+import com.petmily.dto.User;
+import com.petmily.service.ProductService;
+
+@Controller
+@RequestMapping(value = "/cart")
+
+public class CartController {
+	
+		
+	
+>>>>>>> branch 'main' of https://github.com/yukjin97/Petmily.git
 	}       
 
