@@ -32,12 +32,12 @@ public class MypageController {
          try {
             User user = myPageService.myPageInfo(user_id);
             Membership rmem = myPageService.myMemberShipInfo(user_id);
-            List<Order> orderList = myPageService.orderDetail(user_id);
+//            List<Order> orderList = myPageService.orderDetail(user_id);
             myPageService.userAddressModify(user);
             user = myPageService.myPageInfo(user_id);
             mem.setUser_id(user_id); // 유저객체 아이디
             mav.addObject("user", user);
-            mav.addObject("orderList", orderList);
+//            mav.addObject("orderList", orderList);
             mav.addObject("rmem", rmem);
 
          } catch (Exception e) {
