@@ -66,9 +66,9 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="admin" class="nav-link">Admin</a></li>
+					<li class="nav-item"><a href="admin_membership" class="nav-link">Admin</a></li>
 					<li class="nav-item"><a href="subscribe" class="nav-link">구독</a></li>
-					<li class="nav-item"><a href="store" class="nav-link">스토어</a></li>
+					<li class="nav-item"><a href="productall" class="nav-link">스토어</a></li>
 					<li class="nav-item"><a href="mypageinfo" class="nav-link">Mypage</a></li>
 					<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
 					<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>

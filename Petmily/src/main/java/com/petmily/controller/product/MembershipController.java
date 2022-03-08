@@ -23,15 +23,10 @@ public class MembershipController {
    
    @Autowired
    HttpSession session;
-   
-   @GetMapping(value = "/mem_service")
-   public String mem_service() {
-      return "mem_service";
-   }
-   
-   @GetMapping(value = "/membership")
+
+   @GetMapping(value = "/subscribe")
    public String membership() {
-      return "membership";
+      return "subscribe";
    }
 
    @GetMapping(value = "/mem_pay")
@@ -49,15 +44,15 @@ public class MembershipController {
          session.setAttribute("fix3", 3);
          session.setAttribute("mem_price", "9,800");
          session.setAttribute("mem_img", "");
-         return "mem_silver";
+         return "mem_pay";
       }catch(Exception e) {
-         return "membership";
+         return "subscribe";
       }
    }
    
    @GetMapping(value="mem_silver")
    public String mem_silver() {
-	   return "mem_pay";
+	   return "mem_silver";
 			   
    }
    
@@ -71,15 +66,15 @@ public class MembershipController {
          session.setAttribute("fix3", 6);
          session.setAttribute("mem_price", "13,800");
          session.setAttribute("mem_img", "");
-         return "mem_gold";
+         return "mem_pay";
       }catch(Exception e) {
-         return "membership";
+         return "subscribe";
       }
    }
    
    @GetMapping(value="mem_gold")
    public String mem_gold() {
-	   return "mem_pay";
+	   return "mem_gold";
 			   
    }
    
@@ -110,7 +105,7 @@ public class MembershipController {
          session.removeAttribute("fix3");
          session.removeAttribute("mem_price");
          session.removeAttribute("mem_img");
-         return "membership";
+         return "subscribe";
       }catch(Exception e) {
     	 e.printStackTrace();
          return "mem_pay";

@@ -5,6 +5,7 @@
 	<jsp:include page="header.jsp" />
      <!-- Product section-->
         <section class="py-5">
+        <form action="mem_gold" method="post">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
@@ -20,7 +21,7 @@
 						<span style="color:green;">세번째</span> 상품 : <span style="color:black;"> 명품 </span><span style="color:red;">특급 </span>개옷 ! <br>
 						</p>
                         <div class="d-flex">
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button" onclick="location.href='mem_pay'">
+                            <button class="btn btn-outline-dark flex-shrink-0" type="sumbit">
                                 <i class="bi-cart-fill me-1"></i>
                                 구독 하기
                             </button>
@@ -28,6 +29,7 @@
                     </div>
                 </div>
             </div>
+            </form>
         </section>
 
 

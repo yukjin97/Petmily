@@ -431,7 +431,7 @@
                      <li><span class="fa fa-check mr-2"></span>Made By Song 강아지 옷</li>
                      <li><span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식</li>
                   </ul>
-                  <a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+                  <a href="mem_silver" class="btn btn-primary d-block px-2 py-3">구독하기</a>
                </div>
             </div>
          </div>
@@ -451,7 +451,7 @@
                      <li><span class="fa fa-check mr-2"></span>Made By Hyun 강아지 옷</li>
                   </ul>
 
-                  <a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+                  <a href="mem_gold" class="btn btn-primary d-block px-2 py-3">구독하기</a>
                </div>
             </div>
          </div>

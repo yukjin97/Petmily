@@ -122,7 +122,7 @@
                     <div class="text-center p-4">
                     
                     
-                    <form action="mem_silver" method="post">
+
                         <span class="excerpt d-block">Silver 패키지</span>
                         <span class="price"><span class="number" id="price">9,800</span> <sub>원 /월</sub></span>
 
@@ -132,8 +132,7 @@
                             <li id="fix3"><span class="fa fa-check mr-2"></span>fix제품 3</li>
                         </ul>
 
-                        <input type="submit" value="구독">
-       				 </form>
+                        <input type="button" value="구독" onclick="location.href='mem_silver'">
        				 
        				 
                     </div>
@@ -143,7 +142,6 @@
                 <div class="block-7">
                     <div class="img" style="background-image: url(images/pricing-2.jpg);"></div>
                     <div class="text-center p-4">
-                    <form action="mem_gold" method="post">
                         <span class="excerpt d-block">Gold 패키지</span>
                         <span class="price"><span class="number" id="price">13,800</span> <sub>원 /월</sub></span>
 
@@ -153,8 +151,7 @@
                             <li id="fix3"><span class="fa fa-check mr-2"></span>fix제품 6</li>
                         </ul>
 
-                            <input type="submit" value="구독">
-       				 </form>
+                            <input type="button" value="구독" onclick="location.href='mem_gold'">
                     </div>
                 </div>
             </div>
