@@ -1,6 +1,7 @@
 package com.petmily.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import com.petmily.dto.User;
 import com.petmily.handler.MailHandler;
 
 @Service
+@PropertySource("classpath:/application.properties")
 public class MailServiceImpl implements MailService {
 	
 	@Autowired
@@ -29,10 +31,10 @@ public class MailServiceImpl implements MailService {
 			mailHandler.setTo(mail.getAddress());
 			mailHandler.setFrom("oxwk123@naver.com");
 			mailHandler.setSubject(mail.getTitle());
-//			String htmlContent ="<img src='cid:welcome-img'>";
-//            mailHandler.setText(htmlContent, true);
-//			mailHandler.setInline("welcome-img", "static/mail/welcome.jpg");
-// 		    mailHandler.setAttach("펫밀리 구독안내.pdf", "static/mail/펫밀리 구독안내.pdf");
+			String htmlContent ="<img src='cid:welcome-img'>";
+            mailHandler.setText(htmlContent, true);
+			mailHandler.setInline("welcome-img", "resource/mail/welcome.jpg");
+ 		    mailHandler.setAttach("펫밀리 안내.pdf", "resource/mail/펫밀리 구독.pdf");
 			mailHandler.send();
 		} catch (Exception e) {
 			e.printStackTrace();

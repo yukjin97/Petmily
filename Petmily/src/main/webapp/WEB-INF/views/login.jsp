@@ -9,31 +9,36 @@
 
 
 
-<section class="ftco-section" ">
+<section class="ftco-section" >
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">회원가입</h2>
-              <form action="" method="post">
+              <h2 class="text-uppercase text-center mb-5">로그인</h2>
+              
+              
+              <form action="login" method="post">
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+                  <input type="text" id="form3Example1cg" name="user_id" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example1cg">아이디</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
+                  <input type="password" id="form3Example4cg" name="user_pwd" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cg">비밀번호</label>
                 </div>
                  
                 <div class="d-flex justify-content-center">
-                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">로그인</button>
+                  <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">로그인</button>
                 </div>
 
                 <p class="text-center text-muted mt-5 mb-0">아이디가 없으신가요? <a href="join" class="fw-bold text-body"><u>회원가입 하기</u></a></p>
               </form>
+              
+              
+              
             </div>
           </div>
         </div>

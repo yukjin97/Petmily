@@ -24,7 +24,6 @@ import com.petmily.dto.Product;
 import com.petmily.service.ProductService;
 
 @Controller
-@RequestMapping("/product")
 public class ProductController {
 	private static Log log = LogFactory.getLog(ProductController.class);
 	@Autowired
@@ -34,7 +33,7 @@ public class ProductController {
 	ProductDAO productDAO;
 	
 	
-	@GetMapping("/")
+	@GetMapping("/productall")
 	public ModelAndView productAllPage() {
 		ModelAndView mav = new ModelAndView("productall");
 		try {
@@ -64,7 +63,7 @@ public class ProductController {
 
 
 
-	@RequestMapping("/detail/{prod_num}")
+	@RequestMapping("/product/detail/{prod_num}")
 	public ModelAndView detailPage(@PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView("productall");
 		try {
