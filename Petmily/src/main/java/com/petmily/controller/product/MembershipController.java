@@ -42,8 +42,9 @@ public class MembershipController {
          session.setAttribute("fix1", 1);
          session.setAttribute("fix2", 2);
          session.setAttribute("fix3", 3);
-         session.setAttribute("mem_price", "9,800");
+         session.setAttribute("mem_price", 9800);
          session.setAttribute("mem_img", "");
+         session.setAttribute("mem_name", "Very Nice Silver Pakage");
          return "mem_pay";
       }catch(Exception e) {
          return "subscribe";
@@ -64,8 +65,9 @@ public class MembershipController {
          session.setAttribute("fix1", 4);
          session.setAttribute("fix2", 5);
          session.setAttribute("fix3", 6);
-         session.setAttribute("mem_price", "13,800");
+         session.setAttribute("mem_price", 19800);
          session.setAttribute("mem_img", "");
+         session.setAttribute("mem_name", "Amazing Gold Pakage");
          return "mem_pay";
       }catch(Exception e) {
          return "subscribe";
@@ -106,6 +108,7 @@ public class MembershipController {
          session.removeAttribute("fix3");
          session.removeAttribute("mem_price");
          session.removeAttribute("mem_img");
+         session.removeAttribute("mem_name");
          return "subscribe";
       }catch(Exception e) {
     	 e.printStackTrace();
