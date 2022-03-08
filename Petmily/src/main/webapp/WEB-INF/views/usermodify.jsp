@@ -1,52 +1,86 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>À¯Àú Á¤º¸¼öÁ¤</title>
-</head>
-<body>
-	<form id=form action="usermodify" method="post">
-		ÇöÀçºñ¹Ğ¹øÈ£ <input type="password" id=password name="user_pwd" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä" required><br>
-			ºñ¹Ğ¹øÈ£ <input type="password" id=password2 name="user_pwd2" value=""><br>
-			ºñ¹Ğ¹øÈ£È®ÀÎ <input type="password" id=password_check value=""><br>
-			´Ğ³×ÀÓ <input type="text" id=nickname value="${user.user_nickname }" name="user_nickname" ><br>
-			ÀüÈ­¹øÈ£ <input type="text" id=phone value="${user.user_phone }" name="user_phone"><br> 			
-	
-		<input type="submit" class="btn" id=modify value="ÀúÀåÇÏ±â">
-		<input type="button" class="btn" value="¸ŞÀÎÀ¸·Î" onclick="location.href='mypageinfo'">
-	</form>
-		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script>
-	 $('#form').submit(function() {
-         let password = $('#password').val();
-         if(password=='') {
-         	alert("ÇöÀç ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-         	$('#password').focus();
-         	return false;
-         }
-         let password2 = $('#password2').val();
-         if(password2=='') {
-         	alert("º¯°æÇÒ ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-         	$('#password2').focus();
-         	return false;
-         }
-     	
-         let phone = $('#phone').val();
-         if(phone=='') {
-         	alert("ÀüÈ­¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.");
-         	$('#phone').focus();
-         	return false;
-         }
-         let password_check = $('#password_check').val();
-         if(password2!=password_check){
-         	alert("ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.")
-         	$('#password_check').focus();
-         	return false;
-         }
-     });
-	</script>
-</body>
-</html>
+<!-- header include -->
+<jsp:include page="header.jsp" />
+
+<!-- ë§ˆì´í˜ì´ì§€ íƒ­ ë©”ë‰´ -->
+<section>
+   <ul class="nav nav-tabs justify-content-center" id="myTab"
+      role="tablist">
+      <li class="nav-item" role="presentation">
+         <button class="nav-link active" id="myinfo-tab" data-bs-toggle="tab"
+            data-bs-target="#myinfo" type="button" role="tab"
+            aria-controls="myinfo" aria-selected="true">ë‚˜ì˜ ì •ë³´</button>
+      </li>
+      <li class="nav-item" role="presentation">
+         <button class="nav-link" id="subscribe-tab" data-bs-toggle="tab"
+            data-bs-target="#subscribe" type="button" role="tab"
+            aria-controls="subscribe" aria-selected="false">êµ¬ë… ê´€ë¦¬</button>
+      </li>
+      <li class="nav-item" role="presentation">
+         <button class="nav-link" id="order-tab" data-bs-toggle="tab"
+            data-bs-target="#order" type="button" role="tab"
+            aria-controls="order" aria-selected="false">ì£¼ë¬¸ ë‚´ì—­</button>
+      </li>
+      <li class="nav-item" role="presentation">
+         <button class="nav-link" id="delivery-tab" data-bs-toggle="tab"
+            data-bs-target="#delivery" type="button" role="tab"
+            aria-controls="delivery" aria-selected="false">ë°°ì†¡ì§€ ê´€ë¦¬</button>
+      </li>
+   </ul>
+   </section>
+   
+    <!-- ë§ˆì´í˜ì´ì§€ íƒ­ ë‚´ìš© -->
+   <div class="tab-content" id="myTabContent">
+      <!-- ë‚˜ì˜ ì •ë³´ ë‚´ìš© -->
+      <form id='form' method="get" action="usermodify">
+      <div class="tab-pane fade show active" id="myinfo" role="tabpanel"
+         aria-labelledby="myinfo-tab">
+         <section class="ftco-section bg-white">
+            <div class="item">
+               <div class="table-responsive">
+                  <table class="t_margin_auto width100 ds-table">
+                     <colgroup>
+                        <col style="width: 30%" />
+                        <col style="width: 70%" />
+                     </colgroup>
+                     <tbody>
+                        <tr>
+                           <td class="bg">í˜„ì¬ ë¹„ë°€ë²ˆí˜¸</td>
+                          <td><input type="password" id=password name="user_pwd" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”" required><br></td>
+                        </tr>
+                        <tr>
+                           <td class="bg">ìƒˆë¡œìš´ ë¹„ë°€ë²ˆí˜¸</td>
+                           <td><input type="password" id=password2 name="user_pwd2" value=""><br></td>
+                        </tr>
+                        <tr>
+                           <td class="bg">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</td>
+                           <td><input type="password" id=password_check value=""><br></td>
+                        </tr>
+                        <tr>
+                           <td class="bg">ë‹‰ë„¤ì„</td>
+                           <td><input type="text" id=nickname value="${user.user_nickname }" name="user_nickname" ><br></td>
+                        </tr>
+                        <tr>
+                           <td class="bg">ì „í™”ë²ˆí˜¸</td>
+                           <td><input type="text" id=phone value="${user.user_phone }" name="user_phone"><br> </td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <div>
+                  <input type="button" class="edit"
+                     onclick="location.href='mypageinfo'" value="ìˆ˜ì •í•˜ê¸°" />
+               </div>
+            </div>
+         </section>
+      </div>
+        </form> 
+       </div>
+  
+      
+      <!-- footer include -->
+<jsp:include page="footer.jsp" />

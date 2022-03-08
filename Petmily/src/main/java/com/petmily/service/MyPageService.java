@@ -1,5 +1,7 @@
 package com.petmily.service;
 
+import java.util.List;
+
 import com.petmily.dto.Membership;
 import com.petmily.dto.Order;
 import com.petmily.dto.User;
@@ -11,7 +13,7 @@ public interface MyPageService {
 	Membership myMemberShipInfo(String mem_id)throws Exception;
 	
 	//주문 내역 조회
-	Order orderDetail(String user_id) throws Exception;
+	List<Order> orderDetail(String user_id) throws Exception;
 	
 }
 

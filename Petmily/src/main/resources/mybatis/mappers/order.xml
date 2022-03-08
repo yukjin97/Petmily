@@ -29,12 +29,10 @@
 
 	<!--주문 내역 조회 -->
 	<select id="orderDetail" resultType="order" parameterType="String">
-		select p.prod_name, p.prod_price, u.user_id,
+		select p.prod_name, p.prod_price, o.user_id,
 		o.order_date, o.order_num, o.order_count
-		from petmily.order o, product p, user u
+		from petmily.order o, product p
 		where o.user_id = #{user_id}
-		and o.prod_num = #{prod_num}
-
 	</select>
 
 </mapper>
