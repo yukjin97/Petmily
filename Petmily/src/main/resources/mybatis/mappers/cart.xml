@@ -23,7 +23,6 @@
       ]]>
 		<foreach item="item" collection="list" open="(" separator="," close=")">
 
-<<<<<<< HEAD
 		</foreach>
 	</select>
 	
@@ -67,7 +66,5 @@
 		<result property="prod_content" column="prod_content" />
 	</resultMap>	 -->
 		
-=======
->>>>>>> branch 'main' of https://github.com/yukjin97/Petmily.git
 	
 </mapper>
