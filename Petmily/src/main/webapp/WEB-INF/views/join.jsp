@@ -1,128 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>회원가입</title>
-<!-- Latest compiled and minified CSS -->
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<!-- Latest compiled JavaScript -->
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-.container {
-	width: 400px;
+<!-- header include -->
+<jsp:include page="header.jsp" />
+
+
+<section class="ftco-section" >
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">회원가입</h2>
+              <form action="join" method="post">
+              
+                <div class="form-outline mb-2">
+                  <input type="text" id="form3Example2cg" name="user_pwd" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg">아이디</label>
+                </div>
+                
+                <div class="form-outline mb-2">
+                  <input type="email" id="form3Example2cg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cg">이름</label>
+                </div>
+
+                <div class="form-outline mb-2">
+                  <input type="password" id="form3Example2cg" class="form-control form-control-lg"/>
+                  <label class="form-label" for="form3Example3cg">비밀번호</label>
+                </div>               
+                              
+                <div class="form-outline mb-2">
+                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cdg">비밀번호 확인</label>
+                </div>
+                
+                <div class="form-outline mb-2">
+                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg" />
+                  <label class="form-label" for="form3Example3cdg">닉네임</label>
+                </div>
+                
+                  <!--다음 주소 api  -->
+             <div class ="form-outline  mb-2">
+                  <input id="member_post" name="member_post" type="text" class="form-control form-control-lg"  placeholder="우편번호 검색" readonly onclick="findAddr()"><br>
+                  <label class="form-label" for="form3Example3cdg">우편번호 검색</label>
+                  <input type="text" class="form-control form-control-lg"  placeholder="주소를 입력해주세요." name="address" id="address"><br>
+                  <label class="form-label" for="form3Example3cdg">주소</label>
+                  <input id="detail" name="detail" type="text" class="form-control form-control-lg"  placeholder="상세주소를 입력해주세요">               
+                  <label class="form-label" for="form3Example3cdg">상세주소</label>
+               </div>
+
+            <br/>
+            <div class="form-outline mb-2">
+                  <input type="password" id="form3Example2cdg" class="form-control form-control-lg"  placeholder="000-0000-0000"/>
+                  <label class="form-label" for="form3Example3cdg">핸드폰 번호</label>
+                </div>
+
+                
+
+                <div class="d-flex justify-content-center">
+                  <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">회원가입</button>
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">이미 아이디가 있으신가요? <a href="login" class="fw-bold text-body"><u>로그인 하기</u></a></p>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+function findAddr(){
+   new daum.Postcode({
+        oncomplete: function(data) {
+           
+           console.log(data);
+           
+            var roadAddr = data.roadAddress; 
+            var jibunAddr = data.jibunAddress; 
+            document.getElementById('member_post').value = data.zonecode;
+            if(roadAddr !== ''){
+                document.getElementById("address").value = roadAddr;
+            } 
+            else if(jibunAddr !== ''){
+                document.getElementById("address").value = jibunAddr;
+            }
+        }
+    }).open();
 }
+</script>
 
-.input-group-text {
-	display: inline-block;
-	width: 130px;
-}
-
-.title {
-	text-align: center;
-	font-weight: bold;
-}
-</style>
-</head>
-<body>
-	<div class="container mt-3">
-		<h5 class='title'>회원 가입</h5>
-		<form id='form' action="join" method="post">
-			<div class="input-group mb-2">
-				<span class="input-group-text title">이름</span> <input type="text"
-					class="form-control" id="name" name="user_name"><br>
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">아이디</span> <input type="text"
-					class="form-control" id="id" name="user_id">
-				<button type="button" class="btn btn-info" id="useridoverlap">중복</button>
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">비밀번호</span> <input
-					type="password" class="form-control" id="password" name="user_pwd">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">비밀번호 확인</span> <input
-					type="password" class="form-control" id="password2"
-					name="password2">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">닉네임</span> <input type="text"
-					class="form-control" id="nickname" name="user_nickname">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">도로명 주소</span> <input
-					type="text" class="form-control" id="address1" name="user_address1">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">지번 주소</span> <input type="text"
-					class="form-control" id="address2" name="user_address2">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">우편번호</span> <input type="text"
-					class="form-control" id="zipcode" name="user_zipcode">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">이메일</span> <input type="text"
-					class="form-control" id="email" name="user_email">
-			</div>
-			<div class="input-group mb-2">
-				<span class="input-group-text title">전화번호</span> <input type="text"
-					class="form-control" id="phone" name="user_phone">
-			</div>
-			<div class="d-grid">
-				<input type="submit" id="submit" class="btn btn-primary btn-block"
-					value='회원가입'>
-			</div>
-
-
-		</form>
-	</div>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script>
-	$(function () {
-        $("#useridoverlap").click(function() {
-           $.ajax({
-              type:"post",
-              dataType:"text",
-              async:false,
-              url:"http://localhost:8080/useroverlap",
-              data:{id:$('#id').val()},
-              success: function(data){
-            	  console.log(data);
-            	  if($('#id').val()==""){
-            		  alert("빈칸.");  
-            	  } 
-            	  else if(data=='true'){
-            		  alert("중복.");  
-            	  }
-            	  else{
-            		  alert("생성가능.");  
-            	  }
-              }
-          /*     success: function(data, textStatus) {
-                 if(data=='true'|| $('#id').val()=="") {
-                    Swal.fire({
-                          icon: 'error',
-                          title: '사용 불가능합니다.',
-                          text: '다른 아이디를 적어주세요.',
-                        });
-                 }else {
-                    Swal.fire({
-                          icon: 'success',
-                          title: '사용 가능합니다.',
-                          text: '이어서 작성해주세요.',
-                        });
-                 }
-              } */
-           });              
-        });
- })
-    </script>
-</body>
-</html>
+<!-- footer include -->
+<jsp:include page="footer.jsp" />
