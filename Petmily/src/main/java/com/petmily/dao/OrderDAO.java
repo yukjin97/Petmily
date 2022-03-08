@@ -15,7 +15,6 @@ public interface OrderDAO {
 			@Param("fix3")int fix3) throws Exception;
 	
 	//주문 내역 조회
-	//public Order orderDetail(String user_id) throws Exception;
 	public Order orderDetail(String user_id) throws Exception;
 	
 }
