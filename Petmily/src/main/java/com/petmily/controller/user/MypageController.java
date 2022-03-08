@@ -1,5 +1,7 @@
 package com.petmily.controller.user;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dto.Membership;
@@ -27,41 +27,43 @@ public class MypageController {
 	@Autowired
 	MembershipService membershipService;
 
-	
-	@GetMapping("orderdetail_test")
-	public String orderdetail_test() {
-		return "orderdetail_test";
-	}
-
-	
+	//로그인 -> 마이페이지_나의정보, 구독내역, 주문내역 조회
 	@GetMapping(value = "/mypageinfo")
-	public ModelAndView mypageinfo() {
+	public ModelAndView mypage(@ModelAttribute Membership mem) {
 		ModelAndView mav = new ModelAndView("mypageinfo");
 		String user_id = (String) session.getAttribute("user_id");
 		try {
 			User user = myPageService.myPageInfo(user_id);
+			Membership rmem = myPageService.myMemberShipInfo(user_id);
+			List<Order> orderList = myPageService.orderDetail(user_id);
+			myPageService.userAddressModify(user);
+			user = myPageService.myPageInfo(user_id);
+			mem.setUser_id(user_id); // 유저객체 아이디
 			mav.addObject("user", user);
+			mav.addObject("orderList", orderList);
+			mav.addObject("rmem", rmem);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
-	//마이페이지 유저정보 불러오기	
+
 	@GetMapping(value = "usermodify")
-	public ModelAndView userModify() {
+	public ModelAndView userInfo(@ModelAttribute User user) {
 		ModelAndView mav = new ModelAndView("usermodify");
 		String user_id = (String) session.getAttribute("user_id");
 		try {
-			User user = myPageService.myPageInfo(user_id);
+			user = myPageService.myPageInfo(user_id);
+			user.setUser_id(user_id); // 유저객체 아이디
 			mav.addObject("user", user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
-	//마이페이지 유저 수정
+
+	// 마이페이지 유저 수정
 	@PostMapping(value = "usermodify")
 	public ModelAndView userModify(@ModelAttribute User user) {
 		ModelAndView mav = new ModelAndView("mypageinfo");
@@ -77,58 +79,13 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
-	//마이페이지 멤버십정보 불러오기
-	@GetMapping(value = "mymembership")
-	public ModelAndView mymembership(@ModelAttribute Membership mem, User user) {
-		ModelAndView mav = new ModelAndView("mymembership");
-		String user_id = (String) session.getAttribute("user_id"); // 세션 넣기
-		try {
-			user = myPageService.myPageInfo(user_id);
-			Membership rmem = myPageService.myMemberShipInfo(user_id);
-			mem.setUser_id(user_id); // 유저객체 아이디
-			mav.addObject("rmem", rmem);
-			mav.addObject("user", user);
-		} catch (Exception e) {
-			e.printStackTrace();
-			mav.setViewName("err");
-		}
-		return mav;
-	}
-	
-	//마이페이지 배송지 정보 불러오기
-	@GetMapping(value = "useraddress")
-	public ModelAndView userAddress(@ModelAttribute User user) {
-		ModelAndView mav = new ModelAndView("addressmodify");
-		String user_id = (String) session.getAttribute("user_id"); // 세션 넣기
-		try {
-			user = myPageService.myPageInfo(user_id);
-			user.setUser_id(user_id); 
-			mav.addObject("user", user);
-		} catch (Exception e) {
-			e.printStackTrace();
-			mav.setViewName("err");
-		}
-		return mav;
-	}
-	@RequestMapping(value="orderdetail_test", method = RequestMethod.POST)
-	public String orderdetail_test(Model model) {
-		String user_id = (String) session.getAttribute("user_id");
-		try {
-			Order order = myPageService.orderDetail(user_id);
-			model.addAttribute("order", order);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "orderdetail_test";
-	}
 
-	//마이페이지 배송지 정보 수정하기
-	@PostMapping(value = "useraddressmodify")
+	// 마이페이지 배송지 정보 수정하기
+	@PostMapping(value = "mypageinfo")
 	public ModelAndView userAddressModify(@ModelAttribute User user) {
-		ModelAndView mav = new ModelAndView("addressmodify");
+		ModelAndView mav = new ModelAndView("mypageinfo");
 		String user_id = (String) session.getAttribute("user_id");
-		try {	 
+		try {
 			user.setUser_id(user_id); // 유저객체 아이디
 			myPageService.userAddressModify(user);
 			user = myPageService.myPageInfo(user_id);

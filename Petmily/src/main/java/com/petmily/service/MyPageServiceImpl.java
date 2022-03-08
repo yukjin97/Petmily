@@ -1,5 +1,7 @@
 package com.petmily.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,9 +50,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public Order orderDetail(String user_id) throws Exception {
-		Order order = orderDAO.orderDetail(user_id);
-		return order;
-	}
+	   public List<Order> orderDetail(String user_id) throws Exception {
+	      return orderDAO.orderDetail(user_id);
+	   }
 	
 }
