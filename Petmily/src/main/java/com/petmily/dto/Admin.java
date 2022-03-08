@@ -14,6 +14,7 @@ public class Admin {
 	String order_status;
 	String prod_name;
 	int prod_price;
+	int order_num;
 	
 	
 
@@ -24,7 +25,7 @@ public class Admin {
 	
 	
 	public Admin(String user_name, String user_email, String user_totaddress, String user_phone, String mem_grade,
-			Date mem_start_date, Date order_date, int order_count, String order_status, String prod_name,
+			Date mem_start_date, Date order_date, int order_count, String order_status, String prod_name, int order_num,
 			int prod_price) {
 		this.user_name = user_name;
 		this.user_email = user_email;
@@ -37,6 +38,17 @@ public class Admin {
 		this.order_status = order_status;
 		this.prod_name = prod_name;
 		this.prod_price = prod_price;
+		this.order_num = order_num;
+	}
+
+
+	public int getOrder_num() {
+		return order_num;
+	}
+
+
+	public void setOrder_num(int order_num) {
+		this.order_num = order_num;
 	}
 
 

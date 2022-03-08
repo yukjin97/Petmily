@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>어드민페이지입니다.</h1>
+MEM _ gold
+<input type="button" onclick="location.href='mem_pay'">
 </body>
 </html>

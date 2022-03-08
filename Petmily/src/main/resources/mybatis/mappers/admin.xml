@@ -129,7 +129,7 @@
 	<select id="selectOrderList" resultType="Admin">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-			from (select `order`.order_date,product.prod_name,`order`.order_count,product.prod_price,user.user_name,user.user_phone,user.user_totaddress,`order`.order_status
+			from (select `order`.order_num, `order`.order_date,product.prod_name,`order`.order_count,product.prod_price,user.user_name,user.user_phone,user.user_totaddress,`order`.order_status
  			from `order` join product on `order`.prod_num = product.prod_num join user on `order`.user_id = user.user_id
  			where
  			order_date like'%${search_text}%'  
@@ -145,4 +145,45 @@
  		]]>
 	</select>
 
+	<update id="updateOrderStatus" parameterType="map">
+			update petmily.order set order_status="처리" where 
+		<foreach collection="array" item="item" separator="or">
+			order_num=${item}
+		</foreach>	
+	</update>
+	
+	<select id="selectShipCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*)
+ 			from (select `order`.order_date,product.prod_name,`order`.order_count,user.user_totaddress,user.user_name,user.user_phone,`order`.order_status
+ 			from `order` join product on `order`.prod_num = product.prod_num join user on `order`.user_id = user.user_id) mem 
+ 			where 
+            order_status="처리" 
+            and(order_date like'%${search_text}%' 
+ 			or prod_name like'%${search_text}%'
+ 			or order_count like'%${search_text}%'
+ 			or user_totaddress like'%${search_text}%'
+ 			or user_name like'%${search_text}%'
+ 			or user_phone like'%${search_text}%')
+ 		]]>	
+	</select>
+
+
+	<select id="selectShipList" resultType="Admin">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+ 			from (select `order`.order_date,product.prod_name,`order`.order_count,user.user_totaddress,user.user_name,user.user_phone,`order`.order_status
+ 			from `order` join product on `order`.prod_num = product.prod_num join user on `order`.user_id = user.user_id
+ 			where 
+            order_status="처리" 
+            and(order_date like'%${search_text}%' 
+ 			or prod_name like'%${search_text}%'
+ 			or order_count like'%${search_text}%'
+ 			or user_totaddress like'%${search_text}%'
+ 			or user_name like'%${search_text}%'
+ 			or user_phone like'%${search_text}%')
+ 		order by `order`.order_date desc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>	
 </mapper>
