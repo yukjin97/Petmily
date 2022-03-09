@@ -4,12 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.petmily.dto.Membership;
 import com.petmily.dto.Order;
+import com.petmily.dto.User;
 import com.petmily.service.MembershipService;
 import com.petmily.service.OrderService;
 
@@ -30,9 +32,20 @@ public class MembershipController {
    }
 
    @GetMapping(value = "/mem_pay")
-   public String mem_pay() {
-      return "mem_pay";
-   }
+	public String mem_pay(Model model) {
+		session.setAttribute("user_id", "test");
+		String user_id = (String)session.getAttribute("user_id");
+	   try {
+			System.out.println(user_id);
+			User pay = membershipService.payinfo(user_id);
+			model.addAttribute("pay", pay);
+			System.out.println(pay);
+			return "/mem_pay";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/mem_pay";
+	}
    
    @PostMapping(value = "/mem_silver")
    public String mem_silverPass(){
@@ -45,7 +58,7 @@ public class MembershipController {
          session.setAttribute("mem_price", 9800);
          session.setAttribute("mem_img", "pricing-1.jpg");
          session.setAttribute("mem_name", "Very Nice Silver Pakage");
-         return "mem_pay";
+         return "redirect:/mem_pay";
       }catch(Exception e) {
          return "subscribe";
       }
@@ -68,7 +81,7 @@ public class MembershipController {
          session.setAttribute("mem_price", 19800);
          session.setAttribute("mem_img", "staff-6.jpg");
          session.setAttribute("mem_name", "Amazing Gold Pakage");
-         return "mem_pay";
+         return "redirect:/mem_pay";
       }catch(Exception e) {
          return "subscribe";
       }

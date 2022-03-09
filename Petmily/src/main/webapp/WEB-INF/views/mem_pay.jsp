@@ -1,41 +1,99 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-	<jsp:include page="header.jsp" />
-	
- <section class="py-5" style="width:1000px;  margin:auto;">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6">
-                    <img class="card-img-top mb-5 mb-md-0" src="${path}/resource/images/${mem_img }">
-                    </div>
-                    <div class="col-md-6" style="padding-bottom: 60px;">
-                    <br>
-                    <br>
-                        <h1 class="display-5 fw-bolder">${mem_name }</h1>
-                        <p class="lead">
-                        <br>
-						<span style="color:black;">개사료짱</span> <br>
-						<span style="color:black;">개옷짱</span> <br>
-						<span style="color:black;">개장난감</span> <br>
-						</p>
-						<div class="col-md-6" style="padding-left: 0px;">
-                        <h1 class="display-5 fw-bolder">${mem_price } 원</h1>
-                        </div>
-                        <div class="d-flex">
-                        <form action="mem_pay" method="post">
-							<input type="submit" value="등록" style="display: none;" id="submit">
-						</form>  
-                        </div>
-                    </div>              
-                </div>
-            </div>
-        </section>
-        <input type="button" value="결제" id="check_module">
-        
-	<jsp:include page="footer.jsp" />
-	<!-- jQuery -->
+<jsp:include page="header.jsp" />
+
+<section class="py-5" style="width: 1000px;margin: auto;padding-bottom: 0px;height: 596px;">
+	<div class="container px-4 px-lg-5 my-5">
+		<div class="row gx-4 gx-lg-5 align-items-center">
+			<div class="col-md-6">
+				<img class="card-img-top mb-5 mb-md-0"
+					src="${path}/resource/images/${mem_img }">
+			</div>
+			<div class="col-md-6" style="padding-bottom: 60px;">
+				<br> <br>
+				<h1 class="display-5 fw-bolder">${mem_name }</h1>
+				<p class="lead">
+					<br> <span style="color: black;">개사료짱</span> <br> <span
+						style="color: black;">개옷짱</span> <br> <span
+						style="color: black;">개장난감</span> <br>
+				</p>
+				<div class="col-md-6" style="padding-left: 0px;">
+					<h1 class="display-5 fw-bolder">${mem_price }원</h1>
+				</div>
+				<div class="d-flex">
+					<form action="mem_pay" method="post">
+						<input type="submit" value="등록" style="display: none;" id="submit">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</section>
+<section class="ftco-section bg-light" style="padding-top: 0px;">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 text-center mb-5">
+				<h2 class="heading-section">배송 정보</h2>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				<div class="wrapper">
+					<div class="row mb-5">
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div
+									class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-map-marker"></span>
+								</div>
+								<div class="text">
+									<p>
+										<span>Address:</span> ${pay.user_address1 },
+										${pay.user_address2 }, ${pay.user_zipcode }
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div
+									class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-phone"></span>
+								</div>
+								<div class="text">
+									<p>
+										<span>Phone:</span> <a href="tel://1234567920">+
+											${pay.user_phone }</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="dbox w-100 text-center">
+								<div
+									class="icon d-flex align-items-center justify-content-center">
+									<span class="fa fa-paper-plane"></span>
+								</div>
+								<div class="text">
+									<p>
+										<span>Name:</span>${pay.user_name }</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<input type="button" value="결제" id="check_module">
+
+<jsp:include page="footer.jsp" />
+<!-- jQuery -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
@@ -122,9 +180,11 @@
 												});
 							});
 		</script>
-		<script>
-$(document).ready(function() {
-	  $('li.active').removeClass('active');
-	  $('a[href="' + "subscribe" + '"]').closest('li').addClass('active');
-	});
-</script>
+<script>
+			$(document).ready(
+					function() {
+						$('li.active').removeClass('active');
+						$('a[href="' + "subscribe" + '"]').closest('li')
+								.addClass('active');
+					});
+		</script>
