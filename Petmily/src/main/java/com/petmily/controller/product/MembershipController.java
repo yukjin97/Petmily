@@ -36,10 +36,8 @@ public class MembershipController {
 	public String mem_pay(Model model) {
 		String user_id = (String)session.getAttribute("user_id");
 	   try {
-			System.out.println(user_id);
 			User pay = membershipService.payinfo(user_id);
 			model.addAttribute("pay", pay);
-			System.out.println(pay);
 			return "/mem_pay";
 		} catch (Exception e) {
 			e.printStackTrace();
