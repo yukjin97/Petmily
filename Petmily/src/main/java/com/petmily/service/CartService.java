@@ -1,23 +1,30 @@
 package com.petmily.service;
 
 import java.util.List;
-import java.util.Map;
 
 import com.petmily.dto.Cart;
+import com.petmily.dto.Product;
 
 public interface CartService {
 
-	void insertProdInCart(Cart cart);
+//	void insertProdInCart(Cart cart);
+//
+//
+//	boolean updateCartProd(Cart cart);
+//
+//	void deleteCart(int cart_amount);
+//
+//	void addProdInCart(Cart cart);
+//
+//	boolean findCartProd(Cart cart) throws Exception;
+//
+//	Map<String, List> myCartList(Cart cart) throws Exception;
 
-	List<Cart> selectCountInCart(String user_id, int Prod_num);
+	
+	
+	
+	// 여기가 진짜
+	List<Cart> cartQueryById(String user_id) throws Exception;
 
-	boolean updateCartProd(Cart cart);
-
-	void deleteCart(int cart_amount);
-
-	void addProdInCart(Cart cart);
-
-	boolean findCartProd(Cart cart) throws Exception;
-
-	Map<String, List> myCartList(Cart cart) throws Exception;
+	Product prodQueryByProdNum(int prod_num) throws Exception;
 }

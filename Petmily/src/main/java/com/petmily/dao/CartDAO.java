@@ -14,15 +14,21 @@ import com.petmily.dto.Product;
 @Repository
 public interface CartDAO {
 
-	public List<Cart> selectCartList(Cart cart) throws DataAccessException;
+	List<Cart> cartQueryById(String user_id) throws Exception;
 
-	public List<Product> selectProdList(List<Cart> cartList) throws DataAccessException;
+	Product prodQueryByProdNum(int prod_num) throws Exception;
 
-	public boolean selectCountInCart(Cart cart) throws DataAccessException;
-
-	public void insertProdInCart(Cart cart) throws DataAccessException;
-
-	public void updateCartProd(Cart cart) throws DataAccessException;
-
-	public void deleteCartProd(int cart_num) throws DataAccessException;
+//	public List<Cart> selectCartList(Cart cart) throws DataAccessException;
+//
+//	public List<Product> selectProdList(List<Cart> cartList) throws DataAccessException;
+//
+//	public boolean selectCountInCart(Cart cart) throws DataAccessException;
+//
+//	public void insertProdInCart(Cart cart) throws DataAccessException;
+//
+//	public void updateCartProd(Cart cart) throws DataAccessException;
+//
+//	public void deleteCartProd(int cart_num) throws DataAccessException;
+	
+	
 }
