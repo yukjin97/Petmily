@@ -65,7 +65,7 @@
 
 					<h2 class="mb-5"
 						style="text-decoration: underline; text-underline-position: under;">
-						배송
+						배송조회 [ 단품 ]
 						</h2>
 					<form action="admin_ship" method="get">
 						<input type="text" id="search_text" name="search_text" /> <input
