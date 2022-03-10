@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.petmily.dao.MembershipDAO;
 import com.petmily.dto.Membership;
-import com.petmily.dto.Order;
 import com.petmily.dto.User;
 
 @Service

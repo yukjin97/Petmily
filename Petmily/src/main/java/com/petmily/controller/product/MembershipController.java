@@ -112,13 +112,13 @@ public class MembershipController {
          membership.setUser_id((String)session.getAttribute("user_id"));
          membership.setMem_grade((String)session.getAttribute("mem_grade"));
          membershipService.memberShip(membership);
-         order.setUser_id((String)session.getAttribute("id"));
+         order.setUser_id((String)session.getAttribute("user_id"));
          //prod_num 1에 실버 2에 골드 패키지를 넣어야함
          order.setProd_num((Integer)session.getAttribute("mem_productNum"));
          order.setOrder_count(1);
          //address 부분 벨류값 넣어줘야함
          order.setOrder_address(null);
-         orderService.order(order);
+         //orderService.order(order);
          //마이페이지 구독권 쪽으로
          String grade = (String)session.getAttribute("mem_grade");
          int fix1 = (Integer)session.getAttribute("fix1");

@@ -50,8 +50,7 @@
 	</div>
 
 
-	<section id="membership_form"
-		style="padding-left: 500px; height: 1150px; width: 1500px; padding-top: 50px; padding-bottom: 100px;">
+<section style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;" id="membership_form">
 
 
 		<c:choose>
@@ -69,7 +68,7 @@
 					</form>
 
 					<div class="table-responsive">
-
+					<form>
 						<table class="table custom-table">
 							<thead>
 								<tr>
@@ -79,6 +78,11 @@
 									<th scope="col">전화번호</th>
 									<th scope="col">구독정보</th>
 									<th scope="col">구독시작일</th>
+									<th scope="col">마지막 배송</th>
+									<th scope="col"><label class="control control--checkbox">
+											<input type="checkbox" class="js-check-all" onclick="selectAll(this)"/>
+											<div class="control__indicator"></div>
+									</label></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -94,11 +98,20 @@
 					<td>${admin.user_phone }</td>
 					<td>${admin.mem_grade }</td>
 					<td>${admin.mem_start_date }</td>
+					<td>막배</td>
+					<th scope="row"><label class="control control--checkbox">
+												<input type="checkbox" value="${admin_order.order_num }"
+												name="ordercheck[]" />
+												<div class="control__indicator"></div>
+										</label></th>
 									</tr>
 								</c:forEach>
 							</tbody>
 
 						</table>
+						<input type="submit" value="처리" class="btn btn-outline-success"
+							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
+						</form>
 					</div>
 				</section>
 				<section id="pageList">
@@ -151,6 +164,17 @@
 
 
 	<jsp:include page="footer.jsp" />
+	<script>
+		function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('ordercheck[]');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+  
+}
+		</script>
 	<script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');

@@ -113,7 +113,8 @@
 							</tbody>
 
 						</table>
-						<input type="submit" value="처리">
+						<input type="submit" value="처리" class="btn btn-outline-success"
+							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
 						</form>
 					</div>
 				</section>
