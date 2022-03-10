@@ -22,20 +22,20 @@
 
 	
 	
+	<!-- 
 	
-	
-	<!--cart 테이블에 Cart(dto)로 전달된 상품정보를 추가한다. cart테이블에는 prod_num만 저장  -->
+	cart 테이블에 Cart(dto)로 전달된 상품정보를 추가한다. cart테이블에는 prod_num만 저장 
 	<insert id="insertProductInCart" parameterType="Cart">
 	<![CDATA[
 		insert into cart((prod_num, user_id))
 		values(#{cart_num}, #{prod_num}, #{user_id})
 	]]> 
-	<!--상품 추가 -->
+	상품 추가
 	</insert>
 	
 	
 	
-	<!--모든 장바구니 정보를 조회-->
+	모든 장바구니 정보를 조회
 	<select id="selectCartList" resultMap="cartResult" parameterType="Cart">모든 장바구니 정보를 조회
 	<![CDATA[
 		select * from cart where user_id=#{user_id}
@@ -43,9 +43,9 @@
 	</select>
 	
 
-	<!--cart테이블에 등록된 prod_num를 이용해서 상품 정보를 조회하는 역할 -->
-	<!--Map으로 받은 mycartList가 카트리스트에 있는 상품번호로 foreach문을 이용해서 상품정보를 조회한 후 반환cart 테이블에 등록된 상품 번호를 이용해서, product 테이블에서 cart 테이블에 저장된 
-			prod_num를 이용해서 상품 정보를 조회해온다. -->
+	cart테이블에 등록된 prod_num를 이용해서 상품 정보를 조회하는 역할
+	Map으로 받은 mycartList가 카트리스트에 있는 상품번호로 foreach문을 이용해서 상품정보를 조회한 후 반환cart 테이블에 등록된 상품 번호를 이용해서, product 테이블에서 cart 테이블에 저장된 
+			prod_num를 이용해서 상품 정보를 조회해온다.
 		<select id="selectProdList" resultMap="prodResult" parameterType="java.util.Map">
       <![CDATA[
           select p.*, u.user_id from product p, user u 
@@ -55,7 +55,7 @@
 
 		</foreach>
 	</select>
-	<!-- 상품 업데이트 -->
+	상품 업데이트
 	<update id="updateCartProd" parameterType="Cart">
 	<![CDATA[	
 		update cart set 
@@ -63,25 +63,26 @@
 	</update>
 	
 	
-	<!--상품 삭제  -->
+	상품 삭제 
 	<delete id="deleteCartProd" parameterType="int">
 	<![CDATA[
 		delete from cart where cart_num=#{cart_num}
 	]]> 	
-	</delete>
+	</delete> -->
 	
-	<!-- --><!---->	<!---->	<!---->	<!---->	<!---->
+
 		
 		
-  	<!-- 리절트 맵 정의 (장바구니 목록에서 보여줄 것들) -->
-	<resultMap id="cartResult" type="Cart"> <!-- 장바구니 정보를 저장-->
+		
+
+	<resultMap id="cartResult" type="Cart"> 
 		<result property="cart_num" column="cart_num" />
 		<result property="prod_num" column="prod_num" />
 		<result property="user_id" column="user_id" />
 		<result property="cart_amount" column="cart_amount" />
 	</resultMap>
 	
-	<resultMap id="prodResult" type="Product"> <!-- 장바구니 페이지에 표시할 상품 정보-->
+	<resultMap id="prodResult" type="Product"> 
 		<result property="prod_num" column="prod_num" />
 		<result property="prod_title" column="prod_title" />
 		<result property="prod_img" column="prod_img" />

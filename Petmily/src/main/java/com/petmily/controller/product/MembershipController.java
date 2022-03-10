@@ -4,12 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.petmily.dto.Membership;
 import com.petmily.dto.Order;
+import com.petmily.dto.User;
 import com.petmily.service.MembershipService;
 import com.petmily.service.OrderService;
 
@@ -23,21 +25,27 @@ public class MembershipController {
    
    @Autowired
    HttpSession session;
-   
-   @GetMapping(value = "/mem_service")
-   public String mem_service() {
-      return "mem_service";
-   }
-   
-   @GetMapping(value = "/membership")
+
+   @GetMapping(value = "/subscribe")
    public String membership() {
-      return "membership";
+      return "subscribe";
    }
 
    @GetMapping(value = "/mem_pay")
-   public String mem_pay() {
-      return "mem_pay";
-   }
+	public String mem_pay(Model model) {
+		session.setAttribute("user_id", "test");
+		String user_id = (String)session.getAttribute("user_id");
+	   try {
+			System.out.println(user_id);
+			User pay = membershipService.payinfo(user_id);
+			model.addAttribute("pay", pay);
+			System.out.println(pay);
+			return "/mem_pay";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/mem_pay";
+	}
    
    @PostMapping(value = "/mem_silver")
    public String mem_silverPass(){
@@ -47,17 +55,18 @@ public class MembershipController {
          session.setAttribute("fix1", 1);
          session.setAttribute("fix2", 2);
          session.setAttribute("fix3", 3);
-         session.setAttribute("mem_price", "9,800");
-         session.setAttribute("mem_img", "");
-         return "mem_silver";
+         session.setAttribute("mem_price", 9800);
+         session.setAttribute("mem_img", "pricing-1.jpg");
+         session.setAttribute("mem_name", "Very Nice Silver Pakage");
+         return "redirect:/mem_pay";
       }catch(Exception e) {
-         return "membership";
+         return "subscribe";
       }
    }
    
    @GetMapping(value="mem_silver")
    public String mem_silver() {
-	   return "mem_pay";
+	   return "mem_silver";
 			   
    }
    
@@ -69,17 +78,18 @@ public class MembershipController {
          session.setAttribute("fix1", 4);
          session.setAttribute("fix2", 5);
          session.setAttribute("fix3", 6);
-         session.setAttribute("mem_price", "13,800");
-         session.setAttribute("mem_img", "");
-         return "mem_gold";
+         session.setAttribute("mem_price", 19800);
+         session.setAttribute("mem_img", "staff-6.jpg");
+         session.setAttribute("mem_name", "Amazing Gold Pakage");
+         return "redirect:/mem_pay";
       }catch(Exception e) {
-         return "membership";
+         return "subscribe";
       }
    }
    
    @GetMapping(value="mem_gold")
    public String mem_gold() {
-	   return "mem_pay";
+	   return "mem_gold";
 			   
    }
    
@@ -103,6 +113,7 @@ public class MembershipController {
          int fix2 = (Integer)session.getAttribute("fix2");
          int fix3 = (Integer)session.getAttribute("fix3");
          orderService.mem_payment(grade,fix1,fix2,fix3);
+         orderService.mem_payment2(fix1,fix2,fix3);
          session.removeAttribute("mem_grade");
          session.removeAttribute("mem_productNum");
          session.removeAttribute("fix1");
@@ -110,7 +121,8 @@ public class MembershipController {
          session.removeAttribute("fix3");
          session.removeAttribute("mem_price");
          session.removeAttribute("mem_img");
-         return "membership";
+         session.removeAttribute("mem_name");
+         return "subscribe";
       }catch(Exception e) {
     	 e.printStackTrace();
          return "mem_pay";
