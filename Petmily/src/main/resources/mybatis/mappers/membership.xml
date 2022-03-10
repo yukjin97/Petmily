@@ -4,8 +4,8 @@
 <mapper namespace="com.petmily.dao.MembershipDAO">
 	<insert id="insertMemberShip" parameterType="membership">
 	<![CDATA[
-		insert into membership (user_id,mem_grade,mem_start_date) 
-		values(#{user_id},#{mem_grade},now())
+		insert into membership (user_id,mem_grade,mem_start_date, mem_restart_date, mem_next_date) 
+		values(#{user_id},#{mem_grade},now(),now(),date_add(now(),INTERVAL 1 MONTH))
 	]]>		
 	</insert>
 	

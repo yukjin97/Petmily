@@ -10,6 +10,8 @@ import com.petmily.dto.User;
 @Repository
 public interface MembershipDAO {
 	void insertMemberShip(Membership membership) throws Exception;
+	
 	public Membership queryUserMemberShip(String user_id) throws Exception;
+	
 	User payinfo(String user_id) throws Exception;
 }

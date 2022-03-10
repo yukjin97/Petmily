@@ -33,7 +33,6 @@ public class MembershipController {
 
    @GetMapping(value = "/mem_pay")
 	public String mem_pay(Model model) {
-		session.setAttribute("user_id", "test");
 		String user_id = (String)session.getAttribute("user_id");
 	   try {
 			System.out.println(user_id);
@@ -95,9 +94,8 @@ public class MembershipController {
    
    @PostMapping(value="/mem_pay")
    public String mem_pay(@ModelAttribute Membership membership, @ModelAttribute Order order) {
-	   session.setAttribute("id", "test");
       try {
-         membership.setUser_id((String)session.getAttribute("id"));
+         membership.setUser_id((String)session.getAttribute("user_id"));
          membership.setMem_grade((String)session.getAttribute("mem_grade"));
          membershipService.memberShip(membership);
          order.setUser_id((String)session.getAttribute("id"));
