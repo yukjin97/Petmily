@@ -39,7 +39,6 @@ public class MypageController {
             mav.addObject("user", user);
             mav.addObject("orderList", orderList);
             mav.addObject("rmem", rmem);
-
          } catch (Exception e) {
             e.printStackTrace();
          }
