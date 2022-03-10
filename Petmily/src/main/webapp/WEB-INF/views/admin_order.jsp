@@ -58,7 +58,7 @@
 
 
 	<section id="order_form"
-		style="padding-left: 500px; height: 1150px; width: 1500px; padding-top: 50px; padding-bottom: 100px;">
+		style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;">
 
 
 		<c:choose>
@@ -76,7 +76,10 @@
 					</form>
 					
 
-					<div class="table-responsive">
+					<div class="table-responsive" style="
+					display: block;
+    				width: 100%;
+    				overflow-x: inherit;">
 <form action="updateOrderStatus" method="post">
 						<table class="table custom-table">
 							<thead>
