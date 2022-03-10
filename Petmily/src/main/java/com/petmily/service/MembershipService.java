@@ -7,4 +7,8 @@ public interface MembershipService {
 	void memberShip(Membership membership) throws Exception;
 
 	User payinfo(String user_id)throws Exception;
+
+	boolean silverOverlap(String user_id) throws Exception;
+
+	boolean goldOverlap(String user_id) throws Exception;
 }

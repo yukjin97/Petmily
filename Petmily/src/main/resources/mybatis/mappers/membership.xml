@@ -31,4 +31,15 @@
       ]]>
 	</select>	
 
+	<select id="querySilverMemberShip" resultType="membership" parameterType="String">
+      <![CDATA[
+		select * from membership where user_id = #{user_id} and mem_grade="silver"
+      ]]>
+	</select>
+
+	<select id="queryGoldMemberShip" resultType="membership" parameterType="String">
+      <![CDATA[
+		select * from membership where user_id = #{user_id} and mem_grade="gold"
+      ]]>
+	</select>
 </mapper>

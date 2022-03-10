@@ -22,4 +22,18 @@ public class MembershipServiceImpl implements MembershipService {
 	public User payinfo(String user_id) throws Exception {
 		return membershipDAO.payinfo(user_id);
 	}
+
+	@Override
+	public boolean silverOverlap(String user_id) throws Exception {
+		Membership mem = membershipDAO.querySilverMemberShip(user_id);
+		if(mem != null) return true;
+		return false;
+	}
+
+	@Override
+	public boolean goldOverlap(String user_id) throws Exception {
+		Membership mem = membershipDAO.queryGoldMemberShip(user_id);
+		if(mem != null) return true;
+		return false;
+	}
 }

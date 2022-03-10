@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.petmily.dto.Membership;
 import com.petmily.dto.Order;
@@ -30,7 +31,7 @@ public class MembershipController {
    public String membership() {
       return "subscribe";
    }
-
+   
    @GetMapping(value = "/mem_pay")
 	public String mem_pay(Model model) {
 		String user_id = (String)session.getAttribute("user_id");
@@ -46,8 +47,11 @@ public class MembershipController {
 		return "/mem_pay";
 	}
    
+   @ResponseBody
    @PostMapping(value = "/mem_silver")
    public String mem_silverPass(){
+	   String user_id = (String)session.getAttribute("user_id");
+	   boolean overlap = false;
       try {
          session.setAttribute("mem_grade","silver");
          session.setAttribute("mem_productNum", 1);
@@ -57,7 +61,8 @@ public class MembershipController {
          session.setAttribute("mem_price", 9800);
          session.setAttribute("mem_img", "pricing-1.jpg");
          session.setAttribute("mem_name", "Very Nice Silver Pakage");
-         return "redirect:/mem_pay";
+         overlap = membershipService.silverOverlap(user_id);
+         return String.valueOf(overlap);
       }catch(Exception e) {
          return "subscribe";
       }
@@ -69,8 +74,11 @@ public class MembershipController {
 			   
    }
    
+   @ResponseBody
    @PostMapping(value = "/mem_gold")
    public String mem_goldPass(){
+	   String user_id = (String)session.getAttribute("user_id");
+	   boolean overlap = false;
       try {
          session.setAttribute("mem_grade","gold");
          session.setAttribute("mem_productNum", 2);
@@ -80,7 +88,8 @@ public class MembershipController {
          session.setAttribute("mem_price", 19800);
          session.setAttribute("mem_img", "staff-6.jpg");
          session.setAttribute("mem_name", "Amazing Gold Pakage");
-         return "redirect:/mem_pay";
+         overlap = membershipService.goldOverlap(user_id);
+         return String.valueOf(overlap);
       }catch(Exception e) {
          return "subscribe";
       }
@@ -127,5 +136,4 @@ public class MembershipController {
       }
    }   
    
-
 }

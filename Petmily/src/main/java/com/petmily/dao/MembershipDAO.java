@@ -14,4 +14,8 @@ public interface MembershipDAO {
 	public Membership queryUserMemberShip(String user_id) throws Exception;
 	
 	User payinfo(String user_id) throws Exception;
+	
+	public Membership querySilverMemberShip(String user_id) throws Exception;
+
+	public Membership queryGoldMemberShip(String user_id) throws Exception;
 }
