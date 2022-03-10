@@ -31,6 +31,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="${path }/resource/css/style.css" />
 
 <!-- 헤더 인클루드부에 /html  html 시작  있음 -->
+
+
 <jsp:include page="header.jsp" />
 <div
   class="hero-wrap js-fullheight"
@@ -514,52 +516,48 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <sub>/mos</sub></span
             >
 
-            <ul class="pricing-text mb-5">
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Foever 강아지 사료
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Song 강아지 옷
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식
-              </li>
-            </ul>
-            <a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 ftco-animate">
-        <div class="block-7">
-          <div
-            class="img"
-            style="background-image: url(${path}/resource/images/pricing-3.jpg)"
-          ></div>
-          <div class="text-center p-4">
-            <span class="excerpt d-block">Gold</span>
-            <span class="price"
-              ><sup>￦</sup> <span class="number">19800</span>
-              <sub>/mos</sub></span
-            >
+                  <ul class="pricing-text mb-5">
+                     <li><span class="fa fa-check mr-2"></span>Made By Foever 강아지
+                        사료</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By Song 강아지 옷</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식</li>
+                  </ul>
+                  <a href="mem_silver" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 ftco-animate">
+            <div class="block-7">
+               <div class="img"
+                  style="background-image: url(${path}/resource/images/pricing-3.jpg);"></div>
+               <div class="text-center p-4">
+                  <span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
+                     <span class="number">19800</span> <sub>/mos</sub></span>
 
-            <ul class="pricing-text mb-5">
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Jong 강아지 장난감
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By SanHe 강아지 사료
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Hyun 강아지 옷
-              </li>
-            </ul>
+                  <ul class="pricing-text mb-5">
+                     <li><span class="fa fa-check mr-2"></span>Made By Jong 강아지
+                        장난감</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By SanHe 강아지
+                        사료</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By Hyun 강아지 옷</li>
+                  </ul>
 
-            <a href="#" class="btn btn-primary d-block px-2 py-3">구독하기</a>
-          </div>
-        </div>
+                  <a href="mem_gold" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+               </div>
+            </div>
+         </div>
       </div>
     </div>
   </div>
 </section>
 <jsp:include page="footer.jsp" />
+<script>
+	$(document).ready(function() {
+	  $('li.active').removeClass('active');
+	  $('a[href="' + "/" + '"]').closest('li').addClass('active');
+	});
+</script>
+
+
+
 
