@@ -70,6 +70,9 @@ public class MembershipController {
    
    @GetMapping(value="mem_silver")
    public String mem_silver() {
+		if(session.getAttribute("user_id")==null) {
+			return "login";
+		}
 	   return "mem_silver";
 			   
    }
@@ -97,8 +100,10 @@ public class MembershipController {
    
    @GetMapping(value="mem_gold")
    public String mem_gold() {
-	   return "mem_gold";
-			   
+		if(session.getAttribute("user_id")==null) {
+			return "login";
+		}
+	   return "mem_gold";		   
    }
    
    @PostMapping(value="/mem_pay")
