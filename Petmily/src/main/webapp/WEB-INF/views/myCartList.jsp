@@ -1,6 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"
+	isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html>
+	<jsp:include page="header.jsp" />
 <html>
+<c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<c:set var="myCartList"  value="${cartMap.myCartList}"  />
+<c:set var="myProdList"  value="${cartMap.myProdList}"  />
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +16,7 @@
 	<title>Insert title here</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
+	
 <head>
     <title>펫밀리</title>
     <meta charset="utf-8"/>
@@ -40,46 +49,7 @@
 <body>
 
 <!-- 네비게이션바 -->
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container">
-        <a class="navbar-brand" href="index.html">Petmily</a>
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#ftco-nav"
-                aria-controls="ftco-nav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-        </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="admin.html" class="nav-link"><b>Admin</b></a>
-                </li>
-                <li class="nav-item">
-                    <a href="subscribe.html" class="nav-link">구독</a>
-                </li>
-                <li class="nav-item">
-                    <a href="store.html" class="nav-link">스토어</a>
-                </li>
-                <li class="nav-item">
-                    <a href="mypage.html" class="nav-link">마이페이지</a>
-                </li>
-                <li class="nav-item">
-                    <a href="join.html" class="nav-link">회원가입</a>
-                </li>
-                <li class="nav-item">
-                    <a href="login.html" class="nav-link">로그인</a>
-                </li>
-                <li class="nav-item">
-                    <a href="cart.html" class="nav-link">장바구니</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
 
 <!-- 배너-->
 <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.png');"
@@ -229,23 +199,10 @@
         </div>
     </div>
 </section>
+	<jsp:include page="footer.jsp" />
 
 <!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        Copyright &copy;
-        <script>
-            document.write(new Date().getFullYear());
-        </script>
-        The 6th Multicampus FullStack Project. All rights reserved |
-        <a href="https://multicampus.com" target="_blank">Multicampus.com</a>
-        <br>Team.이해되시조 | 김진하,송욱진,엄병수,원선영,윤세종,이산하,차현
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        </p>
-    </div>
-    </div>
-    </div>
-</footer>
+
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
@@ -292,3 +249,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+<%-- 
+
+ <c:choose>
+				    <c:when test="${ empty myCartList }">
+				    <tr>
+				       <td colspan=8 class="fixed">
+				         <strong>장바구니에 상품이 없습니다.</strong>
+				       </td>
+				     </tr>
+				    </c:when>
+			        <c:otherwise>
+			 <tr>       
+               <form name="frm_order_all_cart">
+				      <c:forEach var="item" items="${myGoodsList }" varStatus="cnt">
+				       <c:set var="cart_goods_qty" value="${myCartList[cnt.count-1].cart_goods_qty}" />
+				       <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
+					<td><input type="checkbox" name="checked_goods"  checked  value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
+					<td class="goods_image">
+					<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
+						<img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"  />
+					</a>
+					</td>
+					<td> --%>
