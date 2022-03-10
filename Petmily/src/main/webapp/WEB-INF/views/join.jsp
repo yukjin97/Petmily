@@ -17,8 +17,11 @@
               <form action="join" method="post">
               
                 <div class="form-outline mb-2">
-                  <input type="text" id="form3Example2cg" class="form-control form-control-lg" name="user_id" />
-                  <label class="form-label" for="form3Example34cg">아이디</label>
+                  <input type="text" id="user_id" class="form-control form-control-lg" name="user_id" />
+                  <label class="form-label" for="user_id">아이디</label>
+                  <div style="display:inline-block; float:right; margin-top:5px;" >
+	              	<input class="btn btn-primary" id="id_check" type="button" value="중복 확인">
+	              </div>
                 </div>
                 
                 <div class="form-outline mb-2">
@@ -27,8 +30,11 @@
                 </div>
                 
                 <div class="form-outline mb-2">
-                  <input type="email" id="form3Example2cg" class="form-control form-control-lg" name="user_email" />
-                  <label class="form-label" for="form3Example3cg">이메일</label>
+                  <input type="email" id="user_email" class="form-control form-control-lg" name="user_email" />
+                  <label class="form-label" for="user_email">이메일</label>
+                  <div style="display:inline-block; float:right; margin-top:5px;" >
+		              <input class="btn btn-primary" id="email_check" type="button" value="중복 확인">
+    			 </div>
                 </div>
 
                 <div class="form-outline mb-2">
@@ -102,6 +108,96 @@ function findAddr(){
     }).open();
 }
 </script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script>
 
+
+$(function(){
+	let sweetalert=(icon,title,contents)=>{
+        Swal.fire({
+            icon: icon,
+            title: title,
+            text: contents,
+            confirmButtonText: "확인"
+        })
+    };
+	$('#id_check').click(function () {
+    	if($('#user_id').val()==""){
+    		Swal.fire({
+				title: "입력 오류",
+				text: "아이디를 입력하세요",
+				icon: "error",
+				confirmButtonText: "확인"
+			})
+			$('#join').attr("disabled", true);
+			return false;
+		} 
+		$.ajax({
+			type:"post",
+			dataType:"text",
+			async:false,
+			url:"http://localhost:8080/idoverlap",
+			data:{ user_id:$('#user_id').val()},
+			success: function(data, textStatus){
+				if(data=="true"){
+					Swal.fire({
+						title: "사용 불가능",
+						text: "사용 중인 아이디 입니다",
+						icon: "error",
+						confirmButtonText: "확인"
+					})
+					$('#join').attr("disabled", true);
+				} else {
+					Swal.fire({
+						title: "사용 가능",
+						text: "사용 가능한 아이디 입니다",
+						icon: "success",
+						confirmButtonText: "확인"
+					})
+					$('#join').attr("disabled", false);
+				}
+			}
+		});
+	});
+	$('#email_check').click(function () {
+    	if($('#user_email').val()==""){
+    		Swal.fire({
+				title: "입력 오류",
+				text: "이메일을 입력하세요",
+				icon: "error",
+				confirmButtonText: "확인"
+			})
+			$('#join').attr("disabled", true);
+			return false;
+		} 
+		$.ajax({
+			type:"post",
+			dataType:"text",
+			async:false,
+			url:"http://localhost:8080/emailoverlap",
+			data:{ user_email:$('#user_email').val()},
+			success: function(data, textStatus){
+				if(data=="true"){
+					Swal.fire({
+						title: "사용 불가능",
+						text: "사용 중인 이메일 입니다",
+						icon: "error",
+						confirmButtonText: "확인"
+					})
+					$('#join').attr("disabled", true);
+				} else {
+					Swal.fire({
+						title: "사용 가능",
+						text: "사용 가능한 이메일 입니다",
+						icon: "success",
+						confirmButtonText: "확인"
+					})
+					$('#join').attr("disabled", false);
+				}
+			}
+		});
+	});
+});
+</script>
 <!-- footer include -->
 <jsp:include page="footer.jsp" />

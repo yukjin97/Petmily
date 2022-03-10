@@ -9,11 +9,26 @@
 		]]>
 	</select>
 	
-	<select id="selectProduct"  resultType="product" parameterType="int" > 
+	<select id="selectProduct" resultType="product" parameterType="int" > 
 		<![CDATA[
 			select * from product where prod_num = #{prod_num}
 		]]>	
 	</select>
 	
 	
+	
+	<select id="selectProductCount" resultType="int">
+		<![CDATA[
+			select count(*) from product
+		]]>	
+	</select>
+	
+ 	<select id="selectProductList" resultType="product" parameterType="int">
+ 		<![CDATA[
+ 			select * from (select @rownum:=@rownum+1 rnum, tot.* 
+					from (select * from product order by prod_num desc) tot, 
+					(select @rownum:=0) temp) sub
+			where rnum between #{startrow} and #{startrow}+9		
+ 		]]>
+ 	</select>
 </mapper>

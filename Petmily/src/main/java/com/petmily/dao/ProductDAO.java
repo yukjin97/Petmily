@@ -13,5 +13,9 @@ public interface ProductDAO {
 
 	public List<Product> allProduct() throws Exception;
 	public Product selectProduct(int prod_num) throws Exception;
-
+	List<Product> selectProductList(int startrow) throws Exception;
+	
+	int selectProductCount() throws Exception;
+	// 화면 하단에 뿌려줄 페이지 번호를 구성하기 위한 저장된 글의 총 row를 개수 정보로 반환 
+	
 }

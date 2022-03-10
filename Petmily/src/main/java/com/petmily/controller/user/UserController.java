@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dto.Mail;
@@ -66,7 +67,7 @@ public class UserController {
 				mav.setViewName("admin_product");
 			}
 		} catch (Exception e) {
-			mav.setViewName("payment");
+			mav.setViewName("login");
 			e.printStackTrace();
 			System.out.println("실패 뚜둥");
 		}
@@ -79,7 +80,44 @@ public class UserController {
 		session.removeAttribute("user_type");
 		return "redirect:/";
 	}
+	
+	@ResponseBody
+	@PostMapping(value = "/idoverlap") 
+	public String idOverlap(@RequestParam(value = "user_id") String user_id) {
+		String result = null ;
+		try {
+			if(!userService.userOverlapbyId(user_id)) {
+				System.out.println(user_id);
+				result="false";
+			} else {
+				result="true";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	@ResponseBody
+	@PostMapping(value = "/emailoverlap")
+	public String emailOverlap(@RequestParam(value = "user_email") String user_email) {
+		String result = null ;
+		try {
+			if(!userService.userOverlapbyEmail(user_email)) {
+				System.out.println(user_email);
+				result="false";
+			} else {
+				result = "true";
 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
+	// 미구현
 	@RequestMapping(value = "/kakaologin", method = RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
 		System.out.println("#########" + code);
@@ -90,7 +128,8 @@ public class UserController {
 		System.out.println("###email#### : " + userInfo.get("email"));
 		return "/kakaologin";
 	}
-
+	// 미구현 
+	// 지우지말아주세요 
 	@RequestMapping(value = "naverlogin", method = RequestMethod.GET)
 	public String callBack() {
 		return "naverlogin";

@@ -5,7 +5,7 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row justify-content-center">
-			<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+			<div class="col-md-4 col-lg-3 mb-4 mb-md-0">
 				<h2 class="footer-heading">Petmily</h2>
 				<p>MultiCampus</p>
 				<ul class="ftco-footer-social p-0">
@@ -89,10 +89,8 @@
 <script src="${path }/resource/js/owl.carousel.min.js"></script>
 <script src="${path }/resource/js/jquery.magnific-popup.min.js"></script>
 <script src="${path }/resource/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="${path }/resource/js/google-map.js"></script>
 <script src="${path }/resource/js/main.js"></script>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 </body>
 </html>
