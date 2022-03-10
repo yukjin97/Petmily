@@ -6,9 +6,10 @@
 
 	<select id="selectMembershipCount" resultType="int">
  		<![CDATA[
- 			select count(*) from(select user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date from
+ 			select count(*) from(select membership.mem_last_date,user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date from
  		user join membership on user.user_id = membership.user_id) mem where user_name like'%${mem_text}%' or user_email like'%${mem_text}%' 
  		or user_totaddress like'%${mem_text}%' or user_phone like'%${mem_text}%' or mem_grade like'%${mem_text}%' or mem_start_date like'%${mem_text}%'
+ 		or mem_last_date like'%${mem_text}%'
  		]]>
 	</select>
 
@@ -16,9 +17,10 @@
 	<select id="selectMembershipList" resultType="Admin">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-		from(select user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date 
+		from(select user.user_id,membership.mem_last_date,user.user_name,user.user_email,user.user_totaddress,user.user_phone,membership.mem_grade,membership.mem_start_date 
 		from user join membership on user.user_id = membership.user_id where user_name like'%${mem_text}%' or user_email like'%${mem_text}%' 
- 		or user_totaddress like'%${mem_text}%' or user_phone like'%${mem_text}%' or mem_grade like'%${mem_text}%' or mem_start_date like'%${mem_text}%' order by user.user_id desc, membership.mem_start_date asc) tot, 
+ 		or user_totaddress like'%${mem_text}%' or user_phone like'%${mem_text}%' or mem_grade like'%${mem_text}%' or mem_start_date like'%${mem_text}%'or
+ 		mem_last_date like'%${mem_text}%' order by user.user_id desc, membership.mem_start_date asc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
 	</select>
@@ -149,6 +151,13 @@
 			update petmily.order set order_status="처리" where 
 		<foreach collection="array" item="item" separator="or">
 			order_num=${item}
+		</foreach>	
+	</update>
+	
+		<update id="updateMemStatus" parameterType="map">
+			update petmily.membership set mem_last_date=now() where 
+		<foreach collection="array" item="item" separator="or">
+			user_id=#{item}
 		</foreach>	
 	</update>
 	

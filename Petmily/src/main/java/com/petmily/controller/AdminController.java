@@ -43,6 +43,19 @@ public class AdminController {
 		return "/admin_membership";
 	}
 
+	@PostMapping(value = "UpdateMemStatus")
+	public String updateMemStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "ordercheck[]")String[] ordercheck) {
+		try {
+			map.put("array", ordercheck);
+			adminservice.updateMemStatus(map);
+			return "redirect:/admin_membership";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_membership";
+	}
+	
+	
 	@GetMapping(value = "/admin_product")
 	public String admin_product(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			Model model, @RequestParam(value = "search_prod", defaultValue = "") String search_prod) {

@@ -184,6 +184,13 @@ public class AdminServiceImpl implements AdminService {
 	public void updateOrderStatus(Map<String, Object> map) throws Exception {
 		admindao.updateOrderStatus(map);
 	}
+	
+	@Override
+	public void updateMemStatus(Map<String, Object> map) throws Exception {
+		admindao.updateMemStatus(map);
+		
+	}
+
 
 	@Override
 	public List<Admin> shipList(int page, PageInfo pageInfo, String search_text) throws Exception {

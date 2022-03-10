@@ -31,5 +31,7 @@ public interface AdminService {
 	
 	public List<Admin> shipList(int page, PageInfo pageInfo, String search_text)throws Exception;
 
+	public void updateMemStatus(Map<String, Object> map)throws Exception;
+
 }
 	

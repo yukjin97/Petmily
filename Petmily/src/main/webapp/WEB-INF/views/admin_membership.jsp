@@ -68,7 +68,7 @@
 					</form>
 
 					<div class="table-responsive">
-					<form>
+					<form action="UpdateMemStatus" method="post">
 						<table class="table custom-table">
 							<thead>
 								<tr>
@@ -98,9 +98,9 @@
 					<td>${admin.user_phone }</td>
 					<td>${admin.mem_grade }</td>
 					<td>${admin.mem_start_date }</td>
-					<td>막배</td>
+					<td>${admin.mem_last_date }</td>
 					<th scope="row"><label class="control control--checkbox">
-												<input type="checkbox" value="${admin_order.order_num }"
+												<input type="checkbox" value="${admin.user_id }"
 												name="ordercheck[]" />
 												<div class="control__indicator"></div>
 										</label></th>
@@ -109,7 +109,7 @@
 							</tbody>
 
 						</table>
-						<input type="submit" value="처리" class="btn btn-outline-success"
+						<input type="submit" value="처리"  value="처리" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
 						</form>
 					</div>
