@@ -71,7 +71,10 @@
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
 					</form>
 
-					<div class="table-responsive">
+					<div class="table-responsive" style="
+					display: block;
+    				width: 100%;
+    				overflow-x: inherit;">
 					<form action="UpdateMemStatus" method="post">
 						<table class="table custom-table">
 							<thead>
