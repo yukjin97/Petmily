@@ -41,11 +41,15 @@
 				class="btn btn-success btn-block btn-lg gradient-custom-4
 			"
 				data-bs-target="#v-order" type="button" role="tab" onclick="location.href='admin_order'">상품 주문</button>
-
-			<button id="v-delivery-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_ship'">배송</button>
+         <button id="v-delivery-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_ship'">배송조회 [단품]</button>
+            
+                     <button id="v-delivery-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_mem_ship'">배송조회 [구독]</button>
 		</div>
 	</div>
 

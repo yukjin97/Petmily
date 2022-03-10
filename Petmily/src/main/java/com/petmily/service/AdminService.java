@@ -33,5 +33,7 @@ public interface AdminService {
 
 	public void updateMemStatus(Map<String, Object> map)throws Exception;
 
+	public List<Admin> memshipList(int page, PageInfo pageInfo, String search_text)throws Exception;
+
 }
 	

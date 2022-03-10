@@ -195,4 +195,19 @@ public class AdminController {
 		}
 		return "/admin_ship";
 	}	
+	
+	@GetMapping(value ="/admin_mem_ship")
+	public String admin_mem_ship (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Admin> admin_mem_ship = adminservice.memshipList(page,pageInfo,search_text);
+			model.addAttribute("search_text", search_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_mem_ship", admin_mem_ship);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_mem_ship";
+	}	
 }
