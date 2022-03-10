@@ -37,7 +37,9 @@ public class ProductController {
 	
 	@Autowired
 	AdminService adminService;
+
 	
+	//페이징 처리전 화면에 뿌려주는 코드
 //	@GetMapping("/productall")
 //	public ModelAndView productAllPage() {
 //		ModelAndView mav = new ModelAndView("productall");
@@ -51,8 +53,8 @@ public class ProductController {
 //		return mav;
 //	}
 
-	
-	@RequestMapping(value = "productall",method = {RequestMethod.GET,RequestMethod.POST})
+	// 페이징 처리 All Product
+	@RequestMapping(value = "product",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView productlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page) {
 		ModelAndView mav = new ModelAndView();
 		PageInfo pageInfo = new PageInfo();
@@ -83,10 +85,10 @@ public class ProductController {
 
 
 
-
+	
 	@RequestMapping("/product/detail/{prod_num}")
 	public ModelAndView detailPage(@PathVariable int prod_num) {
-		ModelAndView mav = new ModelAndView("productall");
+		ModelAndView mav = new ModelAndView();
 		try {
 			Product product = productService.selectProduct(prod_num);
 			mav.addObject("product",product);

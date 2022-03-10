@@ -110,7 +110,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <a href="subscribe" class="nav-link">구독</a>
             </li>
             <li class="nav-item">
-              <a href="productall" class="nav-link">스토어</a>
+              <a href="product" class="nav-link">스토어</a>
             </li>
             <li class="nav-item">
               <a href="mypageinfo" class="nav-link">마이페이지</a>

@@ -25,6 +25,9 @@
 					<button id="check_module" class="btn btn-outline-success flex-shrink-0" type="button">
 						<i class="bi-cart-fill me-1"></i>결제하기
 					</button>
+					<button id="wirtereview" class="btn btn-outline-success flex-shrink-0" type="button">
+						<i class="bi-cart-fill me-1" onclick="location.href='${product.prod_num}/reviewwirte'"></i>리뷰작성하기
+					</button>
 				</div>
 			</div>
 		</div>

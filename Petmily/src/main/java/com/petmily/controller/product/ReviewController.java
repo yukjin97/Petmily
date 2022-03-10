@@ -25,7 +25,6 @@ import com.petmily.service.ReviewService;
 import com.petmily.service.UserService;
 
 @Controller
-//@RequestMapping(value = "")
 public class ReviewController {
 	@Autowired
 	ReviewService reviewService;
@@ -37,7 +36,7 @@ public class ReviewController {
 	UserService userService;
 	
 	
-	@GetMapping(value = "{prod_num}/review")
+	@GetMapping(value = "{prod_num}/reviewlist")
 	public String product_review(@RequestParam(value = "page",required = false,defaultValue = "1")int page, Model model,
 			@RequestParam(value = "search_review",defaultValue = "") String search_review) {
 		PageInfo pageInfo = new PageInfo();
