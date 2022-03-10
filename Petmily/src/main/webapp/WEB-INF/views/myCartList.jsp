@@ -273,13 +273,13 @@
 			        <c:otherwise>
 			 <tr>       
                <form name="frm_order_all_cart">
-				      <c:forEach var="item" items="${myGoodsList }" varStatus="cnt">
-				       <c:set var="cart_goods_qty" value="${myCartList[cnt.count-1].cart_goods_qty}" />
+				      <c:forEach var="item" items="${myProdList }" varStatus="cnt">
+				       <c:set var="cart_Prod_qty" value="${myCartList[cnt.count-1].cart_prod_qty}" />
 				       <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
-					<td><input type="checkbox" name="checked_goods"  checked  value="${item.goods_id }"  onClick="calcGoodsPrice(${item.goods_sales_price },this)"></td>
-					<td class="goods_image">
-					<a href="${contextPath}/goods/goodsDetail.do?goods_id=${item.goods_id }">
-						<img width="75" alt="" src="${contextPath}/thumbnails.do?goods_id=${item.goods_id}&fileName=${item.goods_fileName}"  />
+					<td><input type="checkbox" name="checked_prod"  checked  value="${item.prod_num }" ></td>
+					<td class="prod_image">
+					<a href="${contextPath}/product/detailProduct?prod_num=${item.prod_num }">
+						<img width="75" alt="" src="${contextPath}/thumbnails.do?prod_num=${item.prod_num}&fileName=${item.prod_fileName}"  />
 					</a>
 					</td>
 					<td> --%>

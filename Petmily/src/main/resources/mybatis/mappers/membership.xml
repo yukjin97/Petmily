@@ -23,6 +23,12 @@
          membership on user.user_id = membership.user_id
          where user.user_id = #{user_id}
       ]]>
-	</select>		
+	</select>	
+	
+	<select id="payinfo" resultType="User" parameterType="String">
+      <![CDATA[
+         select user_name, user_phone, user_address1, user_address2, user_zipcode from user where user_id = #{user_id}
+      ]]>
+	</select>	
 
 </mapper>
