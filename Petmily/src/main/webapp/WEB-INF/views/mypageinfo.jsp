@@ -1,133 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
-prefix="c"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <style>
-  @media screen and (min-width: 670px) {
-    #grid1 {
-      display: none;
-    }
-    #grid2 {
-      display: block;
-    }
-  }
+@media screen and (min-width:670px) {
+	#grid1 {
+		display: none;
+	}
+	#grid2 {
+		display: block;
+	}
+}
 
-  @media screen and (max-width: 670px) {
-    #grid1 {
-      display: block;
-    }
-    #grid2 {
-      display: none;
-    }
-  }
+@media screen and (max-width:670px) {
+	#grid1 {
+		display: block;
+	}
+	#grid2 {
+		display: none;
+	}
+}
 </style>
 <!-- header include -->
 <jsp:include page="header.jsp" />
 <!-- nav -->
 <div class="container" style="margin-top: 30px">
-  <div class="row no-gutters slider-text align-items-end">
-    <div class="col-md-9 ftco-animate pb-5">
-      <p class="breadcrumbs mb-2">
-        <span class="mr-2">myinfo <i class="ion-ios-arrow-forward"></i></span>
-      </p>
-      <h1 class="mb-0 bread">MyPage</h1>
-    </div>
-  </div>
+	<div class="row no-gutters slider-text align-items-end">
+		<div class="col-md-9 ftco-animate pb-5">
+			<p class="breadcrumbs mb-2">
+				<span class="mr-2">myinfo <i class="ion-ios-arrow-forward"></i></span>
+			</p>
+			<h1 class="mb-0 bread">MyPage</h1>
+		</div>
+	</div>
 </div>
 <!-- END nav -->
 <section>
-  <div id="grid1" class="container">
-    <ul class="nav justify-content-center">
-      <li class="nav-item dropdown">
-        <button
-          type="button"
-          class="nav-link dropdown-toggle btn btn-outline-success"
-          data-toggle="collapse"
-          data-target="#demo"
-          style="width: 400px"
-        ></button>
-        <div class="collapse" id="demo">
-          <button
-            type="button"
-            class="nav-link btn btn-outline-success"
-            id="myinfo-tab1"
-            style="width: 400px"
-          >
-            나의 정보
-          </button>
-          <button
-            type="button"
-            class="nav-link btn btn-outline-success"
-            id="subscribe-tab1"
-            style="width: 400px"
-          >
-            구독 내역
-          </button>
-          <button
-            type="button"
-            class="nav-link btn btn-outline-success"
-            id="order-tab1"
-            style="width: 400px"
-          >
-            주문 내역
-          </button>
-          <button
-            type="button"
-            class="nav-link btn btn-outline-success"
-            id="delivery-tab1"
-            style="width: 400px"
-          >
-            배송지 관리
-          </button>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div id="grid2">
-    <ul class="nav justify-content-center">
-      <li class="nav-item" role="presentation" style="margin-right: 10px">
-        <button
-          type="button"
-          class="nav-link active btn btn-outline-success"
-          id="myinfo-tab"
-          style="width: 150px"
-        >
-          나의 정보
-        </button>
-      </li>
-      <li class="nav-item" role="presentation" style="margin-right: 10px">
-        <button
-          type="button"
-          class="nav-link btn btn-outline-success"
-          id="subscribe-tab"
-          style="width: 150px"
-        >
-          구독 내역
-        </button>
-      </li>
-      <li class="nav-item" role="presentation" style="margin-right: 10px">
-        <button
-          type="button"
-          class="nav-link btn btn-outline-success"
-          id="order-tab"
-          style="width: 150px"
-        >
-          주문 내역
-        </button>
-      </li>
-      <li class="nav-item" role="presentation" style="margin-right: 10px">
-        <button
-          type="button"
-          class="nav-link btn btn-outline-success"
-          id="delivery-tab"
-          style="width: 150px"
-        >
-          배송지 관리
-        </button>
-      </li>
-    </ul>
-  </div>
+	<div id="grid1" class="container">
+		<ul class="nav justify-content-center">
+			<li class="nav-item dropdown">
+				<button type="button"
+					class="nav-link dropdown-toggle btn btn-outline-success "
+					data-toggle="collapse" data-target="#demo" style="width: 400px;"></button>
+				<div class="collapse" id="demo">
+					<button type="button" class="nav-link btn btn-outline-success"
+						id="myinfo-tab1" style="width: 400px;">나의 정보</button>
+					<button type="button" class="nav-link btn btn-outline-success"
+						id="subscribe-tab1" style="width: 400px;">구독 내역</button>
+					<button type="button" class="nav-link btn btn-outline-success"
+						id="order-tab1" style="width: 400px;">주문 내역</button>
+					<button type="button" class="nav-link btn btn-outline-success"
+						id="delivery-tab1" style="width: 400px;">배송지 관리</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div id="grid2">
+		<ul class="nav justify-content-center">
+			<li class="nav-item" role="presentation" style="margin-right: 10px;">
+				<button type="button"
+					class="nav-link active btn btn-outline-success " id="myinfo-tab"
+					style="width: 150px;">나의 정보</button>
+			</li>
+			<li class="nav-item" role="presentation" style="margin-right: 10px;">
+				<button type="button" class="nav-link btn btn-outline-success"
+					id="subscribe-tab" style="width: 150px;">구독 내역</button>
+			</li>
+			<li class="nav-item" role="presentation" style="margin-right: 10px;">
+				<button type="button" class="nav-link btn btn-outline-success"
+					id="order-tab" style="width: 150px;">주문 내역</button>
+			</li>
+			<li class="nav-item" role="presentation" style="margin-right: 10px;">
+				<button type="button" class="nav-link btn btn-outline-success"
+					id="delivery-tab" style="width: 150px;">배송지 관리</button>
+			</li>
+		</ul>
+	</div>
 </section>
 
 <!-- 나의 정보 내역 내용 -->
@@ -312,72 +261,71 @@ prefix="c"%>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-  function findAddr() {
-    new daum.Postcode({
-      oncomplete: function (data) {
-        console.log(data);
-        var roadAddr = data.roadAddress;
-        var jibunAddr = data.jibunAddress;
-        document.getElementById('member_post').value = data.zonecode;
-        if (roadAddr !== '') {
-          document.getElementById('address').value = roadAddr;
-        } else if (jibunAddr !== '') {
-          document.getElementById('address').value = jibunAddr;
-        }
-      },
-    }).open();
-  }
-  //  wide
-  $('.nav-link').click(function () {
-    $('.nav-link').removeClass('active');
-    $(this).addClass('active');
-  });
+	function findAddr() {
+		new daum.Postcode({
+			oncomplete : function(data) {
+				console.log(data);
+				var roadAddr = data.roadAddress;
+				var jibunAddr = data.jibunAddress;
+				document.getElementById('member_post').value = data.zonecode;
+				if (roadAddr !== '') {
+					document.getElementById('address').value = roadAddr;
+				} else if (jibunAddr !== '') {
+					document.getElementById('address').value = jibunAddr;
+				}
+			},
+		}).open();
+	}
+	//  wide 
+	$('.nav-link').click(function() {
+		$('.nav-link').removeClass('active');
+		$(this).addClass('active');
+	});
 
-  $('#myinfo-tab').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#myinfoPage').css('display', 'block');
-  });
+	$('#myinfo-tab').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#myinfoPage').css('display', 'block');
+	});
 
-  $('#subscribe-tab').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#subPage').css('display', 'block');
-  });
+	$('#subscribe-tab').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#subPage').css('display', 'block');
+	});
 
-  $('#order-tab').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#orderPage').css('display', 'block');
-  });
+	$('#order-tab').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#orderPage').css('display', 'block');
+	});
 
-  $('#delivery-tab').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#deliveryPage').css('display', 'block');
-  });
+	$('#delivery-tab').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#deliveryPage').css('display', 'block');
+	});
 
-  // dropdown
-  $('#myinfo-tab1').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#myinfoPage').css('display', 'block');
-  });
+	// dropdown
+	$('#myinfo-tab1').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#myinfoPage').css('display', 'block');
+	});
 
-  $('#subscribe-tab1').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#subPage').css('display', 'block');
-  });
+	$('#subscribe-tab1').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#subPage').css('display', 'block');
+	});
 
-  $('#order-tab1').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#orderPage').css('display', 'block');
-  });
+	$('#order-tab1').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#orderPage').css('display', 'block');
+	});
 
-  $('#delivery-tab1').click(function () {
-    $('.pageSection').css('display', 'none');
-    $('#deliveryPage').css('display', 'block');
-  });
+	$('#delivery-tab1').click(function() {
+		$('.pageSection').css('display', 'none');
+		$('#deliveryPage').css('display', 'block');
+	});
 
-  $(document).ready(function () {
-    $('li.active').removeClass('active');
-    $('a[href="' + 'mypageinfo' + '"]')
-      .closest('li')
-      .addClass('active');
-  });
+	$(document).ready(function() {
+		$('li.active').removeClass('active');
+		$('a[href="' + "mypageinfo" + '"]').closest('li').addClass('active');
+	});
 </script>
+
