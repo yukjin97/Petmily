@@ -2,18 +2,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.ProductDAO">
-	
+
 	<select id="allProduct" resultType="product">
 		<![CDATA[
 			select * from product
 		]]>
 	</select>
-	
-	<select id="selectProduct" resultType="product" parameterType="int" > 
+
+	<select id="selectProduct" resultType="product"
+		parameterType="int"> 
 		<![CDATA[
 			select * from product where prod_num = #{prod_num}
-		]]>	
+		]]>
 	</select>
+<<<<<<< HEAD
 	
 	<select id="selectPrice"  resultType="int" parameterType="int" > 
 		<![CDATA[
@@ -22,18 +24,25 @@
 	</select>
 	
 	
+=======
+>>>>>>> refs/heads/hyun
 	<select id="selectProductCount" resultType="int">
 		<![CDATA[
 			select count(*) from product
-		]]>	
+		]]>
 	</select>
-	
- 	<select id="selectProductList" resultType="product" parameterType="int">
+	<select id="selectProductList" resultType="product"
+		parameterType="int">
  		<![CDATA[
  			select * from (select @rownum:=@rownum+1 rnum, tot.* 
 					from (select * from product order by prod_num desc) tot, 
 					(select @rownum:=0) temp) sub
 			where rnum between #{startrow} and #{startrow}+9		
  		]]>
- 	</select>
+	</select>
+	<select id="selectProductViewCnt" parameterType="int" resultType="product">
+		<![CDATA[
+			select * from product order by prod_view_cnt desc limit 3
+		]]>
+	</select>
 </mapper>

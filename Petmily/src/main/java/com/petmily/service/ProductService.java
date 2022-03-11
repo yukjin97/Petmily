@@ -19,4 +19,6 @@ public interface ProductService {
 	public int selectPrice(int prod_num) throws Exception;
 	
 	public List<Product> getProductList(int page, PageInfo pageInfo) throws Exception;
+	
+	public List<Product> getBestViewList(int prod_view_cnt)throws Exception;
 }
