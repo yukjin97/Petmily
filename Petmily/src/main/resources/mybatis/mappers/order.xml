@@ -29,10 +29,11 @@
 
 	<!--주문 내역 조회 -->
 	<select id="orderDetail" resultType="order" parameterType="String">
-		select p.prod_name, p.prod_price, o.user_id,
-		o.order_date, o.order_num, o.order_count
-		from petmily.order o, product p
-		where o.user_id = #{user_id}
+		<![CDATA[
+		select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
+		from petmily.order o, product p where p.prod_num = o.prod_num and user_id = #{user_id}
+		]]>
 	</select>
+
 
 </mapper>
