@@ -23,8 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.petmily.dao.ProductDAO;
 import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
+import com.petmily.dto.Review;
 import com.petmily.service.AdminService;
 import com.petmily.service.ProductService;
+import com.petmily.service.ReviewService;
 
 @Controller
 public class ProductController {
@@ -37,6 +39,9 @@ public class ProductController {
 	
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	ReviewService reviewService;
 	
 //	@GetMapping("/productall")
 //	public ModelAndView productAllPage() {
@@ -52,7 +57,7 @@ public class ProductController {
 //	}
 
 	
-	@RequestMapping(value = "productall",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "product",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView productlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page) {
 		ModelAndView mav = new ModelAndView();
 		PageInfo pageInfo = new PageInfo();
@@ -84,12 +89,32 @@ public class ProductController {
 
 
 
+//	@RequestMapping("/product/detail/{prod_num}")
+//	public ModelAndView detailPage(@PathVariable int prod_num) {
+//		ModelAndView mav = new ModelAndView();
+//		try {
+//			Product product = productService.selectProduct(prod_num);
+//			mav.addObject("product",product);
+//			mav.setViewName("detailproduct");
+//			log.info(product);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} 
+//		return mav;
+//	}
+	
 	@RequestMapping("/product/detail/{prod_num}")
-	public ModelAndView detailPage(@PathVariable int prod_num) {
-		ModelAndView mav = new ModelAndView("productall");
+	public ModelAndView detailPage(@RequestParam (value = "page",required = false ,defaultValue = "1") int page , @PathVariable int prod_num) {
+		ModelAndView mav = new ModelAndView();
+		PageInfo pageInfo = new PageInfo();
 		try {
 			Product product = productService.selectProduct(prod_num);
 			mav.addObject("product",product);
+			
+			List<Review> reviewList = reviewService.getreviewList(prod_num, page, pageInfo);
+			mav.addObject("reviewlist",reviewList);
+			mav.addObject("pageInfo" , pageInfo);
+			
 			mav.setViewName("detailproduct");
 			log.info(product);
 		} catch (Exception e) {
@@ -97,7 +122,6 @@ public class ProductController {
 		} 
 		return mav;
 	}
-	
 	
 
 }

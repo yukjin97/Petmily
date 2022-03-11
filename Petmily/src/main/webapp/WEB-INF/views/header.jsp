@@ -86,7 +86,7 @@
 						</c:choose>
 					<li class="nav-item"><a href="subscribe" class="nav-link">구독</a>
 					</li>
-					<li class="nav-item"><a href="productall" class="nav-link">스토어</a>
+					<li class="nav-item"><a href="product" class="nav-link">스토어</a>
 					</li>
 					<li class="nav-item"><a href="mypageinfo" class="nav-link">마이페이지</a>
 					</li>
