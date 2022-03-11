@@ -2,6 +2,7 @@ package com.petmily.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -83,5 +84,10 @@ public class MembershipServiceImpl implements MembershipService {
 			}
 			
 		}
+	}
+
+	@Override
+	public void delete_mem(Map<String, Object> map) throws Exception {
+		membershipDAO.delete_mem(map);
 	}
 }

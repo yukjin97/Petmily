@@ -137,7 +137,7 @@
                         <th scope="row">${rmem.mem_grade}</th>
                         <tr>
                           <td>다음 결제일은 ${rmem.mem_next_date}</td><td style="padding-left: 25px;">
-                          <input class="Withdrawal" type="checkbox" value="${rmem_mem_grade}" style="display:none;"></td>
+                          <input class="Withdrawal" type="checkbox" value="${rmem.mem_grade}" style="display:none;" name="memcheck[]"></td>
                         </tr>
                       </c:forEach>
                     </c:otherwise>
@@ -156,8 +156,8 @@
             id="withdrawal_btn"
           />
           <div style="display:none" class="Withdrawal">
-          <input type="text" placeholder='"구독해지" 를 입력해주세요' style="margin-top:5%;" class="form-control">
-          <input type="submit" value="확인" style="margin-top:1%;" class="btn btn-danger">
+          <input type="text" placeholder='"구독해지" 를 입력해주세요' style="margin-top:5%;" class="form-control" id="check"/>
+          <input type="submit" value="확인" style="margin-top:1%;" class="btn btn-danger" id="submit"/>
           </div>
           </form>
       </div>
@@ -273,7 +273,8 @@
 
 <!-- footer include -->
 <jsp:include page="footer.jsp" />
-
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	function findAddr() {
@@ -352,5 +353,18 @@
 			$('.Withdrawal').css('display', 'block');
 		}
 	  });
+  
+  $('#submit').click(function(){
+	 if($('#check').val()!="구독해지"){
+		 $('#check').focus();
+		 Swal.fire({
+	            icon: 'error',
+	            title: '구독해지를 적어주세요.',
+	            text: '다시 한번 시도해주세요.',
+	          }); return false;
+	 } else{
+		 return true;
+	 }
+  });
 </script>
 
