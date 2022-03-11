@@ -91,6 +91,7 @@ public class MypageController {
             myPageService.userAddressModify(user);
             user = myPageService.myPageInfo(user_id);
             mav.addObject("user", user);
+            mav.setViewName("redirect:/mypageinfo");
          } catch (Exception e) {
             e.printStackTrace();
             mav.setViewName("err");
