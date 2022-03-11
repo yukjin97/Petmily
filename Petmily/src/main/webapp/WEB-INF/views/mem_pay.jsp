@@ -18,14 +18,14 @@
                 <div class="row">
                     <div class="col-6">
                         <h3 style="width: 150px;">배송 정보</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
+                        <label for="fname"><i class="fa fa-user"></i>이름</label><br>
                         <input type="text" id="fname" name="firstname" value="${pay.user_name }" style="width: 350px;" disabled><br>
-                        <label for="email"><i class='fa fa-phone'></i> Phone</label><br>
+                        <label for="email"><i class='fa fa-phone'></i>전화번호</label><br>
                         <input type="text" id="email" name="email" value="${pay.user_phone }" style="width: 350px;" disabled><br>
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                        <label for="adr"><i class="fa fa-address-card-o"></i>주소</label>
                         <input type="text" id="adr" name="address" value="${pay.user_address1 }" style="width: 350px;" disabled>
                         <input type="text" id="city" name="city" value="${pay.user_address2 }" style="margin-top:10px; width:350px;" disabled><br>
-						<label for="zip"><i class='fa fa-institution'></i> Zip</label><br>
+						<label for="zip"><i class='fa fa-institution'></i>우편번호</label><br>
                         <input type="text" id="zip" name="zip" value="${pay.user_zipcode }" style="width: 350px;" disabled><br>
                         <label for="gradename"><i class='fa fa-paw'></i> 제품 이름</label><br>
                         <input type="text" id="zip" name="zip" value="${mem_name }" style="width: 350px;" disabled><br>
@@ -42,39 +42,11 @@
 	</div>
 		</div>
 	</div>
+<form action="mem_pay" method="post">
+						<input type="submit" value="등록" style="display: none;" id="submit">
+					</form>
 
 </section>
-<%-- <section class="ftco-section bg-light" style="padding-top: 0px;">
-	<div class="container">
-		 <div class="row space-top space-left">
-        <div class="col-8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label><br>
-                        <input type="text" id="fname" name="firstname" value="${pay.user_name }" disabled><br>
-                        <label for="email"><i class='fa fa-phone'></i> Phone</label><br>
-                        <input type="text" id="email" name="email" value="${pay.user_phone }" disabled><br>
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                        <input type="text" id="adr" name="address" value="${pay.user_address1 }" style="width: 457.99306px;" disabled>
-                        <input type="text" id="city" name="city" value="${pay.user_address2 }" style="margin-top:10px;" disabled><br>
-						<label for="zip"><i class='fa fa-institution'></i> Zip</label><br>
-                        <input type="text" id="zip" name="zip" value="${pay.user_zipcode }" disabled><br>
-                        <label for="gradename"><i class='fa fa-paw'></i> 제품 이름</label><br>
-                        <input type="text" id="zip" name="zip" value="${mem_name }" disabled><br>
-                        <label for="zip"><i class='fa fa-won'></i> 가격</label><br>
-                        <input type="text" id="zip" name="zip" value="${mem_price }" disabled><br>
-                        <input type="button" value="결제" id="check_module" style="margin-top:20px;">
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-	</div>
-</section> --%>
 
 <jsp:include page="footer.jsp" />
 <!-- jQuery -->
