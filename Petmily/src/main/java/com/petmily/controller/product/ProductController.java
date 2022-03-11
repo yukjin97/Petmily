@@ -23,8 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.petmily.dao.ProductDAO;
 import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
+import com.petmily.dto.Review;
 import com.petmily.service.AdminService;
 import com.petmily.service.ProductService;
+import com.petmily.service.ReviewService;
 
 @Controller
 public class ProductController {
@@ -39,7 +41,9 @@ public class ProductController {
 	AdminService adminService;
 
 	
-	//페이징 처리전 화면에 뿌려주는 코드
+	@Autowired
+	ReviewService reviewService;
+	
 //	@GetMapping("/productall")
 //	public ModelAndView productAllPage() {
 //		ModelAndView mav = new ModelAndView("productall");
@@ -85,13 +89,33 @@ public class ProductController {
 
 
 
+
+//	@RequestMapping("/product/detail/{prod_num}")
+//	public ModelAndView detailPage(@PathVariable int prod_num) {
+//		ModelAndView mav = new ModelAndView();
+//		try {
+//			Product product = productService.selectProduct(prod_num);
+//			mav.addObject("product",product);
+//			mav.setViewName("detailproduct");
+//			log.info(product);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} 
+//		return mav;
+//	}
 	
 	@RequestMapping("/product/detail/{prod_num}")
-	public ModelAndView detailPage(@PathVariable int prod_num) {
+	public ModelAndView detailPage(@RequestParam (value = "page",required = false ,defaultValue = "1") int page , @PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView();
+		PageInfo pageInfo = new PageInfo();
 		try {
 			Product product = productService.selectProduct(prod_num);
 			mav.addObject("product",product);
+			
+			List<Review> reviewList = reviewService.getreviewList(prod_num, page, pageInfo);
+			mav.addObject("reviewlist",reviewList);
+			mav.addObject("pageInfo" , pageInfo);
+			
 			mav.setViewName("detailproduct");
 			log.info(product);
 		} catch (Exception e) {
@@ -99,7 +123,6 @@ public class ProductController {
 		} 
 		return mav;
 	}
-	
 	
 
 }

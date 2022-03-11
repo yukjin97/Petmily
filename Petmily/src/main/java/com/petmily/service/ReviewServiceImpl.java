@@ -1,7 +1,9 @@
 package com.petmily.service;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,30 +19,21 @@ public class ReviewServiceImpl implements ReviewService {
 	ReviewDAO reviewDAO;
 
 	@Override
-	public void reviewrite(Review review) throws Exception {
-		Integer review_num = reviewDAO.selectMaxReviewNum();
-		if(review_num==null) {
-			review_num =1;
-		} else {
-			review_num +=1;
-		}
-		review.setReview_num(review_num);
+	public void insertReview(Review review) throws Exception {
 		reviewDAO.insertReview(review);
 	}
 
 	@Override
-	public List<Review> reviewList(int page, PageInfo pageInfo, String search_review) throws Exception {
-		int listCount = reviewDAO.selectReviewCount(search_review);
-		// teable에 있는 모든 row 개수 
+	public List<Review> getreviewList(int prod_num, int page, PageInfo pageInfo) throws Exception  {
+		int listCount = reviewDAO.selectReviewCount(prod_num);
+		// table 에 있는 모든 row의 수
+		System.out.println("List카운트 :" + listCount);
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
-		// 그 개수를 10으로 나누고 올림처리하여 페이지 수 계산
 		
 		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
-		// 현재 페이지에 보여줄 시작 페이지 수 
 		
 		int endPage=startPage+10-1;
-		// 현제페이에서 보여줄 마지막 페이지 수 
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -48,16 +41,17 @@ public class ReviewServiceImpl implements ReviewService {
 		pageInfo.setMaxPage(maxPage);
 		pageInfo.setPage(page);
 		pageInfo.setListCount(listCount);
+		//컨트롤러가 생성한 pageInfo 객체를 해당 메서드의 매개변수로 넘겨준다,
+		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
+		//getter로 받을 수 있다.
 		
+		int startrow=(page-1)*10+1;
 		
-		int startrow= (page-1)*10+1;
+		Map<String, Object> testMap= new HashMap<String, Object>();
+		testMap.put("prod_num", prod_num);
+		testMap.put("startrow", startrow);
 		
-		
-		return reviewDAO.selectReviewList(startrow,search_review);
-		
+		return reviewDAO.selectReviewlist(testMap);
 	}
-
-
-
 
 }

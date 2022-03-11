@@ -77,10 +77,11 @@
 
 <!-- footer include -->
 <jsp:include page="footer.jsp" />
+<!--누가해킹함  -->
 <script>
 	$(document).ready(function() {
 		$('li.active').removeClass('active');
-		$('a[href="' + "productall" + '"]').closest('li').addClass('active');
+		$('a[href="' + "/product" + '"]').closest('li').addClass('active');
 	});
 </script>
 

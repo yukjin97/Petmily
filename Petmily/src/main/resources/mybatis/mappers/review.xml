@@ -2,22 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.ReviewDAO">
-	<select id="selectReviewCount" resultType="int">
 
-	</select>
 
 
 	<insert id="insertReview">
 	<![CDATA[
-		insert into review ( review_title, review_content , review_create_date) 
-		values(#{review_title} , #{review_content} , now() )
+		insert into review (prod_num , review_title, review_content , review_create_date) 
+		values(#{prod_num},  #{review_title} , #{review_content} , now() )
 	]]>
 	</insert>
 
 
-	<select id="selectMaxReviewNum" resultType="Integer">
-	<![CDATA[
-		select max(review_num) from review
- 	]]>
+	<select id="selectReviewCount" resultType="int" parameterType="int">
+		<![CDATA[
+			select count(*)	from review	where prod_num= #{prod_num}			
+		]]>
 	</select>
+	
+	
+	 <select id="selectReviewlist" resultType="review" parameterType="Map">
+ 		<![CDATA[
+ 			select * from (select @rownum:=@rownum+1 rnum, tot.* 
+					from (select * from review where prod_num= #{prod_num} order by review_num desc) tot, 
+					(select @rownum:=0) temp) sub
+			where rnum between #{startrow} and #{startrow}+9		
+ 		]]>
+ 	</select>
+	
+	
 </mapper>
