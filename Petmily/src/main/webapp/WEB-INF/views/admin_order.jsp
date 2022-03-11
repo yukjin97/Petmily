@@ -44,18 +44,21 @@
 			"
 				data-bs-target="#v-order" type="button" role="tab"
 				onclick="location.href='admin_order'">상품 주문</button>
-
-			<button id="v-delivery-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-delivery" type="button" role="tab"
-				onclick="location.href='admin_ship'">배송</button>
+         <button id="v-delivery-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_ship'">배송조회 [단품]</button>
+            
+                     <button id="v-delivery-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_mem_ship'">배송조회 [구독]</button>
 		</div>
 	</div>
 
 
 	<section id="order_form"
-		style="padding-left: 500px; height: 1150px; width: 1500px; padding-top: 50px; padding-bottom: 100px;">
+		style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;">
 
 
 		<c:choose>
@@ -73,7 +76,10 @@
 					</form>
 					
 
-					<div class="table-responsive">
+					<div class="table-responsive" style="
+					display: block;
+    				width: 100%;
+    				overflow-x: inherit;">
 <form action="updateOrderStatus" method="post">
 						<table class="table custom-table">
 							<thead>
@@ -113,7 +119,8 @@
 							</tbody>
 
 						</table>
-						<input type="submit" value="처리">
+						<input type="submit" value="처리" class="btn btn-outline-success"
+							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
 						</form>
 					</div>
 				</section>

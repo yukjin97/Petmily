@@ -43,6 +43,19 @@ public class AdminController {
 		return "/admin_membership";
 	}
 
+	@PostMapping(value = "UpdateMemStatus")
+	public String updateMemStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "ordercheck[]")String[] ordercheck) {
+		try {
+			map.put("array", ordercheck);
+			adminservice.updateMemStatus(map);
+			return "redirect:/admin_membership";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_membership";
+	}
+	
+	
 	@GetMapping(value = "/admin_product")
 	public String admin_product(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			Model model, @RequestParam(value = "search_prod", defaultValue = "") String search_prod) {
@@ -181,5 +194,20 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return "/admin_ship";
+	}	
+	
+	@GetMapping(value ="/admin_mem_ship")
+	public String admin_mem_ship (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Admin> admin_mem_ship = adminservice.memshipList(page,pageInfo,search_text);
+			model.addAttribute("search_text", search_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_mem_ship", admin_mem_ship);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_mem_ship";
 	}	
 }

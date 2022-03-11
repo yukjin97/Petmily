@@ -40,4 +40,9 @@ public interface AdminDAO {
 	
 	public int selectShipCount(@Param(value = "search_text")String search_text) throws Exception;
 	public List<Admin> selectShipList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
+	
+	public void updateMemStatus(Map<String, Object> map)throws Exception;
+	
+	public int selectMemShipCount(@Param(value = "search_text")String search_text)throws Exception;
+	public List<Admin> selectMemShipList(@Param(value="startrow")int startrow,  @Param(value="search_text")String search_text)throws Exception;
 }
