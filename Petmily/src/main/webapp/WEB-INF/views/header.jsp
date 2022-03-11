@@ -88,8 +88,6 @@
 					</li>
 					<li class="nav-item"><a href="/product" class="nav-link">스토어</a>
 					</li>
-					<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
-					</li>
 					<li class="nav-item"><a href="/join" class="nav-link">회원가입</a>
 					</li>
 					<c:choose>
@@ -98,6 +96,8 @@
 							</li>
 						</c:when>
 						<c:otherwise>
+					<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
+					</li>
 							<li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a>
 							</li>
 						</c:otherwise>
