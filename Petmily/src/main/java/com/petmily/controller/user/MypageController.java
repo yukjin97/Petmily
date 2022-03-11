@@ -98,17 +98,4 @@ public class MypageController {
          }
          return mav;
       }
-    
-		/*
-		 * @PostMapping(value="withdraw_membership") public ModelAndView
-		 * withdrawMembership(@ModelAttribute User user) { ModelAndView mav = new
-		 * ModelAndView("mypageinfo"); String user_id =
-		 * (String)session.getAttribute("user_id"); try {
-		 * 
-		 * } catch (Exception e) {
-		 * 
-		 * } return mav;
-		 * 
-		 * }
-		 */
    }
