@@ -32,7 +32,9 @@
                         <label for="zip"><i class='fa fa-won'></i> 가격</label><br>
                         <input type="text" id="zip" name="zip" value="${mem_price }" style="width: 350px;" disabled><br>
                         <input type="button" value="결제" id="check_module" style="margin-top:20px;">
-
+					 	<form action="mem_pay" method="post">
+						<input type="submit" value="등록" style="display: none;" id="submit">
+						</form>
                     </div>
                 </div>
             </div>

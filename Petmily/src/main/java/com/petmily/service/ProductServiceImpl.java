@@ -1,5 +1,6 @@
 package com.petmily.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class ProductServiceImpl implements ProductService {
 
 
 	@Override
+	public int selectPrice(int prod_num) throws Exception {
+		return productDAO.selectPrice(prod_num);
+	}
+	
+	@Override
 	public List<Product> getProductList(int page, PageInfo pageInfo) throws Exception {
 		int listCount = productDAO.selectProductCount();
 		// table 에 있는 모든 row의 수
@@ -65,5 +71,6 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.selectProductList(startrow);
 	}
 	
+
 	
 }
