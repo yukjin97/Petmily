@@ -50,8 +50,7 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<Order> orderDetail(String user_id) throws Exception {
-		return orderDAO.orderDetail(user_id);
-	}
-	
+	   public List<Order> orderDetail(String user_id) throws Exception {
+	      return orderDAO.orderDetail(user_id);
+	   }
 }

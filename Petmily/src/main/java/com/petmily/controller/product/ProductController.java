@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dao.ProductDAO;
+import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
+import com.petmily.service.AdminService;
 import com.petmily.service.ProductService;
 
 @Controller
@@ -32,20 +35,38 @@ public class ProductController {
 	@Autowired
 	ProductDAO productDAO;
 	
+	@Autowired
+	AdminService adminService;
 	
-	@GetMapping("/productall")
-	public ModelAndView productAllPage() {
-		ModelAndView mav = new ModelAndView("productall");
+//	@GetMapping("/productall")
+//	public ModelAndView productAllPage() {
+//		ModelAndView mav = new ModelAndView("productall");
+//		try {
+//			List<Product> product=productService.allProduct();
+//			mav.addObject("product",product);
+//			log.info(product);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return mav;
+//	}
+
+	
+	@RequestMapping(value = "productall",method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView productlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page) {
+		ModelAndView mav = new ModelAndView();
+		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Product> product=productService.allProduct();
-			mav.addObject("product",product);
-			
-			log.info(product);
+			List<Product> articleList = productService.getProductList(page, pageInfo);
+			mav.addObject("articleList",articleList);
+			mav.addObject("pageInfo",pageInfo);
+			mav.setViewName("productall");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
+	
 
 	
  	
@@ -76,5 +97,7 @@ public class ProductController {
 		} 
 		return mav;
 	}
+	
+	
 
 }

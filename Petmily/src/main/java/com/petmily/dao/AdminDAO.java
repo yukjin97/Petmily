@@ -1,6 +1,7 @@
 package com.petmily.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -34,4 +35,14 @@ public interface AdminDAO {
 	
 	public int selectOrderCount(@Param(value = "search_text")String search_text) throws Exception;
 	public List<Admin> selectOrderList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
+	
+	public void updateOrderStatus(Map<String, Object> map) throws Exception;
+	
+	public int selectShipCount(@Param(value = "search_text")String search_text) throws Exception;
+	public List<Admin> selectShipList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text) throws Exception;
+	
+	public void updateMemStatus(Map<String, Object> map)throws Exception;
+	
+	public int selectMemShipCount(@Param(value = "search_text")String search_text)throws Exception;
+	public List<Admin> selectMemShipList(@Param(value="startrow")int startrow,  @Param(value="search_text")String search_text)throws Exception;
 }

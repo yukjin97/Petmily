@@ -28,27 +28,27 @@ public class MypageController {
 	MembershipService membershipService;
 	
 
-	// 로그인 -> 마이페이지_나의정보, 구독내역, 주문내역, 배송내역 조회
-	@GetMapping(value = "/mypageinfo")
-	public ModelAndView mypage(@ModelAttribute Membership mem) {
-		ModelAndView mav = new ModelAndView("mypageinfo");
-		String user_id = (String) session.getAttribute("user_id");
-		try {
-			User user = myPageService.myPageInfo(user_id);
-			Membership rmem = myPageService.myMemberShipInfo(user_id);
-			List<Order> orderList = myPageService.orderDetail(user_id);
-			myPageService.userAddressModify(user);
-			user = myPageService.myPageInfo(user_id);
-			mem.setUser_id(user_id); // 유저객체 아이디
-			mav.addObject("user", user);
-			mav.addObject("orderList", orderList);
-			mav.addObject("rmem", rmem);
+   // 로그인 -> 마이페이지_나의정보, 구독내역, 주문내역, 배송내역 조회
+   @GetMapping(value = "/mypageinfo")
+      public ModelAndView mypage(@ModelAttribute Membership mem) {
+         ModelAndView mav = new ModelAndView("mypageinfo");
+         String user_id = (String) session.getAttribute("user_id");
+         try {     	 
+        	User user = myPageService.myPageInfo(user_id);
+        	List<Membership> rmem = membershipService.membershipList(user_id);
+        	List<Order> orderList = myPageService.orderDetail(user_id);
+            myPageService.userAddressModify(user);
+            user = myPageService.myPageInfo(user_id);
+            mem.setUser_id(user_id); // 유저객체 아이디
+            mav.addObject("user", user);
+            mav.addObject("rmem", rmem);
+            mav.addObject("orderList", orderList);
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+         return mav;
+      }
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mav;
-	}
 
 	// 마이페이지_유저 수정(Get)
 	@GetMapping(value = "usermodify")
@@ -99,3 +99,4 @@ public class MypageController {
 		return mav;
 	}
 }
+

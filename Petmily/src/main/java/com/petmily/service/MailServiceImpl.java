@@ -11,7 +11,6 @@ import com.petmily.dto.User;
 import com.petmily.handler.MailHandler;
 
 @Service
-@PropertySource("classpath:/application.properties")
 public class MailServiceImpl implements MailService {
 	
 	@Autowired
@@ -31,10 +30,10 @@ public class MailServiceImpl implements MailService {
 			mailHandler.setTo(mail.getAddress());
 			mailHandler.setFrom("oxwk123@naver.com");
 			mailHandler.setSubject(mail.getTitle());
-			String htmlContent ="<img src='cid:welcome-img'>";
+			String htmlContent = "<h1>Petmily 회원이 되신것을 환영합니다.</h1>"
+					+ "<br>"
+					+ "<h2>메일 TEST</h2>" ;
             mailHandler.setText(htmlContent, true);
-			mailHandler.setInline("welcome-img", "resource/mail/welcome.jpg");
- 		    mailHandler.setAttach("펫밀리 안내.pdf", "resource/mail/펫밀리 구독.pdf");
 			mailHandler.send();
 		} catch (Exception e) {
 			e.printStackTrace();

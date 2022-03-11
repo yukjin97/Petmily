@@ -19,10 +19,18 @@
 
 	<update id="mem_payment">
 		<![CDATA[
-		update product set prod_amount = case when prod_amount > 0 then prod_amount-1 else prod_amount end,
-		prod_amount = case when prod_amount < 0  then prod_amount = 0 else prod_amount end,
+		update product set 
+		prod_amount = case when prod_amount >= 0 then prod_amount-1 else prod_amount end,
 	 	remain_amount = case when prod_amount < 0 then remain_amount+1 else remain_amount end,
    		prod_${mem_grade}=prod_${mem_grade}+1
+   		where prod_num=#{fix1} or prod_num=#{fix2} or prod_num=#{fix3}
+		]]>
+	</update>
+
+	<update id="mem_payment2">
+		<![CDATA[
+		update product set 
+		prod_amount = case when prod_amount < 0 then prod_amount=0 else prod_amount end
    		where prod_num=#{fix1} or prod_num=#{fix2} or prod_num=#{fix3}
 		]]>
 	</update>

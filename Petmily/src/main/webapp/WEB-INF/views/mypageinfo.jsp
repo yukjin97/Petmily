@@ -79,128 +79,187 @@
 	</div>
 </section>
 
-
 <!-- 나의 정보 내역 내용 -->
 <div class="tab-content mx-5" id="myTabContent">
-	<div class="row d-flex justify-content-center align-items-center h-100">
-		<div style="height: 500px; width: 500px; margin-top: 100px">
-			<div id="myinfoPage" class="pageSection">
-				<div class="table-responsive">
-					<table class="table">
-						<tbody>
-							<tr>
-								<th scope="row">Name</th>
-								<td>${user.user_name }</td>
-							</tr>
-							<tr>
-								<th scope="row">Id</th>
-								<td>${user.user_id }</td>
-							</tr>
-							<tr>
-								<th scope="row">Nickname</th>
-								<td>${user.user_nickname }</td>
-							</tr>
-							<tr>
-								<th scope="row">Phone</th>
-								<td>${user.user_phone }</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div>
-					<input type="button" class="btn btn-success"
-						onclick="location.href='usermodify'" value="수정하기" />
-				</div>
-			</div>
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div style="height: 500px; width: 500px; margin-top: 100px">
+      <div id="myinfoPage" class="pageSection">
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Name</th>
+                <td>${user.user_name }</td>
+              </tr>
+              <tr>
+                <th scope="row">Id</th>
+                <td>${user.user_id }</td>
+              </tr>
+              <tr>
+                <th scope="row">Nickname</th>
+                <td>${user.user_nickname }</td>
+              </tr>
+              <tr>
+                <th scope="row">Phone</th>
+                <td>${user.user_phone }</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <input
+            type="button"
+            class="btn btn-success"
+            onclick="location.href='usermodify'"
+            value="수정하기"
+          />
+        </div>
+      </div>
 
-			<!-- 구독 내역 내용 -->
-			<div id="subPage" class="pageSection" style="display: none">
-				<div class="table-responsive">
-					<table class="t_margin_auto width100 ds-table">
-						<tbody>
-							<tr>
-								<td>현재 구독 내역 ${rmem.mem_grade}</td>
-							</tr>
-							<tr>
-								<td>다음 구독 결제일은 ${rmem.mem_next_date}입니다.</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
+      <!-- 구독 내역 내용 -->
+      <div id="subPage" class="pageSection" style="display: none">
+        <div class="table-responsive">
+          <div class="card" style="border-radius: 15px">
+            <div class="card-body p-5">
+              <table class="t_margin_auto width100 ds-table">
+                <tbody>
+             
+                  <c:choose>
+                    <c:when test="${empty rmem}">
+                      <tr>
+                        <td>구독부터 하세요</td>
+                      </tr>
+                    </c:when>
+                    <c:otherwise>
+                         ${user.user_nickname }님의 구독중인 서비스
+                      <c:forEach items="${rmem }" var="rmem">
+                        <th scope="row">${rmem.mem_grade}</th>
+                        <tr>
+                          <td>다음 결제일은 ${rmem.mem_next_date}</td>
+                        </tr>
+                      </c:forEach>
+                    </c:otherwise>
+                  </c:choose>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<!-- 주문 내역 내용 -->
-			<div id="orderPage" class="pageSection" style="display: none">
-				<div class="table-responsive">
-					<table class="table">
-						<thead class=table-success>
-							<tr>
-								<th scope="col">주문번호</th>
-								<th scope="col">주문일자</th>
-								<th scope="col">상품명</th>
-								<th scope="col">주문수량</th>
-								<th scope="col">상품가격</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="order" items="${orderList }">
-								<tr>
-									<td>${order.order_num }</td>
-									<td>${order.order_date }</td>
-									<td>${order.prod_name }</td>
-									<td>${order.order_count }</td>
-									<td>${order.prod_price }</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
+      <!-- 주문 내역 내용 -->
+      <div id="orderPage" class="pageSection" style="display: none">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="table-success">
+              <tr>
+                <th scope="col">주문번호</th>
+                <th scope="col">주문일자</th>
+                <th scope="col">상품명</th>
+                <th scope="col">주문수량</th>
+                <th scope="col">상품가격</th>
+              </tr>
+            </thead>
+            <tbody>
+              <c:forEach var="order" items="${orderList }">
+                <tr>
+                  <td>${order.order_num }</td>
+                  <td>${order.order_date }</td>
+                  <td>${order.prod_name }</td>
+                  <td>${order.order_count }</td>
+                  <td>${order.prod_price }</td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-			<!-- 배송지 관리 내역 내용 -->
-			<div id="deliveryPage" class="pageSection" style="display: none">
-				<form id="form" action="mypageinfo" method="post">
-					<!--다음 주소 api  -->
-					<div class="form-outline mb-2">
-						<input type="button" readonly onclick="findAddr()" value="우편번호 찾기"
-							class="btn btn-success" style="margin-bottom: 30px;" /> <input
-							id="member_post" name="user_zipcode" type="text"
-							class="form-control form-control-lg"
-							value="${user.user_zipcode }" readonly /><br /> <label
-							class="form-label" for="form3Example3cdg">주소</label> <input
-							type="text" class="form-control form-control-lg"
-							placeholder="주소를 입력해주세요." name="user_address1"
-							value="${user.user_address1 }" id="address" readonly /><br /> <label
-							class="form-label" for="form3Example3cdg">상세주소</label> <input
-							id="detail" name="user_address2" type="text"
-							class="form-control form-control-lg"
-							value="${user.user_address2 }" placeholder="상세주소를 입력해주세요" />
-					</div>
+      <!-- 배송지 관리 내역 내용 -->
+      <div id="deliveryPage" class="pageSection" style="display: none">
+        <form id="form" action="mypageinfo" method="post">
+          <!--다음 주소 api  -->
+          <div class="form-outline mb-2">
+            <input
+              type="button"
+              readonly
+              onclick="findAddr()"
+              value="우편번호 찾기"
+              class="btn btn-success"
+              style="margin-bottom: 30px"
+            />
+            <input
+              id="member_post"
+              name="user_zipcode"
+              type="text"
+              class="form-control form-control-lg"
+              value="${user.user_zipcode }"
+              readonly
+            /><br />
+            <label class="form-label" for="form3Example3cdg">주소</label>
+            <input
+              type="text"
+              class="form-control form-control-lg"
+              placeholder="주소를 입력해주세요."
+              name="user_address1"
+              value="${user.user_address1 }"
+              id="address"
+              readonly
+            /><br />
+            <label class="form-label" for="form3Example3cdg">상세주소</label>
+            <input
+              id="detail"
+              name="user_address2"
+              type="text"
+              class="form-control form-control-lg"
+              value="${user.user_address2 }"
+              placeholder="상세주소를 입력해주세요"
+            />
+          </div>
 
-					<!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
-					<div id="layer"
-						style="display: none; position: fixed; overflow: hidden; z-index: 1; -webkit-overflow-scrolling: touch;">
-						<img src="//t1.daumcdn.net/postcode/resource/images/close.png"
-							id="btnCloseLayer"
-							style="cursor: pointer; position: absolute; right: -3px; top: -3px; z-index: 1;"
-							onclick="closeDaumPostcode()" alt="닫기 버튼" />
-					</div>
-					<div>
-						<input type="submit" class="btn btn-success" value="수정하기"
-							style="margin-top: 30px" />
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+          <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+          <div
+            id="layer"
+            style="
+              display: none;
+              position: fixed;
+              overflow: hidden;
+              z-index: 1;
+              -webkit-overflow-scrolling: touch;
+            "
+          >
+            <img
+              src="//t1.daumcdn.net/postcode/resource/images/close.png"
+              id="btnCloseLayer"
+              style="
+                cursor: pointer;
+                position: absolute;
+                right: -3px;
+                top: -3px;
+                z-index: 1;
+              "
+              onclick="closeDaumPostcode()"
+              alt="닫기 버튼"
+            />
+          </div>
+          <div>
+            <input
+              type="submit"
+              class="btn btn-success"
+              value="수정하기"
+              style="margin-top: 30px"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 <!-- footer include -->
 <jsp:include page="footer.jsp" />
 
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	function findAddr() {
 		new daum.Postcode({
