@@ -27,6 +27,5 @@ public class CartServiceImpl implements CartService {
 	public Product prodQueryByProdNum(int prod_num) throws Exception {
 		return cartDao.prodQueryByProdNum(prod_num);
 	}
-
-
+	
 }

@@ -1,4 +1,5 @@
 package com.petmily.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.petmily.dto.Product;
@@ -14,4 +15,5 @@ public interface ProductService {
 
 	public Product selectProduct(int prod_num) throws Exception;
 
+	public int selectPrice(int prod_num) throws Exception;
 }

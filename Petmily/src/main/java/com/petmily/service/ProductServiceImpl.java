@@ -1,5 +1,6 @@
 package com.petmily.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class ProductServiceImpl implements ProductService {
 	public Product selectProduct(int prod_num) throws Exception {
 		return productDAO.selectProduct(prod_num);
 	}
+
+
+	@Override
+	public int selectPrice(int prod_num) throws Exception {
+		return productDAO.selectPrice(prod_num);
+	}
 	
+
 	
 }

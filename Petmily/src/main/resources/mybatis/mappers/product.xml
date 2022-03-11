@@ -15,5 +15,10 @@
 		]]>	
 	</select>
 	
+	<select id="selectPrice"  resultType="int" parameterType="int" > 
+		<![CDATA[
+			select prod_price from product where prod_num = #{prod_num}
+		]]>	
+	</select>
 	
 </mapper>

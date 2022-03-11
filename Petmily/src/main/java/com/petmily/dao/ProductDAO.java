@@ -1,5 +1,6 @@
 package com.petmily.dao;
 
+
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -13,5 +14,5 @@ public interface ProductDAO {
 
 	public List<Product> allProduct() throws Exception;
 	public Product selectProduct(int prod_num) throws Exception;
-
+	public int selectPrice(int prod_num) throws Exception;
 }
