@@ -185,7 +185,7 @@
 	<script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');
-	  $('a[href="' + "admin_membership" + '"]').closest('li').addClass('active');
+	  $('a[href="' + "/admin_membership" + '"]').closest('li').addClass('active');
 	});
 </script>
 	
