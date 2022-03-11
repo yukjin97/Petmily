@@ -1,7 +1,9 @@
 package com.petmily.controller.user;
 
 import java.util.List;
+
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,16 +31,16 @@ public class MypageController {
       public ModelAndView mypage(@ModelAttribute Membership mem) {
          ModelAndView mav = new ModelAndView("mypageinfo");
          String user_id = (String) session.getAttribute("user_id");
-         try {
-            User user = myPageService.myPageInfo(user_id);
-            Membership rmem = myPageService.myMemberShipInfo(user_id);
-            List<Order> orderList = myPageService.orderDetail(user_id);
+         try {     	 
+        	User user = myPageService.myPageInfo(user_id);
+        	List<Membership> rmem = membershipService.membershipList(user_id);
+        	List<Order> orderList = myPageService.orderDetail(user_id);
             myPageService.userAddressModify(user);
             user = myPageService.myPageInfo(user_id);
             mem.setUser_id(user_id); // 유저객체 아이디
             mav.addObject("user", user);
-            mav.addObject("orderList", orderList);
             mav.addObject("rmem", rmem);
+            mav.addObject("orderList", orderList);
          } catch (Exception e) {
             e.printStackTrace();
          }

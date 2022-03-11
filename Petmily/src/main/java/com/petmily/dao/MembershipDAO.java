@@ -1,5 +1,7 @@
 package com.petmily.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,4 +14,9 @@ public interface MembershipDAO {
 	void insertMemberShip(Membership membership) throws Exception;
 	public Membership queryUserMemberShip(String user_id) throws Exception;
 	User payinfo(String user_id) throws Exception;
+	public List<Membership> membershipList(String user_id) throws Exception;
+	public Membership getMembershipByidSilver(String user_id)throws Exception;
+	public Membership getMembershipByidGold(String user_id)throws Exception;
+	void updateMembershipSilver(String user_id) throws Exception;
+	void updateMembershipGold(String user_id) throws Exception;
 }
