@@ -118,6 +118,7 @@
 
       <!-- 구독 내역 내용 -->
       <div id="subPage" class="pageSection" style="display: none">
+      <form action="withdraw_membership" method="post">
         <div class="table-responsive">
           <div class="card" style="border-radius: 15px">
             <div class="card-body p-5">
@@ -135,7 +136,8 @@
                       <c:forEach items="${rmem }" var="rmem">
                         <th scope="row">${rmem.mem_grade}</th>
                         <tr>
-                          <td>다음 결제일은 ${rmem.mem_next_date}</td>
+                          <td>다음 결제일은 ${rmem.mem_next_date}</td><td style="padding-left: 25px;">
+                          <input class="Withdrawal" type="checkbox" value="${rmem_mem_grade}" style="display:none;"></td>
                         </tr>
                       </c:forEach>
                     </c:otherwise>
@@ -145,6 +147,19 @@
             </div>
           </div>
         </div>
+                  <br>
+            <input
+            type="button"
+            class="btn btn-success"
+            onclick="'"
+            value="구독해지"
+            id="withdrawal_btn"
+          />
+          <div style="display:none" class="Withdrawal">
+          <input type="text" placeholder='"구독해지" 를 입력해주세요' style="margin-top:5%;" class="form-control">
+          <input type="submit" value="확인" style="margin-top:1%;" class="btn btn-danger">
+          </div>
+          </form>
       </div>
 
       <!-- 주문 내역 내용 -->
@@ -323,9 +338,19 @@
 		$('#deliveryPage').css('display', 'block');
 	});
 
-	$(document).ready(function() {
-		$('li.active').removeClass('active');
-		$('a[href="' + "mypageinfo" + '"]').closest('li').addClass('active');
-	});
+  $(document).ready(function () {
+    $('li.active').removeClass('active');
+    $('a[href="' + 'mypageinfo' + '"]')
+      .closest('li')
+      .addClass('active');
+  });
+  
+  $('#withdrawal_btn').click(function () {
+	  if($('.Withdrawal').is(":visible")){
+		  $('.Withdrawal').css('display', 'none');
+		}else{
+			$('.Withdrawal').css('display', 'block');
+		}
+	  });
 </script>
 
