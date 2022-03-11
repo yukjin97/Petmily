@@ -36,7 +36,7 @@
 	<script>
 $(document).ready(function() {
 	  $('li.active').removeClass('active');
-	  $('a[href="' + "subscribe" + '"]').closest('li').addClass('active');
+	  $('a[href="' + "/subscribe" + '"]').closest('li').addClass('active');
 	
 $(function () {
 	$("#silver").click(function() {
