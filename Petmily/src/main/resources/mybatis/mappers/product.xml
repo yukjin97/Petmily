@@ -15,7 +15,6 @@
 			select * from product where prod_num = #{prod_num}
 		]]>
 	</select>
-<<<<<<< HEAD
 	
 	<select id="selectPrice"  resultType="int" parameterType="int" > 
 		<![CDATA[
@@ -24,8 +23,6 @@
 	</select>
 	
 	
-=======
->>>>>>> refs/heads/hyun
 	<select id="selectProductCount" resultType="int">
 		<![CDATA[
 			select count(*) from product
