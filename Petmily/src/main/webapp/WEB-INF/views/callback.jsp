@@ -41,10 +41,10 @@
 			success: function(result) {
 				if(result=='ok') {
 					console.log('성공')
-					location.replace("http://localhost:8080/member/Main") 
+					location.replace("http://localhost:8080") 
 				} else if(result=='no') {
 					console.log('실패')
-					location.replace("http://localhost:8080/member/login")
+					location.replace("http://localhost:8080/login")
 				}
 			},
 			error: function(result) {

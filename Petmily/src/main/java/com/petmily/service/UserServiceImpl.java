@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService {
 
    @Override
    public User accessUser(String user_id, String user_pwd) throws Exception {
-   
       User user = userDAO.queryUser(user_id);
       if(user==null) {
          throw new Exception("존재하지 않는 아이디 입니다.");

@@ -2,6 +2,7 @@ package com.petmily.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -42,6 +43,19 @@ public class AdminController {
 		return "/admin_membership";
 	}
 
+	@PostMapping(value = "UpdateMemStatus")
+	public String updateMemStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "ordercheck[]")String[] ordercheck) {
+		try {
+			map.put("array", ordercheck);
+			adminservice.updateMemStatus(map);
+			return "redirect:/admin_membership";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_membership";
+	}
+	
+	
 	@GetMapping(value = "/admin_product")
 	public String admin_product(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			Model model, @RequestParam(value = "search_prod", defaultValue = "") String search_prod) {
@@ -142,8 +156,9 @@ public class AdminController {
 		}
 		return "/admin_order";
 	}
+	
 
-	@PostMapping(value = "add_amount")
+	@PostMapping(value="add_amount")
 	public String add_amount(@ModelAttribute Product product) {
 		try {
 			adminservice.addAmount(product);
@@ -154,4 +169,45 @@ public class AdminController {
 		return "redirect:/admin_inventory";
 	}
 
+	@PostMapping(value = "updateOrderStatus")
+	public String updateOrderStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "ordercheck[]")int[] ordercheck) {
+		try {
+			map.put("array", ordercheck);
+			adminservice.updateOrderStatus(map);
+			return "redirect:/admin_order";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/admin_order";
+	}
+	
+	@GetMapping(value ="/admin_ship")
+	public String admin_ship (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Admin> admin_ship = adminservice.shipList(page,pageInfo,search_text);
+			model.addAttribute("search_text", search_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_ship", admin_ship);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_ship";
+	}	
+	
+	@GetMapping(value ="/admin_mem_ship")
+	public String admin_mem_ship (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "search_text",defaultValue="")String search_text ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Admin> admin_mem_ship = adminservice.memshipList(page,pageInfo,search_text);
+			model.addAttribute("search_text", search_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("admin_mem_ship", admin_mem_ship);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_mem_ship";
+	}	
 }
