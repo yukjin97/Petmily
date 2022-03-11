@@ -1,5 +1,4 @@
 package com.petmily.service;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.petmily.dto.PageInfo;
@@ -21,4 +20,6 @@ public interface ProductService {
 	public List<Product> getProductList(int page, PageInfo pageInfo) throws Exception;
 	
 	public List<Product> getBestViewList(int prod_view_cnt)throws Exception;
+	
+	public void selectProductViewCntInc(int prod_num)throws Exception;
 }

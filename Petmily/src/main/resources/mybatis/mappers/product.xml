@@ -21,8 +21,6 @@
 			select prod_price from product where prod_num = #{prod_num}
 		]]>	
 	</select>
-	
-	
 	<select id="selectProductCount" resultType="int">
 		<![CDATA[
 			select count(*) from product
@@ -42,4 +40,10 @@
 			select * from product order by prod_view_cnt desc limit 3
 		]]>
 	</select>
+	
+	<update id="selectProductViewCntInc" parameterType="int">
+		<![CDATA[
+			update product set prod_view_cnt =prod_view_cnt+1 where prod_num=#{prod_num}
+		]]>
+	</update>
 </mapper>

@@ -22,4 +22,6 @@ public interface ProductDAO {
 	
 	List<Product>selectProductViewCnt(int prod_view_cnt)throws Exception;
 	// 조회수 높은거 3개 가져옴
+	
+	public void selectProductViewCntInc(int prod_num)throws Exception;
 }
