@@ -48,7 +48,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       <div class="col-md-11 ftco-animate text-center">
         <h1 class="mb-4">반려동물 용품 걱정그만! <br />Petmily</h1>
         <p>
-          <a href="#" class="btn btn-primary mr-md-4 py-3 px-4"
+          <a href="subscribe" class="btn btn-primary mr-md-4 py-3 px-4"
             >구독하기<span class="ion-ios-arrow-forward"></span
           ></a>
         </p>

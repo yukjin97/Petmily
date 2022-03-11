@@ -1,4 +1,7 @@
 package com.petmily.controller.product;
+
+
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +11,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.petmily.dto.Cart;
 import com.petmily.dto.Product;
 import com.petmily.service.CartService;
+import com.petmily.service.ProductService;
+
+import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -20,6 +33,9 @@ public class CartController {
 
 	@Autowired
 	CartService cartService;
+	
+	@Autowired
+	ProductService productService;
 
 	@Autowired
 	HttpSession session;
@@ -45,7 +61,51 @@ public class CartController {
 		}
 		return "cart";
 	}
+	
+	// 수량에 따른 총 금액 계산
+	@ResponseBody
+	@PostMapping("/gettotal")
+	public int GetTotal(@RequestParam("objParams") String objParams) {
+		System.out.println(objParams);
+		System.out.println("진입");
+		JsonParser jsonParser = new JsonParser();
+		JsonObject jsonObj = jsonParser.parse(objParams).getAsJsonObject();
+		JsonArray jsonNumArr = jsonObj.getAsJsonArray("numList");
+		JsonArray jsonQuanArr = jsonObj.getAsJsonArray("quanList");
+		
+		Gson gson = new Gson();
+		ArrayList numList= gson.fromJson(jsonNumArr, ArrayList.class);	
+		ArrayList quanList= gson.fromJson(jsonQuanArr, ArrayList.class);
+		int total = 0;
+		ArrayList priceList= new ArrayList();
+		
+		try {
+			// 상품 번호를 통해 가격을 조회<
+			for(int i=0;numList.size()>i;i++) {
+				int prod_num = (int) Integer.parseInt((String) numList.get(i));
+				int price = productService.selectPrice(prod_num);
+				priceList.add(price);
+			}
+			
+			for(int j=0;priceList.size()>j;j++) {
+				int a=  (int) priceList.get(j);
+				int b =(int) Integer.parseInt((String) quanList.get(j));
+				total += a * b;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// 상품 수량을 조회
+		return total; 
+	}
+	
 }
+
+/*
+ * @PostMapping("/deleteProduct") public String
+ */
 	
 //	@PostMapping(value = "/addProdInCart") // addProdInCart를 요청하면 String addProdInCart가 호출됨(prod_num가 전달됨).
 //	public @ResponseBody String addProdInCart(@RequestParam("prod_num") int prod_num, HttpServletRequest request,

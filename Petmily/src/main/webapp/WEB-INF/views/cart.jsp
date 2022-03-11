@@ -39,7 +39,7 @@
 	                            </div>
 	                        </td>
 	                        <td data-th="Quantity">
-								<input type="number"class="form-control form-control-lg text-center" value="${cartList[status.index].cart_amount}" onChange=totalCal()>
+								<input type="number" id='${prod.prod_num }' class="quan btn btn-light" value="${cartList[status.index].cart_amount}">
 								<input type="hidden" class="total" value="${cartList[status.index].cart_amount * prod.prod_price}">
 	                        </td>
 	                        <td data-th="Price">${prod.prod_price}</td>
@@ -80,19 +80,44 @@
 </section>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
-$(function () {
+$(function() {
 	totalCal();
 	
+	$(".quan").click(function() {
+		totalCal();
+	})
 })
 
 function totalCal() {
-		var total = 0;
-		 $('.total').each(function() {
-			 total += Number($(this).val());
-		 });
-		 console.log(total);
-		 $('#totalPrice').text(total);
+	// 이렇게 장바구니에 담긴 제품번호를 가져옵니다.
+	var numList = [];
+	<c:forEach items="${prodList}" var="product">
+	numList.push("${product.prod_num}"); 
+	</c:forEach>
+	
+	// 제품수량을 가져옵니다. (변경 내용까지 반영)
+	var quanList = [];
+	for(const prod of numList) {
+		quanList.push($('#'+prod).val());
 	}
+	
+	var objParams = {
+			"numList" : numList,
+			"quanList" : quanList
+	}
+	// 이제 이 데이터 두개만 전달해버리면 컨트롤러에서 계산하고, 총 금액을 전달해주면 됨/
+	$.ajax({
+		type: "post",
+		data: {objParams: JSON.stringify(objParams)},
+		url: "http://localhost:8080/cart/gettotal",
+		success: function(data) {
+			 $('#totalPrice').text(data);
+		},
+		error: function(data) {
+			alert('에러 발생');
+		}
+	})
+}
 	
 </script>
 

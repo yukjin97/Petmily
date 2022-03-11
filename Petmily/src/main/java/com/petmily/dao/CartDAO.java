@@ -17,6 +17,8 @@ public interface CartDAO {
 	List<Cart> cartQueryById(String user_id) throws Exception;
 
 	Product prodQueryByProdNum(int prod_num) throws Exception;
+	/////////////////////////////////////////////
+	void deleteCart(int prod_num)throws Exception;
 
 //	public List<Cart> selectCartList(Cart cart) throws DataAccessException;
 //

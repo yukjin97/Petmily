@@ -1,5 +1,7 @@
 package com.petmily.controller.product;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.petmily.dto.Membership;
 import com.petmily.dto.Order;
@@ -30,16 +34,13 @@ public class MembershipController {
    public String membership() {
       return "subscribe";
    }
-
+   
    @GetMapping(value = "/mem_pay")
 	public String mem_pay(Model model) {
-		session.setAttribute("user_id", "test");
 		String user_id = (String)session.getAttribute("user_id");
 	   try {
-			System.out.println(user_id);
 			User pay = membershipService.payinfo(user_id);
 			model.addAttribute("pay", pay);
-			System.out.println(pay);
 			return "/mem_pay";
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,8 +48,11 @@ public class MembershipController {
 		return "/mem_pay";
 	}
    
+   @ResponseBody
    @PostMapping(value = "/mem_silver")
    public String mem_silverPass(){
+	   String user_id = (String)session.getAttribute("user_id");
+	   boolean overlap = false;
       try {
          session.setAttribute("mem_grade","silver");
          session.setAttribute("mem_productNum", 1);
@@ -58,7 +62,8 @@ public class MembershipController {
          session.setAttribute("mem_price", 9800);
          session.setAttribute("mem_img", "pricing-1.jpg");
          session.setAttribute("mem_name", "Very Nice Silver Pakage");
-         return "redirect:/mem_pay";
+         overlap = membershipService.silverOverlap(user_id);
+         return String.valueOf(overlap);
       }catch(Exception e) {
          return "subscribe";
       }
@@ -66,12 +71,18 @@ public class MembershipController {
    
    @GetMapping(value="mem_silver")
    public String mem_silver() {
+		if(session.getAttribute("user_id")==null) {
+			return "login";
+		}
 	   return "mem_silver";
 			   
    }
    
+   @ResponseBody
    @PostMapping(value = "/mem_gold")
    public String mem_goldPass(){
+	   String user_id = (String)session.getAttribute("user_id");
+	   boolean overlap = false;
       try {
          session.setAttribute("mem_grade","gold");
          session.setAttribute("mem_productNum", 2);
@@ -81,7 +92,8 @@ public class MembershipController {
          session.setAttribute("mem_price", 19800);
          session.setAttribute("mem_img", "staff-6.jpg");
          session.setAttribute("mem_name", "Amazing Gold Pakage");
-         return "redirect:/mem_pay";
+         overlap = membershipService.goldOverlap(user_id);
+         return String.valueOf(overlap);
       }catch(Exception e) {
          return "subscribe";
       }
@@ -89,24 +101,25 @@ public class MembershipController {
    
    @GetMapping(value="mem_gold")
    public String mem_gold() {
-	   return "mem_gold";
-			   
+		if(session.getAttribute("user_id")==null) {
+			return "login";
+		}
+	   return "mem_gold";		   
    }
    
    @PostMapping(value="/mem_pay")
    public String mem_pay(@ModelAttribute Membership membership, @ModelAttribute Order order) {
-	   session.setAttribute("id", "test");
       try {
-         membership.setUser_id((String)session.getAttribute("id"));
+         membership.setUser_id((String)session.getAttribute("user_id"));
          membership.setMem_grade((String)session.getAttribute("mem_grade"));
          membershipService.memberShip(membership);
-         order.setUser_id((String)session.getAttribute("id"));
+         order.setUser_id((String)session.getAttribute("user_id"));
          //prod_num 1에 실버 2에 골드 패키지를 넣어야함
          order.setProd_num((Integer)session.getAttribute("mem_productNum"));
          order.setOrder_count(1);
          //address 부분 벨류값 넣어줘야함
          order.setOrder_address(null);
-         orderService.order(order);
+         //orderService.order(order);
          //마이페이지 구독권 쪽으로
          String grade = (String)session.getAttribute("mem_grade");
          int fix1 = (Integer)session.getAttribute("fix1");
@@ -129,5 +142,16 @@ public class MembershipController {
       }
    }   
    
-
+	@PostMapping(value = "withdraw_membership")
+	public String updateOrderStatus(@RequestParam Map<String,Object> map,@RequestParam(value = "memcheck[]")String[] memcheck) {
+		try {
+			map.put("user_id", (String)session.getAttribute("user_id"));
+			map.put("array", memcheck);
+			membershipService.delete_mem(map);
+			return "redirect:/mypageinfo";
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/mypageinfo";
+	}
 }

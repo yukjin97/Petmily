@@ -60,14 +60,14 @@
 
 
 		<c:choose>
-			<c:when test="${admin_ship!=null && pageInfo.listCount>0 }">
+			<c:when test="${admin_mem_ship!=null && pageInfo.listCount>0 }">
 				<section id="listForm">
 
 					<h2 class="mb-5"
 						style="text-decoration: underline; text-underline-position: under;">
-						배송조회 [ 단품 ]
+						배송조회 [ 구독 ]
 						</h2>
-					<form action="admin_ship" method="get">
+					<form action="admin_mem_ship" method="get">
 						<input type="text" id="search_text" name="search_text" /> <input
 							type="submit" value="찾기" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
@@ -78,9 +78,8 @@
 						<table class="table custom-table">
 							<thead>
 								<tr>
-									<th scope="col">주문날짜</th>
-									<th scope="col">상품명</th>
-									<th scope="col">수량</th>
+									<th scope="col">날짜</th>
+									<th scope="col">구독등급</th>
 									<th scope="col">주소</th>
 									<th scope="col">이름</th>
 									<th scope="col">전화번호</th>
@@ -88,14 +87,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${admin_ship }" var="admin_ship">
+								<c:forEach items="${admin_mem_ship }" var="admin_mem_ship">
 									<tr>
-										<td>${admin_ship.order_date}</td>
-					<td>${admin_ship.prod_name }</td>
-					<td>${admin_ship.order_count }</td>
-					<td>${admin_ship.user_totaddress }</td>
-					<td>${admin_ship.user_name }</td>
-					<td>${admin_ship.user_phone }</td>
+					<td>${admin_mem_ship.mem_last_date }</td>
+					<td>${admin_mem_ship.mem_grade }</td>
+					<td>${admin_mem_ship.user_totaddress }</td>
+					<td>${admin_mem_ship.user_name }</td>
+					<td>${admin_mem_ship.user_phone }</td>
 					<td>배송중</td>
 									</tr>
 								</c:forEach>
@@ -111,7 +109,7 @@
 				</c:when>
 						<c:otherwise>
 							<a
-								href="admin_ship?page=${pageInfo.page-1}&search_text=${search_text}">[이전]</a>&nbsp;
+								href="admin_mem_ship?page=${pageInfo.page-1}&search_text=${search_text}">[이전]</a>&nbsp;
 				</c:otherwise>
 					</c:choose>
 					<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -119,7 +117,7 @@
 						<c:choose>
 							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 							<c:otherwise>
-								<a href="admin_ship?page=${i}&search_text=${search_text}">[${i }]</a>
+								<a href="admin_mem_ship?page=${i}&search_text=${search_text}">[${i }]</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -129,20 +127,20 @@
 				</c:when>
 						<c:otherwise>
 							<a
-								href="admin_ship?page=${pageInfo.page+1}&search_text=${search_text}">[다음]</a>
+								href="admin_mem_ship?page=${pageInfo.page+1}&search_text=${search_text}">[다음]</a>
 						</c:otherwise>
 					</c:choose>
 				</section>
 			</c:when>
 			<c:otherwise>
-				<form action="admin_ship" method="get">
+				<form action="admin_mem_ship" method="get">
 					<input type="text" id="search_text" name="search_text" /> <input
 						type="submit" value="찾기" 
 						class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" 
 							/>
 				</form>
-				<section id="emptyArea">배송중인 상품이 없습니다.</section>
+				<section id="emptyArea">배송중인 구독상품이 없습니다.</section>
 			</c:otherwise>
 		</c:choose>
 

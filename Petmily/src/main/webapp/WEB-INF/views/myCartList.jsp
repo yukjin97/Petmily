@@ -259,27 +259,3 @@
 
 
 
-
-<%-- 
-
- <c:choose>
-				    <c:when test="${ empty myCartList }">
-				    <tr>
-				       <td colspan=8 class="fixed">
-				         <strong>장바구니에 상품이 없습니다.</strong>
-				       </td>
-				     </tr>
-				    </c:when>
-			        <c:otherwise>
-			 <tr>       
-               <form name="frm_order_all_cart">
-				      <c:forEach var="item" items="${myProdList }" varStatus="cnt">
-				       <c:set var="cart_Prod_qty" value="${myCartList[cnt.count-1].cart_prod_qty}" />
-				       <c:set var="cart_id" value="${myCartList[cnt.count-1].cart_id}" />
-					<td><input type="checkbox" name="checked_prod"  checked  value="${item.prod_num }" ></td>
-					<td class="prod_image">
-					<a href="${contextPath}/product/detailProduct?prod_num=${item.prod_num }">
-						<img width="75" alt="" src="${contextPath}/thumbnails.do?prod_num=${item.prod_num}&fileName=${item.prod_fileName}"  />
-					</a>
-					</td>
-					<td> --%>

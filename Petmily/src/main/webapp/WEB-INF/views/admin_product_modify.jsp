@@ -10,12 +10,12 @@
 <div id="allform"  style="margin-top: 100px;">
 <form action="admin_product_modify" method="post"  name="admin_product_modify">
 <input type="hidden" name="prod_num" value="${modi.prod_num }">
-<div id="file" style="float:left;width:30%;height:400px;margin-left: 450px;margin-top: 0px;">
-   <img src="${path}/upload/${modi.prod_img}" style="width: 500px" />
+<div id="file" style="float:left;width:30%;height:400px;margin-auto;margin-left: 30%;">
+   <img src="/upload/${modi.prod_img }" style="width: 100%; height:100%;">
    <br />
    <br />
 </div>
-<div id="prod_info" style="float:left;width: 300px;height:400px">
+<div id="prod_info" style="float:left;width: 20%;height:400px">
    제목<br>
    <input type="text" name="prod_title" value="${modi.prod_title }"/>
    <br />
@@ -36,9 +36,11 @@
    <br />
 </div>
 
-<div id="prod_content" style="display:block;width: 750px;margin-left: 480px;">
-   <br><br>내용<br>
-   <textarea name="prod_content" placeholder="상품 정보 입력"  style="width:750px;height:200px">
+<div id="prod_content" style="display:block;width: 45%;margin-left:28%;">
+<div style="padding-top:450px;">
+   내용<br>
+   </div>
+   <textarea name="prod_content" placeholder="상품 정보 입력" style="width:100%;height:200px"> 
    ${modi.prod_content}
    </textarea>
    <br />
@@ -52,6 +54,6 @@
 <script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');
-	  $('a[href="' + "admin_membership" + '"]').closest('li').addClass('active');
+	  $('a[href="' + "/admin_membership" + '"]').closest('li').addClass('active');
 	});
 </script>

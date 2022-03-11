@@ -45,7 +45,12 @@
          <button id="v-delivery-tab" data-bs-toggle="pill"
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
-            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_ship'">배송</button>
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_ship'">배송조회 [단품]</button>
+            
+                     <button id="v-delivery-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_mem_ship'">배송조회 [구독]</button>
       </div>
    </div>
 
@@ -167,6 +172,6 @@
 <script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');
-	  $('a[href="' + "admin_membership" + '"]').closest('li').addClass('active');
+	  $('a[href="' + "/admin_membership" + '"]').closest('li').addClass('active');
 	});
 </script>
