@@ -367,4 +367,10 @@
 	 }
   });
 </script>
+<script>
+	$(document).ready(function() {
+	  $('li.active').removeClass('active');
+	  $('a[href="' + "/mypageinfo" + '"]').closest('li').addClass('active');
+	});
+</script>
 

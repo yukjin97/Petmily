@@ -71,5 +71,11 @@
 		})
 	});
 </script>
+<script>
+	$(document).ready(function() {
+	  $('li.active').removeClass('active');
+	  $('a[href="' + "/login" + '"]').closest('li').addClass('active');
+	});
+</script>
 <!-- footer include -->
 <jsp:include page="footer.jsp" />
