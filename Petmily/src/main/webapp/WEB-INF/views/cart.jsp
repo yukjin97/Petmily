@@ -39,13 +39,13 @@
 	                            </div>
 	                        </td>
 	                        <td data-th="Quantity">
-								<input type="number" id='${prod.prod_num }' class="quan btn btn-light" value="${cartList[status.index].cart_amount}">
+								<input type="number" id="${prod.prod_num }quan" class="quan btn btn-light" value="${cartList[status.index].cart_amount}" min="1">
 								<input type="hidden" class="total" value="${cartList[status.index].cart_amount * prod.prod_price}">
 	                        </td>
 	                        <td data-th="Price">${prod.prod_price}</td>
 	                        <td class="actions" data-th="">
 	                            <div class="text-right">
-	                                <button class="btn btn-white border-secondary bg-white btn-md mb-2">
+	                                <button id="${prod.prod_num }" onClick="deleteCart(this.id)" class="deleteBtn btn btn-white border-secondary bg-white btn-md mb-2">
 	                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="8" height="8" viewBox="0 0 8 8">
 	                                        <defs>
 	                                            <clipPath id="clip-path">
@@ -82,23 +82,37 @@
 <script>
 $(function() {
 	totalCal();
-	
-	$(".quan").click(function() {
+	$(".quan").change(function() {
 		totalCal();
 	})
 })
 
+function deleteCart(id) {
+	
+	let prod_id = id;
+	
+	$.ajax({
+		type: "post",
+		data: {prod_id : prod_id},
+		url: "http://localhost:8080/cart/deletecart",
+		success: function(data){
+			alert(data);
+			window.location.reload();
+		}
+	})
+	
+}
 function totalCal() {
-	// 이렇게 장바구니에 담긴 제품번호를 가져옵니다.
+	// 이렇게 장바구니에 담긴 제품번호를 가져온다.
 	var numList = [];
 	<c:forEach items="${prodList}" var="product">
 	numList.push("${product.prod_num}"); 
 	</c:forEach>
 	
-	// 제품수량을 가져옵니다. (변경 내용까지 반영)
+	// 제품수량을 가져온다. (변경 내용까지 반영)
 	var quanList = [];
 	for(const prod of numList) {
-		quanList.push($('#'+prod).val());
+		quanList.push($('#'+prod+"quan").val());
 	}
 	
 	var objParams = {
@@ -118,7 +132,6 @@ function totalCal() {
 		}
 	})
 }
-	
 </script>
 
 <!-- footer include -->

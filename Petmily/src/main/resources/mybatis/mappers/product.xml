@@ -36,4 +36,5 @@
 			where rnum between #{startrow} and #{startrow}+9		
  		]]>
  	</select>
+ 	
 </mapper>
