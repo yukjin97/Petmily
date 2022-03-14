@@ -1,20 +1,15 @@
 package com.petmily.controller.product;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.petmily.dto.PageInfo;
-import com.petmily.dto.Product;
 import com.petmily.dto.Review;
 import com.petmily.service.ProductService;
 import com.petmily.service.ReviewService;
@@ -51,6 +46,43 @@ public class ReviewController {
 		try {
 			mav.addObject("prod_num",prod_num);
 			reviewService.insertReview(review);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@PostMapping("/product/detail/{prod_num}/delete/{review_num}")
+	public ModelAndView  deletereview(@PathVariable int prod_num,@PathVariable int review_num,@ModelAttribute Review review) {
+		ModelAndView mav= new ModelAndView("redirect:/product/detail/"+prod_num);
+		try {
+			mav.addObject("review_num",review_num);
+			mav.addObject("prod_num",prod_num);
+			reviewService.deleteReview(review);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	
+	@GetMapping("product/detail/{prod_num}/update/{review_num}")
+	public ModelAndView updatereviewForm(@PathVariable int prod_num ,@PathVariable int review_num, @ModelAttribute Review review) {
+		ModelAndView mav= new ModelAndView("updatereview");
+		try {
+			review = reviewService.selectReviewByNum(review_num);
+			mav.addObject(review);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@PostMapping("product/detail/{prod_num}/update/{review_num}")
+	public ModelAndView updatereview(@PathVariable int prod_num ,@PathVariable int review_num, @ModelAttribute Review review) {
+		ModelAndView mav= new ModelAndView("redirect:/product/detail/"+prod_num);
+		try {
+			reviewService.updateReview(review);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

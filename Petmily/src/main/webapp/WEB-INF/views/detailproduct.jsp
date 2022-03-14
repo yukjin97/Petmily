@@ -10,7 +10,7 @@
 		<div class="row gx-4 gx-lg-5 align-items-center">
 			<div class="col-md-6">
 				<img class="card-img-top mb-5 mb-md-0"
-					src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
+					src="${path }/upload/${product.prod_img}" alt="..." />
 			</div>
 			<div class="col-md-6">
 				<div class="small mb-2">${product.prod_num}</div>
@@ -20,8 +20,9 @@
 				</div>
 				<p class="lead">${product.prod_content}</p>
 				<div class="d-flex">
-					<input class="form-control text-center me-3" id="inputQuantity"
-						type="num" value="1" style="max-width: 3rem" /><br />
+					<form action="${pageContext.request.contextPath}/product/detail/${product.prod_num}/payment" method="post">
+					<input class="form-control text-center me-3" id="inputQuantity" name="order_count" 
+						type="number" value="1" style="max-width: 3rem" /><br />
 					<button class="btn btn-outline-success flex-shrink-0" type="button">
 						<i class="bi-cart-fill me-1"></i>장바구니 담기
 					</button>
@@ -29,11 +30,14 @@
 						class="btn btn-outline-success flex-shrink-0" type="button">
 						<i class="bi-cart-fill me-1"></i>결제하기
 					</button>
+						<input type="submit" value="등록" style="display: none;" id="submit">
+
 					<button id="review_write_form"
 						class="btn btn-outline-success flex-shrink-0" type="button"
 						onclick="location.href='${product.prod_num}/reviewrite'">
 						<i class="bi-cart-fill me-1"></i>리뷰작성하기
 					</button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -47,24 +51,39 @@
 			<div class="container px-5 px-lg-5 mt-5">
 				<div
 					class="row gx-5 gx-lg-5 row-cols-5 row-cols-md-5 row-cols-xl-5 justify-content-center">
-
-					<div class="card-body p-3">
+					<div class="card-body p-3" style="border-radius: 15px">
 						<table class="t_margin_auto width100 ds-table">
-							<thead>
-								<tr>
-									<th class="title bg-light"><h5>리뷰제목</h5></th>
-									<th class="title bg-light"><h5>리뷰내용</h5></th>
-									<th class="title bg-light"><h5>작성일</h5></th>
-								</tr>
-							</thead>
 							<c:forEach var="r" items="${reviewlist}">
-								<tbody>
-									<tr>
-										<td>${r.review_title}</td>
-										<td>${r.review_content}</td>
-										<td>${r.review_create_date}</td>
-									</tr>
-								</tbody>
+								<div
+									class="testimonial-item position-relative bg-light border-top border-5 border-primary rounded p-4 mt-4">
+									<div
+										class="d-flex align-items-center justify-content-center  top-0 start-0 ms-5 translate-middle bg-primary rounded-circle"
+										style="width: 45px; height: 45px; margin-top: -3px;">
+										<i class="fa  text-white">리뷰</i>
+									</div>
+									<div>
+										<span class="mt-3">${r.review_title}</span>
+										<div class="d-flex align-items-center">
+											<div class="ps-3">
+												<h6 class="fw-bold mb-1">${r.review_content}</h6>
+												<small>${r.review_create_date}</small>
+											</div>
+											<form
+												action="/product/detail/${prod_num}/delete/${r.review_num}"
+												method="post">
+												<input type="submit" value="리뷰삭제" type="button"
+													class="btn btn-success">
+											</form>
+											<form
+												action="/product/detail/${prod_num}/update/${r.review_num}"
+												method="get">
+												<input type="submit" value="리뷰수정" type="button"
+													class="btn btn-success">
+											</form>
+
+										</div>
+									</div>
+								</div>
 							</c:forEach>
 						</table>
 					</div>
@@ -119,6 +138,9 @@
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script>
 	$("#check_module").click(function() {
+		let inputQuantity = $("#inputQuantity").val();
+		let price =Number(inputQuantity*${product.prod_price})
+		alert(price)
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp06765182');
 		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -155,14 +177,15 @@
 			 */
 			name : `${product.prod_name}`,
 			//결제창에서 보여질 이름
-			amount : `${product.prod_price}`,
+			amount : price,
 			//가격
-			buyer_email : 'iamport@siot.do',
-			buyer_name : '구매자이름',
-			buyer_tel : '010-1234-5678',
-			buyer_addr : '서울특별시 강남구 삼성동',
-			buyer_postcode : '123-456',
+			buyer_email : `${user.user_email}`,
+			buyer_name : `${user.user_name}`,
+			buyer_tel : `${user.user_phone}`,
+			buyer_addr : `${user.user_totaddress}`,
+			buyer_postcode : `${user.user_zipcode}`,
 			m_redirect_url : 'http://www.localhost8080/payments/complete'
+			// 결제창에서 보여질 유저이름 
 		/*
 		 모바일 결제시,
 		 결제가 끝나고 랜딩되는 URL을 지정
@@ -179,6 +202,7 @@
 			} else {
 				var msg = '결제에 실패하였습니다.';
 				msg += '에러내용 : ' + rsp.error_msg;
+				$("#submit").click(); //테스트용
 			}
 			alert(msg);
 		});

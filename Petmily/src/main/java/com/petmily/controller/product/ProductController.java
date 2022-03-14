@@ -3,6 +3,8 @@ package com.petmily.controller.product;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -24,13 +26,21 @@ import com.petmily.dao.ProductDAO;
 import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
 import com.petmily.dto.Review;
+import com.petmily.dto.User;
 import com.petmily.service.AdminService;
+import com.petmily.service.MyPageService;
 import com.petmily.service.ProductService;
 import com.petmily.service.ReviewService;
+import com.petmily.service.UserService;
 
 @Controller
 public class ProductController {
 	private static Log log = LogFactory.getLog(ProductController.class);
+	
+	@Autowired
+	HttpSession session;
+	
+	
 	@Autowired
 	ProductService productService;
 	
@@ -40,9 +50,14 @@ public class ProductController {
 	@Autowired
 	AdminService adminService;
 
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	ReviewService reviewService;
+	
+	@Autowired
+	MyPageService myPageService;
 	
 //	@GetMapping("/productall")
 //	public ModelAndView productAllPage() {
@@ -108,14 +123,17 @@ public class ProductController {
 	public ModelAndView detailPage(@RequestParam (value = "page",required = false ,defaultValue = "1") int page , @PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView();
 		PageInfo pageInfo = new PageInfo();
-		try {
+        String user_id = (String) session.getAttribute("user_id");
+		
+        try {
+        	User user = myPageService.myPageInfo(user_id);
 			Product product = productService.selectProduct(prod_num);
-			mav.addObject("product",product);
-			
+            user = myPageService.myPageInfo(user_id);
+			mav.addObject("product",product);	
 			List<Review> reviewList = reviewService.getreviewList(prod_num, page, pageInfo);
 			mav.addObject("reviewlist",reviewList);
 			mav.addObject("pageInfo" , pageInfo);
-			
+            mav.addObject("user", user);
 			mav.setViewName("detailproduct");
 			log.info(product);
 		} catch (Exception e) {
@@ -123,6 +141,5 @@ public class ProductController {
 		} 
 		return mav;
 	}
-	
 
 }

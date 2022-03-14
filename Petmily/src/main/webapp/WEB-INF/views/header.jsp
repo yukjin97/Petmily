@@ -33,9 +33,14 @@
 			<div class="row">
 				<div class="col-md-6 d-flex align-items-center">
 					<p class="mb-0 phone pl-md-2">
-						<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>
-							+00 1234 567</a> <a href="#"><span class="fa fa-paper-plane mr-1"></span>
-							youremail@email.com</a>
+						<c:choose>
+							<c:when test="${not empty user_id}">
+								<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>
+								 대표전화	:+82 1234 5678</a>
+								<a href="#"><span class="fa fa-paper-plane mr-1"></span>
+									${user_id}님 환영합니다.</a>
+							</c:when>
+						</c:choose>
 					</p>
 				</div>
 				<div class="col-md-6 d-flex justify-content-md-end">
@@ -73,17 +78,16 @@
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-						<c:choose>
-							<c:when  test="${user_type =='admin'}">
-								<li class="nav-item"><a href="/admin_membership"
-									class="nav-link">Admin</a>
-								</li>
-							</c:when>
-							<c:otherwise>
-<!-- 								<li class="nav-item"><a href="admin_membership"
+					<c:choose>
+						<c:when test="${user_type =='admin'}">
+							<li class="nav-item"><a href="/admin_membership"
+								class="nav-link">Admin</a></li>
+						</c:when>
+						<c:otherwise>
+							<!-- 								<li class="nav-item"><a href="admin_membership"
 									class="nav-link">Admin</a></li> -->
-							</c:otherwise>
-						</c:choose>
+						</c:otherwise>
+					</c:choose>
 					<li class="nav-item"><a href="/subscribe" class="nav-link">구독</a>
 					</li>
 					<li class="nav-item"><a href="/product" class="nav-link">스토어</a>
