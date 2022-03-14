@@ -16,7 +16,7 @@
 							<div class="card h-100">
 								<!-- Product image-->
 								<img class="card-img-top"
-									src="https://dummyimage.com/300x300/dee2e6/6c757d.jpg"
+									src="/upload/${p.prod_img }"
 									alt="..." />
 								<!-- Product details-->
 								<div class="card-body p-3">

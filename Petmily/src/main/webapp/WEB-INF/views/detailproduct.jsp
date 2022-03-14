@@ -6,37 +6,36 @@
 
 <!-- Product section-->
 <section class="py-5">
-   <div class="container px-4 px-lg-5 my-5">
-      <div class="row gx-4 gx-lg-5 align-items-center">
-         <div class="col-md-6">
-            <img class="card-img-top mb-5 mb-md-0"
-               src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
-         </div>
-         <div class="col-md-6">
-            <div class="small mb-2" id="prod_num">${product.prod_num}</div>
-            <h2 class="display-5 fw-bolder">${product.prod_title}</h2>
-            <div class="fs-5 mb-5">
-               <span class="text-decoration-line-through">${product.prod_price}</span>
-            </div>
-            <p class="lead">${product.prod_content}</p>
-            <div class="d-flex">
-               <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" style="max-width: 3rem" /><br/>
-               <button class="btn btn-outline-success flex-shrink-0" type="button" id="insertCart">
-                  <i class="bi-cart-fill me-1"></i>장바구니 담기
-               </button>
-               <button id="check_module"
-                  class="btn btn-outline-success flex-shrink-0" type="button">
-                  <i class="bi-cart-fill me-1"></i>결제하기
-               </button>
-               <button id="review_write_form"
-                  class="btn btn-outline-success flex-shrink-0" type="button"
-                  onclick="location.href='${product.prod_num}/reviewrite'">
-                  <i class="bi-cart-fill me-1"></i>리뷰작성하기
-               </button>
-            </div>
-         </div>
-      </div>
-   </div>
+	<div class="container px-4 px-lg-5 my-5">
+		<div class="row gx-4 gx-lg-5 align-items-center">
+			<div class="col-md-6">
+				<img class="card-img-top mb-5 mb-md-0"
+					src="/upload/${product.prod_img }" alt="..." />
+			</div>
+			<div class="col-md-6">
+				<div class="small mb-2" id="prod_num">${product.prod_num}</div>
+				<h2 class="display-5 fw-bolder">${product.prod_title}</h2>
+				<div class="fs-5 mb-5">
+					<span class="text-decoration-line-through">${product.prod_price}</span>
+				</div>
+				<p class="lead">${product.prod_content}</p>
+				<div class="d-flex">
+					<input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" style="max-width: 3rem" /><br/>
+					<button class="btn btn-outline-success flex-shrink-0" type="button" id="insertCart">
+						<i class="bi-cart-fill me-1"></i>장바구니 담기
+					</button>
+					<input id="check_module"
+						class="btn btn-outline-success flex-shrink-0" type="submit"value="결제하기">
+						<i class="bi-cart-fill me-1"></i>
+					<button id="review_write_form"
+						class="btn btn-outline-success flex-shrink-0" type="button"
+						onclick="location.href='${product.prod_num}/reviewrite'">
+						<i class="bi-cart-fill me-1"></i>리뷰작성하기
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <!-- 리뷰 섹션 -->
