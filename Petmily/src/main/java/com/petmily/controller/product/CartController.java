@@ -3,6 +3,7 @@ package com.petmily.controller.product;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -120,9 +121,6 @@ public class CartController {
 	public String InsertCart(@RequestParam("prod_num") int prod_num, @RequestParam("cart_amount") int cart_amount) {
 		String user_id = (String) session.getAttribute("user_id");
 		try {
-			List<Cart> cartList=cartService.cartQueryById(user_id);  
-			System.out.println(((Cart) cartList).getProd_num());
-			
 			cartService.insertCart(prod_num, cart_amount, user_id);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,53 +2,182 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
+
+	<link rel="stylesheet" type="text/css" href="${path }/resource/css/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="${path }/resource/css/common.css">
+	<link rel="stylesheet" type="text/css" href="${path }/resource/css/sub.css">
+	<link rel="stylesheet" type="text/css" href="${path }/resource/css/mall.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Exo:300,600,800&display=swap" rel="stylesheet"> <!-- 200213 수정 -->
+	<script type="text/javascript" src="${path }/resource/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="${path }/resource/js/slick.min.js"></script>
+	<script type="text/javascript" src="${path }/resource/js/common.js"></script>
+	
 <jsp:include page="header.jsp" />
 
-<section class="py-5" style="width: 1000px;margin: auto;padding-bottom: 0px;height: 796px;">
-	<div class="container px-4 px-lg-5 my-5">
-		<div class="row gx-4 gx-lg-5 align-items-center">
-			<div class="col-md-6">
-				<img class="card-img-top mb-5 mb-md-0"
-					src="${path}/resource/images/${mem_img }">
-			</div>
-			<div class="col-md-6">
-		 <div class="row space-top space-left">
-        <div class="col-8">
-            <div class="container">
-                <div class="row">
-                    <div class="col-6">
-                        <h3 style="width: 150px;">배송 정보</h3>
-                        <label for="fname"><i class="fa fa-user"></i>이름</label><br>
-                        <input type="text" id="fname" name="firstname" value="${pay.user_name }" style="width: 350px;" disabled><br>
-                        <label for="email"><i class='fa fa-phone'></i>전화번호</label><br>
-                        <input type="text" id="email" name="email" value="${pay.user_phone }" style="width: 350px;" disabled><br>
-                        <label for="adr"><i class="fa fa-address-card-o"></i>주소</label>
-                        <input type="text" id="adr" name="address" value="${pay.user_address1 }" style="width: 350px;" disabled>
-                        <input type="text" id="city" name="city" value="${pay.user_address2 }" style="margin-top:10px; width:350px;" disabled><br>
-						<label for="zip"><i class='fa fa-institution'></i>우편번호</label><br>
-                        <input type="text" id="zip" name="zip" value="${pay.user_zipcode }" style="width: 350px;" disabled><br>
-                        <label for="gradename"><i class='fa fa-paw'></i> 제품 이름</label><br>
-                        <input type="text" id="zip" name="zip" value="${mem_name }" style="width: 350px;" disabled><br>
-                        <label for="zip"><i class='fa fa-won'></i> 가격</label><br>
-                        <input type="text" id="zip" name="zip" value="${mem_price }" style="width: 350px;" disabled><br>
-                        <input type="button" value="결제" id="check_module" style="margin-top:20px;">
-					 	<form action="mem_pay" method="post">
-						<input type="submit" value="등록" style="display: none;" id="submit">
-						</form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </div>
-	</div>
-		</div>
-	</div>
-<form action="mem_pay" method="post">
-						<input type="submit" value="등록" style="display: none;" id="submit">
-					</form>
+<div id="wrap">
 
-</section>
+		<!-- container -->
+		<div class="container">
+
+			<section class="sub-content order">
+
+				<div class="title-area">
+					<h2 class="page-title">주문결제</h2>
+				</div>
+
+				<div class="lay-st-payment" style="margin-left:25%;">
+
+					<div class="left-cont-area" >
+						<!-- 주문상품 -->
+						<div class="cont-group mt0">
+							<div class="toggle-title">
+								<h3 class="cont-tit">주문상품</h3>
+							</div>
+
+							<div class="toggle-content open">
+								<table class="tbl-st-col order">
+									<colgroup>
+										<col style="width:18.5%;" />
+										<col style="width:auto;" />
+										<col style="width:20.98%;" />
+										<col style="width:20.98%;" />
+										<col style="width:60px;" />
+									</colgroup>
+									<tbody>
+										<tr>
+											<td class="product-img">
+												
+													<img src="${path}/resource/images/${mem_img }"/>
+												
+											</td>
+											<td class="product-info">
+												<p class="tit">${mem_name }</p>
+												<p class="count">${mem_price } 원</p>
+											</td>
+											<td>
+												<div class="btn-comm-wrap">
+													<!-- <input type="button" class="btn-comm btn-xs bg-grayline">삭제</input> -->
+												</div>
+											</td>
+											<td class="price">
+												${mem_price } 원
+											</td>
+											
+										</tr>
+										
+									</tbody>
+								</table>
+								<!-- //tbl-wrap -->
+							</div>
+						</div>
+						<!-- //주문상품 -->
+
+						<!-- 배송지 입력 -->
+						<div class="cont-group mt0">
+							<div class="toggle-title">
+								<h3 class="cont-tit">구매자 정보 및 배송지 입력</h3>
+								<!-- <p class="guide-txt">※ 배송비는 해당 업체에 따라 부과되며 별도 배송됩니다.</p> -->
+							</div>
+
+							<div class="toggle-content open">
+								<div class="txt-box ty02 write-form">
+									<table>
+										<%-- <caption>구매자 정보</caption> --%>
+										<colgroup>
+											<col style="width:120px;" />
+											<col style="width:auto;" />
+										</colgroup>
+										<tbody>
+											<tr>
+												<th class="required">이름</th>
+												<td><input type="text" class="inp-txt" value="${pay.user_name }" disabled /></td>
+											</tr>
+											<tr>
+												<th class="required">휴대폰번호</th>
+												<td><input type="text" class="inp-txt" value="${pay.user_phone }" disabled/></td>
+											</tr>
+
+											<tr>
+												<th scope="row" class="required">주소</th>
+												<td>
+													<div class="inp-box address">
+														<input type="text" class="inp-txt" value="${pay.user_address1 }" disabled/>
+													</div>
+													<input type="text" class="inp-txt" value="${pay.user_address2 }" disabled/>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								
+
+						
+						<!-- 결제금액 -->
+						<div class="cont-group mt0">
+
+							<div class="payment-info payment-box" style=" border-top: 2px solid black;">
+								<h3 class="cont-tit">결제금액</h3>
+
+								<div class="price-list product">
+									<div class="total-price-info">
+										<em class="tit">총 주문금액</em>
+										<span class="price">${mem_price } 원</span>
+									</div>
+
+							
+
+								<div class="price-list total">
+									<div class="total-price-info">
+										<em class="tit">총 결제금액</em>
+										<span class="price">${mem_price } 원</span>
+									</div>
+
+									<ul class="price-info">
+										<li>
+											<em class="tit">총 상품금액</em>
+											<span class="price">${mem_price } 원</span>
+										</li>
+										<li>
+											<em class="tit">총 할인금액</em>
+											<span class="price">(-) 000,000원</span>
+										</li>
+										<li>
+											<em class="tit">총 배송비</em> <!-- [D] 200305 총 배송비 추가 -->
+											<span class="price">(+) 000,000원</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- //payment-info -->
+
+						</div>
+						<!-- //결제금액 -->
+
+
+						<div class="btn-comm-wrap">
+							<input type="button"  class="btn-comm btn-md bg-line" value="결제" id="check_module" style="margin-top:20px;">
+							<form action="mem_pay" method="post">
+								<input  class="btn-comm btn-md" type="submit" value="등록" style="display: none;" id="submit">
+							</form>
+						</div>
+					</div>
+					<!-- //right-cont-area -->
+
+				</div>
+
+			</section>
+
+		</div>
+		<!-- //container -->
+
+	
+
+
+		<!-- [D] 200304 팝업 추가 -->
+
+	</div>
+	<!-- //wrap -->
 
 <jsp:include page="footer.jsp" />
 <!-- jQuery -->
