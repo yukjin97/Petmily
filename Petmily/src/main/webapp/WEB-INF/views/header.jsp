@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%>
-
 <meta charset="UTF-8" />
 <meta
   name="viewport"
@@ -104,25 +103,25 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item">
-              <a href="admin_membership" class="nav-link">Admin</a>
+              <a href="/admin_membership" class="nav-link">Admin</a>
             </li>
             <li class="nav-item">
-              <a href="subscribe" class="nav-link">구독</a>
+              <a href="/subscribe" class="nav-link">구독</a>
             </li>
             <li class="nav-item">
-              <a href="productall" class="nav-link">스토어</a>
+              <a href="/productall" class="nav-link">스토어</a>
             </li>
             <li class="nav-item">
-              <a href="mypageinfo" class="nav-link">마이페이지</a>
+              <a href="/mypageinfo" class="nav-link">마이페이지</a>
             </li>
             <li class="nav-item">
-              <a href="join" class="nav-link">회원가입</a>
+              <a href="/join" class="nav-link">회원가입</a>
             </li>
             <li class="nav-item">
-              <a href="login" class="nav-link">로그인</a>
+              <a href="/login" class="nav-link">로그인</a>
             </li>
             <li class="nav-item">
-              <a href="cart" class="nav-link">장바구니</a>
+              <a href="/cart" class="nav-link">장바구니</a>
             </li>
           </ul>
         </div>

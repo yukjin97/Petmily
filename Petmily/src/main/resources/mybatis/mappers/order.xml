@@ -43,5 +43,20 @@
 		]]>
 	</select>
 
+<select id="orderdetailCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from(select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
+		from petmily.order o, product p where p.prod_num = o.prod_num and user_id = #{user_id}) mem
+ 		]]>
+	</select>
+
+<select id="orderdetailList" resultType="order">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
+		from petmily.order o, product p where p.prod_num = o.prod_num and user_id = #{user_id}) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
 
 </mapper>

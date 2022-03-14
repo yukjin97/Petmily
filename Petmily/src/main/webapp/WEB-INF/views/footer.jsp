@@ -6,7 +6,7 @@
 		<div class="row justify-content-center">
 			<div class="col-md-4 col-lg-3 mb-4 mb-md-0">
 				<h2 class="footer-heading">Petmily</h2>
-				<p>MultiCampus</p>
+				<p>Petmily With</p>
 				<ul class="ftco-footer-social p-0">
 					<li class="ftco-animate"><a href="#" data-toggle="tooltip"
 						data-placement="top" title="Twitter"><span
@@ -24,23 +24,23 @@
 				<h2 class="footer-heading">Quick Links</h2>
 				<ul class="list-unstyled">
 					<li><a href="#" class="py-2 d-block">Home</a></li>
-					<li><a href="#" class="py-2 d-block">Subscribe</a></li>
-					<li><a href="#" class="py-2 d-block">Store</a></li>
-					<li><a href="#" class="py-2 d-block">Mypage</a></li>
-					<li><a href="#" class="py-2 d-block">Join</a></li>
-					<li><a href="#" class="py-2 d-block">Login</a></li>
+					<li><a href="/subscribe" class="py-2 d-block">Subscribe</a></li>
+					<li><a href="/productall" class="py-2 d-block">Store</a></li>
+					<li><a href="/mypageinfo" class="py-2 d-block">Mypage</a></li>
+					<li><a href="/cart" class="py-2 d-block">Cart</a></li>
+					<li><a href="/join" class="py-2 d-block">Join</a></li>
+					<li><a href="/login" class="py-2 d-block">Login</a></li>
 				</ul>
 			</div>
 			<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 				<h2 class="footer-heading">Have a Questions?</h2>
 				<div class="block-23 mb-3">
 					<ul>
-						<li><span class="icon fa fa-map"></span><span class="text">203
-								Fake St. Mountain View, San Francisco, California, USA</span></li>
+						<li><span class="icon fa fa-map"></span><span class="text">(주) 펫밀리<br> 서울특별시 강남구 언주로 508</span></li>
 						<li><a href="#"><span class="icon fa fa-phone"></span><span
-								class="text">+2 392 3929 210</span></a></li>
+								class="text">상담 및 문의전화: <br>1544-9001</span></a></li>
 						<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-								class="text">info@yourdomain.com</span></a></li>
+								class="text">펫밀리 이메일: Petmily06@Petmily.com</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -56,7 +56,7 @@
 					</script>
 					All rights reserved | This template is made with <i
 						class="fa fa-heart" aria-hidden="true"></i> by <a
-						href="https://colorlib.com" target="_blank">Colorlib.com</a>
+						href="https://colorlib.com" target="_blank">Petmily.com</a>
 					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 				</p>
 			</div>
