@@ -33,13 +33,13 @@
 	bottom:30px;
 	right:30px;
 	z-index:999;
-	border:1px solid #ccc;
+	border:none;
 	outline:none;
-	background-color:white;
-	color:green;
+	background-color:#FFBBC6;
+	color:white;
 	cursor:pointer;
 	padding:15px 20px;
-	border-radius:100%;
+	border-radius:50%;
 }
 </style>
 <html>
@@ -126,7 +126,7 @@
 	</nav>
 	<!-- END nav -->
 	<a href="#" class="btn_gotop">
-    <span class="glyphicon glyphicon-chevron-up">
+    <span class="glyphicon glyphicon-chevron-up">TOP
     </span>
 </a>
 </body>

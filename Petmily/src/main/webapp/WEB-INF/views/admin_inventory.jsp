@@ -80,7 +80,7 @@
                            <th scope="col">상품명</th>
                            <th scope="col">총물량</th>
                            <th scope="col">남은재고</th>
-                           <th scope="col">단품재고</th>
+                           <th scope="col">단품주문</th>
                            <th scope="col">실버주문</th>
                            <th scope="col">골드주문</th>
                            <th scope="col">부족수량</th>

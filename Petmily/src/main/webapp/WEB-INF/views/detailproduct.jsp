@@ -25,10 +25,9 @@
 					<button class="btn btn-outline-success flex-shrink-0" type="button">
 						<i class="bi-cart-fill me-1"></i>장바구니 담기
 					</button>
-					<button id="check_module"
-						class="btn btn-outline-success flex-shrink-0" type="button">
-						<i class="bi-cart-fill me-1"></i>결제하기
-					</button>
+					<input id="check_module"
+						class="btn btn-outline-success flex-shrink-0" type="submit"value="결제하기">
+						<i class="bi-cart-fill me-1"></i>
 					<button id="review_write_form"
 						class="btn btn-outline-success flex-shrink-0" type="button"
 						onclick="location.href='${product.prod_num}/reviewrite'">
