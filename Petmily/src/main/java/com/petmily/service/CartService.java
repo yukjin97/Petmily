@@ -27,4 +27,12 @@ public interface CartService {
 	List<Cart> cartQueryById(String user_id) throws Exception;
 
 	Product prodQueryByProdNum(int prod_num) throws Exception;
+	
+	public void deleteCart(int prod_num, String user_id) throws Exception;
+
+	void updateQuan(int prod_num, String user_id, int quantity) throws Exception;
+
+	void insertCart(int prod_num, int cart_amount, String user_id) throws Exception;
+
+	void updateCart(int prod_num, int cart_amount, String user_id) throws Exception;
 }

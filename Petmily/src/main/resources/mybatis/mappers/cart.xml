@@ -1,7 +1,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.CartDAO">
-
 	
 	<!--  이걸로 해당 유저의 아이디를 가져옴 cart.dto로 user_id와 prod_num를 세팅해서 전달  -->
 	<!-- 장바구니 클릭하면 해당 상품이 이미 장바구니에 담겼는지 안담겼는지를 체크해서, 없으면 추가하고, 있으면 이미 상품이 존재한다는 메세지 출력 -->
@@ -19,33 +18,43 @@
 	]]> 
 	</select> 
 	
-
-	
-	
-	<!-- 
-	
-	cart 테이블에 Cart(dto)로 전달된 상품정보를 추가한다. cart테이블에는 prod_num만 저장 
-	<insert id="insertProductInCart" parameterType="Cart">
-	<![CDATA[
-		insert into cart((prod_num, user_id))
-		values(#{cart_num}, #{prod_num}, #{user_id})
+		<delete id="deleteCart" parameterType="Map"> 
+	<![CDATA[ 
+		delete from petmily.cart where prod_num=#{prod_num} and user_id=#{user_id}
 	]]> 
-	상품 추가
+	</delete>
+	
+	<update id="updateQuan" parameterType="Map" >
+		<![CDATA[ 
+		update cart set cart_amount = #{cart_amount} where prod_num=#{prod_num} and user_id=#{user_id}
+	]]> 
+	</update>
+	
+	<update id="updateCart" parameterType="Map" >
+		<![CDATA[ 
+		update cart set cart_amount = #{cart_amount} where prod_num=#{prod_num} and user_id=#{user_id}
+	]]> 
+	</update>
+	
+	<select id="selectAmount" parameterType="Map">
+	<![CDATA[ 
+		select prod_num 
+	]]> 
+	</select>
+	
+		<insert id="insertCart" parameterType="Map">
+		<![CDATA[
+			insert into cart(cart_amount, prod_num, user_id)
+			values(#{cart_amount}, #{prod_num}, #{user_id})
+		]]> 
 	</insert>
 	
-	
-	
-	모든 장바구니 정보를 조회
-	<select id="selectCartList" resultMap="cartResult" parameterType="Cart">모든 장바구니 정보를 조회
+	<select id="selectCartList" resultMap="cartResult" parameterType="Cart">
 	<![CDATA[
 		select * from cart where user_id=#{user_id}
 	]]>
 	</select>
 	
-
-	cart테이블에 등록된 prod_num를 이용해서 상품 정보를 조회하는 역할
-	Map으로 받은 mycartList가 카트리스트에 있는 상품번호로 foreach문을 이용해서 상품정보를 조회한 후 반환cart 테이블에 등록된 상품 번호를 이용해서, product 테이블에서 cart 테이블에 저장된 
-			prod_num를 이용해서 상품 정보를 조회해온다.
 		<select id="selectProdList" resultMap="prodResult" parameterType="java.util.Map">
       <![CDATA[
           select p.*, u.user_id from product p, user u 
@@ -55,20 +64,8 @@
 
 		</foreach>
 	</select>
-	상품 업데이트
-	<update id="updateCartProd" parameterType="Cart">
-	<![CDATA[	
-		update cart set 
-	]]> 
-	</update>
-	
-	
-	상품 삭제 
-	<delete id="deleteCartProd" parameterType="int">
-	<![CDATA[
-		delete from cart where cart_num=#{cart_num}
-	]]> 	
-	</delete> -->
+
+
 	
 
 		

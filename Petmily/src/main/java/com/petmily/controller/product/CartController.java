@@ -1,7 +1,6 @@
 package com.petmily.controller.product;
 
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,8 +23,6 @@ import com.petmily.dto.Cart;
 import com.petmily.dto.Product;
 import com.petmily.service.CartService;
 import com.petmily.service.ProductService;
-
-import ch.qos.logback.core.recovery.ResilientSyslogOutputStream;
 
 @Controller
 @RequestMapping(value = "/cart")
@@ -66,6 +63,7 @@ public class CartController {
 	@ResponseBody
 	@PostMapping("/gettotal")
 	public int GetTotal(@RequestParam("objParams") String objParams) {
+		String user_id = (String) session.getAttribute("user_id");
 		System.out.println(objParams);
 		System.out.println("진입");
 		JsonParser jsonParser = new JsonParser();
@@ -85,8 +83,10 @@ public class CartController {
 				int prod_num = (int) Integer.parseInt((String) numList.get(i));
 				int price = productService.selectPrice(prod_num);
 				priceList.add(price);
+				
+				int quantity = (int) Integer.parseInt((String) quanList.get(i));
+				System.out.println(quantity);
 			}
-			
 			for(int j=0;priceList.size()>j;j++) {
 				int a=  (int) priceList.get(j);
 				int b =(int) Integer.parseInt((String) quanList.get(j));
@@ -100,12 +100,60 @@ public class CartController {
 		// 상품 수량을 조회
 		return total; 
 	}
+
+	@ResponseBody
+	@PostMapping("/deletecart")
+	public String DeleteCart(@RequestParam("prod_id") String prod_id) {
+		int prod_num = (int) Integer.parseInt(prod_id);
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			cartService.deleteCart(prod_num, user_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "선택하신 제품이 삭제되었습니다.";
+		
+	}
+	
+	@ResponseBody
+	@PostMapping("/insertcart")
+	public String InsertCart(@RequestParam("prod_num") int prod_num, @RequestParam("cart_amount") int cart_amount) {
+		// prod_num : 장바구니에 담을 제품 번호
+		// cart_amount : 장바구니에 담을 제품 수량
+		String user_id = (String) session.getAttribute("user_id");
+		// user_id : 내 아이디 
+		try {
+			List<Cart> cartList=cartService.cartQueryById(user_id);
+			for(Cart cart:cartList) {
+				// 내가 장바구니에 담아 놓은 상품 정보들
+				if (cart.getProd_num() == prod_num) {
+					System.out.println("장바구니에 담을 제품 수량 :" + cart_amount);
+					System.out.println("지금 장바구니에 있는 수량 :" + cart.getCart_amount());
+					cart_amount += cart.getCart_amount();
+					System.out.println("이 수량으로 업데이트 됩니다 :" + cart_amount);
+					cartService.updateCart(prod_num, cart_amount, user_id);
+					return "이미 장바구니 담겨 있는 상품입니다. 장바구니에 선택하신 수량이 더해집니다";
+				}
+			}
+			cartService.insertCart(prod_num, cart_amount, user_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "장바구니에 담겼습니다.";
+		
+	}
 	
 }
 
-/*
- * @PostMapping("/deleteProduct") public String
- */
+
+
+
+
+
+	
+
+
+
 	
 //	@PostMapping(value = "/addProdInCart") // addProdInCart를 요청하면 String addProdInCart가 호출됨(prod_num가 전달됨).
 //	public @ResponseBody String addProdInCart(@RequestParam("prod_num") int prod_num, HttpServletRequest request,
