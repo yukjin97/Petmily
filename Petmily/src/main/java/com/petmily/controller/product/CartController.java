@@ -118,11 +118,23 @@ public class CartController {
 	@ResponseBody
 	@PostMapping("/insertcart")
 	public String InsertCart(@RequestParam("prod_num") int prod_num, @RequestParam("cart_amount") int cart_amount) {
+		// prod_num : 장바구니에 담을 제품 번호
+		// cart_amount : 장바구니에 담을 제품 수량
 		String user_id = (String) session.getAttribute("user_id");
+		// user_id : 내 아이디 
 		try {
-			List<Cart> cartList=cartService.cartQueryById(user_id);  
-			System.out.println(((Cart) cartList).getProd_num());
-			
+			List<Cart> cartList=cartService.cartQueryById(user_id);
+			for(Cart cart:cartList) {
+				// 내가 장바구니에 담아 놓은 상품 정보들
+				if (cart.getProd_num() == prod_num) {
+					System.out.println("장바구니에 담을 제품 수량 :" + cart_amount);
+					System.out.println("지금 장바구니에 있는 수량 :" + cart.getCart_amount());
+					cart_amount += cart.getCart_amount();
+					System.out.println("이 수량으로 업데이트 됩니다 :" + cart_amount);
+					cartService.updateCart(prod_num, cart_amount, user_id);
+					return "이미 장바구니 담겨 있는 상품입니다. 장바구니에 선택하신 수량이 더해집니다";
+				}
+			}
 			cartService.insertCart(prod_num, cart_amount, user_id);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,6 +1,5 @@
 package com.petmily.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +68,19 @@ public class ProductServiceImpl implements ProductService {
 		
 		
 		return productDAO.selectProductList(startrow);
+	}
+
+
+	@Override
+	public List<Product> getBestViewList(int prod_view_cnt) throws Exception {
+		return productDAO.selectProductViewCnt(prod_view_cnt);
+	}
+
+
+	@Override
+	public void selectProductViewCntInc(int prod_num) throws Exception {
+		productDAO.selectProductViewCntInc(prod_num);;
+		
 	}
 	
 

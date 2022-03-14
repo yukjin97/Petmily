@@ -33,4 +33,6 @@ public interface CartService {
 	void updateQuan(int prod_num, String user_id, int quantity) throws Exception;
 
 	void insertCart(int prod_num, int cart_amount, String user_id) throws Exception;
+
+	void updateCart(int prod_num, int cart_amount, String user_id) throws Exception;
 }
