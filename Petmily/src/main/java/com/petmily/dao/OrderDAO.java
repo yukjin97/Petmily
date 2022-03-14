@@ -19,6 +19,11 @@ public interface OrderDAO {
 			@Param("fix3")int fix3) throws Exception;
 	
 	//주문 내역 조회
-	public List<Order> orderDetail(String user_id) throws Exception;
+	public List<Order> orderdetailList(@Param(value = "startrow") int startrow, 
+			@Param(value = "user_id")String user_id) throws Exception;
+	
+	int orderdetailCount(@Param(value = "user_id") String user_id) throws Exception;
+
+	
 	
 }
