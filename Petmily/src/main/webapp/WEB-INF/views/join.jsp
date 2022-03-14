@@ -27,8 +27,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     type="text"
                     id="form3Example2cg"
                     class="form-control form-control-lg"
-                    name="user_name"
-                  />
+                    name="user_name"/>
                   <label class="form-label" for="form3Example3cg">이름</label>
                 </div>
 
@@ -70,9 +69,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     class="form-control form-control-lg"
                     name="user_nickname"
                   />
-                  <label class="form-label" for="form3Example3cdg"
-                    >닉네임</label
-                  >
+                  <label class="form-label" for="form3Example3cdg">닉네임</label>
                 </div>
 
                 <!--다음 주소 api  -->
@@ -86,9 +83,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     readonly
                     onclick="findAddr()"
                   /><br />
-                  <label class="form-label" for="form3Example3cdg"
-                    >우편번호 검색</label
-                  >
+                  <label class="form-label" for="form3Example3cdg">우편번호 검색</label>
                   <input
                     type="text"
                     name="user_address1"
@@ -135,9 +130,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
                 <p class="text-center text-muted mt-5 mb-0">
                   이미 아이디가 있으신가요?
-                  <a href="login" class="fw-bold text-body"
-                    ><u>로그인 하기</u></a
-                  >
+                  <a href="login" class="fw-bold text-body"><u>로그인 하기</u></a>
                 </p>
               </form>
             </div>
@@ -170,7 +163,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 
-
+/* 스윗얼럿 정의 */
 $(function(){
 	let sweetalert=(icon,title,contents)=>{
         Swal.fire({
@@ -257,6 +250,12 @@ $(function(){
 		});
 	});
 });
+</script>
+<script>
+	$(document).ready(function() {
+	  $('li.active').removeClass('active');
+	  $('a[href="' + "/join" + '"]').closest('li').addClass('active');
+	});
 </script>
 <!-- footer include -->
 <jsp:include page="footer.jsp" />

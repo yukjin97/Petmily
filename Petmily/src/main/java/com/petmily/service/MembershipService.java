@@ -1,6 +1,7 @@
 package com.petmily.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.petmily.dto.Membership;
 import com.petmily.dto.User;
@@ -22,4 +23,6 @@ public interface MembershipService {
 	void updateDateGold(String user_id) throws Exception;
 	
 	List<Membership> membershipList(String user_id)throws Exception;
+	
+	public void delete_mem(Map<String, Object> map) throws Exception;
 }

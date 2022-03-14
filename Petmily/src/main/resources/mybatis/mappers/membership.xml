@@ -79,4 +79,11 @@
       ]]>
 	</select>
 	
+	<delete id="delete_mem" parameterType="map">
+		delete from membership where 
+		<foreach collection="array" item="item" separator="or">
+		    user_id = #{user_id} and mem_grade = #{item}
+		</foreach>
+	</delete>
+	
 </mapper>

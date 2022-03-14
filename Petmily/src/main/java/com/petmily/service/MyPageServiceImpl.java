@@ -1,6 +1,7 @@
 package com.petmily.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,4 +54,9 @@ public class MyPageServiceImpl implements MyPageService {
 	   public List<Order> orderDetail(String user_id) throws Exception {
 	      return orderDAO.orderDetail(user_id);
 	   }
+
+	@Override
+	public void withdrawMembership(Map<String, Object> map, String user_id) throws Exception {
+		
+	}
 }
