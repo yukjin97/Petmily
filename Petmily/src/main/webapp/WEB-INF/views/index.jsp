@@ -56,66 +56,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   </div>
 </div>
 
-<section class="ftco-section bg-light ftco-no-pt ftco-intro">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-        <div class="d-block services active text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <span class="flaticon-blind"></span>
-          </div>
-          <div class="media-body">
-            <h3 class="heading">강아지 시터</h3>
-            <p>구독을 1년 이상 유지하시면 강아지 전문 시터를 제공합니다.</p>
-            <a
-              href="#"
-              class="btn-custom d-flex align-items-center justify-content-center"
-              ><span class="fa fa-chevron-right"></span
-              ><i class="sr-only">Read more</i></a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-        <div class="d-block services text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <span class="flaticon-dog-eating"></span>
-          </div>
-          <div class="media-body">
-            <h3 class="heading">강아지 그릇</h3>
-            <p>구독을 1년 이상 유지하시면 강아지 자동급여기를 드립니다.</p>
-            <a
-              href="#"
-              class="btn-custom d-flex align-items-center justify-content-center"
-              ><span class="fa fa-chevron-right"></span
-              ><i class="sr-only">Read more</i></a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-        <div class="d-block services text-center">
-          <div class="icon d-flex align-items-center justify-content-center">
-            <span class="flaticon-grooming"></span>
-          </div>
-          <div class="media-body">
-            <h3 class="heading">강아지 미용</h3>
-            <p>
-              구독권을 1년 이상 유지하시면 강아지 미용서비스를 제공해드립니다.
-            </p>
-            <a
-              href="#"
-              class="btn-custom d-flex align-items-center justify-content-center"
-              ><span class="fa fa-chevron-right"></span
-              ><i class="sr-only">Read more</i></a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="ftco-section ftco-no-pt ftco-no-pb">
   <div class="container">
     <div class="row d-flex no-gutters">
@@ -519,7 +459,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <a
                 href="/product/detail/${rprod.prod_num}"
                 class="btn btn-primary d-block px-2 py-3"
-                >결제하기</a
+                >구경하기</a
               >
             </div>
           </div>

@@ -8,28 +8,55 @@
 				<h2 class="footer-heading">Petmily</h2>
 				<p>MultiCampus</p>
 				<ul class="ftco-footer-social p-0">
-					<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+					<li class="ftco-animate"><a href="https://twitter.com" data-toggle="tooltip"
 						data-placement="top" title="Twitter"><span
 							class="fa fa-twitter"></span></a></li>
-					<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+					<li class="ftco-animate"><a href="https://www.facebook.com" data-toggle="tooltip"
 						data-placement="top" title="Facebook"><span
 							class="fa fa-facebook"></span></a></li>
-					<li class="ftco-animate"><a href="#" data-toggle="tooltip"
+					<li class="ftco-animate"><a href="https://www.instagram.com" data-toggle="tooltip"
 						data-placement="top" title="Instagram"><span
 							class="fa fa-instagram"></span></a></li>
 				</ul>
 			</div>
 
-			<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
-				<h2 class="footer-heading">Quick Links</h2>
-				<ul class="list-unstyled">
-					<li><a href="#" class="py-2 d-block">Home</a></li>
-					<li><a href="#" class="py-2 d-block">Subscribe</a></li>
-					<li><a href="#" class="py-2 d-block">Store</a></li>
-					<li><a href="#" class="py-2 d-block">Mypage</a></li>
-					<li><a href="#" class="py-2 d-block">Join</a></li>
-					<li><a href="#" class="py-2 d-block">Login</a></li>
-				</ul>
+			<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+				<h2 class="footer-heading">Have a Questions?</h2>
+				<div class="block-23 mb-3">
+					<ul>
+						<li style="margin-bottom: 0px;"><a href="/" class="d-block">Home</a></li>
+						<c:choose>
+							<c:when test="${user_type =='admin'}">
+								<li style="margin-bottom: 0px;"><a href="/admin_membership"
+									class="d-block">Admin</a></li>
+							</c:when>
+							<c:otherwise>
+								<!-- 								<li class="nav-item"><a href="admin_membership"
+									class="nav-link">Admin</a></li> -->
+							</c:otherwise>
+						</c:choose>
+						<li style="margin-bottom: 0px;"><a href="/subscribe"
+							class="d-block">Subscribe</a></li>
+						<li style="margin-bottom: 0px;"><a href="/product"
+							class="d-block">Store</a></li>
+						<li style="margin-bottom: 0px;"><a href="/join"
+							class="d-block">Join</a></li>
+						<c:choose>
+							<c:when test="${empty user_id}">
+								<li style="margin-bottom: 0px;"><a href="/login"
+									class="d-block">Login</a></li>
+							</c:when>
+							<c:otherwise>
+								<li style="margin-bottom: 0px;"><a href="/mypageinfo"
+									class="d-block">Mypage</a></li>
+								<li style="margin-bottom: 0px;"><a href="/logout"
+									class="d-block">Logout</a></li>
+							</c:otherwise>
+						</c:choose>
+						<li style="margin-bottom: 0px;"><a href="/cart"
+							class="d-block">Cart</a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 				<h2 class="footer-heading">Have a Questions?</h2>
@@ -72,8 +99,10 @@
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen">
 	<svg class="circular" width="48px" height="48px">
-         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+         <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+			stroke-width="4" stroke="#eeeeee" />
+         <circle class="path" cx="24" cy="24" r="22" fill="none"
+			stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
 </div>
 
 
