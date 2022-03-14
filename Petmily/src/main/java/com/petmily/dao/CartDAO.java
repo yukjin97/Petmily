@@ -1,6 +1,7 @@
 package com.petmily.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.dao.DataAccessException;
@@ -17,8 +18,15 @@ public interface CartDAO {
 	List<Cart> cartQueryById(String user_id) throws Exception;
 
 	Product prodQueryByProdNum(int prod_num) throws Exception;
-	/////////////////////////////////////////////
-	void deleteCart(int prod_num)throws Exception;
+	
+	public void deleteCart(Map<String, Object> cartParam)throws Exception;
+
+	void updateQuan(Map<String, Object> cartParam) throws Exception;
+
+	void insertCart(Map<String, Object> cartParam) throws Exception;
+		
+	
+	
 
 //	public List<Cart> selectCartList(Cart cart) throws DataAccessException;
 //

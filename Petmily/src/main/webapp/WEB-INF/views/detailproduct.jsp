@@ -13,16 +13,15 @@
 					src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." />
 			</div>
 			<div class="col-md-6">
-				<div class="small mb-2">${product.prod_num}</div>
+				<div class="small mb-2" id="prod_num">${product.prod_num}</div>
 				<h2 class="display-5 fw-bolder">${product.prod_title}</h2>
 				<div class="fs-5 mb-5">
 					<span class="text-decoration-line-through">${product.prod_price}</span>
 				</div>
 				<p class="lead">${product.prod_content}</p>
 				<div class="d-flex">
-					<input class="form-control text-center me-3" id="inputQuantity"
-						type="num" value="1" style="max-width: 3rem" /><br />
-					<button class="btn btn-outline-success flex-shrink-0" type="button">
+					<input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" min="1" style="max-width: 3rem" /><br/>
+					<button class="btn btn-outline-success flex-shrink-0" type="button" id="insertCart">
 						<i class="bi-cart-fill me-1"></i>장바구니 담기
 					</button>
 					<input id="check_module"
@@ -117,24 +116,54 @@
 <script type="text/javascript"
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <script>
-	$("#check_module").click(function() {
-		var IMP = window.IMP; // 생략가능
-		IMP.init('imp06765182');
-		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-		IMP.request_pay({
-			pg : 'inicis', // version 1.1.0부터 지원.
-			/*
-			 'kakao':카카오페이,
-			 html5_inicis':이니시스(웹표준결제)
-			 'nice':나이스페이
-			 'jtnet':제이티넷
-			 'uplus':LG유플러스
-			 'danal':다날
-			 'payco':페이코
-			 'syrup':시럽페이
-			 'paypal':페이팔
-			 */
+			$('#insertCart').click(function() {
+				let prod_num = $('#prod_num').text();
+				let inputQuantity = $('#inputQuantity').val();
+				console.log("상품번호",prod_num);
+				console.log("수량",inputQuantity);
+				
+				$.ajax({
+					type: "post",
+					data: {prod_num : prod_num, cart_amount : inputQuantity},
+					url: "http://localhost:8080/cart/insertcart",
+					success: function(data){
+						alert(data);
+						// window.location.reload();
+					}
+				})
+		// int plus_amount = cartDao.selectAmount(cartParam);
+		// if (plus_amount != 0) {
+		// 	cart_amount += plus_amount
+		//	cartParam.put("cart_amount", cart_amount);
+		//	cartDao.updateQuan(cartParam);
+		// }
+				
+			})
+			
+			
+			
+			$("#check_module")
+					.click(
+							function() {
+								var IMP = window.IMP; // 생략가능
+								IMP.init('imp06765182');
+								// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+								// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+								IMP
+										.request_pay(
+												{
+													pg : 'inicis', // version 1.1.0부터 지원.
+													/*
+													 'kakao':카카오페이,
+													 html5_inicis':이니시스(웹표준결제)
+													 'nice':나이스페이
+													 'jtnet':제이티넷
+													 'uplus':LG유플러스
+													 'danal':다날
+													 'payco':페이코
+													 'syrup':시럽페이
+													 'paypal':페이팔
+													 */
 
 			pay_method : 'card',
 			/*
