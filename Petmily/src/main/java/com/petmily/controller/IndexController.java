@@ -27,7 +27,6 @@ public class IndexController {
 		try {
 			List<Product> rprod = productService.getBestViewList(prod.getProd_view_cnt());
 			mav.addObject("rprod", rprod);
-			System.out.println("check1");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
