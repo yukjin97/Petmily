@@ -30,9 +30,9 @@
 	]]> 
 	</update>
 	
-	<update id="updateAmount" parameterType="Map" >
+	<update id="updateCart" parameterType="Map" >
 		<![CDATA[ 
-		update cart set cart_amount  = cart_amount+"" where prod_num=1;
+		update cart set cart_amount = #{cart_amount} where prod_num=#{prod_num} and user_id=#{user_id}
 	]]> 
 	</update>
 	
