@@ -116,7 +116,7 @@
 							</tbody>
 
 						</table>
-						<input type="submit" value="처리"  value="처리" class="btn btn-outline-success"
+						<input type="submit" id="submit" value="처리"  value="처리" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
 						</form>
 					</div>
@@ -182,6 +182,23 @@
   
 }
 		</script>
+		
+		<script>
+		 $('#submit').click(function(){
+	 if($("input:checkbox[name='ordercheck[]']").is(":checked")==false){
+		 Swal.fire({
+	            icon: 'error',
+	            title: '하나이상 선택해주세요.',
+	            text: '다시 한번 시도해주세요.',
+	          });
+		return false;
+	 }
+	 else{
+		 return true;
+	 }
+  });
+		 </script>
+		 
 	<script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');

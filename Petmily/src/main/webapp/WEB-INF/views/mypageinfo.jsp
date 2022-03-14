@@ -118,7 +118,7 @@
 
       <!-- 구독 내역 내용 -->
       <div id="subPage" class="pageSection" style="display: none">
-      <form action="withdraw_membership" method="post">
+      <form action="withdraw_membership" method="post" name="form1">
         <div class="table-responsive">
           <div class="card" style="border-radius: 15px">
             <div class="card-body p-5">
@@ -355,17 +355,29 @@
 	  });
   
   $('#submit').click(function(){
-	 if($('#check').val()!="구독해지"){
+	 if($("input:checkbox[name='memcheck[]']").is(":checked")==false){
+		 Swal.fire({
+	            icon: 'error',
+	            title: '구독권을 선택해주세요.',
+	            text: '다시 한번 시도해주세요.',
+	          });
+		return false;
+	 }
+	 else if($('#check').val()!="구독해지"){
 		 $('#check').focus();
 		 Swal.fire({
 	            icon: 'error',
 	            title: '구독해지를 적어주세요.',
 	            text: '다시 한번 시도해주세요.',
-	          }); return false;
-	 } else{
+	          });
+		 return false;
+	 }
+	 else{
 		 return true;
 	 }
   });
+ 
+  
 </script>
 <script>
 	$(document).ready(function() {
