@@ -26,6 +26,22 @@
 <link rel="stylesheet" href="${path }/resource/fonts/icomoon/style.css" />
 
 <title>Petmily</title>
+<style>
+.btn_gotop {
+	display:none;
+	position:fixed;
+	bottom:30px;
+	right:30px;
+	z-index:999;
+	border:1px solid #ccc;
+	outline:none;
+	background-color:white;
+	color:green;
+	cursor:pointer;
+	padding:15px 20px;
+	border-radius:100%;
+}
+</style>
 <html>
 <body>
 	<div class="wrap">
@@ -109,5 +125,9 @@
 		</div>
 	</nav>
 	<!-- END nav -->
+	<a href="#" class="btn_gotop">
+    <span class="glyphicon glyphicon-chevron-up">
+    </span>
+</a>
 </body>
 </html>
