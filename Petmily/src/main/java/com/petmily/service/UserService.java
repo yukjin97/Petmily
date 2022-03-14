@@ -17,5 +17,7 @@ public interface UserService {
 
 	User accessUser(String user_id, String user_pwd) throws Exception;
 	
+	User queryUser(String user_id) throws Exception;
+	
 	/* boolean login(String user_id, String user_pwd) throws Exception; */
 }

@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <jsp:include page="header.jsp" />
 <section class="ftco-section">
-	<form class="container" action="/product/detail/${prod_num}/add"
+	<form class="container" action="/product/detail/${prod_num}/update/${review_num}"
 		method="post">
 		<div class="mask d-flex align-items-center h-100 gradient-custom-3 ">
 			<div class="container h-100">
 				<div class="row w-100">
 					<div class="container px-5 px-lg-5 mt-5">
-						<h2 class="display-5 mb-2 text-center">${prod_num}번상품 리뷰등록</h2>
+						<h2 class="display-5 mb-2 text-center">${prod_num}번상품 리뷰수정</h2>
 						<!-- 				
 		<table>
 							<tr>
@@ -33,11 +33,11 @@
 							style="text-align: center; margin: auto;">
 							<div class="bg-light rounded" style="padding: 30px;">
 								<input type="text" class="form-control border-0 py-2 mb-2"
-									name="review_title" placeholder="리뷰제목을 입력해주세요">
+									name="review_title" placeholder="${review.review_title }">
 								<textarea class="form-control border-0 mb-2" rows="15"
-									name="review_content" placeholder="리뷰내용을 입력해주세요"></textarea>
+									name="review_content" placeholder="${review.review_content }"></textarea>
 								<button type="submit" class="btn btn-primary w-100 py-2">리뷰
-									작성</button>
+									수정</button>
 							</div>
 						</div>
 					</div>

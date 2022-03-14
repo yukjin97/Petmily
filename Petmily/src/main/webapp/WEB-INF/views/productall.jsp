@@ -12,12 +12,11 @@
 				<div
 					class="row gx-5 gx-lg-5 row-cols-5 row-cols-md-5 row-cols-xl-5 justify-content-center">
 					<c:forEach var="p" items="${articleList }">
-						<div class="col mb-5">
+						<div class="col mb-7">
 							<div class="card h-100">
 								<!-- Product image-->
-								<img class="card-img-top"
-									src="/upload/${p.prod_img }"
-									alt="..." />
+									<img class="card-img-top" style="width: 200px; height: 200px; margin: auto;"										
+									src="${path }/upload/${p.prod_img}" alt="..." />
 								<!-- Product details-->
 								<div class="card-body p-3">
 									<div class="text-center">
@@ -31,7 +30,7 @@
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center card-footer">
 										<button class="btn.btn-primary">
-											<a class="btn btn-secondary-outline mt-auto" href="/product/detail/${p.prod_num}">구경하기</a>
+										<a class="btn btn-secondary-outline mt-auto" href="/product/detail/${p.prod_num}">구경하기</a>
 										</button>
 									</div>
 								</div>
@@ -52,7 +51,7 @@
 					[이전]&nbsp;
 				</c:when>
 			<c:otherwise>
-				<a  href="product?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				<a href="product?page=${pageInfo.page-1}">[이전]</a>&nbsp;
 				</c:otherwise>
 		</c:choose>
 		<c:forEach var="i" begin="${pageInfo.startPage }"

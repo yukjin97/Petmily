@@ -36,7 +36,8 @@
 	</update>
 
 	<!--주문 내역 조회 -->
-	<select id="orderDetail" resultType="order" parameterType="String">
+	<select id="orderDetail" resultType="order"
+		parameterType="String">
 		<![CDATA[
 		select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
 		from petmily.order o, product p where p.prod_num = o.prod_num and user_id = #{user_id}
@@ -59,4 +60,10 @@
  		]]>
 	</select>
 
+	<insert id="paymentsingle" parameterType="Map">
+		<![CDATA[
+		insert into petmily.order (order_num, user_id, order_address, prod_num, order_status, order_count, order_date) 
+		values(#{order.order_num},#{user.user_id},#{user.user_totaddress}, #{prod_num} ,#{order.order_status}, #{order.order_count}, now()) 
+		]]>
+	</insert>
 </mapper>
