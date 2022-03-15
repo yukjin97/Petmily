@@ -51,6 +51,8 @@ public class ProductController {
 	@Autowired
 	MyPageService myPageService;
 	
+	
+	
 //	@GetMapping("/productall")
 //	public ModelAndView productAllPage() {
 //		ModelAndView mav = new ModelAndView("productall");

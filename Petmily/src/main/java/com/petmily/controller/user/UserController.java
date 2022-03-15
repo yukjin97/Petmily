@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -134,13 +135,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return result;
-	}
-
-	
-	
-	
-	
-	
+	}	
 	
 	// 미구현
 	@RequestMapping(value = "/kakaologin", method = RequestMethod.GET)
@@ -154,6 +149,7 @@ public class UserController {
 		return "/kakaologin";
 	}
 
+	
 	// 미구현
 	// 지우지말아주세요
 	@RequestMapping(value = "naverlogin", method = RequestMethod.GET)

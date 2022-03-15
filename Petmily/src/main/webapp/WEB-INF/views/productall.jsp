@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <jsp:include page="header.jsp" />
 
+
 <!-- Section-->
 <section>
 	<c:choose>
@@ -15,7 +16,8 @@
 						<div class="col mb-7">
 							<div class="card h-100">
 								<!-- Product image-->
-									<img class="card-img-top" style="width: 200px; height: 200px; margin: auto;"										
+								<img class="card-img-top"
+									style="width: 200px; height: 200px; margin: auto;"
 									src="${path }/upload/${p.prod_img}" alt="..." />
 								<!-- Product details-->
 								<div class="card-body p-3">
@@ -23,14 +25,15 @@
 										<!-- Product name-->
 										<h5 class="fw-bolder">${p.prod_name}</h5>
 										<!-- Product price-->
-										<span class="text-muted text-decoration-line-through">${p.prod_price}</span>
+										<span class="text-muted text-decoration-line-through"><strong>${p.prod_price}</strong></span>
 									</div>
 								</div>
 								<!-- Product actions-->
 								<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 									<div class="text-center card-footer">
 										<button class="btn.btn-primary">
-										<a class="btn btn-secondary-outline mt-auto" href="/product/detail/${p.prod_num}">구경하기</a>
+											<a class="btn btn-primary-outline mt-auto"
+												href="/product/detail/${p.prod_num}">구경하기</a>
 										</button>
 									</div>
 								</div>
