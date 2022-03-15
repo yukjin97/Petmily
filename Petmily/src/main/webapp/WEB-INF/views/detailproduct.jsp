@@ -233,6 +233,7 @@ $('#insertCart').click(function() {
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 			} else {
 				var msg = '결제에 실패하였습니다.';
+				alert("test");
 				msg += '에러내용 : ' + rsp.error_msg;
 				$("#submit").click(); //테스트용
 			}

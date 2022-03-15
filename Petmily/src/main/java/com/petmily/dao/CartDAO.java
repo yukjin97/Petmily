@@ -25,7 +25,9 @@ public interface CartDAO {
 
 	void insertCart(Map<String, Object> cartParam) throws Exception;
 
-	void updateCart(Map<String, Object> cartParam) throws Exception;
+//	void updateCart(Map<String, Object> cartParam) throws Exception;
+
+	void deleteCartAll(String user_id) throws Exception;
 		
 	
 	

@@ -15,20 +15,27 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.petmily.dto.Cart;
+import com.petmily.dto.Order;
 import com.petmily.dto.Product;
 import com.petmily.service.CartService;
+import com.petmily.service.OrderService;
 import com.petmily.service.ProductService;
+import com.petmily.service.UserService;
 
 @Controller
 @RequestMapping(value = "/cart")
 public class CartController {
 
+	@Autowired
+	HttpSession session;
+	
 	@Autowired
 	CartService cartService;
 	
@@ -36,7 +43,11 @@ public class CartController {
 	ProductService productService;
 
 	@Autowired
-	HttpSession session;
+	OrderService orderService;
+	
+	@Autowired
+	UserService userService;
+	
 	
 	@GetMapping("")
 	public String cartMain(Model model) {
@@ -63,7 +74,7 @@ public class CartController {
 	// 수량에 따른 총 금액 계산
 	@ResponseBody
 	@PostMapping("/gettotal")
-	public int GetTotal(@RequestParam("objParams") String objParams) {
+	public int GetTotal(@RequestParam("objParams") String objParams,Model model) {
 		String user_id = (String) session.getAttribute("user_id");
 		System.out.println(objParams);
 		System.out.println("진입");
@@ -142,6 +153,30 @@ public class CartController {
 		}
 		return "장바구니에 담겼습니다.";
 		
+	}
+	
+	@PostMapping("")
+	public ModelAndView cartPayment() {
+		ModelAndView mav = new ModelAndView("mypageinfo");
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			List<Cart> cartList = cartService.cartQueryById(user_id);
+			List<Order> orderList = new ArrayList<Order>();
+			for(Cart cart: cartList) {
+				Order order = new Order();
+				order.setProd_num(cart.getProd_num());
+				order.setOrder_count(cart.getCart_amount());
+				order.setUser_id(user_id);
+				orderList.add(order);
+			}
+			for(Order order: orderList) {
+				orderService.insertCartList(order);
+			}
+			cartService.deleteCartAll(user_id);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
 	}
 	
 }

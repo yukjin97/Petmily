@@ -44,4 +44,9 @@ public class OrderServiceImpl implements OrderService {
 		orderDAO.paymentsingle(mapParam);
 		
 	}
+
+	@Override
+	public void insertCartList(Order order) throws Exception {
+		orderDAO.insertOrder(order);
+	}
 }
