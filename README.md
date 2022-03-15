@@ -1,6 +1,6 @@
 # Petmily
 
-``sql
+``
 CREATE TABLE `product`
 (
     `prod_num`           int          NOT NULL,
