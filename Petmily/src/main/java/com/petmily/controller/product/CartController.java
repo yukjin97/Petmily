@@ -157,7 +157,7 @@ public class CartController {
 	
 	@PostMapping("")
 	public ModelAndView cartPayment() {
-		ModelAndView mav = new ModelAndView("mypageinfo");
+		ModelAndView mav = new ModelAndView("cart");
 		String user_id = (String) session.getAttribute("user_id");
 		try {
 			List<Cart> cartList = cartService.cartQueryById(user_id);
