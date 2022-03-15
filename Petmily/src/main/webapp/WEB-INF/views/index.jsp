@@ -481,7 +481,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="block-7">
           <div
             class="img"
-            style="background-image: url(${path}/resource/images/pricing-1.jpg)"
+            style="background-image: url(${path}/resource/images/98002.jpg)"
           ></div>
           <div class="text-center p-4">
             <span class="excerpt d-block">Silver</span>
