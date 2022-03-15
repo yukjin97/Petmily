@@ -93,9 +93,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+					
 					<c:choose>
 						<c:when test="${user_type =='admin'}">
-							<li class="nav-item"><a href="/admin_membership"
+							<li class="nav-item"><a href="/admin_alluser"
 								class="nav-link">Admin</a></li>
 						</c:when>
 						<c:otherwise>
@@ -109,12 +110,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 					</li>
 					<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
 					</li>
-					<li class="nav-item"><a href="/join" class="nav-link">회원가입</a>
-					</li>
 					<c:choose>
 						<c:when test="${empty user_id}">
 							<li class="nav-item"><a href="/login" class="nav-link">로그인</a>
 							</li>
+												<li class="nav-item"><a href="/join" class="nav-link">회원가입</a>
+					</li>
 						</c:when>
 						<c:otherwise>
 							<li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a>

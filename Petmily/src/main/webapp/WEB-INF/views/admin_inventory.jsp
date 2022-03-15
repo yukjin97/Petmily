@@ -12,11 +12,16 @@
       <div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
          aria-orientation="vertical">
 
+		  <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4"
+             data-bs-toggle="pill"
+            type="button" role="tab" onclick="location.href='admin_alluser'">회원</button>
+
          <button id="v-subscribe-tab"
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
             onclick="location.href='admin_membership'" data-bs-toggle="pill"
-            type="button" role="tab"" onclick="location.href='admin_membership'">구독</button>
+            type="button" role="tab"" onclick="location.href='admin_membership'">구독회원</button>
 
 <!--          <button id="v-subscribe-product-tab"
             class="btn btn-success btn-block btn-lg gradient-custom-4

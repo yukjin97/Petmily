@@ -22,4 +22,6 @@ public interface ProductService {
 	public List<Product> getBestViewList(int prod_view_cnt)throws Exception;
 	
 	public void selectProductViewCntInc(int prod_num)throws Exception;
+
+	public int productCount() throws Exception;
 }

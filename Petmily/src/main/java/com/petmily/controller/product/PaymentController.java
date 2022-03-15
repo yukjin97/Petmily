@@ -45,6 +45,8 @@ public class PaymentController {
 			String userId = (String)session.getAttribute("user_id");
 			User user = userService.queryUser(userId);
         	orderService.paymentsingle(order, user, prod_num );
+        	orderService.soloPaymentCount(order, prod_num);
+        	orderService.soloPaymentCount2(prod_num);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

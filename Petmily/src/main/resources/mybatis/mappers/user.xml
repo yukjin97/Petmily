@@ -34,4 +34,10 @@
 			select * from user where user_email=#{user_email}
 		]]>
 	</select>
+	
+	<select id="UserCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from user
+ 		]]>
+	</select>
 </mapper>

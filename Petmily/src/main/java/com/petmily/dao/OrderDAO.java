@@ -35,5 +35,16 @@ public interface OrderDAO {
 	
 	// 상품 단품 주문
 	void paymentsingle(Map<String, Object> mapParam) throws Exception;
+
+
+	void solo_payment(Map<String, Object> mapParam)throws Exception;
+
+
+	void solo_payment2(Map<String, Object> mapParam)throws Exception;
+	
+	void cart_payment(Map<String, Object> mapParam)throws Exception;
+
+
+	void cart_payment2(Map<String, Object> mapParam)throws Exception;
 	
 }

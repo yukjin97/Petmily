@@ -76,7 +76,12 @@ public class CartServiceImpl implements CartService {
 		//	cartDao.updateQuan(cartParam);
 		// }
 		cartParam.put("cart_amount", cart_amount);
-		cartDao.updateCart(cartParam);
+		cartDao.updateQuan(cartParam);
+	}
+
+	@Override
+	public void deleteCartAll(String user_id) throws Exception {
+		cartDao.deleteCartAll(user_id);
 	}
 }
 

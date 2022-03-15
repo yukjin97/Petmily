@@ -172,7 +172,6 @@ $('#insertCart').click(function() {
 	$("#check_module").click(function() {
 		let inputQuantity = $("#inputQuantity").val();
 		let price =Number(inputQuantity*${product.prod_price})
-		alert(price)
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp06765182');
 		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
@@ -233,6 +232,7 @@ $('#insertCart').click(function() {
 				msg += '카드 승인번호 : ' + rsp.apply_num;
 			} else {
 				var msg = '결제에 실패하였습니다.';
+				alert("test");
 				msg += '에러내용 : ' + rsp.error_msg;
 				$("#submit").click(); //테스트용
 			}

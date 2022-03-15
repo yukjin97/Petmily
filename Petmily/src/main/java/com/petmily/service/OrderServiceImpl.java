@@ -44,4 +44,41 @@ public class OrderServiceImpl implements OrderService {
 		orderDAO.paymentsingle(mapParam);
 		
 	}
+
+	@Override
+	public void soloPaymentCount(Order order, int prod_num) throws Exception {
+		Map<String, Object> mapParam = new HashMap<String, Object>();
+		mapParam.put("order", order);
+		mapParam.put("prod_num", prod_num);
+		orderDAO.solo_payment(mapParam);
+		
+	}
+
+	@Override
+	public void soloPaymentCount2(int prod_num) throws Exception {
+		Map<String, Object> mapParam = new HashMap<String, Object>();
+		mapParam.put("prod_num", prod_num);
+		orderDAO.solo_payment2(mapParam);
+	}
+	
+	@Override
+	public void cartPayment(Order order, int prod_num) throws Exception {
+		Map<String, Object> mapParam = new HashMap<String, Object>();
+		mapParam.put("order", order);
+		mapParam.put("prod_num", prod_num);
+		orderDAO.cart_payment(mapParam);
+		
+	}
+
+	@Override
+	public void cartPayment2(int prod_num) throws Exception {
+		Map<String, Object> mapParam = new HashMap<String, Object>();
+		mapParam.put("prod_num", prod_num);
+		orderDAO.cart_payment2(mapParam);
+	}
+		
+	public void insertCartList(Order order) throws Exception {
+		orderDAO.insertOrder(order);
+	}
+	
 }

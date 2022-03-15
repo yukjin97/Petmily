@@ -66,4 +66,41 @@
 		values(#{order.order_num},#{user.user_id},#{user.user_totaddress}, #{prod_num} ,#{order.order_status}, #{order.order_count}, now()) 
 		]]>
 	</insert>
+	
+	<update id="solo_payment" parameterType="Map">
+		<![CDATA[
+		update product set 
+		prod_amount = case when prod_amount >= 0 then prod_amount-#{order.order_count} else prod_amount end,
+	 	remain_amount = case when prod_amount < 0 then remain_amount-prod_amount else remain_amount end,  
+   		prod_solo=prod_solo+#{order.order_count}
+   		where prod_num=#{prod_num}
+		]]>
+	</update>
+
+	<update id="solo_payment2" parameterType="Map">
+		<![CDATA[
+		update product set 
+		prod_amount = case when prod_amount < 0 then prod_amount=0 else prod_amount end
+   		where prod_num=#{prod_num}
+		]]>
+	</update>
+	
+		<update id="cart_payment" parameterType="Map">
+		<![CDATA[
+		update product set 
+		prod_amount = case when prod_amount >= 0 then prod_amount-#{order.order_count} else prod_amount end,
+	 	remain_amount = case when prod_amount < 0 then remain_amount-prod_amount else remain_amount end,  
+   		prod_solo=prod_solo+#{order.order_count}
+   		where prod_num=#{prod_num}
+		]]>
+	</update>
+
+	<update id="cart_payment2" parameterType="Map">
+		<![CDATA[
+		update product set 
+		prod_amount = case when prod_amount < 0 then prod_amount=0 else prod_amount end
+   		where prod_num=#{prod_num}
+		]]>
+	</update>
+	
 </mapper>

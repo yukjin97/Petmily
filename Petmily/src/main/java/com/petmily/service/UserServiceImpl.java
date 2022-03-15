@@ -172,5 +172,10 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
+	@Override
+	public int UserCount() throws Exception {
+		return userDAO.UserCount();
+	}
+
 	////// 카카오 로그인 끝 /////
 }

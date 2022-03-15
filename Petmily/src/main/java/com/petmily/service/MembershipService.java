@@ -25,4 +25,6 @@ public interface MembershipService {
 	List<Membership> membershipList(String user_id)throws Exception;
 	
 	public void delete_mem(Map<String, Object> map) throws Exception;
+
+	int membershipCount()throws Exception;
 }
