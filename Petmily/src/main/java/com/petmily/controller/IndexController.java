@@ -10,8 +10,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.petmily.dto.Product;
 import com.petmily.service.MembershipService;
+import com.petmily.dto.Review;
 import com.petmily.service.ProductService;
 import com.petmily.service.UserService;
+import com.petmily.service.ReviewService;
 
 @Controller
 public class IndexController {
@@ -24,20 +26,20 @@ public class IndexController {
 	
 	@Autowired
 	UserService UserService;
+	@Autowired
+	ReviewService reviewService;
 
-
-//	@GetMapping("/")
-//	public String index() {
-//		return "index";
-//	}
+	
 	@GetMapping("/")
-	public ModelAndView index(@ModelAttribute Product prod) {
+	public ModelAndView index(@ModelAttribute Product prod ,@ModelAttribute Review review) {
 		ModelAndView mav = new ModelAndView("index");
 		try {
 			int mem_count = MembershipService.membershipCount();
 			int prod_count = productService.productCount();
 			int user_count = UserService.UserCount();
 			List<Product> rprod = productService.getBestViewList(prod.getProd_view_cnt());
+			Review review2 = reviewService.getAllReviewList(review.getProd_num());
+			mav.addObject("review",review2);
 			mav.addObject("rprod", rprod);
 			mav.addObject("mem_count", mem_count);
 			mav.addObject("prod_count", prod_count);
@@ -47,6 +49,8 @@ public class IndexController {
 		}
 		return mav;
 	}
+	
+	
 	@GetMapping("join")
 	public String joinPage() {
 		return "join";

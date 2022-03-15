@@ -172,7 +172,7 @@ $(function(){
             text: contents,
             confirmButtonText: "확인"
         })
-    };
+    }; 
 	$('#id_check').click(function () {
     	if($('#user_id').val()==""){
     		Swal.fire({

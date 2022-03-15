@@ -142,8 +142,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
       <div
-        class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"
-      >
+        class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
         <div class="block-18 text-center">
           <div class="text">
             <strong class="number" data-number="${prod_count}">0</strong>
@@ -174,7 +173,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="heading-section mb-5 mt-5 mt-lg-0">
-          <h2 class="mb-3">Petmily Q&A</h2>
+          <h2 class="mb-3">Petmily란?</h2>
           <p>
             Petmily 구독서비스란 란 반려동물 용품을 정기구독으로 받아보실수 있는
             서비스입니다.

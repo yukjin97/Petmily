@@ -33,7 +33,7 @@
 									<td data-th="Product">
 										<div class="row">
 											<div class="col-md-3 text-left">
-												<img src='images/${prod.prod_img}.jpg' alt=""
+												<img src='upload/${prod.prod_img}' alt=""
 													class="img-fluid d-none d-md-block rounded mb-2 shadow ">
 											</div>
 											<div class="col-md-9 text-left mt-sm-2">
