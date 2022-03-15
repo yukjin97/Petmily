@@ -72,7 +72,7 @@ public class UserController {
 			mav.setViewName("index");
 			System.out.println("로그인 성공");
 			if (tmp.getUser_type().equals("admin")) {
-				mav.setViewName("redirect:/admin_membership");
+				mav.setViewName("redirect:/admin_alluser");
 			}
 			try {
 				if (memSilver.getMem_grade().equals("silver")) {

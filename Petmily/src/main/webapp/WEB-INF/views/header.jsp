@@ -129,5 +129,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 		</div>
 	</nav>
 	<!-- END nav -->
+	<a href="#" class="btn_gotop">
+    <span class="glyphicon glyphicon-chevron-up">
+    TOP
+    </span>
+	</a>
 </body>
 </html>
