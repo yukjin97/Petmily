@@ -42,4 +42,9 @@ public interface OrderDAO {
 
 	void solo_payment2(Map<String, Object> mapParam)throws Exception;
 	
+	void cart_payment(Map<String, Object> mapParam)throws Exception;
+
+
+	void cart_payment2(Map<String, Object> mapParam)throws Exception;
+	
 }
