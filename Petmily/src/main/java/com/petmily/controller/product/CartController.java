@@ -157,6 +157,7 @@ public class CartController {
 	
 	@PostMapping("")
 	public ModelAndView cartPayment() {
+
 		ModelAndView mav = new ModelAndView("redirect:/mypageinfo");
 		String user_id = (String) session.getAttribute("user_id");
 		try {

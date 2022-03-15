@@ -23,29 +23,34 @@
 					<form
 						action="${pageContext.request.contextPath}/product/detail/${product.prod_num}/payment"
 						method="post">
-<!-- 						<input class="form-control text-center me-3" id="inputQuantity"
+						<!-- 						<input class="form-control text-center me-3" id="inputQuantity"
 							name="order_count" type="number" value="1"
 							style="max-width: 3rem" /><br />
 						<button class="btn btn-outline-success flex-shrink-0" 
 							type="button">
 							<i class="bi-cart-fill me-1"></i>장바구니 담기
 						</button> -->
-						<input class="form-control text-center me-3" id="inputQuantity" type="number" name="order_count" value="1" min="1" style="max-width: 3rem" /><br/>
-					<button class="btn btn-outline-success flex-shrink-0" type="button" id="insertCart">
-						<i class="bi-cart-fill me-1"></i>장바구니 담기
-					</button>
-						
+						<input class="form-control text-center me-3" id="inputQuantity"
+							type="number" name="order_count" value="1" min="1"
+							style="max-width: 4rem" /><br />
+						<button class="btn btn-outline-success flex-shrink-0"
+							type="button" id="insertCart">
+							<i class="bi-cart-fill me-1"></i>장바구니 담기
+						</button>
 						<button id="check_module"
 							class="btn btn-outline-success flex-shrink-0" type="button">
 							<i class="bi-cart-fill me-1"></i>결제하기
 						</button>
 						<input type="submit" value="등록" style="display: none;" id="submit">
-
-						<button id="review_write_form"
-							class="btn btn-outline-success flex-shrink-0" type="button"
-							onclick="location.href='${product.prod_num}/reviewrite'">
-							<i class="bi-cart-fill me-1"></i>리뷰작성하기
-						</button>
+						<c:choose>
+							<c:when test="${not empty user_id }">
+								<button id="review_write_form"
+									class="btn btn-outline-success flex-shrink-0" type="button"
+									onclick="location.href='${product.prod_num}/reviewrite'">
+									<i class="bi-cart-fill me-1"></i>리뷰작성하기
+								</button>
+							</c:when>
+						</c:choose>
 					</form>
 				</div>
 			</div>
@@ -77,19 +82,22 @@
 												<h6 class="fw-bold mb-1">${r.review_content}</h6>
 												<small>${r.review_create_date}</small>
 											</div>
-											<form
-												action="/product/detail/${prod_num}/delete/${r.review_num}"
-												method="post">
-												<input type="submit" value="리뷰삭제" type="button"
-													class="btn btn-success">
-											</form>
-											<form
-												action="/product/detail/${prod_num}/update/${r.review_num}"
-												method="get">
-												<input type="submit" value="리뷰수정" type="button"
-													class="btn btn-success">
-											</form>
-
+											<c:choose>
+												<c:when test="${not empty user_id}">
+													<form
+														action="/product/detail/${prod_num}/delete/${r.review_num}"
+														method="post">
+														<input type="submit" value="리뷰삭제" type="button"
+															class="btn btn-success">
+													</form>
+													<form
+														action="/product/detail/${prod_num}/update/${r.review_num}"
+														method="get">
+														<input type="submit" value="리뷰수정" type="button"
+															class="btn btn-success">
+													</form>
+												</c:when>
+											</c:choose>
 										</div>
 									</div>
 								</div>
@@ -230,9 +238,9 @@ $('#insertCart').click(function() {
 				msg += '상점 거래ID : ' + rsp.merchant_uid;
 				msg += '결제 금액 : ' + rsp.paid_amount;
 				msg += '카드 승인번호 : ' + rsp.apply_num;
+				$("#submit").click(); //테스트용
 			} else {
 				var msg = '결제에 실패하였습니다.';
-				alert("test");
 				msg += '에러내용 : ' + rsp.error_msg;
 				$("#submit").click(); //테스트용
 			}

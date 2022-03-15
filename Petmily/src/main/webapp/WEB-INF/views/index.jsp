@@ -142,8 +142,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         </div>
       </div>
       <div
-        class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate"
-      >
+        class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
         <div class="block-18 text-center">
           <div class="text">
             <strong class="number" data-number="${prod_count}">0</strong>
@@ -174,7 +173,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <div class="heading-section mb-5 mt-5 mt-lg-0">
-          <h2 class="mb-3">Petmily Q&A</h2>
+          <h2 class="mb-3">Petmily란?</h2>
           <p>
             Petmily 구독서비스란 란 반려동물 용품을 정기구독으로 받아보실수 있는
             서비스입니다.
@@ -454,7 +453,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               <span class="excerpt d-block">${rprod.prod_title }</span>
               <span class="price"
                 ><sup>￦</sup><span class="number">${rprod.prod_price}</span>
-                <sub>/mos</sub></span
+                <sub>/won</sub></span
               >
               <a
                 href="/product/detail/${rprod.prod_num}"
@@ -481,44 +480,32 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="block-7">
           <div
             class="img"
-            style="background-image: url(${path}/resource/images/pricing-1.jpg)"
+            style="background-image: url(${path}/resource/images/9800.jpg)"
           ></div>
           <div class="text-center p-4">
             <span class="excerpt d-block">Silver</span>
             <span class="price"
               ><sup>￦</sup> <span class="number">9800</span>
-              <sub>/mos</sub></span
+              <sub>/mons</sub></span
             >
 
-            <ul class="pricing-text mb-5">
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Foever 강아지 사료
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Song 강아지 옷
-              </li>
-              <li>
-                <span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식
-              </li>
-            </ul>
-            <a href="mem_silver" class="btn btn-primary d-block px-2 py-3"
-              >구독하기</a
-            >
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 ftco-animate">
-        <div class="block-7">
-          <div
-            class="img"
-            style="background-image: url(${path}/resource/images/pricing-3.jpg)"
-          ></div>
-          <div class="text-center p-4">
-            <span class="excerpt d-block">Gold</span>
-            <span class="price"
-              ><sup>￦</sup> <span class="number">19800</span>
-              <sub>/mos</sub></span
-            >
+                  <ul class="pricing-text mb-5">
+                     <li><span class="fa fa-check mr-2"></span>Made By Foever 강아지
+                        사료</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By Song 강아지 옷</li>
+                     <li><span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식</li>
+                  </ul>
+                  <a href="mem_silver" class="btn btn-primary d-block px-2 py-3">구독하기</a>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 ftco-animate">
+            <div class="block-7">
+               <div class="img"
+                  style="background-image: url(${path}/resource/images/19800.jpg);"></div>
+               <div class="text-center p-4">
+                  <span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
+                     <span class="number">19800</span> <sub>/mons</sub></span>
 
             <ul class="pricing-text mb-5">
               <li>
