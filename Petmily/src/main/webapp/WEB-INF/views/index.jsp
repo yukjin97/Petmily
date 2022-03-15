@@ -507,7 +507,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="block-7">
           <div
             class="img"
-            style="background-image: url(${path}/resource/images/pricing-1.jpg)"
+            style="background-image: url(${path}/resource/images/9800.jpg)"
           ></div>
           <div class="text-center p-4">
             <span class="excerpt d-block">Silver</span>
@@ -529,7 +529,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
          <div class="col-md-4 ftco-animate">
             <div class="block-7">
                <div class="img"
-                  style="background-image: url(${path}/resource/images/pricing-3.jpg);"></div>
+                  style="background-image: url(${path}/resource/images/19800.jpg);"></div>
                <div class="text-center p-4">
                   <span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
                      <span class="number">19800</span> <sub>/mos</sub></span>
