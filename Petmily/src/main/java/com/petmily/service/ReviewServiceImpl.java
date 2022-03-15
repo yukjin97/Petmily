@@ -22,6 +22,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public void insertReview(Review review) throws Exception {
 		reviewDAO.insertReview(review);
 	}
+	
+	@Override
+	public void deleteReview(Review review) throws Exception {
+		reviewDAO.deleteReview(review);
+	}
+
+	@Override
+	public void updateReview(Review review) throws Exception {
+		reviewDAO.updateReview(review);
+	}
 
 	@Override
 	public List<Review> getreviewList(int prod_num, int page, PageInfo pageInfo) throws Exception  {
@@ -53,5 +63,12 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		return reviewDAO.selectReviewlist(testMap);
 	}
+
+	@Override
+	public Review selectReviewByNum(int review_num) throws Exception {
+		return reviewDAO.selectReviewByNum(review_num);
+	}
+
+
 
 }

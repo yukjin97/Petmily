@@ -48,12 +48,12 @@
 										<tr>
 											<td class="product-img">
 												
-													<img src="${path}/resource/images/${mem_img }"/>
+													<img src="${path}/resource/images/${product.prod_img}"/>
 												
 											</td>
 											<td class="product-info">
-												<p class="tit">${mem_name }</p>
-												<p class="count">${mem_price } 원</p>
+												<p class="tit">${product.prod_name}</p>
+												<p class="count">${product.prod_price}원</p>
 											</td>
 											<td>
 												<div class="btn-comm-wrap">
@@ -61,7 +61,7 @@
 												</div>
 											</td>
 											<td class="price">
-												${mem_price } 원
+												${product.prod_price} 원
 											</td>
 											
 										</tr>
@@ -91,20 +91,20 @@
 										<tbody>
 											<tr>
 												<th class="required">이름</th>
-												<td><input type="text" class="inp-txt" value="${pay.user_name }" disabled /></td>
+												<td><input type="text" class="inp-txt" value="${user.user_name}" disabled /></td>
 											</tr>
 											<tr>
 												<th class="required">휴대폰번호</th>
-												<td><input type="text" class="inp-txt" value="${pay.user_phone }" disabled/></td>
+												<td><input type="text" class="inp-txt" value="${user.user_phone}" disabled/></td>
 											</tr>
 
 											<tr>
 												<th scope="row" class="required">주소</th>
 												<td>
 													<div class="inp-box address">
-														<input type="text" class="inp-txt" value="${pay.user_address1 }" disabled/>
+														<input type="text" class="inp-txt" value="${user.user_address1 }" disabled/>
 													</div>
-													<input type="text" class="inp-txt" value="${pay.user_address2 }" disabled/>
+													<input type="text" class="inp-txt" value="${user.user_address2 }" disabled/>
 												</td>
 											</tr>
 										</tbody>
@@ -122,7 +122,7 @@
 								<div class="price-list product">
 									<div class="total-price-info">
 										<em class="tit">총 주문금액</em>
-										<span class="price">${mem_price } 원</span>
+										<span class="price">${product.prod_price} 원</span>
 									</div>
 
 							
@@ -130,13 +130,13 @@
 								<div class="price-list total">
 									<div class="total-price-info">
 										<em class="tit">총 결제금액</em>
-										<span class="price">${mem_price } 원</span>
+										<span class="price">${product.prod_price} 원</span>
 									</div>
 
 									<ul class="price-info">
 										<li>
 											<em class="tit">총 상품금액</em>
-											<span class="price">${mem_price } 원</span>
+											<span class="price">${product.prod_price}원</span>
 										</li>
 										<li>
 											<em class="tit">총 할인금액</em>

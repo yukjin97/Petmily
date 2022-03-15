@@ -12,11 +12,16 @@
       <div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
          aria-orientation="vertical">
 
+		  <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4"
+             data-bs-toggle="pill"
+            type="button" role="tab" onclick="location.href='admin_alluser'">회원</button>
+
          <button id="v-subscribe-tab"
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
             onclick="location.href='admin_membership'" data-bs-toggle="pill"
-            type="button" role="tab"" onclick="location.href='admin_membership'">구독</button>
+            type="button" role="tab"" onclick="location.href='admin_membership'">구독회원</button>
 
 <!--          <button id="v-subscribe-product-tab"
             class="btn btn-success btn-block btn-lg gradient-custom-4
@@ -80,7 +85,7 @@
                            <th scope="col">상품명</th>
                            <th scope="col">총물량</th>
                            <th scope="col">남은재고</th>
-                           <th scope="col">단품재고</th>
+                           <th scope="col">단품주문</th>
                            <th scope="col">실버주문</th>
                            <th scope="col">골드주문</th>
                            <th scope="col">부족수량</th>

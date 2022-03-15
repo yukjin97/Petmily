@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.petmily.dto.Admin;
 import com.petmily.dto.Product;
+import com.petmily.dto.User;
 
 @Mapper
 @Repository
@@ -16,8 +17,10 @@ public interface AdminDAO {
 
 	public List<Admin> selectMembershipList(@Param(value = "startrow")int startrow,@Param(value = "mem_text")String mem_text) throws Exception;
 	int selectMembershipCount(@Param(value = "mem_text")String mem_text) throws Exception;
+	int MembershipCount() throws Exception;
 	
 	public int selectProductCount(@Param(value="search_prod")String search_prod)throws Exception;
+	public int ProductCount()throws Exception;
 	public List<Product> selectProductList(@Param(value="startrow")int startrow, @Param(value="search_prod")String search_prod)throws Exception;
 	
 	public Integer selectMaxProdNum() throws Exception;
@@ -45,4 +48,6 @@ public interface AdminDAO {
 	
 	public int selectMemShipCount(@Param(value = "search_text")String search_text)throws Exception;
 	public List<Admin> selectMemShipList(@Param(value="startrow")int startrow,  @Param(value="search_text")String search_text)throws Exception;
+	public int selectalluserCount(@Param(value = "mem_text") String mem_text)throws Exception;
+	public List<User> selectalluserList(@Param(value="startrow")int startrow, @Param(value = "mem_text") String mem_text)throws Exception;
 }

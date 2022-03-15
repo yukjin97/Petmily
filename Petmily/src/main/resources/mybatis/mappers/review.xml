@@ -3,6 +3,18 @@
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.petmily.dao.ReviewDAO">
 
+	<delete id="deleteReview" parameterType="int">
+		<![CDATA[
+			delete from review where review_num=#{review_num}
+		]]>
+	</delete>
+
+
+	<update id="updateReview" parameterType="review">
+		<![CDATA[	
+			update review set review_title=#{review_title} , review_content=#{review_content} where review_num=#{review_num}
+		]]>
+	</update>
 
 
 	<insert id="insertReview">
@@ -13,21 +25,30 @@
 	</insert>
 
 
-	<select id="selectReviewCount" resultType="int" parameterType="int">
+
+
+	<select id="selectReviewCount" resultType="int"
+		parameterType="int">
 		<![CDATA[
 			select count(*)	from review	where prod_num= #{prod_num}			
 		]]>
 	</select>
-	
-	
-	 <select id="selectReviewlist" resultType="review" parameterType="Map">
+
+
+	<select id="selectReviewlist" resultType="review"
+		parameterType="Map">
  		<![CDATA[
  			select * from (select @rownum:=@rownum+1 rnum, tot.* 
 					from (select * from review where prod_num= #{prod_num} order by review_num desc) tot, 
 					(select @rownum:=0) temp) sub
 			where rnum between #{startrow} and #{startrow}+9		
  		]]>
- 	</select>
-	
-	
+	</select>
+
+	<select id="selectReviewByNum" resultType="review"  parameterType="int">
+	<![CDATA[
+ 			select * from review where review_num =#{review_num}	
+ 		]]>
+	</select>
+
 </mapper>

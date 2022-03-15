@@ -7,43 +7,46 @@
 	<jsp:include page="header.jsp" />
 
 	<!-- Admin 페이지 탭 메뉴 -->
-	<div
-		style="float: left; width: 410px; margin-top: 50px; padding-left: 230px;">
-		<div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
-			aria-orientation="vertical">
+ <div
+      style="float: left; width: 410px; margin-top: 50px; padding-left: 230px;">
+      <div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
+         aria-orientation="vertical">
 
+		  <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4"
+             data-bs-toggle="pill"
+            type="button" role="tab" onclick="location.href='admin_alluser'">회원</button>
 
-			<button id="v-subscribe-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				onclick="location.href='admin_membership'" data-bs-toggle="pill"
-				type="button" role="tab"
-				" onclick="location.href='admin_membership'">구독</button>
+         <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            onclick="location.href='admin_membership'" data-bs-toggle="pill"
+            type="button" role="tab"" onclick="location.href='admin_membership'">구독회원</button>
 
-			<!-- <button id="v-subscribe-product-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
-				type="button" role="tab" onclick="location.href=''">구독 상품 등록</button> -->
+<!--          <button id="v-subscribe-product-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
+            type="button" role="tab" onclick="location.href=''">구독 상품 등록</button> -->
 
-			<button id="v-add-product-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-add-product" type="button" role="tab"
-				onclick="location.href='admin_product'">상품등록</button>
+         <button id="v-add-product-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-add-product" type="button" role="tab"
+            onclick="location.href='admin_product'">상품등록</button>
 
-			<button id="v-remain-product-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-toggle="pill" data-bs-target="#v-remain-product"
-				onclick="location.href='admin_inventory'" type="button" role="tab">상품
-				재고</button>
+         <button id="v-remain-product-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-toggle="pill" data-bs-target="#v-remain-product"
+            onclick="location.href='admin_inventory'" type="button" role="tab">상품
+            재고</button>
 
-			<button id="v-order-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-order" type="button" role="tab"
-				onclick="location.href='admin_order'">상품 주문</button>
+         <button id="v-order-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-order" type="button" role="tab" onclick="location.href='admin_order'">상품 주문</button>
+
          <button id="v-delivery-tab" data-bs-toggle="pill"
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
@@ -53,9 +56,8 @@
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
             data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_mem_ship'">배송조회 [구독]</button>
-		</div>
-	</div>
-
+      </div>
+   </div>
 
 	<section id="order_form"
 		style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;">
@@ -119,7 +121,7 @@
 							</tbody>
 
 						</table>
-						<input type="submit" value="처리" class="btn btn-outline-success"
+						<input type="submit" id="submit" value="처리" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
 						</form>
 					</div>
@@ -160,7 +162,7 @@
 						type="submit" value="찾기" class="btn btn-outline-success"
 						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
 				</form>
-				<section id="emptyArea">구독 회원이 없습니다.</section>
+				<section id="emptyArea">주문이 없습니다.</section>
 			</c:otherwise>
 		</c:choose>
 
@@ -183,6 +185,21 @@
   
 }
 		</script>
+		<script>
+		 $('#submit').click(function(){
+	 if($("input:checkbox[name='ordercheck[]']").is(":checked")==false){
+		 Swal.fire({
+	            icon: 'error',
+	            title: '하나이상 선택해주세요.',
+	            text: '다시 한번 시도해주세요.',
+	          });
+		return false;
+	 }
+	 else{
+		 return true;
+	 }
+  });
+		 </script>
 <script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.petmily.dto.Admin;
 import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
+import com.petmily.dto.User;
 import com.petmily.service.AdminService;
 
 @Controller
@@ -209,5 +210,20 @@ public class AdminController {
 			e.printStackTrace();
 		}
 		return "/admin_mem_ship";
+	}	
+	
+	@GetMapping(value ="/admin_alluser")
+	public String admin_alluser (@RequestParam(value="page", required=false, defaultValue="1")int page, Model model,
+			@RequestParam(value = "mem_text",defaultValue="")String mem_text ) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<User> user = adminservice.alluserList(page,pageInfo,mem_text);
+			model.addAttribute("mem_text", mem_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("user", user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/admin_alluser";
 	}	
 }
