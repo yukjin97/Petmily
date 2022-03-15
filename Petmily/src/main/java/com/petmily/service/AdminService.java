@@ -6,6 +6,7 @@ import java.util.Map;
 import com.petmily.dto.Admin;
 import com.petmily.dto.PageInfo;
 import com.petmily.dto.Product;
+import com.petmily.dto.User;
 
 public interface AdminService {
 
@@ -34,6 +35,8 @@ public interface AdminService {
 	public void updateMemStatus(Map<String, Object> map)throws Exception;
 
 	public List<Admin> memshipList(int page, PageInfo pageInfo, String search_text)throws Exception;
+
+	public List<User> alluserList(int page, PageInfo pageInfo, String mem_text)throws Exception;
 
 }
 	

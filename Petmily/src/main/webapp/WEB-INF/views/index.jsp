@@ -122,7 +122,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       >
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="10000">0</strong>
+            <strong class="number" data-number="${mem_count}">0</strong>
           </div>
           <div class="text">
             <span>구독자수</span>
@@ -146,7 +146,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       >
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="1000">0</strong>
+            <strong class="number" data-number="${prod_count}">0</strong>
           </div>
           <div class="text">
             <span>제품</span>
@@ -158,7 +158,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       >
         <div class="block-18 text-center">
           <div class="text">
-            <strong class="number" data-number="10000000">0</strong>
+            <strong class="number" data-number="${user_count}">0</strong>
           </div>
           <div class="text">
             <span>스토어 이용자수</span>

@@ -172,7 +172,6 @@ $('#insertCart').click(function() {
 	$("#check_module").click(function() {
 		let inputQuantity = $("#inputQuantity").val();
 		let price =Number(inputQuantity*${product.prod_price})
-		alert(price)
 		var IMP = window.IMP; // 생략가능
 		IMP.init('imp06765182');
 		// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용

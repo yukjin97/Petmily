@@ -13,4 +13,5 @@ public interface UserDAO {
 	public void insertUser(User user)throws Exception;
 	public void updateUser(User user)throws Exception;
 	public void updateUserAddress(User user)throws Exception;
+	public int UserCount()throws Exception;
 }

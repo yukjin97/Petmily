@@ -95,7 +95,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 					<c:choose>
 						<c:when test="${user_type =='admin'}">
-							<li class="nav-item"><a href="/admin_membership"
+							<li class="nav-item"><a href="/admin_alluser"
 								class="nav-link">Admin</a></li>
 						</c:when>
 						<c:otherwise>

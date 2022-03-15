@@ -6,41 +6,46 @@
 	<jsp:include page="header.jsp" />
 
 	<!-- Admin 페이지 탭 메뉴 -->
-	<div
-		style="float: left; width: 410px; margin-top: 50px; padding-left: 230px;">
-		<div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
-			aria-orientation="vertical">
+ <div
+      style="float: left; width: 410px; margin-top: 50px; padding-left: 230px;">
+      <div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
+         aria-orientation="vertical">
 
-		
-			<button id="v-subscribe-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				onclick="location.href='admin_membership'" data-bs-toggle="pill"
-				type="button" role="tab"" onclick="location.href='admin_membership'">구독</button>
+		  <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4"
+             data-bs-toggle="pill"
+            type="button" role="tab" onclick="location.href='admin_alluser'">회원</button>
 
-			<!-- <button id="v-subscribe-product-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
-				type="button" role="tab" onclick="location.href=''">구독 상품 등록</button> -->
+         <button id="v-subscribe-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            onclick="location.href='admin_membership'" data-bs-toggle="pill"
+            type="button" role="tab"" onclick="location.href='admin_membership'">구독회원</button>
 
-			<button id="v-add-product-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-add-product" type="button" role="tab"
-				onclick="location.href='admin_product'">상품등록</button>
+<!--          <button id="v-subscribe-product-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-toggle="pill" data-bs-target="#v-subscribe-product"
+            type="button" role="tab" onclick="location.href=''">구독 상품 등록</button> -->
 
-			<button id="v-remain-product-tab"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-toggle="pill" data-bs-target="#v-remain-product"
-				onclick="location.href='admin_inventory'" type="button" role="tab">상품
-				재고</button>
+         <button id="v-add-product-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-add-product" type="button" role="tab"
+            onclick="location.href='admin_product'">상품등록</button>
 
-			<button id="v-order-tab" data-bs-toggle="pill"
-				class="btn btn-success btn-block btn-lg gradient-custom-4
-			"
-				data-bs-target="#v-order" type="button" role="tab" onclick="location.href='admin_order'">상품 주문</button>
+         <button id="v-remain-product-tab"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-toggle="pill" data-bs-target="#v-remain-product"
+            onclick="location.href='admin_inventory'" type="button" role="tab">상품
+            재고</button>
+
+         <button id="v-order-tab" data-bs-toggle="pill"
+            class="btn btn-success btn-block btn-lg gradient-custom-4
+         "
+            data-bs-target="#v-order" type="button" role="tab" onclick="location.href='admin_order'">상품 주문</button>
+
          <button id="v-delivery-tab" data-bs-toggle="pill"
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
@@ -50,8 +55,8 @@
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
             data-bs-target="#v-delivery" type="button" role="tab" onclick="location.href='admin_mem_ship'">배송조회 [구독]</button>
-		</div>
-	</div>
+      </div>
+   </div>
 
 
 	<section id="product_form"

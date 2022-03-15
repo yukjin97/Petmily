@@ -6,7 +6,7 @@
 	<jsp:include page="header.jsp" />
 
 	<!-- Admin 페이지 탭 메뉴 -->
- <div
+	 <div
       style="float: left; width: 410px; margin-top: 50px; padding-left: 230px;">
       <div class="nav flex-column nav-tabs me-3" id="v-tab" role="tablist"
          aria-orientation="vertical">
@@ -58,55 +58,69 @@
       </div>
    </div>
 
-
-	<section id="ship_form"
-		style="padding-left: 500px; height: 1150px; width: 1500px; padding-top: 50px; padding-bottom: 100px;">
+<section style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;" id="membership_form">
 
 
 		<c:choose>
-			<c:when test="${admin_ship!=null && pageInfo.listCount>0 }">
+			<c:when test="${user!=null && pageInfo.listCount>0 }">
 				<section id="listForm">
 
 					<h2 class="mb-5"
 						style="text-decoration: underline; text-underline-position: under;">
-						배송조회 [ 단품 ]
+						회원 관리
 						</h2>
-					<form action="admin_ship" method="get">
-						<input type="text" id="search_text" name="search_text" /> <input
+					<form action="admin_alluser" method="get">
+						<input type="text" id="mem_text" name="mem_text" /> <input
 							type="submit" value="찾기" class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
-					</form>
+					
 
-					<div class="table-responsive">
-
+					<div class="table-responsive" style="
+					display: block;
+    				width: 100%;
+    				overflow-x: inherit;">
+					<!-- <form action="UpdateMemStatus" method="post"> -->
 						<table class="table custom-table">
 							<thead>
 								<tr>
-									<th scope="col">주문날짜</th>
-									<th scope="col">상품명</th>
-									<th scope="col">수량</th>
-									<th scope="col">주소</th>
+									<th scope="col">아이디</th>
 									<th scope="col">이름</th>
+									<th scope="col">닉네임</th>
+									<!-- <th scope="col">패스워드</th> -->
+									<th scope="col">이메일</th>
+									<th scope="col">주소</th>
 									<th scope="col">전화번호</th>
-									<th scope="col">상태</th>
+									<!-- <th scope="col"><label class="control control--checkbox">
+											<input type="checkbox" class="js-check-all" onclick="selectAll(this)"/>
+											<div class="control__indicator"></div>
+									</label></th> -->
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${admin_ship }" var="admin_ship">
+								<c:forEach items="${user }" var="user">
 									<tr>
-										<td>${admin_ship.order_date}</td>
-					<td>${admin_ship.prod_name }</td>
-					<td>${admin_ship.order_count }</td>
-					<td>${admin_ship.user_totaddress }</td>
-					<td>${admin_ship.user_name }</td>
-					<td>${admin_ship.user_phone }</td>
-					<td>배송중</td>
+										<td>${user.user_id }</td>	
+										<td>${user.user_name }</td>
+										<td>${user.user_nickname }</td>
+										<%-- <td>${user.user_pwd }</td> --%>
+										<td>${user.user_email }</td>
+										<td>${user.user_totaddress }</td>
+										<td>${user.user_phone}</td>
+										<%-- <th scope="row"><label class="control control--checkbox">
+												<input type="checkbox" value="${user.user_id }"
+												name="ordercheck[]" />
+												<div class="control__indicator"></div>
+										</label></th> --%>
 									</tr>
 								</c:forEach>
 							</tbody>
 
 						</table>
+						<!-- <input type="submit" id="submit" value="처리"  value="처리" class="btn btn-outline-success"
+							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" >
+						</form> -->
 					</div>
+					</form>
 				</section>
 				<section id="pageList">
 					<c:choose>
@@ -115,7 +129,7 @@
 				</c:when>
 						<c:otherwise>
 							<a
-								href="admin_ship?page=${pageInfo.page-1}&search_text=${search_text}">[이전]</a>&nbsp;
+								href="admin_alluser?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
 				</c:otherwise>
 					</c:choose>
 					<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -123,7 +137,7 @@
 						<c:choose>
 							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 							<c:otherwise>
-								<a href="admin_ship?page=${i}&search_text=${search_text}">[${i }]</a>
+								<a href="admin_alluser?page=${i}&mem_text=${mem_text}">[${i }]</a>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -133,20 +147,20 @@
 				</c:when>
 						<c:otherwise>
 							<a
-								href="admin_ship?page=${pageInfo.page+1}&search_text=${search_text}">[다음]</a>
+								href="admin_alluser?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
 						</c:otherwise>
 					</c:choose>
 				</section>
 			</c:when>
 			<c:otherwise>
-				<form action="admin_ship" method="get">
-					<input type="text" id="search_text" name="search_text" /> <input
+				<form action="admin_membership" method="get">
+					<input type="text" id="mem_text" name="mem_text" /> <input
 						type="submit" value="찾기" 
 						class="btn btn-outline-success"
 							style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" 
 							/>
 				</form>
-				<section id="emptyArea">배송중인 상품이 없습니다.</section>
+				<section id="emptyArea">구독 회원이 없습니다.</section>
 			</c:otherwise>
 		</c:choose>
 
@@ -159,8 +173,37 @@
 
 	<jsp:include page="footer.jsp" />
 	<script>
+		function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('ordercheck[]');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+  
+}
+		</script>
+		
+		<script>
+		 $('#submit').click(function(){
+	 if($("input:checkbox[name='ordercheck[]']").is(":checked")==false){
+		 Swal.fire({
+	            icon: 'error',
+	            title: '하나이상 선택해주세요.',
+	            text: '다시 한번 시도해주세요.',
+	          });
+		return false;
+	 }
+	 else{
+		 return true;
+	 }
+  });
+		 </script>
+		 
+	<script>
 	$(document).ready(function() {
 	  $('li.active').removeClass('active');
 	  $('a[href="' + "/admin_membership" + '"]').closest('li').addClass('active');
 	});
 </script>
+	

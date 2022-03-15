@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.petmily.dao.AdminDAO;
 import com.petmily.dao.MembershipDAO;
 import com.petmily.dto.Membership;
 import com.petmily.dto.User;
@@ -15,6 +16,9 @@ import com.petmily.dto.User;
 public class MembershipServiceImpl implements MembershipService {
 	@Autowired
 	MembershipDAO membershipDAO;
+	
+	@Autowired
+	AdminDAO admindao;
 	
 	@Override
 	public void memberShip(Membership membership) throws Exception {
@@ -89,5 +93,10 @@ public class MembershipServiceImpl implements MembershipService {
 	@Override
 	public void delete_mem(Map<String, Object> map) throws Exception {
 		membershipDAO.delete_mem(map);
+	}
+
+	@Override
+	public int membershipCount() throws Exception {
+		return admindao.MembershipCount();
 	}
 }
