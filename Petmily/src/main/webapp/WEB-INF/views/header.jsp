@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="${path }/resource/css/style.css" />
 <link rel="stylesheet" href="${path }/resource/fonts/icomoon/style.css" />
 
+
 <title>Petmily</title>
 <style>
 .btn_gotop {
@@ -51,30 +52,12 @@
 						<c:choose>
 							<c:when test="${not empty user_id}">
 								<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>
-									대표전화 :+82 1234 5678</a>
+								 대표전화	:1544-9001</a>
 								<a href="#"><span class="fa fa-paper-plane mr-1"></span>
-									${user_id}님 환영합니다.</a>
+									${user_id}님 환영합니다^^</a>
 							</c:when>
 						</c:choose>
 					</p>
-				</div>
-				<div class="col-md-6 d-flex justify-content-md-end">
-					<div class="social-media">
-						<p class="mb-0 d-flex">
-							<a href="#"
-								class="d-flex align-items-center justify-content-center"><span
-								class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a> <a
-								href="#"
-								class="d-flex align-items-center justify-content-center"><span
-								class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a> <a
-								href="#"
-								class="d-flex align-items-center justify-content-center"><span
-								class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-							<a href="#"
-								class="d-flex align-items-center justify-content-center"><span
-								class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-						</p>
-					</div>
 				</div>
 			</div>
 		</div>

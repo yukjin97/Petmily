@@ -36,4 +36,6 @@ public interface ProductDAO {
 	public List<Product> productOrberbylowprice(int startrow)throws Exception;
 	
 	public List<Product> productOrberbyhighprice(int startrow)throws Exception;
+	
+	public int selectProductCountByCate(String prod_category) throws Exception;
 }

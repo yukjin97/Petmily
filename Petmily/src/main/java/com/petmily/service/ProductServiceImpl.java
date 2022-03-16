@@ -45,11 +45,11 @@ public class ProductServiceImpl implements ProductService {
 		int listCount = productDAO.selectProductCount();
 		// table 에 있는 모든 row의 수
 		
-		int maxPage=(int)Math.ceil((double)listCount/10);
+		int maxPage=(int)Math.ceil((double)listCount/7);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -61,7 +61,7 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7+1;
 		
 		
 		return productDAO.selectProductList(startrow);
@@ -90,14 +90,14 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<Product> categorylist(int page, PageInfo pageInfo ,String prod_category )  throws Exception {
-		int listCount = productDAO.selectProductCount();
+		int listCount = productDAO.selectProductCountByCate(prod_category);
 		// table 에 있는 모든 row의 수
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -109,7 +109,17 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7;
+		
+		System.out.println("마지막 페이지: "+pageInfo.getEndPage());
+		System.out.println("제품 수 : "+pageInfo.getListCount());
+		System.out.println("최대페이지: "+pageInfo.getMaxPage());
+		System.out.println("현재 페이지: "+pageInfo.getPage());
+		System.out.println("시작페이지: "+pageInfo.getStartPage());
+		System.out.println("스타트로우 : "+startrow);
+		
+		
+		
 		
 		Map<String, Object> mapParam = new HashMap<String, Object>();
 		mapParam.put("prod_category", prod_category);
@@ -125,9 +135,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -139,7 +149,7 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7;
 		return productDAO.productOrberbycreate(startrow);
 	}
 
@@ -151,9 +161,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -165,7 +175,7 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7;
 		return productDAO.productOrberbyview(startrow);
 	}
 
@@ -177,9 +187,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -191,7 +201,7 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7;
 		return productDAO.productOrberbylowprice(startrow);
 	}
 
@@ -203,9 +213,9 @@ public class ProductServiceImpl implements ProductService {
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
 		
-		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
+		int startPage=(((int) ((double)page/7+0.9))-1)*7+1;
 		
-		int endPage=startPage+10-1;
+		int endPage=startPage+7-1;
 		
 		if(endPage>maxPage) endPage=maxPage;
 		pageInfo.setStartPage(startPage);
@@ -217,7 +227,7 @@ public class ProductServiceImpl implements ProductService {
 		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
 		//getter로 받을 수 있다.
 		
-		int startrow=(page-1)*10+1;
+		int startrow=(page-1)*7;
 		return productDAO.productOrberbyhighprice(startrow);
 	}
 	

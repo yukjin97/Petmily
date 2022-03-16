@@ -65,7 +65,7 @@
 			</li>
 			<li class="nav-item" role="presentation" style="margin-right: 10px;">
 				<button type="button" class="nav-link btn btn-outline-success"
-					id="subscribe-tab" style="width: 150px;">구독 내역</button>
+					id="subscribe-tab" style="width: 150px;">구독 정보</button>
 			</li>
 			<li class="nav-item" role="presentation" style="margin-right: 10px;">
 				<button type="button" class="nav-link btn btn-outline-success"
@@ -82,7 +82,7 @@
 <!-- 나의 정보 내역 내용 -->
 <div class="tab-content mx-5" id="myTabContent">
 	<div class="row d-flex justify-content-center align-items-center h-100">
-		<div style="height: 700px; width: 500px; margin-top: 100px">
+		<div style="height: 700px; width: 600px; margin-top: 100px">
 			<div id="myinfoPage" class="pageSection">
 				<div class="table-responsive">
 					<table class="table">
@@ -103,66 +103,69 @@
 								<th scope="row">Phone</th>
 								<td>${user.user_phone }</td>
 							</tr>
+
 						</tbody>
+
 					</table>
 				</div>
 				<div>
+
 					<input type="button" class="btn btn-success"
 						onclick="location.href='usermodify'" value="수정하기" />
 				</div>
 			</div>
 
-      <!-- 구독 내역 내용 -->
-      <div id="subPage" class="pageSection" style="display: none">
-      <form action="withdraw_membership" method="post" name="form1">
-        <div class="table-responsive">
-          <div class="card" style="border-radius: 15px">
-            <div class="card-body p-5">
-              <table class="t_margin_auto width100 ds-table">
-                <tbody>
-             
-                  <c:choose>
-                    <c:when test="${empty rmem}">
-                      <tr>
-                        <td>구독부터 하세요</td>
-                      </tr>
-                    </c:when>
-                    <c:otherwise>
+
+			<!-- 구독 내역 내용 -->
+			<div id="subPage" class="pageSection" style="display: none">
+				<form action="withdraw_membership" method="post" name="form1">
+					<div class="table-responsive">
+						<div class="card" style="border-radius: 15px">
+							<div class="card-body p-5">
+								<table class="t_margin_auto width100 ds-table">
+									<tbody>
+
+										<c:choose>
+											<c:when test="${empty rmem}">
+												<tr>
+													<td>아직 구독중인 상품이 없습니다.</td>
+												</tr>
+											</c:when>
+											<c:otherwise>
                          ${user.user_nickname }님의 구독중인 서비스
                       <c:forEach items="${rmem }" var="rmem">
-                        <th scope="row">${rmem.mem_grade}</th>
-                        <tr>
-                          <td>다음 결제일은 ${rmem.mem_next_date}</td><td style="padding-left: 25px;">
-                          <input class="Withdrawal" type="checkbox" value="${rmem.mem_grade}" style="display:none;" name="memcheck[]"></td>
-                        </tr>
-                      </c:forEach>
-                    </c:otherwise>
-                  </c:choose>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-                  <br>
-            <input
-            type="button"
-            class="btn btn-success"
-            onclick="'"
-            value="구독해지"
-            id="withdrawal_btn"
-          />
-          <div style="display:none" class="Withdrawal">
-          <input type="text" placeholder='"구독해지" 를 입력해주세요' style="margin-top:5%;" class="form-control" id="check"/>
-          <input type="submit" value="확인" style="margin-top:1%;" class="btn btn-danger" id="submit"/>
-          </div>
-          </form>
-      </div>
+													<th scope="row">${rmem.mem_grade}</th>
+													<tr>
+														<td>다음 결제일은 ${rmem.mem_next_date}</td>
+														<td style="padding-left: 25px;"><input
+															class="Withdrawal" type="checkbox"
+															value="${rmem.mem_grade}" style="display: none;"
+															name="memcheck[]"></td>
+													</tr>
+												</c:forEach>
+											</c:otherwise>
+										</c:choose>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<br> <input type="button" class="btn btn-success" onclick="'"
+						value="구독해지" id="withdrawal_btn" />
+					<div style="display: none" class="Withdrawal">
+						<input type="text" placeholder='"구독해지" 를 입력해주세요'
+							style="margin-top: 5%;" class="form-control" id="check" /> <input
+							type="submit" value="확인" style="margin-top: 1%;"
+							class="btn btn-danger" id="submit" />
+					</div>
+				</form>
+			</div>
 
 			<!-- 주문 내역 내용 -->
 			<div id="orderPage" class="pageSection" style="display: none">
 				<div class="table-responsive">
 					<table class="table">
-						<thead class="table-success">
+						<!-- <thead class="table-success">
 							<tr>
 								<th scope="col">주문번호</th>
 								<th scope="col">주문일자</th>
@@ -170,11 +173,18 @@
 								<th scope="col">주문수량</th>
 								<th scope="col">상품가격</th>
 							</tr>
+						</thead> -->
+						<thead>
+							<tr>
+								<th style="width: 25%">주문일자</th>
+								<th style="width: 25%">상품명</th>
+								<th style="width: 25%">주문수량</th>
+								<th style="width: 25%">상품가격</th>
+							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="order" items="${orderList }">
 								<tr>
-									<td>${order.order_num }</td>
 									<td>${order.order_date }</td>
 									<td>${order.prod_name }</td>
 									<td>${order.order_count }</td>
@@ -256,7 +266,8 @@
 <jsp:include page="footer.jsp" />
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	function findAddr() {
 		new daum.Postcode({
