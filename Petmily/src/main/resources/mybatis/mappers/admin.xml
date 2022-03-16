@@ -124,7 +124,7 @@
 		from(select prod_num, prod_name, prod_allamount,prod_amount, prod_solo, prod_silver, prod_gold, remain_amount from product
  		 where prod_name like'%${search_inven}%' or prod_allamount like'%${search_inven}%' or prod_amount like'%${search_inven}%' 
  		or prod_solo like'%${search_inven}%' or prod_silver like'%${search_inven}%' or prod_gold like'%${search_inven}%' or remain_amount like'%${search_inven}%'
- 		 order by prod_amount desc, prod_solo asc) tot, 
+ 		 order by prod_num asc, remain_amount asc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
 	</select>
