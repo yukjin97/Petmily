@@ -72,7 +72,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="row">
           <div class="col-md-6 services-2 w-100 d-flex">
             <div class="icon d-flex align-items-center justify-content-center">
-              <span class="flaticon-stethoscope"></span>
+              <span class="flaticon-dog-eating"></span>
             </div>
             <div class="text pl-3">
               <h4>Petmily</h4>
@@ -90,7 +90,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           </div>
           <div class="col-md-6 services-2 w-100 d-flex">
             <div class="icon d-flex align-items-center justify-content-center">
-              <span class="flaticon-emergency-call"></span>
+              <span class="flaticon-pawprint-1"></span>
             </div>
             <div class="text pl-3">
               <h4>고객센터</h4>
