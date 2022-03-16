@@ -44,14 +44,14 @@
 		]]>
 	</select>
 
-<select id="orderdetailCount" resultType="int">
+	<select id="orderdetailCount" resultType="int">
  		<![CDATA[
  			select count(*) from(select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
 		from petmily.order o, product p where p.prod_num = o.prod_num and user_id = #{user_id}) mem
  		]]>
 	</select>
 
-<select id="orderdetailList" resultType="order">
+	<select id="orderdetailList" resultType="order">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
 		from(select o.order_num, o.order_date, p.prod_name, o.order_count, p.prod_price
@@ -62,8 +62,8 @@
 
 	<insert id="paymentsingle" parameterType="Map">
 		<![CDATA[
-		insert into petmily.order (order_num, user_id, order_address, prod_num, order_status, order_count, order_date) 
-		values(#{order.order_num},#{user.user_id},#{user.user_totaddress}, #{prod_num} ,#{order.order_status}, #{order.order_count}, now()) 
+		insert into petmily.order (order_num, user_id,prod_num, order_status, order_count, order_date) 
+		values(#{order.order_num},#{user.user_id},#{prod_num} ,#{order.order_status}, #{order.order_count}, now()) 
 		]]>
 	</insert>
 	

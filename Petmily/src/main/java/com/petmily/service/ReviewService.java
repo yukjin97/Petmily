@@ -17,7 +17,10 @@ public interface ReviewService {
 
 	public void updateReview(Review review) throws Exception;
 
-	public Review selectReviewByNum(int review_num) throws Exception;	
+	public Review selectReviewByNum(int review_num) throws Exception;
+
+
+	public Review getAllReviewList(int prod_num) throws Exception;	
 
 	
 	

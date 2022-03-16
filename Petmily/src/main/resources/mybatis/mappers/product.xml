@@ -21,18 +21,22 @@
 			select prod_price from product where prod_num = #{prod_num}
 		]]>	
 	</select>
+	
+	
 	<select id="selectProductCount" resultType="int">
 		<![CDATA[
 			select count(*) from product
 		]]>
 	</select>
+	
+	
 	<select id="selectProductList" resultType="product"
 		parameterType="int">
  		<![CDATA[
  			select * from (select @rownum:=@rownum+1 rnum, tot.* 
 					from (select * from product order by prod_num desc) tot, 
 					(select @rownum:=0) temp) sub
-			where rnum between #{startrow} and #{startrow}+9		
+			where rnum between #{startrow} and #{startrow}+7		
  		]]>
 	</select>
 	<select id="selectProductViewCnt" parameterType="int" resultType="product">
@@ -46,4 +50,43 @@
 			update product set prod_view_cnt =prod_view_cnt+1 where prod_num=#{prod_num}
 		]]>
 	</update>
+	
+	<select id="categorylist" resultType="Product" parameterType="Map">
+		<![CDATA[
+		 	select * from product where prod_category = #{prod_category} order by prod_num desc limit #{startrow}, 8
+		]]>
+	</select>
+	
+	
+	<select id="productOrberbycreate"  resultType="product" parameterType="int">
+		<![CDATA[
+			select * from product  order by prod_create_date desc limit #{startrow}, 8
+		]]>
+	</select>
+	
+	<select id="productOrberbyview" resultType="product" parameterType="int">
+		<![CDATA[
+			select * from product order by prod_view_cnt desc limit #{startrow}, 8
+		]]>
+	</select>
+	
+	<select id="productOrberbylowprice" resultType="product" parameterType="int">
+			<![CDATA[
+			select * from product order by prod_price asc limit #{startrow}, 8
+			]]>
+	</select>
+	
+		<select id="productOrberbyhighprice" resultType="product">
+			<![CDATA[
+				select * from product order by prod_price desc limit #{startrow}, 8
+
+			]]>
+	</select>
+	
+	<select id="selectProductCountByCate" resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*) from product where prod_category = #{prod_category} 
+		]]>
+	</select>
+	
 </mapper>

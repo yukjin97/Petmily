@@ -106,13 +106,13 @@
          <div class="col-md-4 ftco-animate">
             <div class="block-7">
                <div class="img"
-                  style="background-image: url(${path}/resource/images/pricing-1.jpg);"></div>
+                  style="background-image: url(${path}/resource/images/001.jpg);"></div>
                <div class="text-center p-4">
                   <span class="excerpt d-block">Silver</span> <span class="price"><sup>￦</sup>
-                     <span class="number">9800</span> <sub>/mos</sub></span>
+                     <span class="number">9800</span> <sub>/month</sub></span>
 
                   <ul class="pricing-text mb-5">
-                     <li><span class="fa fa-check mr-2"></span>Made By Foever 강아지
+                     <li><span class="fa fa-check mr-2"></span>Made By Sun 강아지
                         사료</li>
                      <li><span class="fa fa-check mr-2"></span>Made By Song 강아지 옷</li>
                      <li><span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식</li>
@@ -124,10 +124,10 @@
          <div class="col-md-4 ftco-animate">
             <div class="block-7">
                <div class="img"
-                  style="background-image: url(${path}/resource/images/pricing-3.jpg);"></div>
+                  style="background-image: url(${path}/resource/images/002.jpg);"></div>
                <div class="text-center p-4">
                   <span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
-                     <span class="number">19800</span> <sub>/mos</sub></span>
+                     <span class="number">19800</span> <sub>/month</sub></span>
 
                   <ul class="pricing-text mb-5">
                      <li><span class="fa fa-check mr-2"></span>Made By Jong 강아지

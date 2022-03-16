@@ -69,6 +69,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.selectReviewByNum(review_num);
 	}
 
-
+	@Override
+	public Review getAllReviewList(int prod_num) throws Exception {
+		return null;
+	}
 
 }
