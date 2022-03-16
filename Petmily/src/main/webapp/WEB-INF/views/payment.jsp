@@ -42,7 +42,7 @@
 												<!-- 반복1 a href(해당 상품에 대한 http://localhost:8080/product/detail/???), 이미지 경로 -->
 												<td class="product-img">
 													<a href="/product/">
-														<img src="upload/${prod.prod_img}" alt="" />
+														<img src="../upload/${prod.prod_img}" alt="" />
 													</a>
 												</td>
 												<!-- 반복2 a hreft 똑같이, 상품명,  -->
