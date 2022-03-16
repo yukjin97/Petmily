@@ -29,7 +29,6 @@ public class MypageController {
 	@Autowired
 	MembershipService membershipService;
 	
-
    // 로그인 -> 마이페이지_나의정보, 구독내역, 주문내역, 배송내역 조회
    @GetMapping(value = "/mypageinfo")
       public ModelAndView mypage(@ModelAttribute Membership mem, @RequestParam(value = "page", required = false, defaultValue = "1") int page) {

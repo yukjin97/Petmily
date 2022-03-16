@@ -67,14 +67,6 @@ public class CartServiceImpl implements CartService {
 		Map<String, Object> cartParam = new HashMap<String, Object>();
 		cartParam.put("prod_num", prod_num);
 		cartParam.put("user_id", user_id);
-
-		// cart에 prod_num, user_id를 통해서 cart_amount가 있다면, 그 값 가져오기  없으면 0을 가져온다
-		// int plus_amount = cartDao.selectAmount(cartParam);
-		// if (plus_amount != 0) {
-		// 	cart_amount += plus_amount
-		//	cartParam.put("cart_amount", cart_amount);
-		//	cartDao.updateQuan(cartParam);
-		// }
 		cartParam.put("cart_amount", cart_amount);
 		cartDao.updateQuan(cartParam);
 	}

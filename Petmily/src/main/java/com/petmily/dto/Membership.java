@@ -8,7 +8,7 @@ public class Membership {
 	Date mem_start_date;
 	Date mem_restart_date;
 	Date mem_next_date;
-	
+
 
 	public Membership() {
 	}
