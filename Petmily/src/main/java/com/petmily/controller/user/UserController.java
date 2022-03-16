@@ -69,7 +69,7 @@ public class UserController {
 			map.put("user_type", tmp.getUser_type());
 			map.put("user_id", tmp.getUser_id());
 			mav.addObject("userMap", map);
-			mav.setViewName("index");
+			mav.setViewName("redirect:/");
 			System.out.println("로그인 성공");
 			if (tmp.getUser_type().equals("admin")) {
 				mav.setViewName("redirect:/admin_alluser");
@@ -90,7 +90,7 @@ public class UserController {
 		catch (Exception e) {
 			mav.setViewName("login");
 			e.printStackTrace();
-			System.out.println("실패 뚜둥");
+			/* System.out.println("실패 뚜둥"); */
 		}
 		mav.setViewName("redirect:/");
 		return mav;
