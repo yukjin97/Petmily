@@ -5,8 +5,97 @@
 <jsp:include page="header.jsp" />
 
 
+
 <!-- Section-->
 <section>
+	<div class="grid2">
+		<ul class="nav justify-content-center">
+			<li>
+				<form action="/product" method="post">
+					<input type="submit" value="전체보기"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+			<li>
+				<form action="/product/new" method="post">
+					<input type="submit" value="최신순"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+			<li>
+				<form action="/product/pop" method="post">
+					<input type="submit" value="인기순"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+			<li>
+				<form action="/product/lowprice" method="post">
+					<input type="submit" value="낮은가격순"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+			<li>
+				<form action="/product/highpirce" method="post">
+					<input type="submit" value="높은가격순"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+			<li>
+				<form action="/product/" method="post">
+					<input type="hidden" name="prod_category" value="사료"> <input
+						type="submit" value="사료" id="prod_category"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+
+			<li>
+				<form action="/product/" method="post">
+					<input type="hidden" name="prod_category" value="장난감"> <input
+						type="submit" value="장난감" id="prod_category"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+			<li>
+				<form action="/product/" method="post">
+					<input type="hidden" name="prod_category" value="간식"> <input
+						type="submit" value="간식" id="prod_category"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+			<li>
+				<form action="/product/" method="post">
+					<input type="hidden" name="prod_category" value="옷"> <input
+						type="submit" value="옷" id="prod_category" name="prod_category"
+						class="nav-link btn btn-outline-success justify-content-center"
+						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
+						id="">
+				</form>
+			</li>
+
+		</ul>
+	</div>
 	<c:choose>
 		<c:when test="${articleList!=null && pageInfo.listCount>0 }">
 			<div class="container px-5 px-lg-5 mt-5">
@@ -86,4 +175,5 @@
 		$('a[href="' + "/product" + '"]').closest('li').addClass('active');
 	});
 </script>
+
 

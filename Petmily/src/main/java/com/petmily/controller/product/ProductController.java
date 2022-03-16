@@ -52,73 +52,42 @@ public class ProductController {
 	MyPageService myPageService;
 	
 	
-	
-//	@GetMapping("/productall")
-//	public ModelAndView productAllPage() {
-//		ModelAndView mav = new ModelAndView("productall");
-//		try {
-//			List<Product> product=productService.allProduct();
-//			mav.addObject("product",product);
-//			log.info(product);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return mav;
-//	}
+
 
 	// 페이징 처리 All Product
 	@RequestMapping(value = "product",method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView productlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page) {
+	public ModelAndView productlist(
+			@RequestParam (value = "page",required = false ,defaultValue = "1") int page,
+			@RequestParam (value = "prod_category", required = false, defaultValue = "") String prod_category
+			)  {
 		ModelAndView mav = new ModelAndView();
 		PageInfo pageInfo = new PageInfo();
+		System.out.println(prod_category);
 		try {
-			List<Product> articleList = productService.getProductList(page, pageInfo);
-			mav.addObject("articleList",articleList);
-			mav.addObject("pageInfo",pageInfo);
-			mav.setViewName("productall");
+			if (prod_category.equals("")) {
+				List<Product> articleList = productService.getProductList(page, pageInfo);
+				mav.addObject("articleList",articleList);
+				mav.addObject("pageInfo",pageInfo);
+				mav.setViewName("productall");
+			} else {
+				List<Product> articleList = productService.categorylist(page, pageInfo,prod_category);
+				mav.addObject("articleList",articleList);
+				mav.addObject("pageInfo",pageInfo);
+				mav.setViewName("productall");
+			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
-	}
-	
-
-	
+	}	
  	
-//	@GetMapping("/detail/{prod_num}")
-//	public ResponseEntity<?> productDeatilPage(@PathVariable("prod_num") int prod_num) throws Exception {
-//		Product product = null;
-//		try {
-//			product =  productService.selectProduct(prod_num);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		return new ResponseEntity<Product>(product,HttpStatus.OK);
-//	}
-
-
-
-
-//	@RequestMapping("/product/detail/{prod_num}")
-//	public ModelAndView detailPage(@PathVariable int prod_num) {
-//		ModelAndView mav = new ModelAndView();
-//		try {
-//			Product product = productService.selectProduct(prod_num);
-//			mav.addObject("product",product);
-//			mav.setViewName("detailproduct");
-//			log.info(product);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} 
-//		return mav;
-//	}
 	
 	@RequestMapping("/product/detail/{prod_num}")
 	public ModelAndView detailPage(@RequestParam (value = "page",required = false ,defaultValue = "1") int page , @PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView();
 		PageInfo pageInfo = new PageInfo();
         String user_id = (String) session.getAttribute("user_id");
-		
         try {
         	User user = myPageService.myPageInfo(user_id);
 			Product product = productService.selectProduct(prod_num);
@@ -134,6 +103,67 @@ public class ProductController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
+		return mav;
+	}
+	
+	
+	@RequestMapping(value = "product/new",method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView productnewlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
+		ModelAndView mav = new ModelAndView("redirect:/product/");
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> articleList = productService.productOrberbycreate(page, pageInfo);
+			mav.addObject("articleList",articleList);
+			mav.addObject("pageInfo",pageInfo);
+			mav.setViewName("productall");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/product/pop",method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView productmostviewlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
+		ModelAndView mav = new ModelAndView("redirect:/product/");
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> articleList = productService.productOrberbyview(page, pageInfo);
+			mav.addObject("articleList",articleList);
+			mav.addObject("pageInfo",pageInfo);
+			mav.setViewName("productall");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/product/lowprice",method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView productlowprice(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
+		ModelAndView mav = new ModelAndView("redirect:/product/");
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> articleList = productService.productOrberbylowprice(page, pageInfo);
+			mav.addObject("articleList",articleList);
+			mav.addObject("pageInfo",pageInfo);
+			mav.setViewName("productall");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value = "/product/highpirce",method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView producthighprice(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
+		ModelAndView mav = new ModelAndView("redirect:/product/");
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Product> articleList = productService.productOrberbyhighprice(page, pageInfo);
+			mav.addObject("articleList",articleList);
+			mav.addObject("pageInfo",pageInfo);
+			mav.setViewName("productall");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 
