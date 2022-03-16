@@ -6,7 +6,7 @@
         <section class="py-5" style="height=700;">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${path}/resource/images/19800.jpg" alt="..." /></div>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="${path}/resource/images/002.jpg" alt="..." /></div>
                     <div class="col-md-6">
                         <div class="small mb-1">Gold Pakage</div>
                         <h1 class="display-5 fw-bolder">Amazing Gold Pakage</h1>

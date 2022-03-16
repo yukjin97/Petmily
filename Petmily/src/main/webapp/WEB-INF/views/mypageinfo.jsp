@@ -82,7 +82,7 @@
 <!-- 나의 정보 내역 내용 -->
 <div class="tab-content mx-5" id="myTabContent">
 	<div class="row d-flex justify-content-center align-items-center h-100">
-		<div style="height: 700px; width: 500px; margin-top: 100px">
+		<div style="height: 700px; width: 600px; margin-top: 100px">
 			<div id="myinfoPage" class="pageSection">
 				<div class="table-responsive">
 					<table class="table">
@@ -162,7 +162,7 @@
 			<div id="orderPage" class="pageSection" style="display: none">
 				<div class="table-responsive">
 					<table class="table">
-						<thead class="table-success">
+						<!-- <thead class="table-success">
 							<tr>
 								<th scope="col">주문번호</th>
 								<th scope="col">주문일자</th>
@@ -170,11 +170,18 @@
 								<th scope="col">주문수량</th>
 								<th scope="col">상품가격</th>
 							</tr>
+						</thead> -->
+						<thead>
+							<tr>
+								<th style="width: 25%">주문일자</th>
+								<th style="width: 25%">상품명</th>
+								<th style="width: 25%">주문수량</th>
+								<th style="width: 25%">상품가격</th>
+							</tr>
 						</thead>
 						<tbody>
 							<c:forEach var="order" items="${orderList }">
 								<tr>
-									<td>${order.order_num }</td>
 									<td>${order.order_date }</td>
 									<td>${order.prod_name }</td>
 									<td>${order.order_count }</td>
