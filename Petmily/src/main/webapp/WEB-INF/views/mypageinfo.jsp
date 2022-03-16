@@ -134,7 +134,14 @@
 											<c:otherwise>
                          ${user.user_nickname }님의 구독중인 서비스
                       <c:forEach items="${rmem }" var="rmem">
-													<th scope="row">${rmem.mem_grade}</th>
+													<th scope="row">
+                      								<c:if test="${rmem.mem_grade=='silver'}">
+													실속 패키지
+													</c:if>
+                      								<c:if test="${rmem.mem_grade=='gold'}">
+													프리미엄 패키지
+													</c:if>
+													</th>
 													<tr>
 														<td>다음 결제일은 ${rmem.mem_next_date}</td>
 														<td style="padding-left: 25px;"><input
