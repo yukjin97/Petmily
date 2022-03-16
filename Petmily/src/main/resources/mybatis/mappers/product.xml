@@ -21,11 +21,15 @@
 			select prod_price from product where prod_num = #{prod_num}
 		]]>	
 	</select>
+	
+	
 	<select id="selectProductCount" resultType="int">
 		<![CDATA[
 			select count(*) from product
 		]]>
 	</select>
+	
+	
 	<select id="selectProductList" resultType="product"
 		parameterType="int">
  		<![CDATA[
@@ -46,4 +50,39 @@
 			update product set prod_view_cnt =prod_view_cnt+1 where prod_num=#{prod_num}
 		]]>
 	</update>
+	
+	<select id="categorylist" resultType="Product" parameterType="Map">
+		<![CDATA[
+		 	select * from (select @rownum:=@rownum+1 rnum, tot.* 
+					from (select * from product order by prod_num desc) tot, 
+					(select @rownum:=0) temp) sub
+			where prod_category = #{prod_category} and rnum between #{startrow} and #{startrow}+9;
+		]]>
+	</select>
+	
+	
+	<select id="productOrberbycreate"  resultType="product">
+		<![CDATA[
+			select * from product order by prod_create_date desc
+		]]>
+	</select>
+	
+	<select id="productOrberbyview" resultType="product">
+		<![CDATA[
+			select * from product order by prod_view_cnt desc
+		]]>
+	</select>
+	
+	<select id="productOrberbylowprice" resultType="product">
+			<![CDATA[
+				select * from product order by prod_price asc
+			]]>
+	</select>
+	
+		<select id="productOrberbyhighprice" resultType="product">
+			<![CDATA[
+				select * from product order by prod_price desc
+			]]>
+	</select>
+	
 </mapper>

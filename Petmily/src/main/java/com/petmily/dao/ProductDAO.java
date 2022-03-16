@@ -2,6 +2,7 @@ package com.petmily.dao;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -24,4 +25,15 @@ public interface ProductDAO {
 	// 조회수 높은거 3개 가져옴
 	
 	public void selectProductViewCntInc(int prod_num)throws Exception;
+	
+	public List<Product> categorylist(Map<String, Object> mapParam) throws Exception;
+	
+	public List<Product> productOrberbycreate(int startrow) throws Exception;
+	
+	public List<Product> productOrberbyview(int startrow) throws Exception;
+	
+	
+	public List<Product> productOrberbylowprice(int startrow)throws Exception;
+	
+	public List<Product> productOrberbyhighprice(int startrow)throws Exception;
 }
