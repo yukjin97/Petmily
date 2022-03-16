@@ -60,8 +60,8 @@ public class MembershipController {
          session.setAttribute("fix2", 2);
          session.setAttribute("fix3", 3);
          session.setAttribute("mem_price", 29800);
-         session.setAttribute("mem_img", "9800.jpg");
-         session.setAttribute("mem_name", "Very Nice Silver Pakage");
+         session.setAttribute("mem_img", "001.jpg");
+         session.setAttribute("mem_name", "실속 구독권");
          overlap = membershipService.silverOverlap(user_id);
          return String.valueOf(overlap);
       }catch(Exception e) {
@@ -84,14 +84,14 @@ public class MembershipController {
 	   String user_id = (String)session.getAttribute("user_id");
 	   boolean overlap = false;
       try {
-         session.setAttribute("mem_grade","gold");
-         session.setAttribute("mem_productNum", 2);
+    	 session.setAttribute("mem_grade","gold");
+    	 session.setAttribute("mem_productNum", 2);
          session.setAttribute("fix1", 4);
          session.setAttribute("fix2", 5);
          session.setAttribute("fix3", 6);
          session.setAttribute("mem_price", 39800);
-         session.setAttribute("mem_img", "19800.jpg");
-         session.setAttribute("mem_name", "Amazing Gold Pakage");
+         session.setAttribute("mem_img", "002.jpg");
+         session.setAttribute("mem_name", "프리미엄 구독권");
          overlap = membershipService.goldOverlap(user_id);
          return String.valueOf(overlap);
       }catch(Exception e) {

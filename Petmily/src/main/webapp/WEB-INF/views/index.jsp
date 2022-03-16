@@ -345,17 +345,17 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             style="background-image: url(${path}/resource/images/001.jpg)"
           ></div>
           <div class="text-center p-4">
-            <span class="excerpt d-block">Silver</span>
+            <span class="excerpt d-block">실속 패키지</span>
             <span class="price"
-              ><sup>￦</sup> <span class="number">9800</span>
+              ><sup>￦</sup> <span class="number">29800</span>
               <sub>/month</sub></span
             >
 
                   <ul class="pricing-text mb-5">
-                     <li><span class="fa fa-check mr-2"></span>Made By Sun 강아지
-                        사료</li>
-                     <li><span class="fa fa-check mr-2"></span>Made By Song 강아지 옷</li>
-                     <li><span class="fa fa-check mr-2"></span>Made By Jin 강아지 간식</li>
+                     <li><span class="fa fa-check mr-2"></span>
+                        펫밀리 사료</li>
+                     <li><span class="fa fa-check mr-2"></span>프레쉬 덴탈 껌</li>
+                     <li><span class="fa fa-check mr-2"></span>페스룸X위글 장난감</li>
                   </ul>
                   <a href="mem_silver" class="btn btn-primary d-block px-2 py-3">구독하기</a>
                </div>
@@ -366,18 +366,18 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                <div class="img"
                   style="background-image: url(${path}/resource/images/002.jpg);"></div>
                <div class="text-center p-4">
-                  <span class="excerpt d-block">Gold</span> <span class="price"><sup>￦</sup>
-                     <span class="number">19800</span> <sub>/month</sub></span>
+                  <span class="excerpt d-block">프리미엄 패키지</span> <span class="price"><sup>￦</sup>
+                     <span class="number">39800</span> <sub>/month</sub></span>
 
             <ul class="pricing-text mb-5">
               <li>
-                <span class="fa fa-check mr-2"></span>Made By Jong 강아지 장난감
+                <span class="fa fa-check mr-2"></span>펫밀리 특제고급사료
               </li>
               <li>
-                <span class="fa fa-check mr-2"></span>Made By SanHe 강아지 사료
+                <span class="fa fa-check mr-2"></span>카리에스 덴탈껌
               </li>
               <li>
-                <span class="fa fa-check mr-2"></span>Made By Hyun 강아지 옷
+                <span class="fa fa-check mr-2"></span>프레쉬 덴탈 츄
               </li>
             </ul>
 
