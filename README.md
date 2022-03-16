@@ -107,5 +107,5 @@ ALTER TABLE `Cart`
 https://www.youtube.com/watch?v=teV65V_MJAk
 
 
-[![Video Label]()](http![welcom](https://user-images.githubusercontent.com/89058176/158616065-31ce8c9e-9313-4fe5-87a4-3f79d52b65dd.jpg)
-s://www.youtube.com/watch?v=teV65V_MJAk)
+
+[![Video Label](https://user-images.githubusercontent.com/89058176/158616270-fe89b217-90d9-4b82-85e7-5e50081a7aca.jpg)](https://www.youtube.com/watch?v=teV65V_MJAk)
