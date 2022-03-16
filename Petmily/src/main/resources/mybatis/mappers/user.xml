@@ -24,7 +24,7 @@
    <!-- 나의 주소 수정 -->
    	<update id="updateUserAddress" parameterType="user">
       <![CDATA[
-      update user set user_address1=#{user_address1},user_address2=#{user_address2},user_zipcode=#{user_zipcode}
+      update user set user_address1=#{user_address1},user_address2=#{user_address2},user_zipcode=#{user_zipcode},user_totaddress=concat(#{user_address1}," ",#{user_address2})
       where user_id=#{user_id}
       ]]>
    </update>
