@@ -108,8 +108,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 					</li>
 					<li class="nav-item"><a href="/product" class="nav-link">스토어</a>
 					</li>
-					<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
-					</li>
 					<c:choose>
 						<c:when test="${empty user_id}">
 							<li class="nav-item"><a href="/login" class="nav-link">로그인</a>
@@ -118,6 +116,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 					</li>
 						</c:when>
 						<c:otherwise>
+											<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
+					</li>
 							<li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a>
 							</li>
 						</c:otherwise>
