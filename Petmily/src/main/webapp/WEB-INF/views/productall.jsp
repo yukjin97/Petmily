@@ -112,7 +112,7 @@
 								<div class="card-body p-3">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder">${p.prod_name}</h5>
+										<h5 class="fw-bolder">${p.prod_title}</h5>
 										<!-- Product price-->
 										<span class="text-muted text-decoration-line-through"><strong>${p.prod_price}</strong></span>
 									</div>

@@ -13,8 +13,9 @@
 					src="/upload/${product.prod_img }" alt="..." />
 			</div>
 			<div class="col-md-6">
-				<div class="small mb-2" id="prod_num">${product.prod_num}</div>
-				<h2 class="display-5 fw-bolder">${product.prod_title}</h2>
+			<div class="small mb-2" id="prod_num" style="display:none">${product.prod_num}</div>
+				<div class="small mb-2" id="prod_title">${product.prod_title}</div>
+				<h2 class="display-5 fw-bolder">${product.prod_name}</h2>
 				<div class="fs-5 mb-5">
 					<span class="text-decoration-line-through">${product.prod_price}</span>
 				</div>
