@@ -44,7 +44,7 @@
  		]]>
 	</select>
 
-	<select id="getAllReviewList" resultType="review" >
+	<select id="getAllReviewList" resultType="review"   parameterType="Map">
 		<![CDATA[	
 			select * from review where review_num = #{review_num}	
 		]]>

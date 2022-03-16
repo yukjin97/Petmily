@@ -7,9 +7,7 @@ import com.petmily.dto.Product;
 
 
 public interface ProductService {
-	public List<Product> listProduct(Product product);
 
-	public List<Product> getPorductListByKind(Product product);
 
 	public List<Product> allProduct() throws Exception;
 
@@ -24,4 +22,16 @@ public interface ProductService {
 	public void selectProductViewCntInc(int prod_num)throws Exception;
 
 	public int productCount() throws Exception;
+
+	public List<Product> categorylist(int page, PageInfo pageInfo, String prod_category ) throws Exception;
+	
+	public List<Product>  productOrberbycreate(int page, PageInfo pageInfo) throws Exception;
+
+	public List<Product> productOrberbyview(int page, PageInfo pageInfo)throws Exception;
+
+	public List<Product> productOrberbylowprice(int page, PageInfo pageInfo)throws Exception;
+
+	public List<Product> productOrberbyhighprice(int page, PageInfo pageInfo)throws Exception;
+	
+	
 }
