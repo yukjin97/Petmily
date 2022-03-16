@@ -46,6 +46,7 @@
 		</div>
 	</div>
 </section>
+
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	$(function(){
@@ -67,9 +68,10 @@
 	        if(input_pw==""){
 	        	sweetalert("error", "비밀번호 오류", "비밀번호를 입력하세요");
 	        	return false;
-	        }     
+	        }
 		})
 	});
+	
 </script>
 <script>
 	$(document).ready(function() {
