@@ -58,8 +58,10 @@ public class CartController {
 			for (int i = 0; i < cartList.size(); i++) {
 				int prod_num = cartList.get(i).getProd_num();
 				Product prod= cartService.prodQueryByProdNum(prod_num);
-				Order order = new Order(prod.getProd_num(), cartList.get(i).getCart_amount(), 0, user_id, "주문 완료", null,user.getUser_totaddress(), prod.getProd_title(), prod.getProd_price());
-				orderService.order(order);
+				Order order = new Order(prod.getProd_num(), cartList.get(i).getCart_amount(), 0, user_id, null, null,user.getUser_totaddress(), prod.getProd_title(), prod.getProd_price());
+				orderService.insertCartList(order);
+				orderService.cartPayment(order, order.getProd_num());
+				orderService.cartPayment2(order.getProd_num());
 			}
 			
 			
