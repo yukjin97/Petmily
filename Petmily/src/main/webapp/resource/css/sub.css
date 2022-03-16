@@ -2368,7 +2368,7 @@
 /* 장바구니, 주문 결제 */
 
 .sub-content.cart .cont-tit-area {
-  padding: 0 0 .417rem;
+  padding: 100 100 .417rem;
   border-bottom: 2px solid #000;
 }
 
@@ -4222,7 +4222,7 @@ ul.company-info-data>li {
   vertical-align: middle;
 }
 
-/* 200608 주문결제 */
+/*  주문결제 */
 
 .txt-box.write-form.ty02 {
   position: relative;

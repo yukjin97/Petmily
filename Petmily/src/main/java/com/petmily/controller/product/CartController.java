@@ -1,9 +1,9 @@
 package com.petmily.controller.product;
 
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +22,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.petmily.dto.Cart;
-import com.petmily.dto.PageInfo;
 import com.petmily.dto.Order;
 import com.petmily.dto.Product;
-import com.petmily.dto.Review;
+import com.petmily.dto.User;
 import com.petmily.service.CartService;
 import com.petmily.service.OrderService;
 import com.petmily.service.ProductService;
@@ -49,7 +47,57 @@ public class CartController {
 	OrderService orderService;
 	
 	@Autowired
-	UserService userService;
+	UserService userService;	
+	
+	@GetMapping("/mypageinfo")
+	public String orderComplete() {
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			List<Cart> cartList = cartService.cartQueryById(user_id);
+			User user = userService.queryUser(user_id);
+			for (int i = 0; i < cartList.size(); i++) {
+				int prod_num = cartList.get(i).getProd_num();
+				Product prod= cartService.prodQueryByProdNum(prod_num);
+				Order order = new Order(prod.getProd_num(), cartList.get(i).getCart_amount(), 0, user_id, "주문 완료", null,user.getUser_totaddress(), prod.getProd_title(), prod.getProd_price());
+				orderService.order(order);
+			}
+			
+			
+			cartService.deleteCartAll(user_id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "redirect:/mypageinfo";
+	}
+	
+	@GetMapping("/payment")    // 유저 정보 가져오기
+	public String pay(Model model) {
+		String user_id = (String) session.getAttribute("user_id");
+		try {
+			List<Cart> cartList = cartService.cartQueryById(user_id);
+			model.addAttribute("cartList", cartList);
+
+			List<Product> prodList = new ArrayList<Product>();
+			int totalPrice = 0; 
+			
+			for (int i = 0; i < cartList.size(); i++) {
+				int prod_num = cartList.get(i).getProd_num();
+				Product prod= cartService.prodQueryByProdNum(prod_num);
+				prodList.add(i, prod);
+				totalPrice += cartList.get(i).getCart_amount() * prod.getProd_price();
+			}
+			model.addAttribute("prodList", prodList);
+			
+			User user = userService.queryUser(user_id);
+			model.addAttribute("user", user);
+			model.addAttribute("totalPrice", totalPrice);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "payment";
+	}
+	
 	
 	
 	@GetMapping("")
@@ -116,7 +164,7 @@ public class CartController {
 		return total; 
 	}
 
-	@ResponseBody
+	@ResponseBody    // 목록에서 상품 삭제
 	@PostMapping("/deletecart")
 	public String DeleteCart(@RequestParam("prod_id") String prod_id) {
 		int prod_num = (int) Integer.parseInt(prod_id);
@@ -131,7 +179,7 @@ public class CartController {
 	}
 	
 	@ResponseBody
-	@PostMapping("/insertcart")
+	@PostMapping("/insertcart")  //스토어에서 장바구니로 상품 담기
 	public String InsertCart(@RequestParam("prod_num") int prod_num, @RequestParam("cart_amount") int cart_amount) {
 		// prod_num : 장바구니에 담을 제품 번호
 		// cart_amount : 장바구니에 담을 제품 수량
@@ -158,7 +206,7 @@ public class CartController {
 		
 	}
 	
-	@PostMapping("")
+	@PostMapping("")  //결제 후 장바구니 자동 비우기
 	public ModelAndView cartPayment() {
 
 		ModelAndView mav = new ModelAndView("redirect:/mypageinfo");
