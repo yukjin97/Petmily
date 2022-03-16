@@ -1,25 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ taglib prefix="c"
-uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <meta charset="UTF-8" />
 <meta name="viewport"
-   content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 <link
-   href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-   rel="stylesheet" />
+	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+	rel="stylesheet" />
 
 <link rel="stylesheet"
-   href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link rel="stylesheet" href="${path }/resource/css/animate.css" />
 <link rel="stylesheet" href="${path }/resource/css/owl.carousel.min.css" />
 <link rel="stylesheet"
-   href="${path }/resource/css/owl.theme.default.min.css" />
+	href="${path }/resource/css/owl.theme.default.min.css" />
 <link rel="stylesheet" href="${path }/resource/css/magnific-popup.css" />
 <link rel="stylesheet"
-   href="${path }/resource/css/bootstrap-datepicker.css" />
+	href="${path }/resource/css/bootstrap-datepicker.css" />
 <link rel="stylesheet"
-   href="${path }/resource/css/jquery.timepicker.css" />
+	href="${path }/resource/css/jquery.timepicker.css" />
 <link rel="stylesheet" href="${path }/resource/css/flaticon.css" />
 <link rel="stylesheet" href="${path }/resource/css/style.css" />
 <link rel="stylesheet" href="${path }/resource/fonts/icomoon/style.css" />
@@ -27,18 +27,18 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 <title>Petmily</title>
 <style>
 .btn_gotop {
-   display:none;
-   position:fixed;
-   bottom:30px;
-   right:30px;
-   z-index:999;
-   border:1px solid #ccc;
-   outline:none;
-   background-color:white;
-   color:green;
-   cursor:pointer;
-   padding:15px 20px;
-   border-radius:100%;
+	display: none;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 999;
+	border: 1px solid #ccc;
+	outline: none;
+	background-color: white;
+	color: green;
+	cursor: pointer;
+	padding: 15px 20px;
+	border-radius: 100%;
 }
 </style>
 <html>
@@ -51,7 +51,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 						<c:choose>
 							<c:when test="${not empty user_id}">
 								<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>
-								 대표전화	:+82 1234 5678</a>
+									대표전화 :+82 1234 5678</a>
 								<a href="#"><span class="fa fa-paper-plane mr-1"></span>
 									${user_id}님 환영합니다.</a>
 							</c:when>
@@ -93,7 +93,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-					
+
 					<c:choose>
 						<c:when test="${user_type =='admin'}">
 							<li class="nav-item"><a href="/admin_alluser"
@@ -112,12 +112,12 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 						<c:when test="${empty user_id}">
 							<li class="nav-item"><a href="/login" class="nav-link">로그인</a>
 							</li>
-												<li class="nav-item"><a href="/join" class="nav-link">회원가입</a>
-					</li>
+							<li class="nav-item"><a href="/join" class="nav-link">회원가입</a>
+							</li>
 						</c:when>
 						<c:otherwise>
-											<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
-					</li>
+							<li class="nav-item"><a href="/mypageinfo" class="nav-link">마이페이지</a>
+							</li>
 							<li class="nav-item"><a href="/logout" class="nav-link">로그아웃</a>
 							</li>
 						</c:otherwise>
@@ -129,10 +129,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 		</div>
 	</nav>
 	<!-- END nav -->
-	<a href="#" class="btn_gotop">
-    <span class="glyphicon glyphicon-chevron-up">
-    TOP
-    </span>
+	<a href="#" class="btn_gotop"> <span
+		class="glyphicon glyphicon-chevron-up"> TOP </span>
 	</a>
 </body>
 </html>
