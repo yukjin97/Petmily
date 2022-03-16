@@ -82,7 +82,7 @@
 <!-- 나의 정보 내역 내용 -->
 <div class="tab-content mx-5" id="myTabContent">
 	<div class="row d-flex justify-content-center align-items-center h-100">
-		<div style="height: 700px; width: 600px; margin-top: 100px">
+		<div style="height: 850px; width: 600px; margin-top: 100px">
 			<div id="myinfoPage" class="pageSection">
 				<div class="table-responsive">
 					<table class="table">
