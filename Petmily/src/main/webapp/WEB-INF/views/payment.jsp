@@ -47,7 +47,7 @@
 												</td>
 												<!-- 반복2 a hreft 똑같이, 상품명,  -->
 												<td class="product-info">
-													<a href="http://localhost:8080/product/detail" class="tit"> ${prod.prod_name}</a>
+													<p class="tit"> ${prod.prod_name}</p>
 													<p class="option">설명 : ${prod.prod_content}</p>
 													<p class="count">개수 : ${cartList[status.index].cart_amount}</p></td>
 												<td class="price">가격 : ${prod.prod_price}</td>
@@ -76,24 +76,24 @@
 									<tbody>
 										<tr>
 											<th class="">이름</th>
-											<td><input type="submit" class="inp-txt"
-												value="${user.user_name }" /></td>
+											<td><input type="text" class="inp-txt"
+												value="${user.user_name }" style="text-align:center"disabled/></td>
 										</tr>
 										<tr>
 											<th class="">휴대폰번호</th>
-											<td><input type="submit" class="inp-txt"
-												value="${user.user_phone }" /></td>
+											<td><input type="text" class="inp-txt"
+												value="${user.user_phone }" style="text-align:center"disabled/></td>
 										</tr>
 	
 										<tr>
 											<th scope="row" class="">이메일</th>
-											<td><input type="submit" class="inp-txt"
-												value="${user.user_email }" /></td>
+											<td><input type="text" class="inp-txt"
+												value="${user.user_email }" style="text-align:center"disabled/></td>
 										</tr>
 										<tr>
 											<th scope="row" class="">주소</th>
 											<td>						
-												<input type="submit" class="inp-txt" value="${user.user_address1}" />													
+												<input type="text" class="inp-txt" value="${user.user_address1}" style="text-align:center"disabled/>													
 				
 											</td>
 										</tr>
@@ -101,7 +101,7 @@
 										<tr>
 											<th scope="row" class="">상세주소</th>
 											<td>																		
-												<input type="submit" class="inp-txt" value="${user.user_address2}" />
+												<input type="text" class="inp-txt" value="${user.user_address2}" style="text-align:center" disabled/>
 											</td>
 										</tr>
 									</tbody>
@@ -126,7 +126,7 @@
 											<br/><br/><br/><br/>
 											<div class="chk-agree-wrap">
 			
-											<div class="chk-custom">
+										<!-- 	<div class="chk-custom">
 												<input type="checkbox" name="chkAgree" id="chkAgree"> 
 												<label for="chkAgree" class="required"><span></span>상품 주문 및 배송정보 수집에 동의합니다.</label> 
 												<a href="javascript:void()" class="btn-more" onclick="show('popDeliTerm')">상세보기</a>
@@ -136,13 +136,13 @@
 												<input type="checkbox" name="chkAgree" id="chkAgree"> 
 												<label for="chkAgree" class="required"><span></span>주문할 상품설명에 명시된 내용과 사용조건을 확인하였으며, 취소/환불규정에 동의합니다.</label>
 												 <a href="javascript:void()" class="btn-more" onclick="popRefund">상세보기</a>
-											</div>
+											</div> -->
 										</div>
 								
-										<div class="chk-custom chk-all">
+									<!-- 	<div class="chk-custom chk-all">
 											<input type="checkbox" name="chkAgreeAll" id="chkAgreeAll">
 											 <label for="chkAgreeAll" class="required"><span></span>모든 약관내용에 동의합니다.</label>
-										</div>
+										</div> -->
 										</div>
 					
 									</div>

@@ -90,7 +90,7 @@ public class UserController {
 		catch (Exception e) {
 			mav.setViewName("login");
 			e.printStackTrace();
-			System.out.println("실패 뚜둥");
+			/* System.out.println("실패 뚜둥"); */
 		}
 		return mav;
 	}
