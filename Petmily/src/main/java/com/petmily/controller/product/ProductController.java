@@ -1,5 +1,6 @@
 package com.petmily.controller.product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -55,7 +56,7 @@ public class ProductController {
 
 
 	// 페이징 처리 All Product
-	@RequestMapping(value = "product",method = {RequestMethod.GET,RequestMethod.POST})
+	@RequestMapping(value = "/product",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView productlist(
 			@RequestParam (value = "page",required = false ,defaultValue = "1") int page,
 			@RequestParam (value = "prod_category", required = false, defaultValue = "") String prod_category
@@ -64,25 +65,28 @@ public class ProductController {
 		PageInfo pageInfo = new PageInfo();
 		System.out.println(prod_category);
 		try {
+			List<Product> articleList = new ArrayList<>();
 			if (prod_category.equals("")) {
-				List<Product> articleList = productService.getProductList(page, pageInfo);
+				articleList =productService.getProductList(page, pageInfo);
 				mav.addObject("articleList",articleList);
 				mav.addObject("pageInfo",pageInfo);
 				mav.setViewName("productall");
 			} else {
-				List<Product> articleList = productService.categorylist(page, pageInfo,prod_category);
+				articleList =productService.categorylist(page, pageInfo,prod_category);
+				mav.addObject("prod_category",prod_category);
 				mav.addObject("articleList",articleList);
 				mav.addObject("pageInfo",pageInfo);
 				mav.setViewName("productall");
 			}
-			
+			System.out.println("조회한 제품 수" + pageInfo.getListCount());
+			System.out.println("화면에 출력되는 제품 수" + articleList.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}	
  	
-	
+	// 상품 상세보
 	@RequestMapping("/product/detail/{prod_num}")
 	public ModelAndView detailPage(@RequestParam (value = "page",required = false ,defaultValue = "1") int page , @PathVariable int prod_num) {
 		ModelAndView mav = new ModelAndView();
@@ -106,21 +110,6 @@ public class ProductController {
 		return mav;
 	}
 	
-	
-	@RequestMapping(value = "product/new",method = {RequestMethod.GET,RequestMethod.POST})
-	public ModelAndView productnewlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
-		ModelAndView mav = new ModelAndView("redirect:/product/");
-		PageInfo pageInfo = new PageInfo();
-		try {
-			List<Product> articleList = productService.productOrberbycreate(page, pageInfo);
-			mav.addObject("articleList",articleList);
-			mav.addObject("pageInfo",pageInfo);
-			mav.setViewName("productall");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mav;
-	}
 	
 	@RequestMapping(value = "/product/pop",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView productmostviewlist(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {
@@ -150,7 +139,7 @@ public class ProductController {
 			e.printStackTrace();
 		}
 		return mav;
-	}
+	}	
 	
 	@RequestMapping(value = "/product/highpirce",method = {RequestMethod.GET,RequestMethod.POST})
 	public ModelAndView producthighprice(@RequestParam (value = "page",required = false ,defaultValue = "1") int page )  {

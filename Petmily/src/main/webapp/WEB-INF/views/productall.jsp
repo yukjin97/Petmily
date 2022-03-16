@@ -18,14 +18,6 @@
 						id="">
 				</form>
 			</li>
-			<li>
-				<form action="/product/new" method="post">
-					<input type="submit" value="최신순"
-						class="nav-link btn btn-outline-success justify-content-center"
-						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
-						id="">
-				</form>
-			</li>
 
 			<li>
 				<form action="/product/pop" method="post">
@@ -137,21 +129,21 @@
 
 
 <section id="pageList">
-	<div class="container px-5 px-lg-5 mt-5 block-center">
+	<div class="container px-5 px-lg-5 mt-5 block-center" style="text-align: center;">
 		<c:choose>
 			<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
 			<c:otherwise>
-				<a href="product?page=${pageInfo.page-1}">[이전]</a>&nbsp;
+				<a href="product?page=${pageInfo.page-1}&">[이전]</a>&nbsp;
 				</c:otherwise>
 		</c:choose>
-		<c:forEach var="i" begin="${pageInfo.startPage }"
+		<c:forEach var="i" begin="${pageInfo.startPage}"
 			end="${pageInfo.endPage }">
 			<c:choose>
 				<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 				<c:otherwise>
-					<a href="product?page=${i}">[${i }]</a>
+					<a href="../product?prod_category=${prod_category }&page=${i}">[${i }]</a>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -168,7 +160,6 @@
 
 <!-- footer include -->
 <jsp:include page="footer.jsp" />
-<!--누가해킹함  -->
 <script>
 	$(document).ready(function() {
 		$('li.active').removeClass('active');

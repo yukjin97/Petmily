@@ -122,7 +122,7 @@
 					</div>
 					</form>
 				</section>
-				<section id="pageList">
+				<section id="pageList" style="text-align: center;">
 					<c:choose>
 						<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
