@@ -79,7 +79,7 @@
 			<li>
 				<form action="/product/" method="post">
 					<input type="hidden" name="prod_category" value="옷"> <input
-						type="submit" value="옷" id="prod_category" name="prod_category"
+						type="submit" value="옷" id="prod_category" 
 						class="nav-link btn btn-outline-success justify-content-center"
 						style="width: 100px; height: 50px; margin: auto; margin-top: 25px; margin-left: 10px;"
 						id="">
@@ -104,7 +104,7 @@
 								<div class="card-body p-3">
 									<div class="text-center">
 										<!-- Product name-->
-										<h5 class="fw-bolder">${p.prod_name}</h5>
+										<h5 class="fw-bolder">${p.prod_title}</h5>
 										<!-- Product price-->
 										<span class="text-muted text-decoration-line-through"><strong>${p.prod_price}</strong></span>
 									</div>

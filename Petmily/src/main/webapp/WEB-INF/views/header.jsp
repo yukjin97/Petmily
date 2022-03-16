@@ -108,7 +108,6 @@
 					</li>
 					<li class="nav-item"><a href="/product" class="nav-link">스토어</a>
 					</li>
-
 					<c:choose>
 						<c:when test="${empty user_id}">
 							<li class="nav-item"><a href="/login" class="nav-link">로그인</a>

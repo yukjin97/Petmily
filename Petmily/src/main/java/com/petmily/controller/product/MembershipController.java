@@ -59,8 +59,8 @@ public class MembershipController {
          session.setAttribute("fix1", 1);
          session.setAttribute("fix2", 2);
          session.setAttribute("fix3", 3);
-         session.setAttribute("mem_price", 9800);
-         session.setAttribute("mem_img", "pricing-1.jpg");
+         session.setAttribute("mem_price", 29800);
+         session.setAttribute("mem_img", "9800.jpg");
          session.setAttribute("mem_name", "Very Nice Silver Pakage");
          overlap = membershipService.silverOverlap(user_id);
          return String.valueOf(overlap);
@@ -89,8 +89,8 @@ public class MembershipController {
          session.setAttribute("fix1", 4);
          session.setAttribute("fix2", 5);
          session.setAttribute("fix3", 6);
-         session.setAttribute("mem_price", 19800);
-         session.setAttribute("mem_img", "staff-6.jpg");
+         session.setAttribute("mem_price", 39800);
+         session.setAttribute("mem_img", "19800.jpg");
          session.setAttribute("mem_name", "Amazing Gold Pakage");
          overlap = membershipService.goldOverlap(user_id);
          return String.valueOf(overlap);

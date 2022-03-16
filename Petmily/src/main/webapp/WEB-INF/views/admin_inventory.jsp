@@ -21,7 +21,7 @@
             class="btn btn-success btn-block btn-lg gradient-custom-4
          "
             onclick="location.href='admin_membership'" data-bs-toggle="pill"
-            type="button" role="tab"" onclick="location.href='admin_membership'">구독회원</button>
+            type="button" role="tab" onclick="location.href='admin_membership'">구독회원</button>
 
 <!--          <button id="v-subscribe-product-tab"
             class="btn btn-success btn-block btn-lg gradient-custom-4
@@ -60,8 +60,7 @@
    </div>
 
 
-   <section id="inventory_form"
-      style="padding-left: 500px; height: 1150px; width: 1500px; padding-top: 50px; padding-bottom: 100px;">
+   <section id="inventory_form" style="padding-left: 500px; height: 1150px; width: 1600px; padding-top: 50px; padding-bottom: 100px;">
 
 
       <c:choose>
@@ -94,10 +93,6 @@
                      <tbody>
                         <c:forEach items="${admin_inventory }" var="admin_inventory">
                            <tr>
-                              <!--             체크버튼기능                  <th scope="row"><label class="control control--checkbox">
-                                 <input type="checkbox" />
-                                 <div class="control__indicator"></div>
-                           </label></th> -->
                               <td>${admin_inventory.prod_name }</td>
                               <td>${admin_inventory.prod_allamount }</td>
                               <td>${admin_inventory.prod_amount }</td>
@@ -109,8 +104,8 @@
                                  <td><input type="button" value="재고추가"
                                     class="btn btn-outline-dark"
                                     style="padding-left: 13px; padding-right: 13px; padding-top: 7px; padding-bottom: 7px;"
-                                    id=${admin_inventory.prod_name }></td>
-                                 <td id=${admin_inventory.prod_num } style="display: none"><input
+                                    id="${admin_inventory.prod_num }2"></td>
+                                 <td id="${admin_inventory.prod_num }" style="display: none"><input
                                     type="hidden" id="prod_num" name="prod_num"
                                     value="${admin_inventory.prod_num }"> <input
                                     type="text" id="addamount" name="addamount"> <input
@@ -168,7 +163,7 @@
 	<script>
 		$(function() {
 			<c:forEach items="${admin_inventory }" var="admin_inventory">
-			$("#${admin_inventory.prod_name }").click(function() {
+			$("#${admin_inventory.prod_num }2").click(function() {
 				$("#${admin_inventory.prod_num }").toggle();
 			});
 			</c:forEach>
