@@ -65,7 +65,7 @@
 			</li>
 			<li class="nav-item" role="presentation" style="margin-right: 10px;">
 				<button type="button" class="nav-link btn btn-outline-success"
-					id="subscribe-tab" style="width: 150px;">구독 내역</button>
+					id="subscribe-tab" style="width: 150px;">구독 정보</button>
 			</li>
 			<li class="nav-item" role="presentation" style="margin-right: 10px;">
 				<button type="button" class="nav-link btn btn-outline-success"
