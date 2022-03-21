@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PetmilyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PetmilyApplication.class, args);
+		SpringApplication.run(PetmilyApplication.class, args); 
 	}
 
 }
