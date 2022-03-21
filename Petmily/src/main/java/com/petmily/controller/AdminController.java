@@ -98,7 +98,8 @@ public class AdminController {
 			if (product.getFile().isEmpty()) {
 				System.out.println("이미지를 등록해 주세요");
 			} else {
-				String path = servletContext.getRealPath("/upload/");
+//				String path = servletContext.getRealPath("/upload/");
+				String path ="/upload/";
 				File destFile = new File(path + product.getFile().getOriginalFilename());
 				product.setProd_img(product.getFile().getOriginalFilename());
 				product.getFile().transferTo(destFile);
